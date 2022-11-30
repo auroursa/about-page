@@ -1,0 +1,91 @@
+@font-face {
+    font-family: "overpass";
+    src: url("../font/overpass.otf") format("opentype");
+}
+
+body {
+    background-color: #FCFAF2;
+}
+
+h1 {
+    font-family: "overpass";
+}
+
+a {
+    color: black;
+}
+
+header, footer {
+    background-color: #FFFFFB;
+    border-radius:  1.35rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.title-h2 {
+    text-align: center;
+}
+
+.avatar > img {
+    width: 6rem;
+    border-radius: 50%;
+}
+
+.main > div {
+    background-color: #FFFFFB;
+    border-radius: 1.35rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 0;
+}
+
+.about {
+    text-align: center;
+    height: 12rem;
+}
+
+
+.left-menu {
+    float: left;
+    width: 20rem;
+    height: 22rem;
+}
+
+.social {
+    text-align: center;
+    height: 8.5rem;
+}
+
+.social > a > img {
+    width: 3.5rem;
+}
+
+.interest > ul > li {
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+article {
+    background-color: #FFFFFB;
+    border-radius:  1.35rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    overflow: hidden;
+    text-align: center;
+}
+
+.delimiter {
+    padding: 1.5rem;
+}
+
+@media screen and (max-width:768px) {
+    .left-menu {
+        float: none;
+        width: auto;
+    }
+
+    .interest > ul > li {
+        padding: 0 20%;
+    }
+}
