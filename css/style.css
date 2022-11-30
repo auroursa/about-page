@@ -20,7 +20,7 @@ a {
     color: #1C1C1C;
 }
 
-header, footer, .main > div, article {
+header, footer, .main > div, article, .friends-info {
     background-color: #FFFFFB;
     border-radius:  1.35rem;
     margin: 1.5rem;
@@ -32,12 +32,12 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
-.menu ul, .friends ul {
+.menu ul, .friends ul, .friends-info ul {
     margin: 0;
     padding: 0;
 }
 
-.menu li, .friends ul {
+.menu li, .friends ul, .friends-info ul {
     list-style-type: none;
     display: inline-block;
 }
@@ -76,6 +76,10 @@ header, footer, .main > div, article {
 
 article {
     overflow: hidden;
+}
+
+.friends-info ul {
+    text-align: left;
 }
 
 .clear {
