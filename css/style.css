@@ -20,7 +20,7 @@ a {
     color: #1C1C1C;
 }
 
-header, footer, .main > div, article, .friends-info {
+header, footer, .main > div, article {
     background-color: #FFFFFB;
     border-radius:  1.35rem;
     margin: 1.5rem;
@@ -61,7 +61,7 @@ header, footer, .main > div, article, .friends-info {
 
 .left-menu {
     float: left;
-    width: 20rem;
+    width: 22rem;
 }
 
 .social > a > img {
@@ -80,6 +80,7 @@ article {
 
 .friends-info ul {
     text-align: left;
+    padding: 0 2rem;
 }
 
 .clear {
