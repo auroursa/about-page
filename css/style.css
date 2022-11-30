@@ -59,11 +59,6 @@ header, footer, .main > div, article {
     margin-bottom: 0;
 }
 
-.about {
-    height: 12rem;
-}
-
-
 .left-menu {
     float: left;
     width: 20rem;
