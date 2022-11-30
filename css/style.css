@@ -15,7 +15,7 @@ a {
     color: black;
 }
 
-header, footer {
+header, footer, .main > div, article {
     background-color: #FFFFFB;
     border-radius:  1.35rem;
     margin: 1.5rem;
@@ -23,8 +23,26 @@ header, footer {
     text-align: center;
 }
 
-.title-h2 {
+.title-h2, .social, .pgp, .about, .menu li {
     text-align: center;
+}
+
+.menu ul, .friends ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu li, .friends ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.friends li {
+    padding-bottom: 1rem;
 }
 
 .avatar > img {
@@ -33,15 +51,10 @@ header, footer {
 }
 
 .main > div {
-    background-color: #FFFFFB;
-    border-radius: 1.35rem;
-    margin: 1.5rem;
-    padding: 1.5rem;
     margin-bottom: 0;
 }
 
 .about {
-    text-align: center;
     height: 12rem;
 }
 
@@ -51,30 +64,18 @@ header, footer {
     width: 20rem;
 }
 
-.social {
-    text-align: center;
-}
-
 .social > a > img {
     width: 3.5rem;
-}
-
-.pgp {
-    text-align: center;
 }
 
 .interest > ul > li {
     list-style-position: inside;
     list-style-type: square;
+    text-align: left;
 }
 
 article {
-    background-color: #FFFFFB;
-    border-radius:  1.35rem;
-    margin: 1.5rem;
-    padding: 1.5rem;
     overflow: hidden;
-    text-align: center;
 }
 
 .delimiter {
