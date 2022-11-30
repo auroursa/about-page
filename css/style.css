@@ -89,7 +89,11 @@ article {
         width: auto;
     }
 
+    .social > a > img {
+        width: 2.5rem;
+    }
+
     .interest > ul > li {
-        padding: 0 20%;
+        padding: 0 15%;
     }
 }
