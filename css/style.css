@@ -3,6 +3,10 @@
     src: url("../font/overpass.otf") format("opentype");
 }
 
+html {
+    overflow-y: overlay;
+}
+
 body {
     background-color: #FCFAF2;
     color: #0C0C0C;
