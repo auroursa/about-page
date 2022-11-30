@@ -49,7 +49,6 @@ header, footer {
 .left-menu {
     float: left;
     width: 20rem;
-    height: 28rem;
 }
 
 .social {
@@ -80,6 +79,10 @@ article {
 
 .delimiter {
     padding: 1.5rem;
+}
+
+.clear {
+    clear: both;
 }
 
 @media screen and (max-width:768px) {
