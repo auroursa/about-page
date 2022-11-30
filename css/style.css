@@ -54,7 +54,6 @@ header, footer {
 
 .social {
     text-align: center;
-    height: 8.5rem;
 }
 
 .social > a > img {
@@ -91,9 +90,5 @@ article {
 
     .social > a > img {
         width: 2.5rem;
-    }
-
-    .interest > ul > li {
-        padding: 0 15%;
     }
 }
