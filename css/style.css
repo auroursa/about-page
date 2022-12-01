@@ -28,15 +28,24 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
+.menu ul, .friends ul, .friends-info ul, .release-notes ul, .interest ul, .device-list ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: square;
+    display: inline-block;
+}
+
+.interest ul, .device-list ul, .friends-info ul, .release-notes ul {
+    text-align: left;
+}
+
 .title-h2, .social, .pgp, .about, .menu li {
     text-align: center;
 }
 
-.menu ul, .friends ul, .friends-info ul, .release-notes ul {
-    margin: 0;
-    padding: 0;
+.menu ul, .friends ul {
     list-style-type: none;
-    display: inline-block;
 }
 
 .menu li {
@@ -71,18 +80,8 @@ header, footer, .main > div, article {
     width: 3.2rem;
 }
 
-.interest > ul > li {
-    list-style-position: inside;
-    list-style-type: square;
-    text-align: left;
-}
-
 article {
     overflow: hidden;
-}
-
-.friends-info ul, .release-notes ul {
-    text-align: left;
 }
 
 .clear {
