@@ -58,14 +58,14 @@ header, footer, .main > div, article {
     text-decoration: none;
 }
 
-.blog {
+.left-menu .blog {
     padding: 0.2rem;
     background-color: #0C0C0C;
     margin: 1.5rem -1.5rem -1.5rem -1.5rem;
     border-radius: 0 0 1.35rem 1.35rem;
 }
 
-.blog a {
+.left-menu .blog a {
     color: #FCFAF2;
 }
 
@@ -103,17 +103,6 @@ article {
     color:#e25555;
 }
 
-@media screen and (max-width:768px) {
-    .left-menu {
-        float: none;
-        width: auto;
-    }
-
-    .social > a > img {
-        width: 2.5rem;
-    }
-}
-
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #0C0C0C;
@@ -128,15 +117,26 @@ article {
         color: #FCFAF2;
     }
 
-    .blog {
+    .left-menu .blog {
         background-color: #FFFFFB;
     }
     
-    .blog a {
+    .left-menu .blog a {
         color: #1C1C1C;
     }
 
     .social img {
         filter: invert(100%);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .left-menu {
+        float: none;
+        width: auto;
+    }
+
+    .social > a > img {
+        width: 2.5rem;
     }
 }
