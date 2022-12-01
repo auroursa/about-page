@@ -32,17 +32,20 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
-.menu ul, .friends ul, .friends-info ul {
+.menu ul, .friends ul, .friends-info ul, .release-notes ul {
     margin: 0;
     padding: 0;
-}
-
-.menu li, .friends ul, .friends-info ul {
     list-style-type: none;
     display: inline-block;
 }
 
-.menu a {
+.menu li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.menu a, footer a {
     text-decoration: none;
 }
 
@@ -78,12 +81,16 @@ article {
     overflow: hidden;
 }
 
-.friends-info ul {
+.friends-info ul, .release-notes ul {
     text-align: left;
 }
 
 .clear {
     clear: both;
+}
+
+.heart {
+    color:#e25555;
 }
 
 @media screen and (max-width:768px) {
