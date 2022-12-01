@@ -54,8 +54,19 @@ header, footer, .main > div, article {
     display: inline-block;
 }
 
-.menu a, footer a {
+.menu a, footer a, .blog a {
     text-decoration: none;
+}
+
+.blog {
+    padding: 0.2rem;
+    background-color: #0C0C0C;
+    margin: 1.5rem -1.5rem -1.5rem -1.5rem;
+    border-radius: 0 0 1.35rem 1.35rem;
+}
+
+.blog a {
+    color: #FCFAF2;
 }
 
 .friends li {
@@ -109,12 +120,20 @@ article {
         color: #FFFFFB;
     }
 
-    header, footer, .main > div, article {
+    header, footer, .main div, article {
         background-color: #1C1C1C;
     }
 
     a {
         color: #FCFAF2;
+    }
+
+    .blog {
+        background-color: #FFFFFB;
+    }
+    
+    .blog a {
+        color: #1C1C1C;
     }
 
     .social img {
