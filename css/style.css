@@ -60,7 +60,7 @@ header, footer, .main > div, article {
 
 .left-menu .blog {
     padding: 0.2rem;
-    background-color: #0C0C0C;
+    background-color: #BC9F77;
     margin: 1.5rem -1.5rem -1.5rem -1.5rem;
     border-radius: 0 0 1.35rem 1.35rem;
 }
@@ -118,7 +118,7 @@ article {
     }
 
     .left-menu .blog {
-        background-color: #FFFFFB;
+        background-color: #F9F4DC;
     }
     
     .left-menu .blog a {
