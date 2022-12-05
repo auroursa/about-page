@@ -54,6 +54,10 @@ header, footer, .main > div, article {
     display: inline-block;
 }
 
+.menu li:not(:first-child):before {
+    content: " | ";
+}
+
 .menu a, footer a, .blog a {
     text-decoration: none;
 }
