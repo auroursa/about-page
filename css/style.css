@@ -129,7 +129,7 @@ article {
         color: #1C1C1C;
     }
 
-    .social img {
+    .social-icon {
         filter: invert(100%);
     }
 }
