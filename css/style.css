@@ -5,10 +5,7 @@
 
 html {
     overflow-y: overlay;
-}
-
-body {
-    background-color: #FCFAF2;
+    background: #FCFAF2;
     color: #0C0C0C;
 }
 
@@ -21,7 +18,7 @@ a {
 }
 
 header, footer, .main > div, article {
-    background-color: #FFFFFB;
+    background: #FFFFFB;
     border-radius:  1.35rem;
     margin: 1.5rem;
     padding: 1.5rem;
@@ -64,7 +61,7 @@ header, footer, .main > div, article {
 
 .left-menu .blog {
     padding: 0.2rem;
-    background-color: #BC9F77;
+    background: #BC9F77;
     margin: 1.5rem -1.5rem -1.5rem -1.5rem;
     border-radius: 0 0 1.35rem 1.35rem;
 }
@@ -108,13 +105,13 @@ article {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #0C0C0C;
+    html {
+        background: #0C0C0C;
         color: #FFFFFB;
     }
 
     header, footer, .main div, article {
-        background-color: #1C1C1C;
+        background: #1C1C1C;
     }
 
     a {
@@ -122,7 +119,7 @@ article {
     }
 
     .left-menu .blog {
-        background-color: #F2EAC2;
+        background: #F2EAC2;
     }
     
     .left-menu .blog a {
@@ -130,7 +127,7 @@ article {
     }
 
     .social-icon {
-        filter: invert(100%);
+        filter:invert(100%);
     }
 }
 
