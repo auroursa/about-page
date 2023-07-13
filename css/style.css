@@ -100,10 +100,6 @@ article {
     clear: both;
 }
 
-.heart {
-    color:#e25555;
-}
-
 @media (prefers-color-scheme: dark) {
     html {
         background: #0C0C0C;
