@@ -5,7 +5,7 @@
 
 html {
     overflow-y: overlay;
-    background: #FCFAF2;
+    background: #EEF7F2;
     color: #0C0C0C;
 }
 
@@ -61,7 +61,7 @@ header, footer, .main > div, article {
 
 .left-menu .blog {
     padding: 0.2rem;
-    background: #BC9F77;
+    background: #66BAB7;
     margin: 1.5rem -1.5rem -1.5rem -1.5rem;
     border-radius: 0 0 1.35rem 1.35rem;
 }
@@ -115,11 +115,11 @@ article {
     }
 
     .left-menu .blog {
-        background: #F2EAC2;
+        background: #268785;
     }
     
     .left-menu .blog a {
-        color: #1C1C1C;
+        color: #FFFFFB;
     }
 
     .social-icon {
