@@ -19,7 +19,7 @@ a {
 
 header, footer, .main > div, article {
     background: #FFFFFB;
-    border-radius:  1rem;
+    border-radius: 1rem;
     margin: 1.2rem;
     padding: 1.2rem;
     text-align: center;
@@ -105,7 +105,7 @@ article {
 .card {
     margin-bottom: 1rem;
     border: 1px solid #E0E0E0;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     overflow: hidden;
 }
 
@@ -119,7 +119,7 @@ article {
 .card-avatar {
     width: 5.5rem;
     border-radius: 50%;
-    margin: auto 0.8rem;
+    margin: auto 1rem;
 }
 
 .card-content {
@@ -148,6 +148,18 @@ article {
     -webkit-box-orient: vertical;
 }
 
+.button {
+    background: #66BAB7;
+    border: none;
+    color: #FFFFFB;
+    padding: 1.2rem 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
 .clear {
     clear: both;
 }
@@ -166,7 +178,7 @@ article {
         color: #FCFAF2;
     }
 
-    .left-menu .blog {
+    .left-menu .blog, .button{
         background: #268785;
     }
     
