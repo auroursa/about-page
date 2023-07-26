@@ -99,18 +99,22 @@ article {
 
 .card-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .card {
-    margin-bottom: 1rem;
+    flex-basis: calc(50% - 1rem);
+    margin: 0.5rem;
     border: 1px solid #E0E0E0;
     border-radius: 1rem;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .card-link {
     display: flex;
+    flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: #1C1C1C;
@@ -118,21 +122,23 @@ article {
 
 .card-avatar {
     width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
-    margin: auto 1rem;
+    object-fit: cover;
+    margin-top: 1.2rem;
 }
 
 .card-content {
-    flex: 1;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-title {
     font-size: 1.2rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -191,11 +197,11 @@ article {
     }
 
     .card-content {
-        color: #FFFFFB; /* 在深色模式下将字体颜色设置为白色 */
+        color: #FFFFFB;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1024px) {
     .left-menu {
         float: none;
         width: auto;
@@ -209,11 +215,11 @@ article {
         width: 2.5rem;
     }
 
-    .card-title {
-        font-size: 1rem;
+    .card-container {
+        flex-direction: column;
     }
 
-    .card-description {
-        font-size: 0.9rem;
+    .card {
+        flex-basis: 100%;
     }
 }
