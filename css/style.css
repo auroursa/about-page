@@ -80,10 +80,13 @@ header, footer, .main > div, article {
 }
 
 .left-menu {
-    position: sticky;
-    top: 1rem;
     float: left;
     width: 22rem;
+}
+
+.left-menu-friends {
+    position: sticky;
+    top: 1rem;
 }
 
 .social > a > img {
@@ -178,9 +181,12 @@ article {
 
 @media screen and (max-width:768px) {
     .left-menu {
-        position: static;
         float: none;
         width: auto;
+    }
+
+    .left-menu-friends {
+        position: static;
     }
 
     .social > a > img {
