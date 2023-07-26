@@ -80,6 +80,8 @@ header, footer, .main > div, article {
 }
 
 .left-menu {
+    position: sticky;
+    top: 1rem;
     float: left;
     width: 22rem;
 }
@@ -176,6 +178,7 @@ article {
 
 @media screen and (max-width:768px) {
     .left-menu {
+        position: static;
         float: none;
         width: auto;
     }
