@@ -177,6 +177,10 @@ article {
     .social-icon {
         filter:invert(100%);
     }
+
+    .card-content {
+        color: #FFFFFB; /* 在深色模式下将字体颜色设置为白色 */
+    }
 }
 
 @media screen and (max-width:768px) {
