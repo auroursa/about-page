@@ -25,7 +25,7 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
-.menu ul, .friends ul, .friends-info ul, .release-notes ul, .interest ul, .device-list ul {
+.menu ul, .friends-info ul, .release-notes ul, .interest ul, .device-list ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
@@ -41,7 +41,7 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
-.menu ul, .friends ul {
+.menu ul {
     list-style-type: none;
 }
 
@@ -70,10 +70,6 @@ header, footer, .main > div, article {
     color: #FCFAF2;
 }
 
-.friends li {
-    padding-bottom: 1rem;
-}
-
 .avatar > img {
     width: 6rem;
     border-radius: 50%;
@@ -94,6 +90,57 @@ header, footer, .main > div, article {
 
 article {
     overflow: hidden;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    margin-bottom: 1rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.card-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1C1C1C;
+}
+
+.card-avatar {
+    width: 5.5rem;
+    border-radius: 50%;
+    margin: auto 0.8rem;
+}
+
+.card-content {
+    flex: 1;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .clear {
@@ -135,5 +182,13 @@ article {
 
     .social > a > img {
         width: 2.5rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
     }
 }
