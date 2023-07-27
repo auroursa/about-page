@@ -115,7 +115,7 @@ blockquote {
         border-left: 0.35rem solid #268785;
     }
 
-    .page-header, .page-footer {
+    .page-header, .page-footer, .about, .post-list, .post, .post-meta, .comment {
         background: #1C1C1C;
     }
 
