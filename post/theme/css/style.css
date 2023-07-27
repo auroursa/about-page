@@ -33,7 +33,7 @@ blockquote {
     margin: 1rem;
 }
 
-.page-header, .page-footer, .about, .post-list, .post, .post-meta, .comment {
+.page-header, .page-footer, .about, .post-list, .post, .post-meta, .comments {
     background: #FFFFFB;
     border-radius: 1rem;
     margin: 1.2rem;
@@ -41,7 +41,7 @@ blockquote {
     text-align: center;
 }
 
-.post-list, .post, .post-meta, .comment {
+.post-list, .post, .post-meta, .comments {
     margin: 1.2rem 10rem;
     text-align: left;
 }
@@ -115,7 +115,7 @@ blockquote {
         border-left: 0.35rem solid #268785;
     }
 
-    .page-header, .page-footer, .about, .post-list, .post, .post-meta, .comment {
+    .page-header, .page-footer, .about, .post-list, .post, .post-meta, .comments {
         background: #1C1C1C;
     }
 
@@ -137,7 +137,7 @@ blockquote {
         max-width: 100%; 
     }
 
-    .post-list, .post, .post-meta, .comment {
+    .post-list, .post, .post-meta, .comments {
         margin: 1.2rem;
     }
 }
