@@ -1,0 +1,139 @@
+@font-face {
+    font-family: "overpass";
+    src: url("../font/overpass.otf") format("opentype");
+}
+
+html {
+    overflow-y: overlay;
+    background: #EEF7F2;
+    color: #0C0C0C;
+}
+
+h1 {
+    font-family: "overpass";
+}
+
+.title-h2 {
+    margin-top: 1rem;
+}
+
+a {
+    color: #1C1C1C;
+}
+
+img {
+    max-height: 35rem;
+    max-width: 80%; 
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 0.35rem solid #66BAB7;
+    padding: 0.5rem 1.2rem;
+    margin: 1rem;
+}
+
+.page-header, .page-footer, .about, .post-list, .post, .post-meta, .comment {
+    background: #FFFFFB;
+    border-radius: 1rem;
+    margin: 1.2rem;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.post-list, .post, .post-meta, .comment {
+    margin: 1.2rem 10rem;
+    text-align: left;
+}
+
+.avatar > img {
+    width: 6rem;
+    border-radius: 50%;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: square;
+    display: inline-block;
+    text-align: left;
+    list-style-type: none;
+}
+
+.menu li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.menu li:not(:first-child):before {
+    content: " | ";
+}
+
+.menu a, .title-h2 a, .post-title a {
+    text-decoration: none;
+}
+
+.menu-link-active {
+    color: #66BAB7;
+    font-weight: bold;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.creative-icon {
+    width: 2rem;
+}
+
+.button {
+    background: #66BAB7;
+    border: none;
+    color: #FFFFFB;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background: #0C0C0C;
+        color: #FFFFFB;
+    }
+
+    a {
+        color: #FCFAF2;
+    }
+
+    blockquote {
+        border-left: 0.35rem solid #268785;
+    }
+
+    .page-header, .page-footer {
+        background: #1C1C1C;
+    }
+
+    .menu-link-active, .button {
+        color: #268785;
+    }
+
+    .creative-icon {
+        filter:invert(100%);
+    }
+}
+
+@media screen and (max-width:1024px) {
+    img {
+        max-width: 100%; 
+    }
+
+    .post-list, .post, .post-meta, .comment {
+        margin: 1.2rem;
+    }
+}

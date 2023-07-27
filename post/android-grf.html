@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+        <title>Cynosura - Android GRF 更新策略简析</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Pelican" />
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/post/theme/css/style.css">
+    <link rel="icon" type="image/x-icon" href="https://cynosura.one/post/theme/img/favicon.ico">
+
+
+
+
+
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="avatar">
+            <img src="https://cynosura.one/post/theme/img/avatar.webp" alt="avatar" />
+        </div>
+        <div class="title">
+            <h1>Cynosura</h1>
+            <h2></h2>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="https://cynosura.one" class="menu-link">首页</a></li>
+                <li><a href="https://cynosura.one/friends" class="menu-link">友人</a></li>
+                <li><a href="https://cynosura.one/post/" class="menu-link-active">文章</a></li>
+                <li><a href="https://cynosura.one/discussions" class="menu-link">留言</a></li>
+                <li><a href="https://cynosura.one/about" class="menu-link">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+<section class="post">
+    <header>
+        <h2 class="post-title">
+        <a href="https://cynosura.one/post/android-grf.html"">Android GRF 更新策略简析</a></h2>
+    
+    </header>
+    <div class="entry-content">
+        <p>自 Android 11 起，Google 开始实施被称为 Google Requirements Freeze (简称 GRF) 的更新策略 在参考了几个消息来源后，决定总结一下我理解的 GRF 具体是什么东西，又能如何影响 Android 版本更新节奏。</p>
+<p>这导致上游 SoC 不得不维护多种 Vendor 版本，同时若新版本 Android 提升了底层功能要求（例如必须支持多摄像头切换 API），一些想要升级通过新版本兼容性测试 (Compatibility Definition Document, CCD) 就会遇到困难，而不得不等待上游 SoC 供应商更新 Vendor 版本。这也是过去中低端机及联发科机型即使拥有 Project Treble，更新 Android 也不积极的首要，无论是上游 SoC 供应商还是 OEM 厂商都不愿意在中低端机上投入过多心力去维护。</p>
+<p><img alt="treble-plus-one-equals-four-4" src="images/android-grf/treble-plus-one-equals-four-4.webp"></p>
+<p>而在 Google Requirements Freeze 引入之后，Vendor 版本将被冻结，而 Google 将承诺为各 Vendor 版本提供 N+3 的特性向后兼容保证。例如首次利用 GRF 特性的骁龙 888，Vendor 版本适配当年的 Android 11，那么即便后续升级 Android 版本，Vendor 版本也不再变动，而 Google 将保证 Android 14 能够支持 11 的 Vendor 版本启动，并通过新版本的兼容性测试。这也是 Nothing Phone 作为 2022 年发布并出厂搭载 Android 12 的手机，但其 Vendor 版本仍然基于 Android 11 的原因。其搭载的骁龙 778G+ 同骁龙 888 一样，也是首批支持 GRF 特性的 SoC。</p>
+<p><img alt="treble-plus-one-equals-four-6" src="images/android-grf/treble-plus-one-equals-four-6.webp"></p>
+<p>GRF 无疑减轻了上游 SoC 供应商的维护压力，在 GRF 之前，高通承诺为 Vendor 提供 N+2 及 3 年的安全更新支持，而 GRF 至少能为 OEM 厂商提供绕开上游 SoC 供应商的机会，独立提供 N+3 的大版本更新（这也是站在 Android 维护的角度，我不推荐任何骁龙 870 新机的原因，由于反复鞭尸炒冷饭，可预见今年发布的 870 新机即便定价没怎么降，各种维护支持都将显著比同期中高端 SoC 来得更差）</p>
+<p>当然引入 GRF 也带来一些问题，由于 Google 必须保证 Android 新版本与先前 Vendor 版本的兼容性，而无法做到涉及硬件支持的特性在相同版本 Android 上体验一致。例如由于涉及 Vendor 改动，即使 Google 在 Android 12 上引入了禁用 2G 的开关，也无法推广到所有 Android 12 的设备上，即使是出厂搭载 Android 12 的设备也是如此。同时由于自发布起 Vendor 版本就被冻结，导致 GRF 机型在后续维护中都将很难获得涉及硬件改动的新特性。</p>
+<p>同时 Google 对 GRF 的承诺只到 N+3，若 OEM 厂商想扩展支持到 4 个大版本升级，将必须自行移植最新版本涉及 Vendor 的特性需求，以通过对应版本的兼容性测试。即 GRF 的出现能让各厂商轻易做到 N+3 的支持承诺，却很难更近一步做到 N+4。同时也极度不利于利用旧 SoC 推出新机的厂商保持正常的支持更新节奏。</p>
+<p>对于刚刚发布的骁龙 8 Gen 2 来说，自然也支持 GRF 策略。骁龙 8 Gen 2 搭载最新的 Android 13 版本的 Vendor，将享受完整的 Android 13 底层特性支持，并继续提供 N+3 的版本更新承诺。</p>
+<p>参考来源：<a href="https://android-developers.googleblog.com/2020/12/treble-plus-one-equals-four.html">Android Developers Blog: Treble Plus One Equals Four</a></p>
+    </div>
+</section>
+<footer class="post-meta">
+    <h2>本文信息</h2>
+        <p><strong>作者: </strong>Frudrax Cheng</p>
+    <p><strong>发布时间:</strong>
+        <time class="published" datetime="2022-11-16T14:58:18+08:00">
+        2022-11-16 (周三)
+        </time>
+    </p>
+    <p><strong>链接: </strong><a href="https://cynosura.one/post/android-grf.html" title="Android GRF 更新策略简析">https://cynosura.one/post/android-grf.html</a></p>
+    <div class="copyright">
+        <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
+        <img class="creative-icon" src="https://cynosura.one/post/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+    </div>
+</footer>
+<div class="comment">
+    <span class="title-h2"><h2>评论</h2></span>
+    <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
+    <div id="disqus_thread"></div>
+    <!-- 添加一个按钮 -->
+    <button id="load_disqus" class="button">加载 Disqus</button>
+    <!-- Disqus 留言板容器 -->
+    <div id="disqus_thread_container"></div>
+</div>
+<script>
+    // 点击按钮后加载 Disqus 留言板
+    document.getElementById('load_disqus').addEventListener('click', function() {
+        // 添加 Disqus 留言板脚本
+        var disqusScript = document.createElement('script');
+        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+        disqusScript.setAttribute('data-timestamp', +new Date());
+        document.head.appendChild(disqusScript);
+        // 移动 Disqus 留言板内容到容器中
+        var disqusContainer = document.getElementById('disqus_thread_container');
+        disqusContainer.appendChild(document.getElementById('disqus_thread'));
+        // 隐藏按钮，防止重复加载
+        this.style.display = 'none';
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <footer class="page-footer">
+        <p>Copyright &copy; 2023 Cynosura</p>
+        <p>Powered by <a href="https://getpelican.com/">Pelican</a></p>
+    </footer>
+</body>
+</html>
