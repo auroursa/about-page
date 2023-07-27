@@ -20,7 +20,7 @@ a {
 header, footer, .main > div, article, #comments {
     background: #FFFFFB;
     border-radius: 1rem;
-    margin: 1.2rem;
+    margin: 1.2rem 0.8rem;
     padding: 1.2rem;
     text-align: center;
 }
@@ -209,6 +209,10 @@ article {
 }
 
 @media screen and (max-width:1024px) {
+    header, footer, .main > div, article, #comments {
+        margin: 1.2rem 0.5rem;
+    }
+
     .left-menu {
         float: none;
         width: auto;
