@@ -25,15 +25,12 @@ header, footer, .main > div, article {
     text-align: center;
 }
 
-.menu ul, .friends-info ul, .release-notes ul, .interest ul, .device-list ul {
+.menu ul, .release-notes ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
     list-style-type: square;
     display: inline-block;
-}
-
-.interest ul, .device-list ul, .friends-info ul, .release-notes ul {
     text-align: left;
 }
 
