@@ -56,7 +56,7 @@ header, footer, .main > div, article {
     text-decoration: none;
 }
 
-.menu-link.active {
+.menu-link-active {
     color: #66BAB7;
     font-weight: bold;
 }
@@ -191,7 +191,7 @@ article {
         background: #268785;
     }
 
-    .menu-link.active {
+    .menu-link-active {
         color: #268785;
     }
     
