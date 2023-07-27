@@ -56,6 +56,12 @@ header, footer, .main > div, article {
     text-decoration: none;
 }
 
+.menu-link.active {
+    color: #66BAB7;
+    font-weight: bold;
+}
+
+
 .left-menu .blog {
     padding: 0.2rem;
     background: #66BAB7;
@@ -183,6 +189,10 @@ article {
 
     .left-menu .blog, .button{
         background: #268785;
+    }
+
+    .menu-link.active {
+        color: #268785;
     }
     
     .left-menu .blog a {
