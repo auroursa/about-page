@@ -17,7 +17,12 @@ a {
     color: #1C1C1C;
 }
 
-header, footer, .main > div, article, #comments {
+header, footer {
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.main > div, article, #comments {
     background: #FFFFFB;
     border-radius: 1rem;
     margin: 1.2rem 0.8rem;
@@ -179,7 +184,7 @@ article {
         color: #FFFFFB;
     }
 
-    header, footer, .main div, article, #comments {
+    .main div, article, #comments {
         background: #1C1C1C;
     }
 
@@ -209,7 +214,7 @@ article {
 }
 
 @media screen and (max-width:1024px) {
-    header, footer, .main > div, article, #comments {
+    .main > div, article, #comments {
         margin: 1.2rem 0.5rem;
     }
 
