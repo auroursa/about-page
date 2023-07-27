@@ -17,7 +17,7 @@ a {
     color: #1C1C1C;
 }
 
-header, footer, .main > div, article, .comments {
+header, footer, .main > div, article, #comments {
     background: #FFFFFB;
     border-radius: 1rem;
     margin: 1.2rem;
@@ -179,7 +179,7 @@ article {
         color: #FFFFFB;
     }
 
-    header, footer, .main div, article, .comments {
+    header, footer, .main div, article, #comments {
         background: #1C1C1C;
     }
 
