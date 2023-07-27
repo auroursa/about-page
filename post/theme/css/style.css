@@ -119,8 +119,12 @@ blockquote {
         background: #1C1C1C;
     }
 
-    .menu-link-active, .button {
+    .menu-link-active {
         color: #268785;
+    }
+
+    .button {
+        background: #268785;
     }
 
     .creative-icon {
