@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var urlPath = window.location.pathname;
-  var currentPage = urlPath.split("/").pop();
-  var menuLinks = document.querySelectorAll(".menu a");
+    const menuLinks = document.querySelectorAll(".menu-link");
+    const currentPage = location.pathname;
 
-  menuLinks.forEach(function (link) {
-    var href = link.getAttribute("href");
-    var linkFileName = href.split("/").pop();
-
-    if (linkFileName === currentPage) {
-      link.classList.add("active");
-    }
-  });
+    menuLinks.forEach((link) => {
+        const linkUrl = link.getAttribute("href");
+        if (currentPage.endsWith(linkUrl)) {
+            link.classList.add("active");
+        }
+    });
 });
