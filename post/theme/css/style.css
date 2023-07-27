@@ -140,8 +140,4 @@ blockquote {
     img {
         max-width: 100%; 
     }
-
-    .post-list, .post, .post-meta, .comments {
-        margin: 1.2rem;
-    }
 }
