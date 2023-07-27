@@ -25,7 +25,7 @@ header, footer, .main > div, article, .comments {
     text-align: center;
 }
 
-.menu ul, .release-notes ul {
+.menu ul, .release-notes ul, .friends-info ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
