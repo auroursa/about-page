@@ -38,17 +38,26 @@ blockquote {
     text-align: center;
 }
 
-.about, .post-list, .post, .post-meta, .comments {
+.about, .post-card, .post, .post-meta, .comments {
     background: #FFFFFB;
     border-radius: 1rem;
-    margin: 1.2rem 0.8rem;
+    margin: 0.8rem;
     padding: 1.2rem;
     text-align: center;
 }
 
-.post-list, .post, .post-meta, .comments {
+.post-card, .post, .post-meta, .comments {
     margin: 1.2rem 10rem;
     text-align: left;
+}
+
+.post-card {
+    padding: 0;
+}
+
+.post-card a {
+    display: block;
+    padding: 1.2rem;
 }
 
 .avatar > img {
@@ -77,7 +86,7 @@ blockquote {
     content: " | ";
 }
 
-.menu a, .title-h2 a, .post-title a {
+.menu a, .title-h2 a, .post-card a {
     text-decoration: none;
 }
 
@@ -120,7 +129,7 @@ blockquote {
         border-left: 0.35rem solid #268785;
     }
 
-    .about, .post-list, .post, .post-meta, .comments {
+    .about, .post-card, .post, .post-meta, .comments {
         background: #1C1C1C;
     }
 
@@ -138,8 +147,8 @@ blockquote {
 }
 
 @media screen and (max-width:1024px) {
-    .about, .post-list, .post, .post-meta, .comments {
-        margin: 1.2rem 0.5rem;
+    .about, .post-card, .post, .post-meta, .comments {
+        margin: 0.5rem;
     }
 
     img {
