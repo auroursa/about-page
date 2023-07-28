@@ -175,6 +175,12 @@ blockquote {
     .creative-icon {
         filter:invert(100%);
     }
+
+    .category {
+        background: #5B622E;
+        padding: 0.25rem 0.8rem;
+        border-radius: 0.5rem;
+    }
 }
 
 @media screen and (max-width:1024px) {
