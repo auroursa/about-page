@@ -94,7 +94,7 @@ header, footer {
 
 .left-menu-friends {
     position: sticky;
-    top: 1rem;
+    top: 0.8rem;
 }
 
 .social > a > img {
