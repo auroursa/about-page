@@ -119,17 +119,11 @@ article {
     overflow: hidden;
 }
 
-.card-link-label {
-    display: inline-block;
-    cursor: pointer;
+.card-link {
+    text-decoration: none;
 }
 
 .card-link {
-    text-decoration: none;
-    overflow: hidden;
-}
-
-.card-link-label {
     background-color: #FFFFFB;
     transition: background-color 0.5s;
     .card-content {
@@ -138,7 +132,7 @@ article {
     }
 }
 
-.card-link-label:hover {
+.card-link:hover {
     background-color: #66BAB7;
     transition: background-color 0.5s;
     .card-content {
@@ -210,7 +204,7 @@ article {
         filter:invert(100%);
     }
 
-    .card-link-label {
+    .card-link {
         color: #FCFAF2;
         background-color: #1C1C1C;
         transition:background-color 0.5s;
@@ -221,7 +215,7 @@ article {
         }
     }
 
-    .card-link-label:hover {
+    .card-link:hover {
         background-color: #268785;
         transition: background-color 0.5s;
         .card-content {
