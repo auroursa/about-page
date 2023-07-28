@@ -43,6 +43,10 @@ header, footer {
     text-align: center;
 }
 
+.icon {
+    height: 0.8rem;
+}
+
 .menu ul {
     list-style-type: none;
 }
