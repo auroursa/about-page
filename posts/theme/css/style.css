@@ -129,6 +129,12 @@ blockquote {
     border-radius: 1rem;
 }
 
+.category {
+    background: #B5CAA0;
+    padding: 0.25rem 0.8rem;
+    border-radius: 0.5rem;
+}
+
 @media (prefers-color-scheme: dark) {
     html {
         background: #0C0C0C;
