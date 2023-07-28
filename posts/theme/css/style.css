@@ -109,7 +109,7 @@ blockquote {
     font-weight: bold;
 }
 
-.post-title {
+.post-title, .categories-list {
     text-align: center;
 }
 
@@ -130,7 +130,7 @@ blockquote {
 }
 
 .category {
-    background: #B5CAA0;
+    background: #A8D8B9;
     padding: 0.25rem 0.8rem;
     border-radius: 0.5rem;
 }
