@@ -53,11 +53,25 @@ blockquote {
 
 .post-card {
     padding: 0;
+    overflow: hidden;
 }
 
 .post-card a {
     display: block;
     padding: 1.2rem;
+}
+
+.post-card-link {
+    background-color: #FFFFFB;
+    color: #1C1C1C;
+    transition: background-color 0.5s, color 0.25s;
+    overflow: hidden;
+}
+
+.post-card-link:hover {
+    background-color: #66BAB7;
+    color: #FCFAF2;
+    transition: background-color 0.5s, color 0.25s;
 }
 
 .avatar > img {
@@ -135,6 +149,17 @@ blockquote {
 
     .menu-link-active {
         color: #268785;
+    }
+
+    .post-card-link {
+        color: #FCFAF2;
+        background-color: #1C1C1C;
+        transition: background-color 0.5s;
+    }
+    
+    .post-card-link:hover {
+        background-color: #268785;
+        transition: background-color 0.5s;
     }
 
     .button {
