@@ -100,6 +100,11 @@ header, footer {
     grid-gap: 0.8rem;
 }
 
+.friends-info {
+    position: sticky;
+    top: 0.8rem;
+}
+
 .friends-card {
     border: 1px solid #E0E0E0;
     border-radius: 1rem;
@@ -170,6 +175,11 @@ header, footer {
     /* 首页左侧菜单（底部按钮） */
     .left-menu-botton {
         margin: 1.2rem -1.2rem -1.2rem -1.2rem;
+    }
+
+    /* 友链列表 */
+    .friends-info {
+        position: static;
     }
 }
 
