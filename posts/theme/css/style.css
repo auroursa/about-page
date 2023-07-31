@@ -173,6 +173,10 @@ header, footer {
         margin: 0.8rem;
     }
 
+    .post-card-index {
+        padding: 0;
+    }
+
     /* 文章尾注 */
     .post-footer {
         grid-template-columns: 1fr;
