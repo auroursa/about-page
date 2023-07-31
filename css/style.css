@@ -156,8 +156,8 @@ header, footer {
         margin: 0.8rem;
     }
 
-    /* 首页双栏 */
-    .index-main {
+    /* 首页 & 友人双栏 */
+    .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
 
