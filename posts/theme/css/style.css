@@ -5,7 +5,7 @@
 
 html {
     overflow-y: overlay;
-    background: #EEF7F2;
+    background-color: #EEF7F2;
     color: #0C0C0C;
 }
 
@@ -13,12 +13,8 @@ h1 {
     font-family: "overpass";
 }
 
-.title-h2 {
-    margin-top: 1rem;
-}
-
 a {
-    color: #1C1C1C;
+    color: #0C0C0C;
 }
 
 img {
@@ -33,60 +29,26 @@ blockquote {
     margin: 1rem;
 }
 
-.page-header, .page-footer {
+/* 页首、页尾 */
+header, footer {
     margin: 2rem;
     text-align: center;
 }
 
-.about, .post-card, .post, .post-meta, .comments {
-    background: #FFFFFB;
-    border-radius: 1rem;
-    margin: 0.8rem;
-    padding: 1.2rem;
-    text-align: center;
-}
-
-.post-card, .post, .post-meta, .comments {
-    margin: 0.8rem 10rem;
-    text-align: left;
-}
-
-.post-card {
-    padding: 0;
-    overflow: hidden;
-}
-
-.post-card a {
-    display: block;
-    padding: 1.2rem;
-}
-
-.post-card-link {
-    background-color: #FFFFFB;
-    color: #1C1C1C;
-    transition: background-color 0.5s, color 0.25s;
-    overflow: hidden;
-}
-
-.post-card-link:hover {
-    background-color: #66BAB7;
-    color: #FCFAF2;
-    transition: background-color 0.5s, color 0.25s;
-}
-
-.avatar > img {
+/* 顶部头像 */
+.avatar-img {
     width: 6rem;
     border-radius: 50%;
 }
 
+/* 菜单 */
 .menu ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
     list-style-position: inside;
-    list-style-type: square;
     display: inline-block;
     text-align: left;
-    list-style-type: none;
 }
 
 .menu li {
@@ -100,7 +62,7 @@ blockquote {
     content: " | ";
 }
 
-.menu a, .title-h2 a, .post-card a {
+.menu a {
     text-decoration: none;
 }
 
@@ -109,84 +71,159 @@ blockquote {
     font-weight: bold;
 }
 
-.post-title, .categories-list {
-    text-align: center;
-}
-
-.creative-icon {
-    width: 2rem;
-}
-
-.button {
-    background: #66BAB7;
-    border: none;
-    color: #FFFFFB;
-    padding: 0.8rem 1.5rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
+/* 卡片 */
+.card {
+    background-color: #FFFFFB;
     border-radius: 1rem;
+    margin: 0.8rem;
+    padding: 1.2rem 2rem;
+    text-align: center;
 }
 
-.category {
-    background: #A8D8B9;
+/* 页面顶部介绍卡片 */
+.about {
+    margin-bottom: 0;
+}
+
+/* 文章页卡片 */
+.post-card {
+    margin: 0.8rem 10rem;
+    text-align: left;
+    overflow: hidden;
+}
+
+.post-card-index {
+    padding: 0;
+}
+
+.post-card-index a {
+    text-decoration: none;
+}
+
+.post-link {
+    display: block;
+    padding: 1.2rem;
+    color: #0C0C0C;
+    background-color: #FFFFFB;
+    transition: background-color 0.5s, color 0.25s;
+    overflow: hidden;
+}
+
+.post-link:hover {
+    color: #FCFAF2;
+    background-color: #66BAB7;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+.post-category {
+    background-color: #A8D8B9;
     padding: 0.25rem 0.8rem;
     border-radius: 0.5rem;
 }
 
+.post-title {
+    text-align: center;
+}
+
+/* 文章尾注 */
+.post-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    grid-gap: 0.8rem;
+    margin: 0.8rem 10rem;
+}
+
+.post-footer div {
+    text-align: left;
+    margin: 0;
+}
+
+/* 图标 */
+.icon {
+    width: 2rem;
+}
+
+/* 按钮 */
+.button {
+    color: #FFFFFB;
+    background-color: #66BAB7;
+    border: none;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width:1024px) {
+    img {
+        max-width: 100%; 
+    }
+
+    /* 卡片 */
+    .card {
+        padding: 1.2rem;
+    }
+
+    /* 文章页卡片 */
+    .post-card {
+        margin: 0.8rem;
+    }
+
+    /* 文章尾注 */
+    .post-footer {
+        grid-template-columns: 1fr;
+        margin: 0.8rem;
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     html {
-        background: #0C0C0C;
         color: #FFFFFB;
+        background-color: #0C0C0C;
     }
 
     a {
-        color: #FCFAF2;
+        color: #FFFFFB;
     }
 
-    blockquote {
-        border-left: 0.35rem solid #268785;
-    }
-
-    .about, .post-card, .post, .post-meta, .comments {
-        background: #1C1C1C;
-    }
-
+    /* 菜单 */
     .menu-link-active {
         color: #268785;
     }
 
-    .post-card-link {
+    /* 卡片 */
+    .card {
+        color: #FFFFFB;
+        background-color: #1C1C1C;
+    }
+
+    /* 文章页卡片 */
+    .post-link {
         color: #FCFAF2;
         background-color: #1C1C1C;
         transition: background-color 0.5s;
     }
     
-    .post-card-link:hover {
+    .post-link:hover {
         background-color: #268785;
         transition: background-color 0.5s;
     }
 
+    .post-category {
+        background: #5B622E;
+    }
+
+    /* 按钮 */
     .button {
         background: #268785;
     }
 
-    .creative-icon {
+    /* 图标 */
+    .icon {
         filter:invert(100%);
-    }
-
-    .category {
-        background: #5B622E;
-    }
-}
-
-@media screen and (max-width:1024px) {
-    .about, .post-card, .post, .post-meta, .comments {
-        margin: 0.5rem;
-    }
-
-    img {
-        max-width: 100%; 
     }
 }

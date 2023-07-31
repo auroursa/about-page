@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Pelican" />
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css?v=1.6">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/posts/theme/img/favicon.ico">
 
 
@@ -14,11 +14,10 @@
 
 
 </head>
-
 <body>
-    <header class="page-header">
+    <header>
         <div class="avatar">
-            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" />
+            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" class="avatar-img" />
         </div>
         <div class="title">
             <h1>Cynosura</h1>
@@ -33,12 +32,12 @@
             </ul>
         </nav>
     </header>
-<section class="post">
-    <header>
+<article class="post-card card">
+    <div>
         <h2 class="post-title">CVE-2022-20465 锁屏绕过漏洞原理分析</h2>
-    
-    </header>
-    <div class="entry-content">
+        
+    </div>
+    <div class="post-content">
         <p>Google 在 2022 年 11 月的 <a href="https://source.android.com/docs/security/bulletin/2022-11-01">Android 安全公告</a> 中首次向公众披露了编号为 CVE-2022-20465 的安全漏洞。根据上报者 David Schütz 的说明及演示，仅需插入已知 PUK 码的 SIM 卡插入目标手机，并故意输错三次 PIN 码后输入正确的 PUK 码，即可绕过锁屏密码直接解锁手机。在惊讶该漏洞的复现难度如此简单之余，我也想弄明白漏洞的背后原理，于是就有了这篇简单的分析总结文章。</p>
 <p>得益于 Android 的开源特性，我们可以查到有关修补 CVE-2022-20465 的历史提交记录，并分析出 AOSP 团队采用了哪些手段来强化安全性。</p>
 <p><img alt="CVE-2022-20465" src="images/android-lock-screen-bypass-bug-analysis/CVE-2022-20465-1.webp"></p>
@@ -50,47 +49,49 @@
 <p>其实整件事情看下来我最不满的是 Google 的消极态度。根据上报者 David Schütz 的说明，这个漏洞 6 月就被上报了，Google 一直摸到 11 月安全补丁才修复...甚至 Google 本来打算 12 月的，是披露者持续跟踪这个问题，才争取到提前发布 最恐怖的是，他还不是最早的披露者，之前已经有人上报过这个问题了，直到这次有人一直跟着 Google 才重视起来修。可怜的 Pixel 4 就这么错过了漏洞的官方修补机会（也许吧，但 Google 几乎不会在结束支持后还为老机型推修补 OTA 的）。同时，由于 Android 9 已超过支持周期，本次修补也仅限 Android 10 及之后的版本，不代表之前的版本就不存在该问题。手持 Android 9 及更早之前版本的机主，也只能寄希望于第三方 ROM 了。</p>
 <p>最后如对 CVE-2022-20465 从发现到最终修复全过程比较感兴趣的朋友，可以进一步阅读 David Schütz 本人对该事件的记录文章，其催更的精彩程度不亚于任何狗血肥皂剧🙃。</p>
     </div>
-</section>
-<footer class="post-meta">
-    <h2>本文信息</h2>
-        <p><strong>作者: </strong>Frudrax Cheng</p>
-    <p><strong>发布时间:</strong>
-        <time class="published" datetime="2022-11-11T14:36:49+08:00">
-        2022-11-11 (周五)
-        </time>
-    </p>
-    <p><strong>链接: </strong><a href="https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis.html" title="CVE-2022-20465 锁屏绕过漏洞原理分析">https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis.html</a></p>
-    <div class="copyright">
-        <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
-        <img class="creative-icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+</article>
+<div class="post-footer">
+    <div class="post-meta card">
+        <h2 class="post-title">本文信息</h2>
+            <p><strong>作者: </strong>Frudrax Cheng</p>
+        <p><strong>发布时间:</strong>
+            <time class="published" datetime="2022-11-11T14:36:49+08:00">
+            2022-11-11 (周五)
+            </time>
+        </p>
+        <p><strong>链接: </strong><a href="https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis.html" title="CVE-2022-20465 锁屏绕过漏洞原理分析">https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis.html</a></p>
+        <div class="copyright">
+            <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
+            <img class="icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+        </div>
     </div>
-</footer>
-<div class="comments">
-    <span class="title-h2"><h2>评论</h2></span>
-    <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="button">加载 Disqus</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
+    <div class="comments card">
+        <h2 class="post-title">评论</h2>
+        <p>注：点击下方按钮加载 Disqus，需启用 JavaScript</p>
+        <div id="disqus_thread"></div>
+        <!-- 添加一个按钮 -->
+        <button id="load_disqus" class="button">加载评论</button>
+        <!-- Disqus 留言板容器 -->
+        <div id="disqus_thread_container"></div>
+    </div>
+    <script>
+        // 点击按钮后加载 Disqus 留言板
+        document.getElementById('load_disqus').addEventListener('click', function() {
+            // 添加 Disqus 留言板脚本
+            var disqusScript = document.createElement('script');
+            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            document.head.appendChild(disqusScript);
+            // 移动 Disqus 留言板内容到容器中
+            var disqusContainer = document.getElementById('disqus_thread_container');
+            disqusContainer.appendChild(document.getElementById('disqus_thread'));
+            // 隐藏按钮，防止重复加载
+            this.style.display = 'none';
+        });
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <footer class="page-footer">
+    <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <p>Powered by <a href="https://getpelican.com/">Pelican</a></p>
     </footer>

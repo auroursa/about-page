@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Pelican" />
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css?v=1.6">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/posts/theme/img/favicon.ico">
 
 
@@ -14,11 +14,10 @@
 
 
 </head>
-
 <body>
-    <header class="page-header">
+    <header>
         <div class="avatar">
-            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" />
+            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" class="avatar-img" />
         </div>
         <div class="title">
             <h1>Cynosura</h1>
@@ -33,12 +32,12 @@
             </ul>
         </nav>
     </header>
-<section class="post">
-    <header>
+<article class="post-card card">
+    <div>
         <h2 class="post-title">购买 Galaxy S22 的心路历程</h2>
-    
-    </header>
-    <div class="entry-content">
+        
+    </div>
+    <div class="post-content">
         <p>~~信我，短期内我真的不会再买新手机了（~~</p>
 <p>这篇更像是随记的形式，属于想到哪就说到哪的类型，所以全文可能看起来会很乱，请见谅。</p>
 <p>今年电子设备换得很勤，从三月底以频繁死机重启 + 性能不足为由将 HP 战 66 三代 (R5-4500U) 换到 Zenbook 14 OLED 2022 (i7-1260P) 起，又趁着 618 以低价入手了 iPhone 13 mini，用以替代用了两年半的主力机 iPhone 11。</p>
@@ -51,47 +50,49 @@
 <p>在简单体验 S10 几天后我最终决定入手 S22，3000 左右的价格实在是太香了。在这价位段下就算对比国产，也很难找到三摄焦段齐全，外观不差，重量体积还控制得很好的手机了。在实际到手后它的变焦表现也的确没让我失望，而屏幕表现更是超出了我的预期，算是我今年买过最满意的电子产品吧。</p>
 <p>后续如有时间可能还会写一篇有关 Galaxy S22 的体验小记，我是真的很喜欢这部手机，甚至超过了末代机皇 13 mini。mini 除了体积真的很惊艳外，各方面相比 11 真的没差太多，再加上无缝换机后一模一样的界面系统，新鲜感很快就过了前提是三星中国在月底推送 One UI 5.0，让我没理由把体验文继续咕下去吧（</p>
     </div>
-</section>
-<footer class="post-meta">
-    <h2>本文信息</h2>
-        <p><strong>作者: </strong>Frudrax Cheng</p>
-    <p><strong>发布时间:</strong>
-        <time class="published" datetime="2022-11-19T15:03:21+08:00">
-        2022-11-19 (周六)
-        </time>
-    </p>
-    <p><strong>链接: </strong><a href="https://cynosura.one/posts/why-i-buy-galaxy-s22.html" title="购买 Galaxy S22 的心路历程">https://cynosura.one/posts/why-i-buy-galaxy-s22.html</a></p>
-    <div class="copyright">
-        <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
-        <img class="creative-icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+</article>
+<div class="post-footer">
+    <div class="post-meta card">
+        <h2 class="post-title">本文信息</h2>
+            <p><strong>作者: </strong>Frudrax Cheng</p>
+        <p><strong>发布时间:</strong>
+            <time class="published" datetime="2022-11-19T15:03:21+08:00">
+            2022-11-19 (周六)
+            </time>
+        </p>
+        <p><strong>链接: </strong><a href="https://cynosura.one/posts/why-i-buy-galaxy-s22.html" title="购买 Galaxy S22 的心路历程">https://cynosura.one/posts/why-i-buy-galaxy-s22.html</a></p>
+        <div class="copyright">
+            <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
+            <img class="icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+        </div>
     </div>
-</footer>
-<div class="comments">
-    <span class="title-h2"><h2>评论</h2></span>
-    <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="button">加载 Disqus</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
+    <div class="comments card">
+        <h2 class="post-title">评论</h2>
+        <p>注：点击下方按钮加载 Disqus，需启用 JavaScript</p>
+        <div id="disqus_thread"></div>
+        <!-- 添加一个按钮 -->
+        <button id="load_disqus" class="button">加载评论</button>
+        <!-- Disqus 留言板容器 -->
+        <div id="disqus_thread_container"></div>
+    </div>
+    <script>
+        // 点击按钮后加载 Disqus 留言板
+        document.getElementById('load_disqus').addEventListener('click', function() {
+            // 添加 Disqus 留言板脚本
+            var disqusScript = document.createElement('script');
+            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            document.head.appendChild(disqusScript);
+            // 移动 Disqus 留言板内容到容器中
+            var disqusContainer = document.getElementById('disqus_thread_container');
+            disqusContainer.appendChild(document.getElementById('disqus_thread'));
+            // 隐藏按钮，防止重复加载
+            this.style.display = 'none';
+        });
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <footer class="page-footer">
+    <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <p>Powered by <a href="https://getpelican.com/">Pelican</a></p>
     </footer>

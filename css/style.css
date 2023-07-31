@@ -5,7 +5,7 @@
 
 html {
     overflow-y: overlay;
-    background: #EEF7F2;
+    background-color: #EEF7F2;
     color: #0C0C0C;
 }
 
@@ -14,58 +14,43 @@ h1 {
 }
 
 a {
-    color: #1C1C1C;
+    color: #0C0C0C;
 }
 
+/* 页首、页尾 */
 header, footer {
     margin: 2rem;
     text-align: center;
 }
 
-.main > div, .about, article {
-    background: #FFFFFB;
-    border-radius: 1rem;
-    margin: 0.8rem;
-    padding: 1.2rem;
-    text-align: center;
+/* 顶部头像 */
+.avatar-img {
+    width: 6rem;
+    border-radius: 50%;
 }
 
-.page {
-    background: #FFFFFB;
-    border-radius: 1rem;
-    margin: 0.8rem 10rem;
-    padding: 1.2rem;
-    text-align: center;
-}
-
-.menu ul, .release-notes ul, .friends-info ul {
+/* 菜单 */
+.menu ul {
     margin: 0;
     padding: 0;
+    list-style-type: none;
     list-style-position: inside;
-    list-style-type: square;
     display: inline-block;
     text-align: left;
-}
-
-.title-h2, .social, .pgp, .about, .menu li {
-    text-align: center;
-}
-
-.menu ul {
-    list-style-type: none;
 }
 
 .menu li {
     margin: 0;
     padding: 0;
     display: inline-block;
+    text-align: center;
 }
 
 .menu li:not(:first-child):before {
     content: " | ";
 }
 
-.menu a, footer a, .blog a {
+.menu a {
     text-decoration: none;
 }
 
@@ -74,52 +59,48 @@ header, footer {
     font-weight: bold;
 }
 
-.left-menu .blog {
-    padding: 0.2rem;
-    background: #66BAB7;
-    margin: 1.2rem -1.2rem -1.2rem -1.2rem;
-    border-radius: 0 0 1rem 1rem;
+/* 卡片 */
+.card {
+    background-color: #FFFFFB;
+    border-radius: 1rem;
+    margin: 0.8rem;
+    padding: 1.2rem 2rem;
+    text-align: center;
 }
 
-.left-menu .blog a {
-    color: #FCFAF2;
+.page-card {
+    margin: 0.8rem 10rem;
 }
 
-.avatar > img {
-    width: 6rem;
-    border-radius: 50%;
+/* 首页 & 友人双栏 */
+.index-main, .friends-main {
+    display: grid;
+    grid-template-columns: 23.5rem auto;
+    align-items: start;
+    grid-gap: 0.8rem;
+    margin: 0.8rem;
 }
 
-.main > div {
-    margin-bottom: 0;
+.index-main div, .friends-main div {
+    margin: 0;
 }
 
-.left-menu {
-    float: left;
-    width: 20rem;
+/* 首页左侧菜单（社交媒体栏） */
+.social-title {
+    margin-top: 1rem;
 }
-
-.left-menu-friends {
-    position: sticky;
-    top: 0.8rem;
-}
-
-.social > a > img {
+.social-icon {
     width: 3.2rem;
 }
 
-article {
-    overflow: hidden;
-}
-
-.card-container {
+/* 友链列表 */
+.friends-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 0.8rem;
 }
 
-.card {
-    margin: 0.25rem;
+.friends-card {
     border: 1px solid #E0E0E0;
     border-radius: 1rem;
     display: flex;
@@ -127,131 +108,113 @@ article {
     overflow: hidden;
 }
 
-.card-link {
+.friends-card-link {
+    padding: 1.2rem;
     text-decoration: none;
-}
-
-.card-link {
+    color: #0C0C0C;
     background-color: #FFFFFB;
-    transition: background-color 0.5s;
-    .card-content {
-        color: #1C1C1C;
-        transition: color 0.25s;
-    }
+    transition: background-color 0.5s, color 0.25s;
 }
 
-.card-link:hover {
-    background-color: #66BAB7;
-    transition: background-color 0.5s;
-    .card-content {
-        color: #FCFAF2;
-        transition: color 0.25s;
-    }
-}
-
-.card-avatar {
-    width: 5.5rem;
-    height: 5.5rem;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 1.2rem auto 0;
-}
-
-.card-title {
-    font-size: 1.2rem;
-    margin: 1rem auto;
-}
-
-.card-content {
-    margin-bottom: 1.2rem;
-}
-
-.button {
-    background: #66BAB7;
-    border: none;
+.friends-card-link:hover {
     color: #FFFFFB;
+    background-color: #66BAB7;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+/* 列表样式 */
+.release-notes ul, .friends-info ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    list-style-type: square;
+    display: inline-block;
+    text-align: left;
+}
+
+/* 按钮 */
+.button {
+    color: #FFFFFB;
+    background-color: #66BAB7;
+    border: none;
+    margin: 0 auto;
     padding: 0.8rem 1.5rem;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 1rem;
     border-radius: 1rem;
 }
 
-.clear {
-    clear: both;
+@media screen and (max-width:1024px) {
+    /* 卡片 */
+    .card {
+        padding: 1.2rem;
+    }
+
+    .page-card {
+        margin: 0.8rem;
+    }
+
+    /* 首页双栏 */
+    .index-main {
+        grid-template-columns: 1fr; /* Use one column for mobile devices */
+    }
+
+    /* 双栏左侧菜单 */
+    .left-menu {
+        margin-right: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    /* 首页左侧菜单（底部按钮） */
+    .left-menu-botton {
+        margin: 1.2rem -1.2rem -1.2rem -1.2rem;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark){
     html {
         background: #0C0C0C;
         color: #FFFFFB;
     }
 
-    .main div, .about, article, .page {
+    /* 卡片 */
+    .card {
         background: #1C1C1C;
     }
 
-    a {
-        color: #FCFAF2;
+    .card a {
+        color: #FFFFFB;
     }
 
-    .left-menu .blog, .button {
-        background: #268785;
+    /* 菜单 */
+    .menu-link {
+        color: #FFFFFB;
     }
 
     .menu-link-active {
         color: #268785;
     }
-    
-    .left-menu .blog a {
-        color: #FFFFFB;
-    }
 
+    /* 首页左侧菜单（社交媒体图标） */
     .social-icon {
         filter:invert(100%);
     }
 
-    .card-link {
-        color: #FCFAF2;
+    /* 友链列表 */
+    .friends-card-link {
         background-color: #1C1C1C;
-        transition:background-color 0.5s;
-        .card-content {
-            color: #FCFAF2;
-            background-color: #1C1C1C;
-            transition: color 0.25s, background-color 0.5s;
-        }
+        transition: background-color 0.5s;
     }
 
-    .card-link:hover {
+    .friends-card-link:hover {
         background-color: #268785;
         transition: background-color 0.5s;
-        .card-content {
-            background-color: #268785;
-            transition: background-color 0.5s;
-        }
-    }
-}
-
-@media screen and (max-width:1024px) {
-    .main > div, .about, article, .page {
-        margin: 0.5rem;
     }
 
-    .left-menu {
-        float: none;
-        width: auto;
-    }
-
-    .left-menu-friends {
-        position: static;
-    }
-
-    .social > a > img {
-        width: 3rem;
-    }
-
-    .card-container {
-        grid-template-columns: 1fr; /* Use one column for mobile devices */
+    /* 按钮 */
+    .button {
+        background-color: #268785;
     }
 }

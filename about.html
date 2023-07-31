@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
 <head>
-    <title>Cynosura - 关于</title>
+    <title>Cynosura</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.6">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
     <header>
         <div class="avatar">
-            <img src="img/avatar.webp" alt="avatar" />
+            <img src="img/avatar.webp" alt="avatar" class="avatar-img" />
         </div>
         <div class="title">
             <h1>Cynosura</h1>
@@ -25,33 +25,33 @@
             </ul>
         </nav>
     </header>
-    <div class="about">
-        <span class="title-h2"><h2>关于本站</h2></span>
+    <div class="about card">
+        <span class="title-h2"><h2>关于</h2></span>
         <p>这里是一些有关本站的信息</p>
         <p>毕竟首页都放个人简介了，这里就放站点说明文吧</p>
     </div>
-    <div class="page">
-        <span class="title-h2"><h2>域名含义</h2></span>
+    <article class="page-card card">
+        <h2>域名含义</h2>
         <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称“熊”</p>
         <p>而小熊座 α 星恰好为当前的北极星；在极北的夜空闪烁，指引正确的方向</p>
-        <span class="title-h2"><h2>搭建环境</h2></span>
+        <h2>搭建环境</h2>
         <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目</p>
         <p>无流量统计脚本，也无任何冗余插件加载 <del>(其实是我能力有限)</del></p>
         <p>目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面</p>
         <p>对，连 JavaScript 都没有，因为我还不会写🙃，真正意义上的极简个人页</p>
-        <span class="title-h2"><h2>字体</h2></span>
+        <h2>字体</h2>
         <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 regular 字号</p>
         <p>是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读</p>
         <p>而正文部分直接使用系统默认字体，因为包含中文字形后，无论是外部引用还是自带字体，都面临过于臃肿的问题</p>
         <p>作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户</p>
-        <span class="title-h2"><h2>图标</h2></span>
+        <h2>图标</h2>
         <p>感谢设计师的辛勤付出，首页部分的社交图标使用 <a href="https://remixicon.com/">Remix Icon</a> 所设计的图标</p>
         <p>我认为比较符合全站的整体风格，同时有比较宽松的使用许可 (CC-BY 4.0)</p>
-        <span class="title-h2"><h2>文章页</h2></span>
+        <h2>文章页</h2>
         <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章</p>
         <p>主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道</p>
         <div class="release-notes">
-            <span class="title-h2"><h2>更新日志</h2></span>
+            <h2>更新日志</h2>
             <ul>
                 <li>2023年07月27日 - 集成文章页，基于 Pelican 生成</li>
                 <li>2023年07月26日 - 重写友链页，放弃简陋列表样式</li>
@@ -62,9 +62,9 @@
             </ul>
             <p>-END-</p>
         </div>
-    </div>
-    <div id="comments" class="page">
-        <span class="title-h2"><h2>留言板</h2></span>
+    </article>
+    <div id="comments" class="page-card card">
+        <h2>留言板</h2>
         <p>有什么想对我说的，欢迎在下面留言</p>
         <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
         <div id="disqus_thread"></div>
@@ -89,6 +89,7 @@
     });
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
     </footer>

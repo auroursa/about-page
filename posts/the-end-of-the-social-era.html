@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Pelican" />
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css?v=1.6">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/posts/theme/css/style.css">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/posts/theme/img/favicon.ico">
 
 
@@ -14,11 +14,10 @@
 
 
 </head>
-
 <body>
-    <header class="page-header">
+    <header>
         <div class="avatar">
-            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" />
+            <img src="https://cynosura.one/posts/theme/img/avatar.webp" alt="avatar" class="avatar-img" />
         </div>
         <div class="title">
             <h1>Cynosura</h1>
@@ -33,12 +32,12 @@
             </ul>
         </nav>
     </header>
-<section class="post">
-    <header>
+<article class="post-card card">
+    <div>
         <h2 class="post-title">写于社交平台终结之时</h2>
-    
-    </header>
-    <div class="entry-content">
+        
+    </div>
+    <div class="post-content">
         <p>没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变。</p>
 <blockquote>
 <p>眼见何事，情系何处，身在何方，心思何人</p>
@@ -62,47 +61,49 @@
 <h2>后社交时代</h2>
 <p>旧的秩序正快速分崩离析，快到甚至没有足够成熟的接替者出现。与十几年前社群平台百家争鸣不同的是，如今已不再是网络快速发展的阶段，在存量市场中社群平台又是需求量最大，又最难以实现商业化布局的高地。或许最后没有谁能够替代 Twitter，而是整个社群平台随 Twitter 一起慢慢死去，被时效性更强，也更具个性的即时通讯工具所替代。</p>
     </div>
-</section>
-<footer class="post-meta">
-    <h2>本文信息</h2>
-        <p><strong>作者: </strong>Frudrax Cheng</p>
-    <p><strong>发布时间:</strong>
-        <time class="published" datetime="2023-07-12T10:04:47+08:00">
-        2023-07-12 (周三)
-        </time>
-    </p>
-    <p><strong>链接: </strong><a href="https://cynosura.one/posts/the-end-of-the-social-era.html" title="写于社交平台终结之时">https://cynosura.one/posts/the-end-of-the-social-era.html</a></p>
-    <div class="copyright">
-        <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
-        <img class="creative-icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+</article>
+<div class="post-footer">
+    <div class="post-meta card">
+        <h2 class="post-title">本文信息</h2>
+            <p><strong>作者: </strong>Frudrax Cheng</p>
+        <p><strong>发布时间:</strong>
+            <time class="published" datetime="2023-07-12T10:04:47+08:00">
+            2023-07-12 (周三)
+            </time>
+        </p>
+        <p><strong>链接: </strong><a href="https://cynosura.one/posts/the-end-of-the-social-era.html" title="写于社交平台终结之时">https://cynosura.one/posts/the-end-of-the-social-era.html</a></p>
+        <div class="copyright">
+            <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
+            <img class="icon" src="https://cynosura.one/posts/theme/img/icon/creative_icon.svg" alt="creative_icon" />
+        </div>
     </div>
-</footer>
-<div class="comments">
-    <span class="title-h2"><h2>评论</h2></span>
-    <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="button">加载 Disqus</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
+    <div class="comments card">
+        <h2 class="post-title">评论</h2>
+        <p>注：点击下方按钮加载 Disqus，需启用 JavaScript</p>
+        <div id="disqus_thread"></div>
+        <!-- 添加一个按钮 -->
+        <button id="load_disqus" class="button">加载评论</button>
+        <!-- Disqus 留言板容器 -->
+        <div id="disqus_thread_container"></div>
+    </div>
+    <script>
+        // 点击按钮后加载 Disqus 留言板
+        document.getElementById('load_disqus').addEventListener('click', function() {
+            // 添加 Disqus 留言板脚本
+            var disqusScript = document.createElement('script');
+            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            document.head.appendChild(disqusScript);
+            // 移动 Disqus 留言板内容到容器中
+            var disqusContainer = document.getElementById('disqus_thread_container');
+            disqusContainer.appendChild(document.getElementById('disqus_thread'));
+            // 隐藏按钮，防止重复加载
+            this.style.display = 'none';
+        });
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <footer class="page-footer">
+    <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <p>Powered by <a href="https://getpelican.com/">Pelican</a></p>
     </footer>
