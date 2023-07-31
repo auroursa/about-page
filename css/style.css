@@ -22,10 +22,18 @@ header, footer {
     text-align: center;
 }
 
-.main > div, article, #comments {
+.main > div, .about, article {
     background: #FFFFFB;
     border-radius: 1rem;
     margin: 0.8rem;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.page {
+    background: #FFFFFB;
+    border-radius: 1rem;
+    margin: 0.8rem 10rem;
     padding: 1.2rem;
     text-align: center;
 }
@@ -180,7 +188,7 @@ article {
         color: #FFFFFB;
     }
 
-    .main div, article, #comments {
+    .main div, .about, article, .page {
         background: #1C1C1C;
     }
 
@@ -226,7 +234,7 @@ article {
 }
 
 @media screen and (max-width:1024px) {
-    .main > div, article, #comments {
+    .main > div, .about, article, .page {
         margin: 0.5rem;
     }
 
