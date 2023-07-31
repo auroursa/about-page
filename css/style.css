@@ -209,7 +209,7 @@ header, footer {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-icon {
-        filter:invert(100%);
+        filter: invert(100%);
     }
 
     /* 友链列表 */
