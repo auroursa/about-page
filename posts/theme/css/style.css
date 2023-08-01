@@ -29,6 +29,17 @@ blockquote {
     margin: 1rem;
 }
 
+/* 代码块样式 */
+.highlight {
+    color: #FFFFFB;
+    background-color: #1C1C1C;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
 /* 页首、页尾 */
 header, footer {
     margin: 2rem;
@@ -158,6 +169,22 @@ header, footer {
     border-radius: 1rem;
 }
 
+/* 分页 */
+.paginator {
+    color: #FFFFFB;
+    background-color: #A8D8B9;
+    text-align: center;
+    width: 8rem;
+    margin: 0 auto;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.paginator a {
+    color: #FFFFFB;
+    text-decoration: none;
+}
+
 @media screen and (max-width:1024px) {
     img {
         max-width: 100%; 
@@ -230,4 +257,8 @@ header, footer {
     .icon {
         filter:invert(100%);
     }
-}
+
+    /* 代码块样式 */
+    .highlight {
+        background-color: #434343;
+    }

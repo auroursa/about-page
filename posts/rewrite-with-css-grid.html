@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-        <title>Cynosura - Hello World</title>
+        <title>Cynosura - 使用 CSS Grid 重写个人页</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,16 +37,32 @@
     </header>
 <article class="post-card card">
     <div>
-        <h2 class="post-title">Hello World</h2>
+        <h2 class="post-title">使用 CSS Grid 重写个人页</h2>
         
     </div>
     <div class="post-content">
-        <p>今天是 2022 年 5 月 19 日，在 GitHub 和 <a href="https://www.netlify.com/">Netlify</a> 平台的基础之上，用 <a href="https://hexo.io/">Hexo</a> 重新搭建了自己的 Blog。搭建过程还是相当愉快的，在本机装好 Node.js，跟着 <a href="https://hexo.io/docs/">官方文档</a> 在十分钟内就打开了官方示例页。</p>
-<p>进行一番简单配置后，写下这篇文章以示留念，并在文末保留了来自 Hexo 的原始 Hello World。</p>
-<h2>为什么不在 VPS 上搭建 Blog</h2>
-<p>搭建独立 Blog 对我而言 <strong>维护</strong> 成本太高了，对我这种懒癌极度不友好。选择搭建在 Netlify 这种平台上，或许能减少疏于维护而再次闭站的可能。</p>
-<h2>来自 Hexo 的 Hello World</h2>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <p>最近趁着自己还有时间精力，把个人页（包括使用 Pelican 生成的文章部分）由 Float 换成 Grid 排版。其中一大原因是学前端比较早，即使当前的个人页是 2022 年编写的，仍保留了相当一部分早前的排版习惯。随着个人页功能模块的增多，愈加发现 Float 排版的局限性。例如必须时刻记得添加 <code>clear: both</code> 标签，浮动位置调整不灵活等等。</p>
+<p>于是决定保留设计风格，将网页包括 CSS 部分整体翻新，显著增加了个人页的可维护性。</p>
+<h2>直观的网格排版</h2>
+<p>不同于 Float 的浮动概念，Grid 是通过一个个网格来划分内容区块。最初在重写 <a href="https://cynosura.one/friends">友链列表</a> 时，便在右侧列表部分运用了 Grid 排版。在实际运用过程中发现这种排版方式相当简单直觉，像常见的两栏、三栏等比例划分，都只需要一行指定行列个数即可搞定，还也可自由指定每一行的宽度占比。</p>
+<p>例如需要实现友链列表的两栏均分效果，只需要一个大 div 将列表包裹起来，加上简单的样式设定，只要规划好网格排版即可，以下是我实际划分友链列表的 CSS 代码，非常简单。</p>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">friends-list</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">grid-gap</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>同时在一个大网格里还可以嵌套数个 Grid，在实际运用过程中十分灵活。 </p>
+<h2>兼容性</h2>
+<p>Grid 的最大问题其实是兼容性。现代浏览器都需要迟至 2017 年才开始逐渐支持显示 Grid 样式，IE11 就更不可能支持了。在一些需要考虑兼容性的场合，可能还需要依赖 Flex 或是更老的 Float 进行网页排版。</p>
+<p><img alt="can-i-use-css-grid" src="images\rewrite-with-css-grid/can-i-use-css-grid.png"></p>
+<p>像我这种没人看的个人页用用还好，毕竟原先图方便就有用各种 CSS3 的简化标签，已经无所谓再多个 Grid 排版了。实际运用还可参考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout">MDN</a> 的相关文档，个人也是参考了 MDN 文档和 ChatGPT 的问答，才逐渐将个人页改写完毕的。</p>
+<h2>参考</h2>
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid">grid - CSS: Cascading Style Sheets | MDN</a></li>
+<li><a href="https://caniuse.com/css-grid">CSS Grid Layout (level 1) | Can I use...</a></li>
+</ol>
     </div>
 </article>
 <div class="post-footer">
@@ -54,11 +70,11 @@
         <h2 class="post-title">本文信息</h2>
             <p><strong>作者: </strong>Frudrax Cheng</p>
         <p><strong>发布时间:</strong>
-            <time class="published" datetime="2022-05-20T13:30:17+08:00">
-            2022-05-20 (周五)
+            <time class="published" datetime="2023-08-01T11:00:00+08:00">
+            2023-08-01 (周二)
             </time>
         </p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/hello-world.html" title="Hello World">https://cynosura.one/posts/hello-world.html</a></p>
+        <p><strong>链接: </strong><a href="https://cynosura.one/posts/rewrite-with-css-grid.html" title="使用 CSS Grid 重写个人页">https://cynosura.one/posts/rewrite-with-css-grid.html</a></p>
         <div class="copyright">
             <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
             <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative_icon.svg" alt="creative_icon" />
