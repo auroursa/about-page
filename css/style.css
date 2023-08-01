@@ -72,7 +72,7 @@ header, footer {
     margin: 0.8rem 10rem;
 }
 
-/* 首页 & 友人双栏 */
+/* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
     grid-template-columns: 23.5rem auto;
@@ -81,8 +81,15 @@ header, footer {
     margin: 0.8rem;
 }
 
-.index-main div, .friends-main div {
+.index-main div, .friends-main div, .index-article {
     margin: 0;
+}
+
+/* 首页左右单列指定 */
+.left-menu, .main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.8rem;
 }
 
 /* 首页左侧菜单（社交媒体栏） */
@@ -113,6 +120,7 @@ header, footer {
     overflow: hidden;
 }
 
+/* 卡片悬停点击效果 */
 .friends-card-link {
     padding: 1.2rem;
     text-decoration: none;
@@ -161,7 +169,7 @@ header, footer {
         margin: 0.8rem;
     }
 
-    /* 首页 & 友人双栏 */
+    /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
@@ -175,6 +183,11 @@ header, footer {
     /* 首页左侧菜单（底部按钮） */
     .left-menu-botton {
         margin: 1.2rem -1.2rem -1.2rem -1.2rem;
+    }
+
+    /* 移动端不显示一言和小熊座 */
+    .hitokoto, .cynosura {
+        display: none;
     }
 
     /* 友链列表 */
