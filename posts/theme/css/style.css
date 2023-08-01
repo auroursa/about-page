@@ -22,11 +22,14 @@ img {
     max-width: 80%; 
 }
 
+/* 引用标签 */
 blockquote {
     font-style: italic;
     border-left: 0.35rem solid #66BAB7;
+    background-color: #EEF7F2;
     padding: 0.5rem 1.2rem;
     margin: 1rem;
+    border-radius: 0.25rem;
 }
 
 /* 代码块样式 */
@@ -221,6 +224,12 @@ header, footer {
         color: #FFFFFB;
     }
 
+    /* 引用标签 */
+    blockquote {
+    border-left: 0.35rem solid #268785;
+    background-color: #434343;
+    }
+
     /* 菜单 */
     .menu-link-active {
         color: #268785;
@@ -262,3 +271,4 @@ header, footer {
     .highlight {
         background-color: #434343;
     }
+}
