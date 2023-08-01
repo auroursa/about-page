@@ -107,7 +107,7 @@ header, footer {
     grid-gap: 0.8rem;
 }
 
-.friends-info {
+.friends-left-menu {
     position: sticky;
     top: 0.8rem;
 }
@@ -191,7 +191,7 @@ header, footer {
     }
 
     /* 友链列表 */
-    .friends-info {
+    .friends-left-menu {
         position: static;
     }
 }
