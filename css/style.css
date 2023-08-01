@@ -136,7 +136,7 @@ header, footer {
 }
 
 /* 列表样式 */
-.release-notes ul, .friends-info ul {
+.release-notes ul, .friends-info ul, .devices-list ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
