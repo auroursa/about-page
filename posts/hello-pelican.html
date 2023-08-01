@@ -47,7 +47,7 @@
 <p>用半天时间移植了原本用于 Hexo 的自定义主题，目前只修改好了 base、article 和 index 页就仓促上线了，难免存在疏漏。如果遇到样式问题请在下面留言告诉我，非常感谢~</p>
 <h2>增加 RSS 支持</h2>
 <p>斟酌再三，还是决定为文章页增加 RSS (实际是 Atom) 支持，仅需在配置文件里指定生成路径即可。</p>
-<div class="highlight"><pre><span></span><code><span class="n">FEED_ALL_ATOM  =  &#39;feeds/all.atom.xml&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">FEED_ALL_ATOM = &#39;feeds/all.atom.xml&#39;</span>
 <span class="n">FEED_DOMAIN = SITEURL</span>
 <span class="n">FEED_MAX_ITEMS  =  15</span>
 <span class="n">RSS_FEED_SUMMARY_ONLY = False</span>
@@ -58,7 +58,7 @@
 </code></pre></div>
 
 <p><code>FEED_ALL_ATOM</code> 指定 RSS 的生成位置。Pelican 提倡尽量使用绝对地址，这种理念在 <a href="https://docs.getpelican.com/en/stable/settings.html#feed-settings">官方文档</a> 的相关设置中就有所体现。</p>
-<p>若该值未设置成绝对地址，则在每次生成中会跳出警告：Feeds generated without SITEURL set properly may not be valid。要使用相对地址并去除警告，则必须设置 <code>FEED_DOMAIN</code>。</p>
+<p>若该值未设置成绝对地址，则在每次生成中会跳出警告：Feeds generated without SITEURL set properly may not be valid。要使用相对地址并去除警告，则必须设置 FEED_DOMAIN。</p>
 <p><code>FEED_DOMAIN</code> 指定 RSS 生成域名，可直接使用 SITEURL 变量，更加灵活。</p>
 <p><code>FEED_MAX_ITEMS</code> 设置 RSS 生成的最大文章量。这里推荐设置一个合适的限制值，以防文章较多时，RSS 为读者推送动辄上百篇的文章，影响阅读体验。我认为设置在 10~20 篇左右为宜。</p>
 <p><code>RSS_FEED_SUMMARY_ONLY</code> 指定 RSS 包括全文，还是仅生成摘要信息。个人建议 RSS 包含全文而非摘要，仅生成摘要虽然能引导读者跳转到网站阅读，但这种操作十分影响阅读体验。试想当你在阅读器看到感兴趣的文章，却要跳转到网页才能继续观看，你会选择跳转还是直接关闭呢，相信你心里自有答案。</p>

@@ -29,17 +29,32 @@ blockquote {
     background-color: #EEF7F2;
     padding: 0.5rem 1.2rem;
     margin: 1rem;
-    border-radius: 0.25rem;
 }
 
 /* 代码块样式 */
 .highlight {
-    color: #FFFFFB;
     background-color: #1C1C1C;
     width:fit-content;
     width:-webkit-fit-content;
     width:-moz-fit-content;
-    padding: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+code {
+    font-family: "overpass";
+    color: #BDC0BA;
+    background-color: #1C1C1C;
+}
+
+p code {
+    padding: 0.2rem;
     border-radius: 0.25rem;
 }
 
@@ -269,6 +284,10 @@ header, footer {
 
     /* 代码块样式 */
     .highlight {
+        background-color: #434343;
+    }
+
+    code {
         background-color: #434343;
     }
 }
