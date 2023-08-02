@@ -106,7 +106,7 @@ header, footer {
     background-color: #FFFFFB;
     border-radius: 1rem;
     margin: 0.5rem;
-    padding: 1.2rem 2rem;
+    padding: 1rem 1.5rem;
     text-align: center;
 }
 
@@ -147,8 +147,8 @@ header, footer {
 
 .post-category {
     background-color: #A8D8B9;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .post-list h2 {
