@@ -41,7 +41,34 @@
 &lt;p&gt;&lt;code&gt;FEED_DOMAIN&lt;/code&gt; 指定 RSS 生成域名，可直接使用 SITEURL 变量，更加灵活。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;FEED_MAX_ITEMS&lt;/code&gt; 设置 RSS 生成的最大文章量。这里推荐设置一个合适的限制值，以防文章较多时，RSS 为读者推送动辄上百篇的文章，影响阅读体验。我认为设置在 10~20 篇左右为宜。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;RSS_FEED_SUMMARY_ONLY&lt;/code&gt; 指定 RSS 包括全文，还是仅生成摘要信息。个人建议 RSS 包含全文而非摘要，仅生成摘要虽然能引导读者跳转到网站阅读，但这种操作十分影响阅读体验。试想当你在阅读器看到感兴趣的文章，却要跳转到网页才能继续观看，你会选择跳转还是直接关闭呢，相信你心里自有答案。&lt;/p&gt;
-&lt;p&gt;设置并重新执行文章生成后，RSS 就会在指定位置生成好了，添加到网页任意位置即可。&lt;/p&gt;</content><category term="随笔"></category></entry><entry><title>写于社交平台终结之时</title><link href="https://cynosura.one/posts/the-end-of-the-social-era.html" rel="alternate"></link><published>2023-07-12T10:04:47+08:00</published><updated>2023-07-12T10:04:47+08:00</updated><author><name>Frudrax Cheng</name></author><id>tag:cynosura.one,2023-07-12:/posts/the-end-of-the-social-era.html</id><summary type="html">&lt;p&gt;没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变&lt;/p&gt;</summary><content type="html">&lt;p&gt;没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变。&lt;/p&gt;
+&lt;p&gt;设置并重新执行文章生成后，RSS 就会在指定位置生成好了，添加到网页任意位置即可。&lt;/p&gt;
+&lt;h2&gt;生成站点地图 (Sitemap)&lt;/h2&gt;
+&lt;p&gt;生成站点地图 (Sitemap) 可以告诉搜索引擎应该抓取哪些页面，及文章优先级排序，从而帮助搜索引擎准确收录文章。Pelican 支持通过 pip 来安装及管理插件，安装 &lt;a href="https://github.com/pelican-plugins/sitemap"&gt;Sitemap 插件&lt;/a&gt; 并写入配置文件，即可一键生成站点地图。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先通过 pip 来安装插件: &lt;code&gt;python -m pip install pelican-sitemap&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装完成后，将如下信息放入配置文件，并重新生成站点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;SITEMAP = {
+    &amp;quot;format&amp;quot;: &amp;quot;xml&amp;quot;,
+    &amp;quot;priorities&amp;quot;: {
+        &amp;quot;articles&amp;quot;: 0.8,
+        &amp;quot;indexes&amp;quot;: 1.0,
+        &amp;quot;pages&amp;quot;: 0.8
+    },
+    &amp;quot;changefreqs&amp;quot;: {
+        &amp;quot;articles&amp;quot;: &amp;quot;monthly&amp;quot;,
+        &amp;quot;indexes&amp;quot;: &amp;quot;daily&amp;quot;,
+        &amp;quot;pages&amp;quot;: &amp;quot;monthly&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;其中 &lt;code&gt;priorities&lt;/code&gt; 指定了页面的优先级，&lt;code&gt;changefreqs&lt;/code&gt; 则告知搜索引擎页面的更新频率。一般首页拉取频率设置高一点，文章不是周更的就保持默认月更选项，无需变动。&lt;/p&gt;
+&lt;p&gt;生成站点地图并部署在服务器以后，在 &lt;a href="https://search.google.com/search-console"&gt;Google Search Console&lt;/a&gt; 填入站点地图的 URL 地址并上传，之后 Google 将会定期抓取站点地图并生成索引收录。&lt;/p&gt;</content><category term="随笔"></category></entry><entry><title>写于社交平台终结之时</title><link href="https://cynosura.one/posts/the-end-of-the-social-era.html" rel="alternate"></link><published>2023-07-12T10:04:47+08:00</published><updated>2023-07-12T10:04:47+08:00</updated><author><name>Frudrax Cheng</name></author><id>tag:cynosura.one,2023-07-12:/posts/the-end-of-the-social-era.html</id><summary type="html">&lt;p&gt;没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变&lt;/p&gt;</summary><content type="html">&lt;p&gt;没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;眼见何事，情系何处，身在何方，心思何人&lt;/p&gt;
 &lt;/blockquote&gt;
