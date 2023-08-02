@@ -171,12 +171,21 @@ header, footer {
     transition: background-color 0.5s, color 0.25s;
 }
 
+.friends-card-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.friends-card-description {
+    display: inline;
+}
+
 /* 列表样式 */
 .release-notes ul, .friends-info ul, .devices-list ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
-    list-style-type: square;
     display: inline-block;
     text-align: left;
 }
