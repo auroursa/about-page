@@ -14,7 +14,7 @@
 &lt;p&gt;同时在一个大网格里还可以嵌套数个 Grid，在实际运用过程中十分灵活。 &lt;/p&gt;
 &lt;h2&gt;兼容性&lt;/h2&gt;
 &lt;p&gt;Grid 的最大问题其实是兼容性。现代浏览器都需要迟至 2017 年才开始逐渐支持显示 Grid 样式，IE11 就更不可能支持了。在一些需要考虑兼容性的场合，可能还需要依赖 Flex 或是更老的 Float 进行网页排版。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="can-i-use-css-grid" src="images\rewrite-with-css-grid/can-i-use-css-grid.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="can-i-use-css-grid" src="images/rewrite-with-css-grid/can-i-use-css-grid.png"&gt;&lt;/p&gt;
 &lt;p&gt;像我这种没人看的个人页用用还好，毕竟原先图方便就有用各种 CSS3 的简化标签，已经无所谓再多个 Grid 排版了。实际运用还可参考 &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout"&gt;MDN&lt;/a&gt; 的相关文档，个人也是参考了 MDN 文档和 ChatGPT 的问答，才逐渐将个人页改写完毕的。&lt;/p&gt;
 &lt;h2&gt;参考&lt;/h2&gt;
 &lt;ol&gt;
