@@ -121,6 +121,15 @@ header, footer {
     background: url(../img/icons/instagram.svg) no-repeat;
 }
 
+/* 首页左侧菜单（PGP） */
+.pgp a {
+    color: #FFFFFB;
+    background-color: #0C0C0C;
+    text-decoration: none;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
 /* 友链列表 */
 .friends-list {
     display: grid;
@@ -244,6 +253,12 @@ header, footer {
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
         filter: invert(100%);
+    }
+
+    /* 首页左侧菜单（PGP） */
+    .pgp a {
+        color: #0C0C0C;
+        background-color: #FFFFFB;
     }
 
     /* 友链列表 */
