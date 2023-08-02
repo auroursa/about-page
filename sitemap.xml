@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://cynosura.one/</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/friends</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/about</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/rewrite-with-css-grid</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/hello-pelican</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/the-end-of-the-social-era</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/2022-year-end-summary</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/why-i-buy-galaxy-s22</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/android-grf</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/life-situation</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/2022-mid-year-summary</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cynosura.one/posts/hello-world</loc>
+  <lastmod>2023-08-02T06:16:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

@@ -6,149 +6,149 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://cynosura.one/posts/</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/2022-mid-year-summary.html</loc>
 <lastmod>2022-05-20T14:09:42+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/2022-year-end-summary.html</loc>
 <lastmod>2022-12-29T14:21:21+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/android-grf.html</loc>
 <lastmod>2022-11-16T14:58:18+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/android-lock-screen-bypass-bug-analysis.html</loc>
 <lastmod>2022-11-11T14:36:49+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/archives.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/author/frudrax-cheng.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/authors.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/categories.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/ji-zhu.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/ri-chang.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/sui-bi.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/za-tan.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/hello-pelican.html</loc>
 <lastmod>2023-07-27T21:07:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/hello-world.html</loc>
 <lastmod>2022-05-20T13:30:17+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/life-situation.html</loc>
 <lastmod>2022-08-26T10:11:13+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/rewrite-with-css-grid.html</loc>
 <lastmod>2023-08-01T11:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/tags.html</loc>
-<lastmod>2023-08-02T14:13:32-00:00</lastmod>
+<lastmod>2023-08-02T14:18:53-00:00</lastmod>
 <changefreq>daily</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/the-end-of-the-social-era.html</loc>
 <lastmod>2023-07-12T10:04:47+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/why-i-buy-galaxy-s22.html</loc>
 <lastmod>2022-11-19T15:03:21+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html</loc>
 <lastmod>2022-07-22T14:36:10+08:00</lastmod>
 <changefreq>monthly</changefreq>
-<priority>0.5</priority>
+<priority>0.64</priority>
 </url>
 
 </urlset>
