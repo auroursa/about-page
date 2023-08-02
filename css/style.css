@@ -9,12 +9,13 @@ html {
     color: #0C0C0C;
 }
 
-h1 {
-    font-family: "overpass";
-}
-
 a {
     color: #0C0C0C;
+}
+
+/* 标题 */
+.title {
+    font-family: "overpass";
 }
 
 /* 页首、页尾 */
@@ -126,7 +127,7 @@ header, footer {
     color: #FFFFFB;
     background-color: #0C0C0C;
     text-decoration: none;
-    padding: 0.25rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
 }
 

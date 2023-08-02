@@ -9,10 +9,6 @@ html {
     color: #0C0C0C;
 }
 
-h1 {
-    font-family: "overpass";
-}
-
 a {
     color: #0C0C0C;
 }
@@ -56,6 +52,11 @@ code {
 p code {
     padding: 0.2rem;
     border-radius: 0.25rem;
+}
+
+/* 标题 */
+.title {
+    font-family: "overpass";
 }
 
 /* 页首、页尾 */
