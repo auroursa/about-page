@@ -67,7 +67,7 @@ header, footer {
 
 /* 顶部头像 */
 .avatar-img {
-    width: 6rem;
+    width: 7rem;
     border-radius: 50%;
 }
 
@@ -105,7 +105,7 @@ header, footer {
 .card {
     background-color: #FFFFFB;
     border-radius: 1rem;
-    margin: 0.8rem;
+    margin: 0.5rem;
     padding: 1.2rem 2rem;
     text-align: center;
 }
@@ -117,7 +117,7 @@ header, footer {
 
 /* 文章页卡片 */
 .post-card {
-    margin: 0.8rem 10rem;
+    margin: 0.5rem 12rem;
     text-align: left;
     overflow: hidden;
 }
@@ -147,7 +147,7 @@ header, footer {
 
 .post-category {
     background-color: #A8D8B9;
-    padding: 0.25rem 0.8rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
 }
 
@@ -164,8 +164,8 @@ header, footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: start;
-    grid-gap: 0.8rem;
-    margin: 0.8rem 10rem;
+    grid-gap: 0.5rem;
+    margin: 0.5rem 12rem;
 }
 
 .post-footer div {
@@ -184,7 +184,7 @@ header, footer {
     background-color: #66BAB7;
     border: none;
     margin: 0 auto;
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     text-align: center;
     text-decoration: none;
     display: block;
@@ -220,7 +220,7 @@ header, footer {
 
     /* 文章页卡片 */
     .post-card {
-        margin: 0.8rem;
+        margin: 0.5rem;
     }
 
     .post-card-index {
@@ -230,7 +230,7 @@ header, footer {
     /* 文章尾注 */
     .post-footer {
         grid-template-columns: 1fr;
-        margin: 0.8rem;
+        margin: 0.5rem;
     }
 }
 

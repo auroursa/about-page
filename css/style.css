@@ -26,7 +26,7 @@ header, footer {
 
 /* 顶部头像 */
 .avatar-img {
-    width: 6rem;
+    width: 7rem;
     border-radius: 50%;
 }
 
@@ -64,13 +64,13 @@ header, footer {
 .card {
     background-color: #FFFFFB;
     border-radius: 1rem;
-    margin: 0.8rem;
+    margin: 0.5rem;
     padding: 1.2rem 2rem;
     text-align: center;
 }
 
 .page-card {
-    margin: 0.8rem 10rem;
+    margin: 0.5rem 12rem;
 }
 
 /* 页面顶部介绍卡片 */
@@ -83,8 +83,8 @@ header, footer {
     display: grid;
     grid-template-columns: 23.5rem auto;
     align-items: start;
-    grid-gap: 0.8rem;
-    margin: 0.8rem;
+    grid-gap: 0.5rem;
+    margin: 0.5rem;
 }
 
 .index-main div, .friends-main div, .index-article {
@@ -95,12 +95,12 @@ header, footer {
 .left-menu, .main-content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 0.8rem;
+    grid-gap: 0.5rem;
 }
 
 /* 首页左侧菜单（社交媒体栏） */
 .social-title {
-    margin-top: 1rem;
+    margin: 0.5rem;
 }
 
 .social-button {
@@ -132,7 +132,7 @@ header, footer {
     color: #FFFFFB;
     background-color: #0C0C0C;
     text-decoration: none;
-    padding: 0.25rem 0.8rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
 }
 
@@ -140,12 +140,12 @@ header, footer {
 .friends-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.8rem;
+    grid-gap: 0.5rem;
 }
 
 .friends-left-menu {
     position: sticky;
-    top: 0.8rem;
+    top: 0.5rem;
 }
 
 .friends-card {
@@ -187,7 +187,7 @@ header, footer {
     background-color: #66BAB7;
     border: none;
     margin: 0 auto;
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     text-align: center;
     text-decoration: none;
     display: block;
@@ -202,7 +202,7 @@ header, footer {
     }
 
     .page-card {
-        margin: 0.8rem;
+        margin: 0.5rem;
     }
 
     /* 首页 & 友人双栏布局 */
@@ -212,7 +212,7 @@ header, footer {
 
     /* 双栏左侧菜单 */
     .left-menu {
-        margin-right: 0.8rem;
+        margin-right: 0.5rem;
         margin-bottom: 0;
     }
 
