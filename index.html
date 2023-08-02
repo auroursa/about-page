@@ -2,13 +2,15 @@
 <html lang="zh-cn">
 <head>
     <title>Cynosura</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEF7F2">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0C0C">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEF7F2" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0C0C" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <!--供 Mastodon 验证使用-->
+    <link rel="me" href="https://mastodon.social/@cynosura" />
 </head>
 <body>
     <header>
@@ -40,10 +42,10 @@
                     <h2 class="social-title">Frudrax Cheng</h2>
                     <p>aka 赤茶 / Alpha UMi</p>
                     <h2>社交平台</h2>
-                    <a href="https://twitter.com/astraorsa"><img class="social-icon" src="img/icons/twitter.svg" alt="twitter" /></a>
-                    <a href="https://mastodon.social/@cynosura" rel="me"><img class="social-icon" src="img/icons/mastodon.svg" alt="mastodon" /></a>
-                    <a href="https://www.threads.net/@skykousa"><img class="social-icon" src="img/icons/threads.svg" alt="threads" /></a>
-                    <a href="https://instagram.com/skykousa"><img class="social-icon" src="img/icons/instagram.svg" alt="instagram" /></a>
+                    <button class="social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter"></button>
+                    <button class="social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon"></button>
+                    <button class="social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads"></button>
+                    <button class="social-button" onclick="window.location.href='https://instagram.com/skykousa'" type="button" id="social-instagram"></button>
                 </div>
                 <div class="pgp">
                     <h2>PGP Key</h2>

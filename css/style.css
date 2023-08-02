@@ -96,9 +96,29 @@ header, footer {
 .social-title {
     margin-top: 1rem;
 }
-.social-icon {
-    width: 3.2rem;
+
+.social-button {
+    cursor: pointer;
+    border: none;
     border-radius: 50%;
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+#social-twitter {
+    background: url(../img/icons/twitter.svg) no-repeat;
+}
+
+#social-mastodon {
+    background: url(../img/icons/mastodon.svg) no-repeat;
+}
+
+#social-threads {
+    background: url(../img/icons/threads.svg) no-repeat;
+}
+
+#social-instagram {
+    background: url(../img/icons/instagram.svg) no-repeat;
 }
 
 /* 友链列表 */
@@ -222,7 +242,7 @@ header, footer {
     }
 
     /* 首页左侧菜单（社交媒体图标） */
-    .social-icon {
+    .social-button {
         filter: invert(100%);
     }
 
