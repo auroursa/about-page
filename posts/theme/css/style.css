@@ -150,6 +150,10 @@ header, footer {
     border-radius: 0.5rem;
 }
 
+.post-list h2 {
+    margin-top: 0;
+}
+
 .post-title {
     text-align: center;
 }
