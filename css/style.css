@@ -206,8 +206,8 @@ header, footer {
         margin: 1.2rem -1.2rem -1.2rem -1.2rem;
     }
 
-    /* 移动端不显示一言和小熊座 */
-    .hitokoto, .cynosura {
+    /* 移动端不显示一言 */
+    .hitokoto {
         display: none;
     }
 
