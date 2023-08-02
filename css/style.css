@@ -149,7 +149,7 @@ header, footer {
 }
 
 .friends-card {
-    border: 1px solid #E0E0E0;
+    border: 1px solid #BDC0BA;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -161,7 +161,7 @@ header, footer {
     padding: 1.2rem;
     text-decoration: none;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FCFAF2;
     transition: background-color 0.5s, color 0.25s;
 }
 
@@ -269,7 +269,7 @@ header, footer {
 
     /* 友链列表 */
     .friends-card-link {
-        background-color: #1C1C1C;
+        background-color: #323232;
         transition: background-color 0.5s;
     }
 
