@@ -161,7 +161,7 @@ header, footer {
     padding: 1.2rem;
     text-decoration: none;
     color: #0C0C0C;
-    background-color: #FCFAF2;
+    background-color: #FFFFFB;
     transition: background-color 0.5s, color 0.25s;
 }
 
@@ -269,7 +269,7 @@ header, footer {
 
     /* 友链列表 */
     .friends-card-link {
-        background-color: #323232;
+        background-color: #1C1C1C;
         transition: background-color 0.5s;
     }
 
