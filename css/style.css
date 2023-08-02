@@ -73,6 +73,11 @@ header, footer {
     margin: 0.8rem 10rem;
 }
 
+/* 页面顶部介绍卡片 */
+.about {
+    margin-bottom: 0;
+}
+
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
@@ -102,8 +107,8 @@ header, footer {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
 }
 
 #social-twitter {
@@ -127,7 +132,7 @@ header, footer {
     color: #FFFFFB;
     background-color: #0C0C0C;
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.8rem;
     border-radius: 0.25rem;
 }
 
