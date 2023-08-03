@@ -16,6 +16,7 @@ a {
 /* 标题 */
 .title {
     font-family: "overpass";
+    margin: 0.8rem auto;
 }
 
 /* 页首、页尾 */
@@ -101,6 +102,10 @@ header, footer {
 /* 首页左侧菜单（社交媒体栏） */
 .social-title {
     margin: 0.5rem;
+}
+
+.social-link {
+    padding-bottom: 1rem;
 }
 
 .social-button {
