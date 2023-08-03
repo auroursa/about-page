@@ -163,7 +163,6 @@ header, footer {
 .post-footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: start;
     grid-gap: 0.5rem;
     margin: 0.5rem 12rem;
 }
@@ -192,6 +191,10 @@ header, footer {
     border-radius: 1rem;
 }
 
+.comments-button {
+    margin-bottom: 1rem;
+}
+
 /* 分页 */
 .paginator {
     color: #FFFFFB;
@@ -206,6 +209,11 @@ header, footer {
 .paginator a {
     color: #FFFFFB;
     text-decoration: none;
+}
+
+/* 评论系统 */
+.comments-tips {
+    text-align: center;
 }
 
 @media screen and (max-width:1024px) {

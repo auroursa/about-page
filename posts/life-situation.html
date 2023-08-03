@@ -57,40 +57,43 @@
             </time>
         </p>
         <p><strong>链接: </strong><a href="https://cynosura.one/posts/life-situation.html" title="近况">https://cynosura.one/posts/life-situation.html</a></p>
-        <div class="copyright">
-            <p><strong>版权许可: </strong><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">署名-相同方式共享 4.0 (CC BY-SA 4.0)</a></p>
-            <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative_icon.svg" alt="creative_icon">
-        </div>
     </div>
-    <div class="comments card">
-        <h2 class="post-title">评论</h2>
-        <p>注：点击下方按钮加载 Disqus，需启用 JavaScript</p>
-        <div id="disqus_thread"></div>
-        <!-- 添加一个按钮 -->
-        <button id="load_disqus" class="button">加载评论</button>
-        <!-- Disqus 留言板容器 -->
-        <div id="disqus_thread_container"></div>
+    <div class="copyright card">
+        <h2 class="post-title">版权许可</h2>
+        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+        <p>转载请注明出处，并附上本声明内容</p>
+        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative_icon.svg" alt="creative_icon">
     </div>
-    <script>
-        // 点击按钮后加载 Disqus 留言板
-        document.getElementById('load_disqus').addEventListener('click', function() {
-            // 添加 Disqus 留言板脚本
-            var disqusScript = document.createElement('script');
-            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-            disqusScript.setAttribute('data-timestamp', +new Date());
-            document.head.appendChild(disqusScript);
-            // 移动 Disqus 留言板内容到容器中
-            var disqusContainer = document.getElementById('disqus_thread_container');
-            disqusContainer.appendChild(document.getElementById('disqus_thread'));
-            // 隐藏按钮，防止重复加载
-            this.style.display = 'none';
-        });
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+<div class="comments post-card card">
+    <h2 class="post-title">评论</h2>
+    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+    <div id="disqus_thread"></div>
+    <!-- 添加一个按钮 -->
+    <button id="load_disqus" class="comments-button button">加载评论</button>
+    <!-- Disqus 留言板容器 -->
+    <div id="disqus_thread_container"></div>
+</div>
+<script>
+    // 点击按钮后加载 Disqus 留言板
+    document.getElementById('load_disqus').addEventListener('click', function() {
+        // 添加 Disqus 留言板脚本
+        var disqusScript = document.createElement('script');
+        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+        disqusScript.setAttribute('data-timestamp', +new Date());
+        document.head.appendChild(disqusScript);
+        // 移动 Disqus 留言板内容到容器中
+        var disqusContainer = document.getElementById('disqus_thread_container');
+        disqusContainer.appendChild(document.getElementById('disqus_thread'));
+        // 隐藏按钮，防止重复加载
+        this.style.display = 'none';
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
-        <p>Powered by <a href="https://getpelican.com/">Pelican</a> | <a href="https://cynosura.one/posts/feeds/all.atom.xml">Feed</a></p>
+        <p>Powered by <a href="https://getpelican.com/">Pelican</a> | <a href="https://cynosura.one/posts/feeds/all.atom.xml">RSS Feed</a></p>
     </footer>
 </body>
 </html>
