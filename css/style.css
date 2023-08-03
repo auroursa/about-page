@@ -105,8 +105,8 @@ header, footer {
 }
 
 .social-link {
-    padding-bottom: 1rem;
-}
+    padding-bottom:0.5rem
+  }
 
 .social-button {
     cursor: pointer;
@@ -248,7 +248,7 @@ header, footer {
 
 @media (prefers-color-scheme: dark){
     html {
-        background: #0C0C0C;
+        background: #2B2B2B;
         color: #FFFFFB;
     }
 

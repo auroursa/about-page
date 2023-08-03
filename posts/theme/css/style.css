@@ -246,7 +246,7 @@ header, footer {
 @media (prefers-color-scheme: dark) {
     html {
         color: #FFFFFB;
-        background-color: #0C0C0C;
+        background-color: #2B2B2B;
     }
 
     a {
