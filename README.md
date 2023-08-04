@@ -1,6 +1,6 @@
 # About Page
 
-This is a personal project, showcasing my personal info, blog, and some information about the website. The website is built using HTML, CSS, and JavaScript, and it's designed to introduce myself, share my projects, and write blog posts on various topics.
+This is a personal project, showcasing my personal info, blog, and some information about the website. The website is built using HTML & CSS, and it's designed to introduce myself, share my projects, and write blog posts on various topics.
 
 ## Table of Contents
 - [About Page](#about-page)
@@ -31,7 +31,7 @@ The website is built using the following technologies:
 
 - HTML
 - CSS
-- Pelican (for generating the blog)
+- Pelican (for generating the posts)
 
 ## Setup
 
