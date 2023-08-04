@@ -16,6 +16,7 @@ a {
 /* 标题 */
 .title {
     font-family: "overpass";
+    margin: 0.8rem auto;
 }
 
 /* 页首、页尾 */
