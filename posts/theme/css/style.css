@@ -1,6 +1,7 @@
 @font-face {
     font-family: "overpass";
     src: url("../font/overpass.otf") format("opentype");
+    font-display: swap;
 }
 
 html {
