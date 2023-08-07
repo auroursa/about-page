@@ -217,6 +217,20 @@ header, footer {
     text-align: center;
 }
 
+/* 页脚图标 */
+.footer-button {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    width: 1.2em;
+    height: 1.2rem;
+    vertical-align: middle;
+}
+
+#rss-button {
+    background: url(../img/icons/rss_icon.svg) no-repeat center center;
+}
+
 @media screen and (max-width:1024px) {
     img {
         max-width: 100%; 
@@ -292,7 +306,7 @@ header, footer {
     }
 
     /* 图标 */
-    .icon {
+    .icon, .footer-button {
         filter:invert(100%);
     }
 
