@@ -83,7 +83,7 @@ header, footer {
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
-    grid-template-columns: 23.5rem auto;
+    grid-template-columns: 22rem auto;
     align-items: start;
     grid-gap: 0.5rem;
     margin: 0.5rem;
@@ -146,7 +146,7 @@ header, footer {
 /* 友链列表 */
 .friends-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.5rem;
 }
 
@@ -156,8 +156,7 @@ header, footer {
 }
 
 .friends-card {
-    border: 1px solid #BDC0BA;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -168,7 +167,7 @@ header, footer {
     padding: 1.2rem;
     text-decoration: none;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #EEF7F2;
     transition: background-color 0.5s, color 0.25s;
 }
 
@@ -280,7 +279,7 @@ header, footer {
 
     /* 友链列表 */
     .friends-card-link {
-        background-color: #1C1C1C;
+        background-color: #2B2B2B;
         transition: background-color 0.5s;
     }
 
