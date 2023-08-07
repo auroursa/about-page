@@ -228,7 +228,7 @@ header, footer {
 }
 
 #rss-button {
-    background: url(../img/icons/rss_icon.svg) no-repeat center center;
+    background: url(../img/icons/rss-icon.svg) no-repeat center center;
 }
 
 @media screen and (max-width:1024px) {
