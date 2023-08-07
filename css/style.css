@@ -103,7 +103,6 @@ header, footer {
 /* 首页左侧菜单 */
 .left-menu-info {
     padding: 1.2rem;
-    padding-bottom: 2rem;
 }
 
 /* 首页左侧菜单（社交媒体栏） */
@@ -115,8 +114,8 @@ header, footer {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    width: 2.8rem;
+    height: 2.8rem;
 }
 
 #social-twitter {
