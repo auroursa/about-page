@@ -247,6 +247,9 @@ header, footer {
     }
 
     /* 友链列表 */
+    .main-content-social {
+        padding: 0;
+    }
     .friends-left-menu {
         position: static;
     }
