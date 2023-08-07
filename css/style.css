@@ -83,7 +83,7 @@ header, footer {
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
-    grid-template-columns: 22rem auto;
+    grid-template-columns: 1fr 3fr;
     align-items: start;
     grid-gap: 0.5rem;
     margin: 0.5rem;
@@ -144,6 +144,11 @@ header, footer {
 }
 
 /* 友链列表 */
+.main-content-social {
+    padding: 0;
+    background: #EEF7F2;
+}
+
 .friends-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -156,7 +161,7 @@ header, footer {
 }
 
 .friends-card {
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -167,7 +172,7 @@ header, footer {
     padding: 1.2rem;
     text-decoration: none;
     color: #0C0C0C;
-    background-color: #EEF7F2;
+    background-color: #FFFFFB;
     transition: background-color 0.5s, color 0.25s;
 }
 
@@ -210,7 +215,17 @@ header, footer {
     border-radius: 1rem;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (min-width: 961px) and (max-width: 1280px) {
+    .index-main, .friends-main {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .friends-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:960px) {
     /* 卡片 */
     .card {
         padding: 1.2rem;
@@ -278,8 +293,12 @@ header, footer {
     }
 
     /* 友链列表 */
+
+    .main-content-social {
+        background: #2B2B2B;
+    }
     .friends-card-link {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
         transition: background-color 0.5s;
     }
 
