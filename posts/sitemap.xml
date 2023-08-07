@@ -6,7 +6,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://cynosura.one/posts/</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -41,56 +41,56 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://cynosura.one/posts/archives.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/author/frudrax-cheng.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/authors.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/categories.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/ji-zhu.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/ri-chang.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/sui-bi.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://cynosura.one/posts/category/za-tan.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
@@ -125,7 +125,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://cynosura.one/posts/tags.html</loc>
-<lastmod>2023-08-07T15:27:53-00:00</lastmod>
+<lastmod>2023-08-07T16:32:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
