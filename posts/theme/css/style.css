@@ -219,7 +219,6 @@ header, footer {
 
 /* 页脚图标 */
 .footer-button {
-    display: inline-block;
     cursor: pointer;
     border: none;
     width: 1.2em;
