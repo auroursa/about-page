@@ -132,7 +132,8 @@ header, footer {
     grid-gap: 0.5rem;
 }
 
-.page-main div {
+.page-main div,
+.page-main article {
     margin: 0;
 }
 
