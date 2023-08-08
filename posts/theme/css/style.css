@@ -250,7 +250,7 @@ header, footer {
 
 @media screen and (min-width: 1800px) {
     .page-main {
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 2fr 5fr 2fr;
     }
 }
 
