@@ -185,12 +185,10 @@ header, footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5rem;
-    margin: 0.5rem 12rem;
 }
 
 .post-footer div {
     text-align: left;
-    margin: 0;
 }
 
 /* 图标 */
@@ -260,15 +258,6 @@ header, footer {
         padding: 1.2rem;
     }
 
-    /* 文章页卡片 */
-    .post-card {
-        margin: 0.5rem;
-    }
-
-    .post-card-index {
-        padding: 0;
-    }
-
     /* 页面样式 */
     .page-main, .post-footer {
         grid-template-columns: 1fr;
@@ -276,11 +265,6 @@ header, footer {
 
     .page-main-center {
         grid-column: 1;
-    }
-
-    /* 文章尾注 */
-    .post-footer {
-        margin: 0.5rem;
     }
 }
 
