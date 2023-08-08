@@ -191,7 +191,7 @@ header, footer {
 /* 页面样式 */
 .page-main {
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-gap: 0.5rem;
     margin: 0.5rem;
 }

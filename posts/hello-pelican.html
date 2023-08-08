@@ -42,13 +42,15 @@
             </ul>
         </nav>
     </header>
-<article class="post-card card">
-    <div>
-        <h1 class="post-title">Hello Pelican</h1>
-        
-    </div>
-    <div class="post-content">
-        <p>尝试利用 <a href="https://getpelican.com">Pelican</a> 替代原本使用的 Hexo，并废除了独立 Blog 入口。</p>
+<div class="page-main">
+    <div class="page-main-center">
+        <article class="post-card card">
+            <div>
+                <h1 class="post-title">Hello Pelican</h1>
+                
+            </div>
+            <div class="post-content">
+                <p>尝试利用 <a href="https://getpelican.com">Pelican</a> 替代原本使用的 Hexo，并废除了独立 Blog 入口。</p>
 <p>Pelican 上手还是挺简单的，基本上参照 <a href="https://docs.getpelican.com/en/latest/quickstart.html">官方文档</a> 即可快速生成可用的文章页。</p>
 <p>相较于 Hexo，Pelican 基于 Python，终于不用被 Node.js 那堆依赖折腾得死去活来了，整体操作逻辑也更加清晰。但由于 Pelican 的用户较少，网络上可用的主题屈指可数，无意中拉高了使用门槛。建议对 Pelican 有兴趣的可以像我一样动手折腾自定义主题；基于官方的 simple 主题修改不难，只要对着文档修改，加上自己的一点样式即可。</p>
 <p>用半天时间移植了原本用于 Hexo 的自定义主题，目前只修改好了 base、article 和 index 页就仓促上线了，难免存在疏漏。如果遇到样式问题请在下面留言告诉我，非常感谢~</p>
@@ -91,55 +93,55 @@
 
 <p>其中 <code>priorities</code> 指定了页面的优先级，<code>changefreqs</code> 则告知搜索引擎页面的更新频率。一般首页拉取频率设置高一点，文章不是周更的就保持默认月更选项，无需变动。</p>
 <p>生成站点地图并部署在服务器以后，在 <a href="https://search.google.com/search-console">Google Search Console</a> 填入站点地图的 URL 地址并上传，之后 Google 将会定期抓取站点地图并生成索引收录。</p>
-    </div>
-</article>
-<div class="post-footer">
-    <div class="post-meta card">
-        <h2 class="post-title">本文信息</h2>
-            <p><strong>作者: </strong>Frudrax Cheng</p>
-        <p><strong>发布时间:</strong>
-            <time class="published" datetime="2023-07-27T21:07:00+08:00">
-            2023-07-27 (周四)
-            </time>
-        </p>
-        <p><strong>文章分类: </strong>技术</p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/hello-pelican.html" title="Hello Pelican" class="p-link">https://cynosura.one/posts/hello-pelican.html</a></p>
-    </div>
-    <div class="copyright card">
-        <h2 class="post-title">版权许可</h2>
-        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
-        <p>转载请注明出处，并附上本声明内容</p>
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-    </div>
-</div>
-<div class="comments post-card card">
-    <h2 class="post-title">评论</h2>
-    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="comments-button button">加载评论</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
-</div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </article>
+        <div class="post-footer">
+            <div class="post-meta card">
+                <h2 class="post-title">本文信息</h2>
+                    <p><strong>作者: </strong>Frudrax Cheng</p>
+                <p><strong>发布时间:</strong>
+                    <time class="published" datetime="2023-07-27T21:07:00+08:00">
+                    2023-07-27 (周四)
+                    </time>
+                </p>
+                <p><strong>文章分类: </strong>技术</p>
+                <p><strong>链接: </strong><a href="https://cynosura.one/posts/hello-pelican.html" title="Hello Pelican" class="p-link">https://cynosura.one/posts/hello-pelican.html</a></p>
+            </div>
+            <div class="copyright card">
+                <h2 class="post-title">版权许可</h2>
+                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+                <p>转载请注明出处，并附上本声明内容</p>
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+            </div>
+        </div>
+        <div class="comments post-card card">
+            <h2 class="post-title">评论</h2>
+            <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+            <div id="disqus_thread"></div>
+            <!-- 添加一个按钮 -->
+            <button id="load_disqus" class="comments-button button">加载评论</button>
+            <!-- Disqus 留言板容器 -->
+            <div id="disqus_thread_container"></div>
+        </div>
+        <script>
+            // 点击按钮后加载 Disqus 留言板
+            document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <div class="footer-links">Powered by <a href="https://getpelican.com/">Pelican</a> | <button class="footer-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="rss-button" title="RSS Feed"></button></div>

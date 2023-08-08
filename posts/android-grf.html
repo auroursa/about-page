@@ -42,13 +42,15 @@
             </ul>
         </nav>
     </header>
-<article class="post-card card">
-    <div>
-        <h1 class="post-title">Android GRF 更新策略简析</h1>
-        
-    </div>
-    <div class="post-content">
-        <p>自 Android 11 起，Google 开始实施被称为 Google Requirements Freeze (简称 GRF) 的更新策略，在参考了几个消息来源后，决定总结一下我理解的 GRF 具体是什么东西，又能如何影响 Android 版本更新节奏。</p>
+<div class="page-main">
+    <div class="page-main-center">
+        <article class="post-card card">
+            <div>
+                <h1 class="post-title">Android GRF 更新策略简析</h1>
+                
+            </div>
+            <div class="post-content">
+                <p>自 Android 11 起，Google 开始实施被称为 Google Requirements Freeze (简称 GRF) 的更新策略，在参考了几个消息来源后，决定总结一下我理解的 GRF 具体是什么东西，又能如何影响 Android 版本更新节奏。</p>
 <p>这导致上游 SoC 不得不维护多种 Vendor 版本，同时若新版本 Android 提升了底层功能要求（例如必须支持多摄像头切换 API），一些想要升级通过新版本兼容性测试 (Compatibility Definition Document, CCD) 就会遇到困难，而不得不等待上游 SoC 供应商更新 Vendor 版本。这也是过去中低端机及联发科机型即使拥有 Project Treble，更新 Android 也不积极的首要，无论是上游 SoC 供应商还是 OEM 厂商都不愿意在中低端机上投入过多心力去维护。</p>
 <p><img alt="treble-plus-one-equals-four-4" src="images/android-grf/treble-plus-one-equals-four-4.webp"></p>
 <p>而在 Google Requirements Freeze 引入之后，Vendor 版本将被冻结，而 Google 将承诺为各 Vendor 版本提供 N+3 的特性向后兼容保证。例如首次利用 GRF 特性的骁龙 888，Vendor 版本适配当年的 Android 11，那么即便后续升级 Android 版本，Vendor 版本也不再变动，而 Google 将保证 Android 14 能够支持 11 的 Vendor 版本启动，并通过新版本的兼容性测试。这也是 Nothing Phone 作为 2022 年发布并出厂搭载 Android 12 的手机，但其 Vendor 版本仍然基于 Android 11 的原因。其搭载的骁龙 778G+ 同骁龙 888 一样，也是首批支持 GRF 特性的 SoC。</p>
@@ -58,55 +60,55 @@
 <p>同时 Google 对 GRF 的承诺只到 N+3，若 OEM 厂商想扩展支持到 4 个大版本升级，将必须自行移植最新版本涉及 Vendor 的特性需求，以通过对应版本的兼容性测试。即 GRF 的出现能让各厂商轻易做到 N+3 的支持承诺，却很难更近一步做到 N+4。同时也极度不利于利用旧 SoC 推出新机的厂商保持正常的支持更新节奏。</p>
 <p>对于刚刚发布的骁龙 8 Gen 2 来说，自然也支持 GRF 策略。骁龙 8 Gen 2 搭载最新的 Android 13 版本的 Vendor，将享受完整的 Android 13 底层特性支持，并继续提供 N+3 的版本更新承诺。</p>
 <p>参考来源：<a href="https://android-developers.googleblog.com/2020/12/treble-plus-one-equals-four.html">Android Developers Blog: Treble Plus One Equals Four</a></p>
-    </div>
-</article>
-<div class="post-footer">
-    <div class="post-meta card">
-        <h2 class="post-title">本文信息</h2>
-            <p><strong>作者: </strong>Frudrax Cheng</p>
-        <p><strong>发布时间:</strong>
-            <time class="published" datetime="2022-11-16T14:58:18+08:00">
-            2022-11-16 (周三)
-            </time>
-        </p>
-        <p><strong>文章分类: </strong>技术</p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/android-grf.html" title="Android GRF 更新策略简析" class="p-link">https://cynosura.one/posts/android-grf.html</a></p>
-    </div>
-    <div class="copyright card">
-        <h2 class="post-title">版权许可</h2>
-        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
-        <p>转载请注明出处，并附上本声明内容</p>
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-    </div>
-</div>
-<div class="comments post-card card">
-    <h2 class="post-title">评论</h2>
-    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="comments-button button">加载评论</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
-</div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </article>
+        <div class="post-footer">
+            <div class="post-meta card">
+                <h2 class="post-title">本文信息</h2>
+                    <p><strong>作者: </strong>Frudrax Cheng</p>
+                <p><strong>发布时间:</strong>
+                    <time class="published" datetime="2022-11-16T14:58:18+08:00">
+                    2022-11-16 (周三)
+                    </time>
+                </p>
+                <p><strong>文章分类: </strong>技术</p>
+                <p><strong>链接: </strong><a href="https://cynosura.one/posts/android-grf.html" title="Android GRF 更新策略简析" class="p-link">https://cynosura.one/posts/android-grf.html</a></p>
+            </div>
+            <div class="copyright card">
+                <h2 class="post-title">版权许可</h2>
+                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+                <p>转载请注明出处，并附上本声明内容</p>
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+            </div>
+        </div>
+        <div class="comments post-card card">
+            <h2 class="post-title">评论</h2>
+            <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+            <div id="disqus_thread"></div>
+            <!-- 添加一个按钮 -->
+            <button id="load_disqus" class="comments-button button">加载评论</button>
+            <!-- Disqus 留言板容器 -->
+            <div id="disqus_thread_container"></div>
+        </div>
+        <script>
+            // 点击按钮后加载 Disqus 留言板
+            document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <div class="footer-links">Powered by <a href="https://getpelican.com/">Pelican</a> | <button class="footer-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="rss-button" title="RSS Feed"></button></div>

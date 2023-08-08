@@ -42,67 +42,69 @@
             </ul>
         </nav>
     </header>
-<article class="post-card card">
-    <div>
-        <h1 class="post-title">记一次 zabbix 数据库编码排错</h1>
-        
-    </div>
-    <div class="post-content">
-        <p>这几天在折腾 zabbix 5.x 上奇怪的编码问题，原型规则写的是中文，页面上也正常显示了中文，但 Discover 到具体监控项，以及告警推送就全部变 "???" 了。</p>
+<div class="page-main">
+    <div class="page-main-center">
+        <article class="post-card card">
+            <div>
+                <h1 class="post-title">记一次 zabbix 数据库编码排错</h1>
+                
+            </div>
+            <div class="post-content">
+                <p>这几天在折腾 zabbix 5.x 上奇怪的编码问题，原型规则写的是中文，页面上也正常显示了中文，但 Discover 到具体监控项，以及告警推送就全部变 "???" 了。</p>
 <p>查日志报错 cannot set MySQL character set to "utf8"，如图：</p>
 <p><img alt="issue-1" src="images/zabbix-cannot-set-mysql-character-to-utf8/issue-1.png"></p>
 <p>搜了一圈推测是 zabbix 和 MariaDB 的兼容问题，MariaDB 10.6 不支持直接 'utf8'，只支持具体到 'utf8mb3' 或 'utf8mb4'，而 zabbix 的检测逻辑没考虑到数据库不支持 'utf8' 的情况，而官方问题追踪里说已经在 zabbix 5.0.26 里 <a href="https://support.zabbix.com/browse/ZBX-21301">修了</a>。</p>
 <p><img alt="issue-2" src="images/zabbix-cannot-set-mysql-character-to-utf8/issue-2.jpg"></p>
 <p>在 zabbix 推出 5.0.26 正式版本之前，建议改用其他数据库，或使用 zabbix 6.x 版本并改用 'utf8mb4' 编码。</p>
-    </div>
-</article>
-<div class="post-footer">
-    <div class="post-meta card">
-        <h2 class="post-title">本文信息</h2>
-            <p><strong>作者: </strong>Frudrax Cheng</p>
-        <p><strong>发布时间:</strong>
-            <time class="published" datetime="2022-07-22T14:36:10+08:00">
-            2022-07-22 (周五)
-            </time>
-        </p>
-        <p><strong>文章分类: </strong>技术</p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html" title="记一次 zabbix 数据库编码排错" class="p-link">https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html</a></p>
-    </div>
-    <div class="copyright card">
-        <h2 class="post-title">版权许可</h2>
-        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
-        <p>转载请注明出处，并附上本声明内容</p>
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-    </div>
-</div>
-<div class="comments post-card card">
-    <h2 class="post-title">评论</h2>
-    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="comments-button button">加载评论</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
-</div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </article>
+        <div class="post-footer">
+            <div class="post-meta card">
+                <h2 class="post-title">本文信息</h2>
+                    <p><strong>作者: </strong>Frudrax Cheng</p>
+                <p><strong>发布时间:</strong>
+                    <time class="published" datetime="2022-07-22T14:36:10+08:00">
+                    2022-07-22 (周五)
+                    </time>
+                </p>
+                <p><strong>文章分类: </strong>技术</p>
+                <p><strong>链接: </strong><a href="https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html" title="记一次 zabbix 数据库编码排错" class="p-link">https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html</a></p>
+            </div>
+            <div class="copyright card">
+                <h2 class="post-title">版权许可</h2>
+                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+                <p>转载请注明出处，并附上本声明内容</p>
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+            </div>
+        </div>
+        <div class="comments post-card card">
+            <h2 class="post-title">评论</h2>
+            <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+            <div id="disqus_thread"></div>
+            <!-- 添加一个按钮 -->
+            <button id="load_disqus" class="comments-button button">加载评论</button>
+            <!-- Disqus 留言板容器 -->
+            <div id="disqus_thread_container"></div>
+        </div>
+        <script>
+            // 点击按钮后加载 Disqus 留言板
+            document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <div class="footer-links">Powered by <a href="https://getpelican.com/">Pelican</a> | <button class="footer-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="rss-button" title="RSS Feed"></button></div>

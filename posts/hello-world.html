@@ -42,67 +42,69 @@
             </ul>
         </nav>
     </header>
-<article class="post-card card">
-    <div>
-        <h1 class="post-title">Hello World</h1>
-        
-    </div>
-    <div class="post-content">
-        <p>今天是 2022 年 5 月 19 日，在 GitHub 和 <a href="https://www.netlify.com/">Netlify</a> 平台的基础之上，用 <a href="https://hexo.io/">Hexo</a> 重新搭建了自己的 Blog。搭建过程还是相当愉快的，在本机装好 Node.js，跟着 <a href="https://hexo.io/docs/">官方文档</a> 在十分钟内就打开了官方示例页。</p>
+<div class="page-main">
+    <div class="page-main-center">
+        <article class="post-card card">
+            <div>
+                <h1 class="post-title">Hello World</h1>
+                
+            </div>
+            <div class="post-content">
+                <p>今天是 2022 年 5 月 19 日，在 GitHub 和 <a href="https://www.netlify.com/">Netlify</a> 平台的基础之上，用 <a href="https://hexo.io/">Hexo</a> 重新搭建了自己的 Blog。搭建过程还是相当愉快的，在本机装好 Node.js，跟着 <a href="https://hexo.io/docs/">官方文档</a> 在十分钟内就打开了官方示例页。</p>
 <p>进行一番简单配置后，写下这篇文章以示留念，并在文末保留了来自 Hexo 的原始 Hello World。</p>
 <h2>为什么不在 VPS 上搭建 Blog</h2>
 <p>搭建独立 Blog 对我而言 <strong>维护</strong> 成本太高了，对我这种懒癌极度不友好。选择搭建在 Netlify 这种平台上，或许能减少疏于维护而再次闭站的可能。</p>
 <h2>来自 Hexo 的 Hello World</h2>
 <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-    </div>
-</article>
-<div class="post-footer">
-    <div class="post-meta card">
-        <h2 class="post-title">本文信息</h2>
-            <p><strong>作者: </strong>Frudrax Cheng</p>
-        <p><strong>发布时间:</strong>
-            <time class="published" datetime="2022-05-20T13:30:17+08:00">
-            2022-05-20 (周五)
-            </time>
-        </p>
-        <p><strong>文章分类: </strong>随笔</p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/hello-world.html" title="Hello World" class="p-link">https://cynosura.one/posts/hello-world.html</a></p>
-    </div>
-    <div class="copyright card">
-        <h2 class="post-title">版权许可</h2>
-        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
-        <p>转载请注明出处，并附上本声明内容</p>
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-    </div>
-</div>
-<div class="comments post-card card">
-    <h2 class="post-title">评论</h2>
-    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="comments-button button">加载评论</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
-</div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </article>
+        <div class="post-footer">
+            <div class="post-meta card">
+                <h2 class="post-title">本文信息</h2>
+                    <p><strong>作者: </strong>Frudrax Cheng</p>
+                <p><strong>发布时间:</strong>
+                    <time class="published" datetime="2022-05-20T13:30:17+08:00">
+                    2022-05-20 (周五)
+                    </time>
+                </p>
+                <p><strong>文章分类: </strong>随笔</p>
+                <p><strong>链接: </strong><a href="https://cynosura.one/posts/hello-world.html" title="Hello World" class="p-link">https://cynosura.one/posts/hello-world.html</a></p>
+            </div>
+            <div class="copyright card">
+                <h2 class="post-title">版权许可</h2>
+                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+                <p>转载请注明出处，并附上本声明内容</p>
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+            </div>
+        </div>
+        <div class="comments post-card card">
+            <h2 class="post-title">评论</h2>
+            <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+            <div id="disqus_thread"></div>
+            <!-- 添加一个按钮 -->
+            <button id="load_disqus" class="comments-button button">加载评论</button>
+            <!-- Disqus 留言板容器 -->
+            <div id="disqus_thread_container"></div>
+        </div>
+        <script>
+            // 点击按钮后加载 Disqus 留言板
+            document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <div class="footer-links">Powered by <a href="https://getpelican.com/">Pelican</a> | <button class="footer-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="rss-button" title="RSS Feed"></button></div>

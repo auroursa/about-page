@@ -42,13 +42,15 @@
             </ul>
         </nav>
     </header>
-<article class="post-card card">
-    <div>
-        <h1 class="post-title">使用 CSS Grid 重写个人页</h1>
-        
-    </div>
-    <div class="post-content">
-        <p>最近趁着自己还有时间精力，把个人页（包括使用 Pelican 生成的文章部分）由 Float 换成 Grid 排版。其中一大原因是学前端比较早，即使当前的个人页是 2022 年编写的，仍保留了相当一部分早前的排版习惯。随着个人页功能模块的增多，愈加发现 Float 排版的局限性。例如必须时刻记得添加 <code>clear: both</code> 标签，浮动位置调整不灵活等等。</p>
+<div class="page-main">
+    <div class="page-main-center">
+        <article class="post-card card">
+            <div>
+                <h1 class="post-title">使用 CSS Grid 重写个人页</h1>
+                
+            </div>
+            <div class="post-content">
+                <p>最近趁着自己还有时间精力，把个人页（包括使用 Pelican 生成的文章部分）由 Float 换成 Grid 排版。其中一大原因是学前端比较早，即使当前的个人页是 2022 年编写的，仍保留了相当一部分早前的排版习惯。随着个人页功能模块的增多，愈加发现 Float 排版的局限性。例如必须时刻记得添加 <code>clear: both</code> 标签，浮动位置调整不灵活等等。</p>
 <p>于是决定保留设计风格，将网页包括 CSS 部分整体翻新，显著增加了个人页的可维护性。</p>
 <h2>直观的网格排版</h2>
 <p>不同于 Float 的浮动概念，Grid 是通过一个个网格来划分内容区块。最初在重写 <a href="https://cynosura.one/friends">友链列表</a> 时，便在右侧列表部分运用了 Grid 排版。在实际运用过程中发现这种排版方式相当简单直觉，像常见的两栏、三栏等比例划分，都只需要一行指定行列个数即可搞定，还也可自由指定每一行的宽度占比。</p>
@@ -70,55 +72,55 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid">grid - CSS: Cascading Style Sheets | MDN</a></li>
 <li><a href="https://caniuse.com/css-grid">CSS Grid Layout (level 1) | Can I use...</a></li>
 </ol>
-    </div>
-</article>
-<div class="post-footer">
-    <div class="post-meta card">
-        <h2 class="post-title">本文信息</h2>
-            <p><strong>作者: </strong>Frudrax Cheng</p>
-        <p><strong>发布时间:</strong>
-            <time class="published" datetime="2023-08-01T11:00:00+08:00">
-            2023-08-01 (周二)
-            </time>
-        </p>
-        <p><strong>文章分类: </strong>技术</p>
-        <p><strong>链接: </strong><a href="https://cynosura.one/posts/rewrite-with-css-grid.html" title="使用 CSS Grid 重写个人页" class="p-link">https://cynosura.one/posts/rewrite-with-css-grid.html</a></p>
-    </div>
-    <div class="copyright card">
-        <h2 class="post-title">版权许可</h2>
-        <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-        <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
-        <p>转载请注明出处，并附上本声明内容</p>
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-        <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-    </div>
-</div>
-<div class="comments post-card card">
-    <h2 class="post-title">评论</h2>
-    <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
-    <div id="disqus_thread"></div>
-    <!-- 添加一个按钮 -->
-    <button id="load_disqus" class="comments-button button">加载评论</button>
-    <!-- Disqus 留言板容器 -->
-    <div id="disqus_thread_container"></div>
-</div>
-<script>
-    // 点击按钮后加载 Disqus 留言板
-    document.getElementById('load_disqus').addEventListener('click', function() {
-        // 添加 Disqus 留言板脚本
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.setAttribute('data-timestamp', +new Date());
-        document.head.appendChild(disqusScript);
-        // 移动 Disqus 留言板内容到容器中
-        var disqusContainer = document.getElementById('disqus_thread_container');
-        disqusContainer.appendChild(document.getElementById('disqus_thread'));
-        // 隐藏按钮，防止重复加载
-        this.style.display = 'none';
-    });
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </article>
+        <div class="post-footer">
+            <div class="post-meta card">
+                <h2 class="post-title">本文信息</h2>
+                    <p><strong>作者: </strong>Frudrax Cheng</p>
+                <p><strong>发布时间:</strong>
+                    <time class="published" datetime="2023-08-01T11:00:00+08:00">
+                    2023-08-01 (周二)
+                    </time>
+                </p>
+                <p><strong>文章分类: </strong>技术</p>
+                <p><strong>链接: </strong><a href="https://cynosura.one/posts/rewrite-with-css-grid.html" title="使用 CSS Grid 重写个人页" class="p-link">https://cynosura.one/posts/rewrite-with-css-grid.html</a></p>
+            </div>
+            <div class="copyright card">
+                <h2 class="post-title">版权许可</h2>
+                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权，欢迎转载</p>
+                <p>转载请注明出处，并附上本声明内容</p>
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon.svg" alt="creative-icon">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+                <img class="icon" src="https://cynosura.one/posts/theme/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+            </div>
+        </div>
+        <div class="comments post-card card">
+            <h2 class="post-title">评论</h2>
+            <p class="comments-tips">评论系统使用 Disqus，加载需启用 JavaScript</p>
+            <div id="disqus_thread"></div>
+            <!-- 添加一个按钮 -->
+            <button id="load_disqus" class="comments-button button">加载评论</button>
+            <!-- Disqus 留言板容器 -->
+            <div id="disqus_thread_container"></div>
+        </div>
+        <script>
+            // 点击按钮后加载 Disqus 留言板
+            document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
         <div class="footer-links">Powered by <a href="https://getpelican.com/">Pelican</a> | <button class="footer-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="rss-button" title="RSS Feed"></button></div>

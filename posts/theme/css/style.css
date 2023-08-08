@@ -117,9 +117,27 @@ header, footer {
     margin-bottom: 0;
 }
 
+/* 页面样式 */
+.page-main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 0.5rem;
+    margin: 0.5rem;
+}
+
+.page-main-center {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+}
+
+.page-main div {
+    margin: 0;
+}
+
 /* 文章页卡片 */
 .post-card {
-    margin: 0.5rem 12rem;
     text-align: left;
     overflow: hidden;
 }
@@ -231,7 +249,7 @@ header, footer {
     background: url(../img/icons/rss-icon.svg) no-repeat center center;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:960px) {
     img {
         max-width: 100%; 
     }
@@ -250,9 +268,17 @@ header, footer {
         padding: 0;
     }
 
+    /* 页面样式 */
+    .page-main, .post-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .page-main-center {
+        grid-column: 1;
+    }
+
     /* 文章尾注 */
     .post-footer {
-        grid-template-columns: 1fr;
         margin: 0.5rem;
     }
 }
