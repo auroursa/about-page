@@ -226,6 +226,21 @@ header, footer {
     border-radius: 1rem;
 }
 
+@media screen and (min-width: 1800px) {
+    .index-main, .friends-main {
+        grid-template-columns: 1fr 2fr 5fr 1fr;
+    }
+
+    .page-main {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .left-menu {
+        grid-column: 2;
+    }
+}
+
+
 @media screen and (min-width: 961px) and (max-width: 1280px) {
     .index-main, .friends-main {
         grid-template-columns: 1fr 2fr;

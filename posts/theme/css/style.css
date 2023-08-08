@@ -248,6 +248,12 @@ header, footer {
     background: url(../img/icons/rss-icon.svg) no-repeat center center;
 }
 
+@media screen and (min-width: 1800px) {
+    .page-main {
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+}
+
 @media screen and (max-width:960px) {
     img {
         max-width: 100%; 
