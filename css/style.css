@@ -71,10 +71,6 @@ header, footer {
     text-align: center;
 }
 
-.page-card {
-    margin: 0.5rem 12rem;
-}
-
 /* 页面顶部介绍卡片 */
 .about {
     margin-bottom: 0;
@@ -229,11 +225,6 @@ header, footer {
     /* 卡片 */
     .card {
         padding: 1.2rem;
-    }
-
-    /* 单栏卡片 */
-    .page-card {
-        margin: 0.5rem;
     }
 
     /* 首页 & 友人双栏布局 */
