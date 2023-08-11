@@ -264,6 +264,10 @@ header, footer {
         padding: 1.2rem;
     }
 
+    .post-card-index {
+        padding: 0;
+    }
+
     /* 页面样式 */
     .page-main, .post-footer {
         grid-template-columns: 1fr;
