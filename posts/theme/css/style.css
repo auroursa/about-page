@@ -4,6 +4,12 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "overpass-mono";
+    src: url("../font/overpass-mono.otf") format("opentype");
+    font-display: swap;
+}
+
 html {
     overflow-y: overlay;
     background-color: #EEF7F2;
@@ -34,8 +40,7 @@ blockquote {
     width:fit-content;
     width:-webkit-fit-content;
     width:-moz-fit-content;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    padding: 0.8rem;
 }
 
 pre {
@@ -45,14 +50,13 @@ pre {
 }
 
 code {
-    font-family: "overpass";
+    font-family: "overpass-mono";
     color: #BDC0BA;
     background-color: #1C1C1C;
 }
 
 p code {
     padding: 0.2rem;
-    border-radius: 0.25rem;
 }
 
 /* 标题 */
