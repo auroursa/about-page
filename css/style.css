@@ -4,6 +4,12 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "overpass-mono";
+    src: url("../font/overpass-mono.otf") format("opentype");
+    font-display: swap;
+}
+
 html {
     overflow-y: overlay;
     background-color: #EEF7F2;
@@ -12,6 +18,53 @@ html {
 
 a {
     color: #0C0C0C;
+}
+
+img {
+    max-height: 35rem;
+    max-width: 80%; 
+}
+
+/* 引用标签 */
+blockquote {
+    font-style: italic;
+    border-left: 0.35rem solid #66BAB7;
+    background-color: #EEF7F2;
+    padding: 0.5rem 1.2rem;
+    margin: 1rem;
+}
+
+.hitokoto blockquote {
+    font-style: normal;
+    border: none;
+    background-color: #FFFFFB;
+    padding: auto;
+    margin: auto;
+}
+
+/* 代码块样式 */
+.highlight {
+    background-color: #1C1C1C;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    padding: 0.8rem;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+code {
+    font-family: "overpass-mono";
+    color: #BDC0BA;
+    background-color: #1C1C1C;
+}
+
+p code {
+    padding: 0.2rem;
 }
 
 /* 标题 */
@@ -203,6 +256,70 @@ header, footer {
     grid-gap: 0.5rem;
 }
 
+.page-main div,
+.page-main article {
+    margin: 0;
+}
+
+/* 文章页卡片 */
+.post-card {
+    text-align: left;
+    overflow: hidden;
+}
+
+.post-card-index {
+    padding: 0;
+}
+
+.post-card-index a {
+    text-decoration: none;
+}
+
+.post-link {
+    display: block;
+    padding: 1.2rem;
+    color: #0C0C0C;
+    background-color: #FFFFFB;
+    transition: background-color 0.5s, color 0.25s;
+    overflow: hidden;
+}
+
+.post-link:hover {
+    color: #FCFAF2;
+    background-color: #66BAB7;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+.post-category {
+    background-color: #A8D8B9;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.post-list h2 {
+    margin-top: 0;
+}
+
+.post-title {
+    text-align: center;
+}
+
+/* 文章尾注 */
+.post-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.post-footer div {
+    text-align: left;
+}
+
+/* 图标 */
+.icon {
+    width: 2rem;
+}
+
 /* 列表样式 */
 .release-notes ul, .friends-info ul, .devices-list ul {
     margin: 0;
@@ -224,6 +341,44 @@ header, footer {
     display: block;
     font-size: 1rem;
     border-radius: 1rem;
+}
+
+.comments-button {
+    margin-bottom: 1rem;
+}
+
+/* 分页 */
+.paginator {
+    color: #FFFFFB;
+    background-color: #A8D8B9;
+    text-align: center;
+    width: 8rem;
+    margin: 0 auto;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.paginator a {
+    color: #FFFFFB;
+    text-decoration: none;
+}
+
+/* 评论系统 */
+.comments-tips {
+    text-align: center;
+}
+
+/* 页脚图标 */
+.footer-button {
+    cursor: pointer;
+    border: none;
+    width: 1.2em;
+    height: 1.2rem;
+    vertical-align: middle;
+}
+
+#rss-button {
+    background: url(../img/icons/rss-icon.svg) no-repeat center center;
 }
 
 @media screen and (min-width: 1800px) {
@@ -252,14 +407,22 @@ header, footer {
 }
 
 @media screen and (max-width:960px) {
+    img {
+        max-width: 100%; 
+    }
+
     /* 卡片 */
     .card {
         padding: 1.2rem;
     }
 
     /* 首页 & 友人双栏布局 */
-    .index-main, .friends-main, .page-main, .friends-list {
+    .index-main, .friends-main, .page-main, .friends-list, .post-footer {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
+    }
+
+    .post-card-index {
+        padding: 0;
     }
 
     /* 页面样式 */
@@ -292,13 +455,44 @@ header, footer {
         color: #FFFFFB;
     }
 
+    a {
+        color: #FFFFFB;
+    }
+
+    /* 引用标签 */
+    blockquote {
+        border-left: 0.35rem solid #268785;
+        background-color: #434343;
+    }
+
+    .hitokoto blockquote {
+        border: none;
+        background-color: #1C1C1C;
+    }
+
     /* 卡片 */
     .card {
+        color: #FFFFFB;
         background: #1C1C1C;
     }
 
     .card a {
         color: #FFFFFB;
+    }
+
+    .post-link {
+        color: #FCFAF2;
+        background-color: #1C1C1C;
+        transition: background-color 0.5s;
+    }
+    
+    .post-link:hover {
+        background-color: #268785;
+        transition: background-color 0.5s;
+    }
+
+    .post-category {
+        background: #5B622E;
     }
 
     /* 菜单 */
@@ -338,5 +532,19 @@ header, footer {
     /* 按钮 */
     .button {
         background-color: #268785;
+    }
+
+    /* 图标 */
+    .icon, .footer-button {
+        filter:invert(100%);
+    }
+
+    /* 代码块样式 */
+    .highlight {
+        background-color: #434343;
+    }
+
+    code {
+        background-color: #434343;
     }
 }
