@@ -218,7 +218,8 @@ article p {
     grid-gap: 0.5rem;
 }
 
-.friends-left-menu {
+/* 左侧菜单滚动置顶 */
+.left-menu, .friends-left-menu {
     position: sticky;
     top: 0;
 }
@@ -487,7 +488,9 @@ article p {
     .main-content-social {
         padding: 0;
     }
-    .friends-left-menu {
+
+    /* 取消左侧菜单滚动置顶 */
+    .left-menu, .friends-left-menu {
         position: static;
     }
 
