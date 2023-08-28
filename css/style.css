@@ -73,7 +73,7 @@ header, footer {
 
 /* 顶部头像 */
 .avatar-img {
-    width: 6.5rem;
+    width: 6rem;
     border-radius: 50%;
 }
 
@@ -148,7 +148,7 @@ article p {
 
 /* 首页左侧菜单 */
 .left-menu-info {
-    padding: 1.2rem;
+    padding: 1.2rem 0;
 }
 
 /* 首页左侧菜单（社交媒体栏） */
@@ -353,7 +353,7 @@ article p {
 }
 
 .skill-icon, .device-icon {
-    width: 4rem;
+    width: 3.5rem;
 }
 
 /* 列表样式 */
