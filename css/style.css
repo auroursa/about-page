@@ -198,7 +198,7 @@ header, footer {
 
 .friends-left-menu {
     position: sticky;
-    top: 0.5rem;
+    top: 0;
 }
 
 .friends-card {
@@ -387,7 +387,6 @@ header, footer {
     }
 }
 
-
 @media screen and (min-width: 961px) and (max-width: 1280px) {
     .index-main, .friends-main {
         grid-template-columns: 1fr 2fr;
@@ -398,7 +397,22 @@ header, footer {
     }
 }
 
-@media screen and (max-width:960px) {
+/* for iPad */
+@media screen and (min-width: 769px) and (max-width: 960px) {
+    .index-main, .friends-main {
+        grid-template-columns: 3fr 5fr;
+    }
+
+    .friends-list {
+        grid-template-columns: 1fr;
+    }
+
+    .page-main {
+        display: block;
+    }
+}
+
+@media screen and (max-width:768px) {
     img {
         max-width: 100%; 
     }
