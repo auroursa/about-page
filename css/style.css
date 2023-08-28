@@ -184,6 +184,10 @@ article p {
     background: url(../img/icons/instagram.svg) no-repeat;
 }
 
+#social-atprotocol {
+    background: url(../img/icons/atprotocol.svg) no-repeat;
+}
+
 /* 首页左侧菜单（PGP） */
 .pgp a {
     color: #FFFFFB;
