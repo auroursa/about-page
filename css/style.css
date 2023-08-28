@@ -124,7 +124,7 @@ header, footer {
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 3fr 8fr;
     align-items: start;
     grid-gap: 0.5rem;
     margin: 0.5rem;
@@ -139,6 +139,15 @@ header, footer {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.5rem;
+}
+
+article p {
+    text-align: left;
+    text-indent: 2rem;
+}
+
+.index-article-description {
+    text-align: center;
 }
 
 /* 首页左侧菜单 */
@@ -182,6 +191,19 @@ header, footer {
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
+}
+
+/* 设备列表 */
+.devices-list-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.devices-list-content {
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    background-color: #FBFBF7;
 }
 
 /* 友链列表 */
@@ -296,6 +318,10 @@ header, footer {
     text-align: center;
 }
 
+.post-content {
+    text-indent: 2rem;
+}
+
 /* 文章尾注 */
 .post-footer {
     display: grid;
@@ -312,8 +338,12 @@ header, footer {
     width: 2rem;
 }
 
+.device-icon {
+    width: 4rem;
+}
+
 /* 列表样式 */
-.release-notes ul, .friends-info ul, .devices-list ul {
+.release-notes ul, .friends-info ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
@@ -410,6 +440,10 @@ header, footer {
     .page-main {
         display: block;
     }
+
+    .devices-list-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -425,6 +459,10 @@ header, footer {
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .page-main, .friends-list, .post-footer {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
+    }
+
+    .devices-list-card {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .post-card-index {
@@ -516,6 +554,11 @@ header, footer {
         background-color: #FFFFFB;
     }
 
+    /* 设备列表 */
+    .devices-list-content {
+        background-color: #1A1A1A;
+    }
+
     /* 友链列表 */
     .main-content-social {
         background: #2B2B2B;
@@ -536,7 +579,7 @@ header, footer {
     }
 
     /* 图标 */
-    .icon, .footer-button {
+    .icon, .device-icon, .footer-button {
         filter:invert(100%);
     }
 
