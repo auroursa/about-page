@@ -425,6 +425,10 @@ article p {
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .devices-list-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* for iPad */
@@ -442,7 +446,7 @@ article p {
     }
 
     .devices-list-card {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
