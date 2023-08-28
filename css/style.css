@@ -197,6 +197,19 @@ article p {
     border-radius: 0.25rem;
 }
 
+/* 技能列表 */
+.skills-list-card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.skills-list-content {
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    background-color: #FBFBF7;
+}
+
 /* 设备列表 */
 .devices-list-card {
     display: grid;
@@ -343,7 +356,7 @@ article p {
     width: 2rem;
 }
 
-.device-icon {
+.skill-icon, .device-icon {
     width: 4rem;
 }
 
@@ -431,6 +444,10 @@ article p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .skills-list-card {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
     .devices-list-card {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -448,6 +465,10 @@ article p {
 
     .page-main {
         display: block;
+    }
+
+    .skills-list-card {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .devices-list-card {
@@ -468,6 +489,10 @@ article p {
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .page-main, .friends-list, .post-footer {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
+    }
+
+    .skills-list-card {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .devices-list-card {
@@ -570,6 +595,11 @@ article p {
         background-color: #1A1A1A;
     }
 
+    /* 技能列表 */
+    .skills-list-content {
+        background-color: #1A1A1A;
+    }
+
     /* 友链列表 */
     .main-content-social {
         background: #2B2B2B;
@@ -590,7 +620,7 @@ article p {
     }
 
     /* 图标 */
-    .icon, .device-icon, .footer-button {
+    .icon, .skill-icon, .device-icon, .footer-button {
         filter:invert(100%);
     }
 
