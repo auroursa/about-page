@@ -491,6 +491,31 @@ article p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* 社交图标改为左右分栏 */
+    .left-menu-info {
+        padding: 0;
+    }
+    
+    .social {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 0.5rem;
+        background-color: #EEF7F2;
+    }
+
+    /* 单独设置左右的样式 */
+    .social-a,
+    .social-b {
+        background-color: #FFFFFB;
+        padding: 1.5rem 0;
+        border-radius: 1rem;
+    }
+
+    /* 缩小个人头像 */
+    .avatar-self {
+        width: 5.2rem;
+    }
+
     /* iPad 端不显示一言 */
     .hitokoto {
         display: none;
