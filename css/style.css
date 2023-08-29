@@ -328,6 +328,10 @@ article p {
     margin-top: 0;
 }
 
+.post-list > .post-content p {
+    text-indent: 2rem;
+}
+
 .post-title {
     text-align: center;
 }
