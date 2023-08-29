@@ -469,16 +469,36 @@ article p {
 
 /* for iPad */
 @media screen and (min-width: 769px) and (max-width: 960px) {
-    .index-main, .friends-main {
-        grid-template-columns: 3fr 5fr;
-    }
-
-    .friends-list {
-        grid-template-columns: 1fr;
+    .index-body, .page-main {
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
     }
 
     .page-main {
-        display: block;
+        grid-gap: 0;
+        margin: 0;
+    }
+
+    .about-index, .index-main, .friends-main {
+        grid-column: 2;
+    }
+
+    .index-main, .friends-main {
+        grid-template-columns: 1fr;
+    }
+
+    .friends-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* iPad 端不显示一言 */
+    .hitokoto {
+        display: none;
+    }
+
+    /* 取消左侧菜单滚动置顶 */
+    .left-menu, .friends-left-menu {
+        position: static;
     }
 
     .skills-list-card {
