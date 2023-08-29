@@ -329,7 +329,7 @@ article p {
 }
 
 .post-list > .post-content p {
-    text-indent: 2rem;
+    text-indent: 0;
 }
 
 .post-title {
