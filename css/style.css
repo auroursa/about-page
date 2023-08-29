@@ -183,7 +183,7 @@ article p {
 /* 首页左侧菜单（PGP） */
 .pgp a {
     color: #FFFFFB;
-    background-color: #0C0C0C;
+    background-color: #66BAB7;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
@@ -582,8 +582,8 @@ article p {
 
     /* 首页左侧菜单（PGP） */
     .pgp a {
-        color: #0C0C0C;
-        background-color: #FFFFFB;
+        color: #FFFFFB;
+        background-color: #268785;
     }
 
     /* 设备列表 */
