@@ -431,16 +431,17 @@ article p {
 }
 
 @media screen and (min-width: 1800px) {
-    .index-main, .friends-main {
-        grid-template-columns: 1fr 2fr 5fr 1fr;
+    .index-body {
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+    }
+
+    .about, .index-main, .friends-main {
+        grid-column: 2;
     }
 
     .page-main {
         grid-template-columns: 1fr 2fr 1fr;
-    }
-
-    .left-menu {
-        grid-column: 2;
     }
 }
 
