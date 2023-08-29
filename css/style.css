@@ -436,7 +436,7 @@ article p {
         grid-template-columns: 1fr 5fr 1fr;
     }
 
-    .about, .index-main, .friends-main {
+    .about-index, .index-main, .friends-main {
         grid-column: 2;
     }
 
