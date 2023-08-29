@@ -130,8 +130,12 @@ header, footer {
     margin: 0.5rem;
 }
 
-.index-main div, .friends-main div, .page-main div, .index-article {
+.index-body div, .friends-main div, .page-main div, .index-article {
     margin: 0;
+}
+
+.index-body .about {
+    margin-bottom: 0.5rem;
 }
 
 /* 首页左右单列指定 */
