@@ -286,7 +286,6 @@ article p {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     grid-gap: 0.5rem;
-    margin: 0.5rem;
 }
 
 .page-main-center {
