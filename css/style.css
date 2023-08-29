@@ -280,7 +280,7 @@ article p {
 /* 页面样式 */
 .page-main {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-gap: 0.5rem;
     margin: 0.5rem;
 }
@@ -436,7 +436,7 @@ article p {
     }
 
     .page-main {
-        grid-template-columns: 2fr 5fr 2fr;
+        grid-template-columns: 1fr 2fr 1fr;
     }
 
     .left-menu {
