@@ -624,22 +624,22 @@ article p {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
-        background-color: #2E2E2E;
+        background-color: #3B3B3B;
     }
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
-        background-color: #2E2E2E;
+        background-color: #3B3B3B;
     }
 
     /* 设备列表 */
     .devices-list-content {
-        background-color: #2E2E2E;
+        background-color: #212121;
     }
 
     /* 技能列表 */
     .skills-list-content {
-        background-color: #2E2E2E;
+        background-color: #212121;
     }
 
     /* 友链列表 */
