@@ -165,27 +165,19 @@ article p {
 }
 
 .social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: #0C0C0C;
 }
 
-#social-twitter {
-    background: url(../img/icons/twitter.svg) no-repeat;
-}
-
-#social-mastodon {
-    background: url(../img/icons/mastodon.svg) no-repeat;
-}
-
-#social-threads {
-    background: url(../img/icons/threads.svg) no-repeat;
-}
-
-#social-atprotocol {
-    background: url(../img/icons/atprotocol.svg) no-repeat;
+.social-icons {
+    filter: invert(100%);
 }
 
 .social-im-button {
@@ -193,8 +185,8 @@ article p {
     line-height: 2rem;
     height: 2rem;
     width: 6rem;
-    background-color: #0C0C0C;
     color: #FFFFFB;
+    background-color: #0C0C0C;
     border-radius: 0.25rem;
 }
 
@@ -208,7 +200,7 @@ article p {
 .skills-list-content {
     border-radius: 0.5rem;
     padding-top: 1rem;
-    background-color: #FBFBF7;
+    background-color: #FAFAF6;
 }
 
 /* 设备列表 */
@@ -221,7 +213,7 @@ article p {
 .devices-list-content {
     border-radius: 0.5rem;
     padding-top: 1rem;
-    background-color: #FBFBF7;
+    background-color: #FAFAF6;
 }
 
 /* 友链列表 */
@@ -460,7 +452,7 @@ article p {
 }
 
 /* for iPad */
-@media screen and (min-width: 769px) and (max-width: 960px) {
+@media screen and (min-width: 681px) and (max-width: 960px) {
     .index-body, .page-main {
         display: grid;
         grid-template-columns: 1fr 8fr 1fr;
@@ -527,7 +519,7 @@ article p {
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:680px) {
     img {
         max-width: 100%; 
     }
@@ -582,7 +574,7 @@ article p {
 
 @media (prefers-color-scheme: dark){
     html {
-        background: #2B2B2B;
+        background: #121212;
         color: #FFFFFB;
     }
 
@@ -632,23 +624,22 @@ article p {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
-        filter: invert(100%);
+        background-color: #2E2E2E;
     }
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
-        color: #0C0C0C;
-        background-color: #FFFFFB;
+        background-color: #2E2E2E;
     }
 
     /* 设备列表 */
     .devices-list-content {
-        background-color: #1A1A1A;
+        background-color: #2E2E2E;
     }
 
     /* 技能列表 */
     .skills-list-content {
-        background-color: #1A1A1A;
+        background-color: #2E2E2E;
     }
 
     /* 友链列表 */
@@ -686,9 +677,9 @@ article p {
 }
 
 /* for iPad dark mode */
-@media screen and (min-width: 769px) and (max-width: 960px) and (prefers-color-scheme: dark) {
+@media screen and (min-width: 681px) and (max-width: 960px) and (prefers-color-scheme: dark) {
     .social {
-        background-color: #2B2B2B;
+        background-color: #121212;
     }
 
     .social-a,
