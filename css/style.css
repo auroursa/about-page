@@ -164,10 +164,6 @@ article p {
     margin: 0.5rem;
 }
 
-.social-avatar {
-    position: relative;
-}
-
 .social-button {
     cursor: pointer;
     border: none;
@@ -485,10 +481,6 @@ article p {
 
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .friends-info {
-        display: none;
     }
 
     /* 社交图标改为左右分栏 */
