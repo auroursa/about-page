@@ -159,8 +159,13 @@ article p {
 .social a {
     text-decoration: none;
 }
+
 .social-title {
     margin: 0.5rem;
+}
+
+.social-avatar {
+    position: relative;
 }
 
 .social-button {
@@ -194,14 +199,6 @@ article p {
     width: 6rem;
     background-color: #0C0C0C;
     color: #FFFFFB;
-    border-radius: 0.25rem;
-}
-
-/* 首页左侧菜单（PGP） */
-.pgp span {
-    color: #FFFFFB;
-    background-color: #0C0C0C;
-    padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
 }
 
@@ -470,7 +467,7 @@ article p {
 @media screen and (min-width: 769px) and (max-width: 960px) {
     .index-body, .page-main {
         display: grid;
-        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-columns: 1fr 8fr 1fr;
     }
 
     .page-main {
@@ -488,6 +485,10 @@ article p {
 
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .friends-info {
+        display: none;
     }
 
     /* 社交图标改为左右分栏 */
@@ -642,8 +643,8 @@ article p {
         filter: invert(100%);
     }
 
-    /* 首页左侧菜单（PGP）及即时通讯 IM 按钮 */
-    .pgp span, .social-im-button {
+    /* 首页左侧菜单（即时通讯 IM 按钮） */
+    .social-im-button {
         color: #0C0C0C;
         background-color: #FFFFFB;
     }
