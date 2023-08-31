@@ -37,59 +37,70 @@
             </ul>
         </nav>
     </header>
-    <main class="page-main">
-        <div class="page-main-center">
-            <div class="about card">
-                <h1 class="about-title">关于</h1>
-                <p class="about-description">有关本站的一些建站信息</p>
-            </div>
-            <article class="page-about card">
-                <h2>域名含义</h2>
-                <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称“熊”。而小熊座 α 星恰好为当前的北极星；在极北的夜空闪烁，指引正确的方向。</p>
-                <h2>搭建环境</h2>
-
-                <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目。目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面。</p>
-                
-                <h2>文章页</h2>
-                <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
-
-                <h2>字体选用</h2>
-                <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。</p>
-                <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户。</p>
-
-                <h2>色彩搭配</h2>
-                <p>全站使用“绿”作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
-                <div>
-                    <p>背景色：<span class="about-color" style="color: #0C0C0C; background-color: #EEF7F2">#EEF7F2</span> <span class="about-color" style="color: #FFFFFB; background-color: #121212">#121212</span> <span class="about-color" style="color: #FFFFFB; background-color: #2C2C2C">#2C2C2C</span></p>
-                    <p>强调色：<span class="about-color" style="color: #FFFFFB; background-color: #66BAB7">#66BAB7</span> <span class="about-color" style="color: #FFFFFB; background-color: #7EBEAB">#7EBEAB</span> <span class="about-color" style="color: #FFFFFB; background-color: #268785">#268785</span></p>
+    <main class="index-body">
+        <div class="about-index-wnm about-index about card">
+            <h1 class="about-title">关于</h1>
+            <p class="about-description">有关本站的一些建站信息</p>
+        </div>
+        <div class="index-main">
+            <div class="left-menu">
+                <div class="about-left-menu left-menu-info card">
+                    <div class="about-badges">
+                        <h2>徽章</h2>
+                        <p>哪个男孩子不喜欢集徽章呢</p>
+                        <div><a href="https://notbyai.fyi"><img src="img/bagles/Produced-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI" class="bagle-icon"></a></div>
+                        <div><a href="https://github.com/auroursa/about-page"><img src="img/bagles/GitHub_Logo.png" alt="GitHub Logo" class="bagle-icon"></a></div>
+                        <div><a href="https://pages.cloudflare.com"><img src="img/bagles/CF_logo_stacked_blktype.svg" alt="Cloudflare Logo" class="bagle-icon"></a></div>
+                    </div>
                 </div>
-            </article>
-            <div id="comments" class="card">
-                <h2>留言板</h2>
-                <p>有什么想对我说的，欢迎在下面留言</p>
-                <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
-                <div id="disqus_thread"></div>
-                <!-- 添加一个按钮 -->
-                <button id="load_disqus" class="button">加载 Disqus</button>
-                <!-- Disqus 留言板容器 -->
-                <div id="disqus_thread_container"></div>
             </div>
-            <script>
-                // 点击按钮后加载 Disqus 留言板
-                document.getElementById('load_disqus').addEventListener('click', function() {
-                // 添加 Disqus 留言板脚本
-                var disqusScript = document.createElement('script');
-                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-                disqusScript.setAttribute('data-timestamp', +new Date());
-                document.head.appendChild(disqusScript);
-                // 移动 Disqus 留言板内容到容器中
-                var disqusContainer = document.getElementById('disqus_thread_container');
-                disqusContainer.appendChild(document.getElementById('disqus_thread'));
-                // 隐藏按钮，防止重复加载
-                this.style.display = 'none';
-            });
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <div class="main-content">
+                <article class="index-article card">
+                    <h2>域名含义</h2>
+                    <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称“熊”；而小熊座 α 星恰好为当前的北极星，在极北的夜空闪烁，指引正确的方向。Per aspera, ad astra. / 终抵繁星。</p>
+                    <h2>搭建环境</h2>
+
+                    <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目。目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面。</p>
+                    <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
+
+                    <h2>字体选用</h2>
+                    <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。</p>
+                    <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户。</p>
+
+                    <h2>色彩搭配</h2>
+                    <p>全站使用“绿”作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
+                    <div>
+                        <p>背景色：<span class="about-color" style="color: #0C0C0C; background-color: #EEF7F2">#EEF7F2</span> <span class="about-color" style="color: #FFFFFB; background-color: #121212">#121212</span> <span class="about-color" style="color: #FFFFFB; background-color: #2C2C2C">#2C2C2C</span></p>
+                        <p>强调色：<span class="about-color" style="color: #FFFFFB; background-color: #66BAB7">#66BAB7</span> <span class="about-color" style="color: #FFFFFB; background-color: #7EBEAB">#7EBEAB</span> <span class="about-color" style="color: #FFFFFB; background-color: #268785">#268785</span></p>
+                    </div>
+                </article>
+                <div id="comments" class="card">
+                    <h2>留言板</h2>
+                    <p>有什么想对我说的，欢迎在下面留言</p>
+                    <p>注: 留言系统基于 Disqus，可能无法在墙内正常访问</p>
+                    <div id="disqus_thread"></div>
+                    <!-- 添加一个按钮 -->
+                    <button id="load_disqus" class="button">加载 Disqus</button>
+                    <!-- Disqus 留言板容器 -->
+                    <div id="disqus_thread_container"></div>
+                </div>
+                <script>
+                    // 点击按钮后加载 Disqus 留言板
+                    document.getElementById('load_disqus').addEventListener('click', function() {
+                    // 添加 Disqus 留言板脚本
+                    var disqusScript = document.createElement('script');
+                    disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                    disqusScript.setAttribute('data-timestamp', +new Date());
+                    document.head.appendChild(disqusScript);
+                    // 移动 Disqus 留言板内容到容器中
+                    var disqusContainer = document.getElementById('disqus_thread_container');
+                    disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                    // 隐藏按钮，防止重复加载
+                    this.style.display = 'none';
+                });
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
         </div>
     </main>
     <footer>
