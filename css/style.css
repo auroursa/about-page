@@ -128,7 +128,6 @@ header, footer {
 .page-main {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    grid-gap: 0.5rem;
 }
 
 .page-main-center {
