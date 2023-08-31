@@ -299,7 +299,7 @@ article p {
 }
 
 .post-left-menu-category {
-    padding: 0.375rem 1.25rem;
+    padding: 0.375rem 1rem;
     border-radius: 0.5rem;
     background-color: #2C2C2C;
 }
@@ -736,6 +736,15 @@ article p {
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
+        background-color: #3B3B3B;
+    }
+
+    /* 文章页左侧菜单 */
+    .post-button {
+        background-color: #3B3B3B;
+    }
+
+    .post-left-menu-category {
         background-color: #3B3B3B;
     }
 
