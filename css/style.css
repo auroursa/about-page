@@ -186,6 +186,10 @@ article p {
     margin: 0.5rem;
 }
 
+.social-description {
+    margin: 0.5rem;
+}
+
 .social-button {
     display: inline-flex;
     align-items: center;
@@ -209,7 +213,7 @@ article p {
     width: 6.25rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 /* 技能列表 */
@@ -292,7 +296,15 @@ article p {
 
 /* 文章页侧栏 */
 .post-left-menu-title {
+    margin: 0.5rem;
+}
+
+.post-left-menu-description {
     margin-top: 0.5rem;
+}
+
+.post-left-menu-categories {
+    padding: 0.5rem;
 }
 
 .post-left-menu-category {
@@ -359,7 +371,6 @@ article p {
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
-    margin-top: -0.5rem;
     background-color: #2C2C2C;
 }
 
