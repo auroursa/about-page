@@ -209,6 +209,7 @@ article p {
     color: #FFFFFB;
     background-color: #2C2C2C;
     border-radius: 0.5rem;
+    text-align: center;
 }
 
 /* 技能列表 */
@@ -294,19 +295,15 @@ article p {
     margin: 0.5rem;
 }
 
-.post-left-menu-categories {
-    padding: 0.5rem;
-}
-
 .post-left-menu-category {
-    padding: 0.25rem 1rem;
-    border-radius: 0.5rem;
-    background-color: #2C2C2C;
-}
-
-.post-left-menu-category a {
-    text-decoration: none;
+    display: inline-block;
+    line-height: 2rem;
+    height: 2rem;
+    width: 3.5rem;
     color: #FFFFFB;
+    background-color: #2C2C2C;
+    border-radius: 0.5rem;
+    text-align: center;
 }
 
 /* 文章页卡片 */
@@ -544,10 +541,6 @@ article p {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 0.5rem;
         background-color: #EEF7F2;
-    }
-
-    .social-im-button {
-        text-align: center;
     }
 
     /* 单独设置左右的样式 */
