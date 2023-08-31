@@ -49,43 +49,21 @@
                 <h2>搭建环境</h2>
 
                 <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目。目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面。</p>
-                <p><del>对，连 JavaScript 都没有，因为我还不会写🙃</del>现在有了，真正意义上的极简个人页。</p>
+                
+                <h2>文章页</h2>
+                <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
 
-                <h2>字体</h2>
+                <h2>字体选用</h2>
                 <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。</p>
                 <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户。</p>
 
-                <h2>色彩</h2>
+                <h2>色彩搭配</h2>
                 <p>全站使用“绿”作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
-                <p>[浅色] 背景色：<span style="color: #0C0C0C; background-color: #EEF7F2">#EEF7F2</span> + 强调色：<span style="color: #0C0C0C; background-color: #66BAB7">#66BAB7</span></p>
-                <p>[深色] 背景色: <span style="color: #FFFFFB; background-color: #121212">#121212</span> + 强调色：<span style="color: #FFFFFB; background-color: #268785">#268785</span></p>
-
-                <h2>图标</h2>
-                <p>首页部分的社交图标使用 <a href="https://remixicon.com/">Remix Icon</a> 所设计的图标。我认为比较符合全站的整体风格，同时有比较宽松的使用许可 (CC-BY 4.0)，感谢设计师的辛勤付出。</p>
-
-                <h2>文章页</h2>
-                <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
+                <div>
+                    <p>背景色：<span class="about-color" style="color: #0C0C0C; background-color: #EEF7F2">#EEF7F2</span> <span class="about-color" style="color: #FFFFFB; background-color: #121212">#121212</span> <span class="about-color" style="color: #FFFFFB; background-color: #2C2C2C">#2C2C2C</span></p>
+                    <p>强调色：<span class="about-color" style="color: #FFFFFB; background-color: #66BAB7">#66BAB7</span> <span class="about-color" style="color: #FFFFFB; background-color: #7EBEAB">#7EBEAB</span> <span class="about-color" style="color: #FFFFFB; background-color: #268785">#268785</span></p>
+                </div>
             </article>
-            <div class="release-notes card">
-                <h2>更新日志</h2>
-                <h3>2023</h3>
-                <ul>
-                    <li>08/29 - 重新排版首页及关于页，重写技能栏</li>
-                    <li>08/25 - 文章页与主站引用资源合并完毕</li>
-                    <li>07/31 - 全站使用 CSS Grid 布局重写</li>
-                    <li>07/27 - 集成文章页，基于 Pelican 生成</li>
-                    <li>07/26 - 重写友链页，放弃简陋列表样式</li>
-                    <li>07/12 - 更新首页个人简介，社交链接新增 Threads</li>
-                    <li>06/26 - 移除独立留言板页面，移动至关于页</li>
-                </ul>
-                <h3>2022</h3>
-                <ul>
-                    <li>12/18 - 社交链接新增 Mastodon，更换图标样式</li>
-                    <li>12/01 - 新增留言板及关于页，增加 Dark Mode 适配</li>
-                    <li>11/30 - 全站搭建完成，包含首页简介及友链页</li>
-                </ul>
-                <p>-END-</p>
-            </div>
             <div id="comments" class="card">
                 <h2>留言板</h2>
                 <p>有什么想对我说的，欢迎在下面留言</p>
