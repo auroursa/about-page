@@ -124,6 +124,25 @@ header, footer {
     margin-bottom: 0;
 }
 
+/* 页面样式 */
+.page-main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 0.5rem;
+}
+
+.page-main-center {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+}
+
+.page-main div,
+.page-main article {
+    margin: 0;
+}
+
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
@@ -455,6 +474,10 @@ article p {
     .about-index, .index-main, .friends-main {
         grid-column: 2;
     }
+
+    .page-main {
+        grid-template-columns: 2fr 5fr 2fr;
+    }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1280px) {
@@ -582,6 +605,15 @@ article p {
 
     .post-card-index {
         padding: 0;
+    }
+
+    /* 页面样式 */
+    .page-main, .post-footer {
+        grid-template-columns: 1fr;
+    }
+
+    .page-main-center {
+        grid-column: 1;
     }
 
     /* 双栏左侧菜单 */
