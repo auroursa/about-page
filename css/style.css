@@ -133,7 +133,7 @@ header, footer {
     margin: 0.5rem;
 }
 
-.index-body div, .friends-main div, .page-main div, .index-article {
+.index-body div, .friends-main div, .index-article {
     margin: 0;
 }
 
@@ -271,23 +271,20 @@ article p {
     display: inline;
 }
 
-/* 页面样式 */
-.page-main {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-gap: 0.5rem;
+/* 文章页侧栏 */
+.post-left-menu-title {
+    margin-top: 0.5rem;
 }
 
-.page-main-center {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0.5rem;
+.post-left-menu-category {
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #2C2C2C;
 }
 
-.page-main div,
-.page-main article {
-    margin: 0;
+.post-left-menu-category a {
+    text-decoration: none;
+    color: #FFFFFB;
 }
 
 /* 文章页卡片 */
@@ -306,7 +303,7 @@ article p {
 
 .post-link {
     display: block;
-    padding: 1.2rem;
+    padding: 1.2rem 2rem;
     color: #0C0C0C;
     background-color: #FFFFFB;
     transition: background-color 0.5s, color 0.25s;
@@ -331,6 +328,23 @@ article p {
 
 .post-title {
     text-align: center;
+}
+
+/* 侧栏按钮 */
+.post-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #2C2C2C;
+}
+
+.post-icons {
+    filter: invert(100%);
 }
 
 /* 文章尾注 */
@@ -441,10 +455,6 @@ article p {
     .about-index, .index-main, .friends-main {
         grid-column: 2;
     }
-
-    .page-main {
-        grid-template-columns: 1fr 2fr 1fr;
-    }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1280px) {
@@ -467,14 +477,9 @@ article p {
 
 /* for iPad */
 @media screen and (min-width: 681px) and (max-width: 960px) {
-    .index-body, .page-main {
+    .index-body {
         display: grid;
         grid-template-columns: 1fr 8fr 1fr;
-    }
-
-    .page-main {
-        grid-gap: 0;
-        margin: 0;
     }
 
     .about-index, .index-main, .friends-main {
@@ -504,7 +509,7 @@ article p {
         padding: 0;
     }
     
-    .social {
+    .social, .post {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 0.5rem;
@@ -512,8 +517,8 @@ article p {
     }
 
     /* 单独设置左右的样式 */
-    .social-a,
-    .social-b {
+    .left-menu-a,
+    .left-menu-b {
         background-color: #FFFFFB;
         padding: 1.5rem 0;
         border-radius: 1rem;
@@ -558,7 +563,7 @@ article p {
     }
 
     /* 首页 & 友人双栏布局 */
-    .index-main, .friends-main, .page-main, .friends-list, .post-footer {
+    .index-main, .friends-main, .friends-list, .post-footer {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
 
@@ -577,11 +582,6 @@ article p {
 
     .post-card-index {
         padding: 0;
-    }
-
-    /* 页面样式 */
-    .page-main-center {
-        grid-column: 1;
     }
 
     /* 双栏左侧菜单 */
@@ -716,12 +716,12 @@ article p {
 
 /* for iPad dark mode */
 @media screen and (min-width: 681px) and (max-width: 960px) and (prefers-color-scheme: dark) {
-    .social {
+    .social, .post {
         background-color: #121212;
     }
 
-    .social-a,
-    .social-b {
+    .left-menu-a,
+    .left-menu-b {
         background-color: #1C1C1C;
     }
 }
