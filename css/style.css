@@ -186,10 +186,6 @@ article p {
     margin: 0.5rem;
 }
 
-.social-description {
-    margin: 0.5rem;
-}
-
 .social-button {
     display: inline-flex;
     align-items: center;
@@ -297,10 +293,6 @@ article p {
 /* 文章页侧栏 */
 .post-left-menu-title {
     margin: 0.5rem;
-}
-
-.post-left-menu-description {
-    margin-top: 0.5rem;
 }
 
 .post-left-menu-categories {
