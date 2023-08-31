@@ -205,7 +205,7 @@ article p {
 .social-im-button {
     display: inline-block;
     line-height: 2rem;
-    height: 2.25rem;
+    height: 2rem;
     width: 6.25rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
@@ -575,7 +575,7 @@ article p {
     }
 
     .left-menu-b-space {
-        padding: 0.5rem 0;
+        padding: 0.8rem 0;
     }
 
     .post-left-menu-categories {
