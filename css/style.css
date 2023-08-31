@@ -156,10 +156,6 @@ article p {
 }
 
 /* 首页左侧菜单（社交媒体栏） */
-.social a {
-    text-decoration: none;
-}
-
 .social-title {
     margin: 0.5rem;
 }
@@ -411,6 +407,12 @@ article p {
     border: none;
     width: 1.2em;
     height: 1.2rem;
+    vertical-align: middle;
+}
+
+/* 文字图标 */
+.text-icon {
+    height: 1rem;
     vertical-align: middle;
 }
 
