@@ -484,7 +484,7 @@ article p {
     }
 
     .page-main {
-        grid-template-columns: 1fr 5fr 1fr;
+        grid-template-columns: 2fr 5fr 2fr;
     }
 }
 
