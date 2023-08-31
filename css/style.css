@@ -127,7 +127,7 @@ header, footer {
 /* 页面样式 */
 .page-main {
     display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-gap: 0.5rem;
 }
 
@@ -579,6 +579,10 @@ article p {
 
     .post-left-menu-categories {
         padding-left: 0;
+    }
+
+    .page-main {
+        grid-template-columns: 1fr 8fr 1fr;
     }
 
     /* 缩小个人头像 */
