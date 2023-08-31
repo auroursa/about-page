@@ -36,11 +36,12 @@ blockquote {
 
 /* 代码块样式 */
 .highlight {
-    background-color: #1C1C1C;
+    background-color: #2B2B2B;
     width:fit-content;
     width:-webkit-fit-content;
     width:-moz-fit-content;
-    padding: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 pre {
@@ -51,12 +52,14 @@ pre {
 
 code {
     font-family: "overpass-mono";
-    color: #BDC0BA;
-    background-color: #1C1C1C;
+    color: #FFFFFB;
+    background-color: #2B2B2B;
 }
 
 p code {
-    padding: 0.2rem;
+    padding: 0.15rem 0.2rem;
+    vertical-align: middle;
+    border-radius: 0.2rem;
 }
 
 /* 标题 */
@@ -147,7 +150,6 @@ header, footer {
 
 article p {
     text-align: left;
-    text-indent: 2rem;
 }
 
 /* 首页左侧菜单 */
@@ -320,16 +322,8 @@ article p {
     margin-top: 0;
 }
 
-.post-list > .post-content p {
-    text-indent: 0;
-}
-
 .post-title {
     text-align: center;
-}
-
-.post-content {
-    text-indent: 2rem;
 }
 
 /* 文章尾注 */
