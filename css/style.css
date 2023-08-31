@@ -518,7 +518,7 @@ article p {
     }
 
     .index-article, .index-card {
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
         text-align: left;
     }
 
@@ -552,14 +552,9 @@ article p {
     .left-menu-b {
         background-color: #FFFFFB;
         padding: 1.5rem 0;
+        padding-left: 1.5rem;
         border-radius: 1rem;
         text-align: left;
-        padding-left: 2rem;
-    }
-
-    .left-menu-a {
-        text-align: left;
-        padding-left: 2rem;
     }
 
     .left-menu-a-title {
