@@ -127,7 +127,7 @@ header, footer {
 /* 页面样式 */
 .page-main {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 8fr 1fr;
     grid-gap: 0.5rem;
 }
 
@@ -381,6 +381,10 @@ article p {
     text-align: left;
 }
 
+.p-link {
+    word-break: break-all;
+}
+
 .about-color {
     font-family: "overpass-mono";
     padding: 0.2rem;
@@ -480,7 +484,7 @@ article p {
     }
 
     .page-main {
-        grid-template-columns: 2fr 5fr 2fr;
+        grid-template-columns: 1fr 5fr 1fr;
     }
 }
 
@@ -617,7 +621,7 @@ article p {
     }
 
     /* 首页 & 友人双栏布局 */
-    .index-main, .friends-main, .friends-list, .post-footer {
+    .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
 
