@@ -359,6 +359,7 @@ article p {
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
+    margin-top: -0.5rem;
     background-color: #2C2C2C;
 }
 
