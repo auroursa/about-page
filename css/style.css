@@ -456,7 +456,7 @@ article p {
     vertical-align: middle;
 }
 
-.bagle-icon {
+.badge-icon {
     max-width: 50%;
     margin: 0.5rem 0;
 }
@@ -732,7 +732,7 @@ article p {
     }
 
     /* 图标 */
-    .icon, .skill-icon, .device-icon, .footer-button {
+    .icon, .skill-icon, .device-icon, .badge-icon, .footer-button {
         filter:invert(100%);
     }
 
