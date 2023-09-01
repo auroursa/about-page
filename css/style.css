@@ -180,6 +180,11 @@ article p {
     padding: 1.5rem 0;
 }
 
+/* PC端不显示展开容器 */
+.toggle-info-div {
+    display: none;
+}
+
 /* 首页左侧菜单（社交媒体栏） */
 .social-title {
     margin: 0.5rem;
@@ -424,6 +429,20 @@ article p {
     margin-bottom: 1rem;
 }
 
+/* 展开按钮 */
+.toggleButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: #2C2C2C;
+    vertical-align: middle;
+}
+
 /* 分页 */
 .paginator {
     color: #FFFFFB;
@@ -620,6 +639,15 @@ article p {
         padding: 1.2rem;
     }
 
+    /* 移动端显示展开容器，并把需展开容器默认隐藏 */
+    .toggle-info-div {
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
+
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
@@ -742,6 +770,11 @@ article p {
     }
 
     .post-left-menu-category {
+        background-color: #3B3B3B;
+    }
+
+    /* 展开按钮 */
+    .toggleButton {
         background-color: #3B3B3B;
     }
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>Cynosura</title>
+    <meta name="description" content="赤茶的个人页面">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--主题色-->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#EEF7F2">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2B2B2B">
+    <!--Open Graph protocol-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cynosura">
+    <meta property="og:description" content="赤茶的个人页面">
+    <meta property="og:url" content="https://cynosura.one">
+    <meta property="og:image" content="https://cynosura.one/img/banner.webp">
+    <!--Twitter Card-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@astraorsa">
+    <meta name="twitter:title" content="Cynosura">
+    <meta name="twitter:description" content="赤茶的个人页面">
+    <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
+    <!--链接样式-->
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=3.2">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
+    <!--供 Mastodon 验证使用-->
+    <link rel="me" href="https://mastodon.social/@cynosura">
+</head>
+<body>
+    <header>
+        <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img"></div>
+        <h1 class="title">Cynosura</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html" class="menu-link-active">首页</a></li>
+                <li><a href="/posts" class="menu-link">文章</a></li>
+                <li><a href="friends.html" class="menu-link">友人</a></li>
+                <li><a href="about.html" class="menu-link">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button id="toggleButton">展开</button>
+        <div id="contentDiv" class="toggle-content-div left-menu-info card">
+            <div class="social">
+                <div class="left-menu-a">
+                    <img src="img/profile-avatar.webp" alt="avatar" class="avatar-self avatar-img">
+                    <h2 class="left-menu-a-title social-title">赤茶</h2>
+                    <p class="social-description">Per aspera, ad astra. / 终抵繁星</p>
+                </div>
+                <div class="left-menu-b">
+                    <div class="social-link">
+                        <h3 class="left-menu-b-title social-title">社交平台</h3>
+                        <button class="social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter" title="Twitter"><img src="img/icons/twitter.svg" class="social-icons"></button>
+                        <button class="social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon" title="Mastodon"><img src="img/icons/mastodon.svg" class="social-icons"></button>
+                        <button class="social-button" onclick="window.location.href='https://bsky.app/profile/cynosura.one'" type="button" id="social-atprotocol" title="Bluesky"><img src="img/icons/atprotocol.svg" class="social-icons"></button>
+                        <button class="social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads" title="Threads"><img src="img/icons/threads.svg" class="social-icons"></button>
+                    </div>
+                    <div class="left-menu-b-space"></div>
+                    <div class="social-im-link">
+                        <h3 class="left-menu-b-title social-title">即时通讯 / IM</h3>
+                        <a href="https://t.me/arcuscha"><span class="social-im-button">Telegram</span></a>
+                        <a href="https://matrix.to/#/@froseiun:matrix.org"><span class="social-im-button">Matrix</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<footer>
+    <p>Copyright &copy; 2023 Cynosura</p>
+    <script src="js/toggle.js" defer></script>
+</footer>
+</body>
+</html>

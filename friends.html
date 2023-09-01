@@ -45,17 +45,23 @@
         <div class="friends-main">
             <div class="friends-left-menu left-menu">
                 <div class="friends-info card">
-                    <h2>提示</h2>
-                    <p>欢迎互换友链</p>
-                    <p>请在 <a href="about.html#comments">留言板</a> 留下你的站点信息</p>
-                    <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img" /></div>
-                    <ul>
-                        <li>名称：Cynosura</li>
-                        <li>地址：<a href="https://cynosura.one">https://cynosura.one</a></li>
-                        <li>头像：<a href="https://cynosura.one/img/avatar.webp">avatar.webp</a></li>
-                        <li>描述：Per aspera, ad astra.</li>
-                    </ul>
-                    <p>以上为本站相关信息，可随意使用</p>
+                    <div class="toggle-info-div">
+                        <h2 class="toggle-h2">提示</h2>
+                        <button class="toggleButton"><img src="img/icons/down.svg" class="social-icons"></button>
+                    </div>
+                    <div class="hidden contentDiv">
+                        <h2>提示</h2>
+                        <p>欢迎互换友链</p>
+                        <p>请在 <a href="about.html#comments">留言板</a> 留下你的站点信息</p>
+                        <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img" /></div>
+                        <ul>
+                            <li>名称：Cynosura</li>
+                            <li>地址：<a href="https://cynosura.one">https://cynosura.one</a></li>
+                            <li>头像：<a href="https://cynosura.one/img/avatar.webp">avatar.webp</a></li>
+                            <li>描述：Per aspera, ad astra.</li>
+                        </ul>
+                        <p>以上为本站相关信息，可随意使用</p>
+                    </div>
                 </div>
             </div>
             <div class="main-content-social main-content card">
@@ -480,6 +486,7 @@
     </main>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
+        <script src="js/toggle.js" defer></script>
     </footer>
 </body>
 </html>
