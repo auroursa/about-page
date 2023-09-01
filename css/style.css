@@ -12,7 +12,7 @@
 
 html {
     overflow-y: overlay;
-    background-color: #EEF7F2;
+    background-color: #EBF4F4;
     color: #0C0C0C;
 }
 
@@ -28,8 +28,8 @@ img {
 /* 引用标签 */
 blockquote {
     font-style: italic;
-    border-left: 0.35rem solid #66BAB7;
-    background-color: #EEF7F2;
+    border-left: 0.35rem solid #6C9BD2;
+    background-color: #EBF4F4;
     padding: 0.5rem 1.2rem;
     margin: 1rem;
 }
@@ -106,7 +106,7 @@ header, footer {
 }
 
 .menu-link-active {
-    color: #66BAB7;
+    color: #6C9BD2;
     font-weight: bold;
 }
 
@@ -248,7 +248,7 @@ article p {
 /* 友链列表 */
 .main-content-social {
     padding: 0;
-    background: #EEF7F2;
+    background: #EBF4F4;
 }
 
 .friends-list {
@@ -281,7 +281,7 @@ article p {
 
 .friends-card-link:hover {
     color: #FFFFFB;
-    background-color: #66BAB7;
+    background-color: #6C9BD2;
     transition: background-color 0.5s, color 0.25s;
 }
 
@@ -336,12 +336,12 @@ article p {
 
 .post-link:hover {
     color: #FCFAF2;
-    background-color: #66BAB7;
+    background-color: #6C9BD2;
     transition: background-color 0.5s, color 0.25s;
 }
 
 .post-category {
-    background-color: #66BAB7;
+    background-color: #6C9BD2;
     padding: 0 0.5rem;
     border-radius: 0.25rem;
 }
@@ -414,7 +414,7 @@ article p {
 /* 按钮 */
 .button {
     color: #FFFFFB;
-    background-color: #66BAB7;
+    background-color: #6C9BD2;
     border: none;
     padding: 0.5rem 1.5rem;
     margin: 0 auto;
@@ -559,7 +559,7 @@ article p {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 0.5rem;
-        background-color: #EEF7F2;
+        background-color: #EBF4F4;
     }
 
     /* 单独设置左右的样式 */
@@ -716,7 +716,7 @@ article p {
 
     /* 引用标签 */
     blockquote {
-        border-left: 0.35rem solid #268785;
+        border-left: 0.35rem solid #00558F;
         background-color: #434343;
     }
 
@@ -737,12 +737,12 @@ article p {
     }
     
     .post-link:hover {
-        background-color: #268785;
+        background-color: #00558F;
         transition: background-color 0.5s;
     }
 
     .post-category {
-        background: #268785;
+        background: #00558F;
     }
 
     /* 菜单 */
@@ -751,7 +751,7 @@ article p {
     }
 
     .menu-link-active {
-        color: #268785;
+        color: #00558F;
     }
 
     /* 首页左侧菜单（社交媒体图标） */
@@ -799,13 +799,13 @@ article p {
     }
 
     .friends-card-link:hover {
-        background-color: #268785;
+        background-color: #00558F;
         transition: background-color 0.5s;
     }
 
     /* 按钮 */
     .button {
-        background-color: #268785;
+        background-color: #00558F;
     }
 
     /* 图标 */
