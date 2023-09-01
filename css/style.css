@@ -403,7 +403,7 @@ article p {
 }
 
 /* 列表样式 */
-.friends-info ul {
+.left-menu-info ul {
     margin: 0;
     padding: 0;
     list-style-position: inside;
