@@ -207,6 +207,24 @@ article p {
     margin: 0.5rem;
 }
 
+/* 个人头像 */
+.profile-avatar {
+    position: relative;
+}
+
+.subavatar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.35rem;
+    border-radius: 50%;
+    border-style:solid;
+    border-width: 0.1rem;
+    box-sizing: border-box;
+    border-color:#EBF4F4;
+    background-color: rgba(108,155,210,0.7);
+}
+
 .social-button {
     display: inline-flex;
     align-items: center;
@@ -765,6 +783,10 @@ article p {
 
     .card a {
         color: #FFFFFB;
+    }
+
+    .subavatar {
+        background-color: rgba(0, 85, 143, 0.8);
     }
 
     /* 首页标题颜色 */
