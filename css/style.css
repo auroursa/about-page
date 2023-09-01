@@ -214,7 +214,7 @@ article p {
 
 .subavatar {
     position: absolute;
-    bottom: 0;
+    bottom: 0.2rem;
     right: 0;
     padding: 0.35rem;
     border-radius: 50%;
@@ -350,7 +350,7 @@ article p {
     display: inline-block;
     line-height: 2rem;
     height: 2rem;
-    width: 3.5rem;
+    width: 4rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
     border-radius: 0.5rem;
@@ -632,7 +632,20 @@ article p {
     }
 
     .left-menu-b-title {
+        position: relative;
+        padding-left: 0.65rem;
         margin: 0 0 0.2rem;
+    }
+    
+    .left-menu-b-title::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-45%);
+        width: 0.3rem;
+        height: 75%;
+        background-color: #6C9BD2;
     }
 
     .left-menu-b-space {
@@ -655,6 +668,15 @@ article p {
     .avatar-self {
         width: 5rem;
         border-radius: 1rem;
+    }
+
+    .subavatar {
+        border-radius: 0.5rem;
+        padding: 0.2rem;
+    }
+
+    .social-button, .social-im-button, .post-button, .post-left-menu-category {
+        border-radius: 0.8rem;
     }
 
     /* iPad 端不显示一言及徽章 */
@@ -749,7 +771,7 @@ article p {
         position: static;
     }
 
-    /* 移动端不显示一言及徽章 */
+    /* 移动端不显示一言, 徽章及子头像 */
     .hitokoto {
         display: none;
     }
