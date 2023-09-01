@@ -214,8 +214,8 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: #2C2C2C;
 }
 
@@ -225,9 +225,9 @@ article p {
 
 .social-im-button {
     display: inline-block;
-    line-height: 2rem;
-    height: 2rem;
-    width: 6.25rem;
+    line-height: 1.625rem;
+    height: 1.75rem;
+    width: 5.5rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
     border-radius: 0.5rem;
@@ -432,12 +432,29 @@ article p {
 }
 
 /* 列表样式 */
-.left-menu-info ul {
+.friends-left-menu-list {
     margin: 0;
     padding: 0;
     list-style-position: inside;
     display: inline-block;
     text-align: left;
+}
+
+.about-left-menu-list {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+    display: inline-block;
+    text-align: left;
+    list-style-type: square;
+}
+
+.about-left-menu-list li {
+    padding: 0.35rem 0;
+}
+
+.about-left-menu-list a {
+    text-decoration: none;
 }
 
 /* 按钮 */
@@ -458,10 +475,6 @@ article p {
     margin-bottom: 1rem;
 }
 
-.toggle-h2 {
-    margin-top: 0.3rem;
-}
-
 /* 展开按钮 */
 .toggleButton {
     display: inline-flex;
@@ -470,9 +483,9 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: #2C2C2C;
+    width: 3rem;
+    height: 3rem;
+    background-color: #FFFFFB;
     vertical-align: middle;
 }
 
@@ -510,11 +523,6 @@ article p {
 .text-icon {
     height: 1rem;
     vertical-align: middle;
-}
-
-.badge-icon {
-    max-width: 50%;
-    margin: 0.5rem 0;
 }
 
 #rss-button {
@@ -574,11 +582,6 @@ article p {
         text-align: left;
     }
 
-    /* 解决不显示侧边菜单导致边距问题 */
-    .index-body .about-index-wnm {
-        margin-bottom: 0;
-    }
-
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -595,6 +598,13 @@ article p {
         background-color: #EBF4F4;
     }
 
+    .site-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: #FFFFFB;
+        border-radius: 1rem;
+    }
+
     /* 单独设置左右的样式 */
     .left-menu-a,
     .left-menu-b {
@@ -602,6 +612,13 @@ article p {
         padding: 1.5rem 0;
         padding-left: 1.5rem;
         border-radius: 1rem;
+        text-align: left;
+    }
+
+    .friends-left-menu-a,
+    .friends-left-menu-b {
+        padding: 1.5rem 0;
+        padding-left: 1.5rem;
         text-align: left;
     }
 
@@ -616,7 +633,7 @@ article p {
     .left-menu-b-title {
         position: relative;
         padding-left: 0.65rem;
-        margin: 0 0 0.2rem;
+        margin: 0 0 0.5rem;
     }
     
     .left-menu-b-title::before {
@@ -652,16 +669,20 @@ article p {
         border-radius: 1rem;
     }
 
-    .social-button, .social-im-button, .post-button, .post-left-menu-category {
-        border-radius: 0.8rem;
+    .social-button, .post-button {
+        border-radius: 0.4rem;
     }
 
-    /* iPad 端不显示一言及徽章 */
+    .social-im-button, .post-left-menu-category {
+        border-radius: 0.5rem;
+    }
+
+    /* iPad 端不显示一言 */
     .hitokoto {
         display: none;
     }
 
-    .about-left-menu {
+    .friends-single-menu {
         display: none;
     }
 
@@ -701,11 +722,6 @@ article p {
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
-    }
-
-    /* 解决不显示侧边菜单导致边距问题 */
-    .index-body .about-index-wnm {
-        margin-bottom: 0;
     }
 
     .friends-card {
@@ -748,12 +764,8 @@ article p {
         position: static;
     }
 
-    /* 移动端不显示一言, 徽章及子头像 */
+    /* 移动端不显示一言及徽章 */
     .hitokoto {
-        display: none;
-    }
-
-    .about-left-menu {
         display: none;
     }
 }
@@ -834,7 +846,11 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #3B3B3B;
+        background-color: #1C1C1C;
+    }
+
+    .toggle-icon {
+        filter: invert(100%);
     }
 
     /* 设备列表 */
@@ -845,6 +861,10 @@ article p {
     /* 技能列表 */
     .skills-list-content {
         background-color: #212121;
+    }
+
+    .site-info {
+        background: #1C1C1C;
     }
 
     /* 友链列表 */
@@ -868,7 +888,7 @@ article p {
     }
 
     /* 图标 */
-    .icon, .skill-icon, .device-icon, .badge-icon, .footer-button {
+    .icon, .skill-icon, .device-icon, .footer-button {
         filter:invert(100%);
     }
 
