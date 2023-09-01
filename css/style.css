@@ -280,11 +280,22 @@ article p {
     top: 0;
 }
 
+.friends-img {
+    width: 5rem;
+    border-radius: 0.75rem;
+}
+
 .friends-card {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    text-align: left;
+}
+
+.friends-card-title {
+    margin-bottom: 0.5rem;
+
 }
 
 /* 卡片悬停点击效果 */
@@ -447,6 +458,10 @@ article p {
     margin-bottom: 1rem;
 }
 
+.toggle-h2 {
+    margin-top: 0.3rem;
+}
+
 /* 展开按钮 */
 .toggleButton {
     display: inline-flex;
@@ -455,8 +470,8 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: #2C2C2C;
     vertical-align: middle;
 }
@@ -674,6 +689,10 @@ article p {
     /* 解决不显示侧边菜单导致边距问题 */
     .index-body .about-index-wnm {
         margin-bottom: 0;
+    }
+
+    .friends-card {
+        text-align: center;
     }
 
     .skills-list-card {
