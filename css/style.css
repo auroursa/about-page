@@ -573,6 +573,10 @@ article p {
         padding-left: 0;
     }
 
+    .post-link {
+        padding: 1.5rem;
+    }
+
     .page-main {
         grid-template-columns: 1fr 8fr 1fr;
     }
