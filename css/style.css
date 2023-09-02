@@ -482,7 +482,7 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 1rem;
-    width: 5.5rem;
+    width: 6rem;
     height: 3rem;
     color: #0C0C0C;
     background-color: #FFFFFB;
@@ -780,7 +780,7 @@ article p {
     .mobile-menu-button-active {
         font-size: 1rem;
         line-height: 2rem;
-        width: 5rem;
+        width: 6rem;
         background-color: #6C9BD2;
     }
 
