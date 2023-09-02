@@ -68,6 +68,10 @@ p code {
     margin: 0.8rem auto;
 }
 
+.description {
+    margin: 0;
+}
+
 /* 页首、页尾 */
 header, footer {
     margin: 2rem;
@@ -81,7 +85,35 @@ header, footer {
 }
 
 /* 菜单 */
+.menu {
+    display: flex;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 
+.menu-a {
+    display: flex;
+    background-color: #FFFFFB;
+    border-radius: 0 1rem 1rem 0;
+    position: relative;
+    padding-left: 0.9rem;
+    width: 100%;
+}
+
+.menu-a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 0.3rem;
+    height: 100%;
+    background-color: #6C9BD2;
+}
+
+.menu-b {
+    margin-left: 0.25rem;
+}
 
 /* 卡片 */
 .card {
@@ -163,10 +195,6 @@ article p {
 
 /* PC端不显示移动端容器 */
 .mobile-menu {
-    display: none;
-}
-
-.mobile-description {
     display: none;
 }
 
@@ -464,17 +492,17 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 1rem;
-    width: 3rem;
+    width: 5rem;
     height: 3rem;
-    color: #FFFFFB;
+    color: #0C0C0C;
     background-color: #FFFFFB;
     vertical-align: middle;
+    font-size: 1rem;
+    line-height: 2rem;
 }
 
 .menu-button-active {
-    font-size: 1rem;
-    line-height: 2rem;
-    width: 5rem;
+    color: #FFFFFB;
     background-color: #6C9BD2;
 }
 
@@ -523,6 +551,15 @@ article p {
 }
 
 @media screen and (min-width: 1800px) {
+    .menu-div {
+        display: grid;
+        grid-template-columns: 1fr 5fr 1fr;
+    }
+
+    .menu {
+        grid-column: 2;
+    }
+
     .index-body {
         display: grid;
         grid-template-columns: 1fr 5fr 1fr;
@@ -557,6 +594,15 @@ article p {
 
 /* for iPad */
 @media screen and (min-width: 681px) and (max-width: 960px) {
+    .menu-div {
+        display: grid;
+        grid-template-columns: 1fr 8fr 1fr;
+    }
+
+    .menu {
+        grid-column: 2;
+    }
+
     .index-body {
         display: grid;
         grid-template-columns: 1fr 8fr 1fr;
@@ -718,11 +764,6 @@ article p {
         margin-bottom: 0;
     }
 
-    .mobile-description {
-        display: block;
-        margin: 0;
-    }
-
     /* 移动端显示移动菜单，并把需展开容器默认隐藏 */
     .menu {
         display: none;
@@ -734,28 +775,29 @@ article p {
         margin-bottom: 0.5rem;
     }
 
-    .mobile-menu-a {
-        display: flex;
+    .mobile-menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        border-radius: 1rem;
+        width: 3rem;
+        height: 3rem;
+        color: #FFFFFB;
         background-color: #FFFFFB;
-        border-radius: 0 1rem 1rem 0;
-        position: relative;
-        padding-left: 0.9rem;
-        width: 100%;
+        vertical-align: middle;
     }
     
-    .mobile-menu-a::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 0.3rem;
-        height: 100%;
+    .mobile-menu-button-active {
+        font-size: 1rem;
+        line-height: 2rem;
+        width: 5rem;
         background-color: #6C9BD2;
     }
 
-    .mobile-menu-b {
-        margin-left: 0.25rem;
+    .mobile-menu-button-active .menu-icon {
+        filter: invert(100%);
     }
 
     .hidden {
@@ -865,19 +907,19 @@ article p {
     }
 
     /* 移动端菜单 */
-    .mobile-menu-a {
+    .menu-a {
         background-color: #1C1C1C;
     }
 
-    .mobile-menu-a::before {
+    .menu-a::before {
         background-color: #00558F;
     }
 
-    .mobile-menu-button {
+    .menu-button {
         background-color: #1C1C1C;
     }
 
-    .mobile-menu-button-active {
+    .menu-button-active {
         background-color: #00558F;
     }
 
@@ -911,7 +953,7 @@ article p {
         background-color: #1C1C1C;
     }
 
-    .mobile-menu-icon {
+    .menu-icon {
         filter: invert(100%);
     }
 

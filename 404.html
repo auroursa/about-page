@@ -23,31 +23,33 @@
     <meta name="twitter:description" content="Page Not Found">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.jpg">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="/css/style.css?v=3.5">
+    <link rel="stylesheet" type="text/css" href="/css/style.css?v=3.6">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
     <header>
         <div class="avatar"><img src="/img/avatar.webp" alt="avatar" class="avatar-img"></div>
         <h1 class="title">Cynosura</h1>
-        <p class="mobile-description">Trying to light up the dark.</p>
-        <nav class="menu">
-            <ul>
-                <li><a href="index.html" class="menu-link">首页</a></li>
-                <li><a href="/posts" class="menu-link">文章</a></li>
-                <li><a href="friends.html" class="menu-link">友人</a></li>
-                <li><a href="about.html" class="menu-link">关于</a></li>
-            </ul>
-        </nav>
+        <p class="description">Trying to light up the dark.</p>
     </header>
-    <nav class="mobile-menu">
-        <div class="mobile-menu-a">
-            <button class="menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"></button>
-            <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"></button>
-            <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-            <button class="menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"></button>
-        </div>
-    </nav>
+    <div class="menu-div">
+        <nav class="menu">
+            <div class="menu-a">
+                <button class="menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
+                <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
+                <button class="menu-button-active menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
+                <button class="menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
+            </div>
+        </nav>
+        <nav class="mobile-menu">
+            <div class="menu-a">
+                <button class="mobile-menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"></button>
+                <button class="mobile-menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"></button>
+                <button class="mobile-menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
+                <button class="mobile-menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"></button>
+            </div>
+        </nav>
+    </div>
     <main class="index-body">
         <div class="about-index about card">
             <h1 class="about-title">404</h1>
