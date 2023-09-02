@@ -81,34 +81,7 @@ header, footer {
 }
 
 /* 菜单 */
-.menu ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    list-style-position: inside;
-    display: inline-block;
-    text-align: left;
-}
 
-.menu li {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    text-align: center;
-}
-
-.menu li:not(:first-child):before {
-    content: " | ";
-}
-
-.menu a {
-    text-decoration: none;
-}
-
-.menu-link-active {
-    color: #6C9BD2;
-    font-weight: bold;
-}
 
 /* 卡片 */
 .card {
@@ -484,7 +457,7 @@ article p {
 }
 
 /* 移动菜单按钮 */
-.mobile-menu-button {
+.menu-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -498,14 +471,14 @@ article p {
     vertical-align: middle;
 }
 
-.mobile-menu-button-active {
+.menu-button-active {
     font-size: 1rem;
     line-height: 2rem;
     width: 5rem;
     background-color: #6C9BD2;
 }
 
-.mobile-menu-button-active .mobile-menu-icon {
+.menu-button-active .menu-icon {
     filter: invert(100%);
 }
 
