@@ -212,15 +212,11 @@ article p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: none;
+    border: 1px solid #0C0C0C;
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
-    background-color: #2C2C2C;
-}
-
-.social-icons {
-    filter: invert(100%);
+    background-color: #FFFFFB;
 }
 
 .social-im-button {
@@ -228,8 +224,9 @@ article p {
     line-height: 2rem;
     height: 2rem;
     width: 5.8rem;
-    color: #FFFFFB;
-    background-color: #2C2C2C;
+    color: #0C0C0C;
+    background-color: #FFFFFB;
+    border: 1px solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
 }
@@ -333,8 +330,9 @@ article p {
     line-height: 2rem;
     height: 2rem;
     width: 3.75rem;
-    color: #FFFFFB;
-    background-color: #2C2C2C;
+    color: #0C0C0C;
+    background-color: #FFFFFB;
+    border: 1px solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
 }
@@ -389,15 +387,11 @@ article p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: none;
+    border: 1px solid #0C0C0C;
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
-    background-color: #2C2C2C;
-}
-
-.post-icons {
-    filter: invert(100%);
+    background-color: #FFFFFB;
 }
 
 /* 文章尾注 */
@@ -828,21 +822,27 @@ article p {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
-        background-color: #3B3B3B;
+        border: 1px solid #FFFFFB;
+        background-color: #1C1C1C;
     }
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
-        background-color: #3B3B3B;
+        color: #FFFFFB;
+        border: 1px solid #FFFFFB;
+        background-color: #1C1C1C;
     }
 
     /* 文章页左侧菜单 */
     .post-button {
-        background-color: #3B3B3B;
+        border: 1px solid #FFFFFB;
+        background-color: #1C1C1C;
     }
 
     .post-left-menu-category {
-        background-color: #3B3B3B;
+        color: #FFFFFB;
+        border: 1px solid #FFFFFB;
+        background-color: #1C1C1C;
     }
 
     /* 展开按钮 */
@@ -891,6 +891,10 @@ article p {
     /* 图标 */
     .icon, .skill-icon, .device-icon, .footer-button {
         filter:invert(100%);
+    }
+
+    .social-icons, .post-icons {
+        filter: invert(100%);
     }
 
     /* 代码块样式 */
