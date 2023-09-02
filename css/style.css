@@ -814,6 +814,10 @@ article p {
         grid-template-columns: 1fr;
     }
 
+    .page-main .menu-div {
+        grid-column: 1;
+    }
+
     .page-main-center {
         grid-column: 1;
     }
