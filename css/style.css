@@ -906,7 +906,7 @@ article p {
         color: #00558F;
     }
 
-    /* 移动端菜单 */
+    /* 菜单 */
     .menu-a {
         background-color: #1C1C1C;
     }
@@ -916,10 +916,20 @@ article p {
     }
 
     .menu-button {
+        color: #FFFFFB;
         background-color: #1C1C1C;
     }
 
     .menu-button-active {
+        background-color: #00558F;
+    }
+
+    /* 移动端菜单 */
+    .mobile-menu-button {
+        background: #1C1C1C;
+    }
+
+    .mobile-menu-button-active {
         background-color: #00558F;
     }
 
@@ -951,10 +961,6 @@ article p {
     /* 展开按钮 */
     .toggleButton {
         background-color: #1C1C1C;
-    }
-
-    .menu-button {
-        color: #FFFFFB;
     }
 
     .menu-icon {
