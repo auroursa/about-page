@@ -28,6 +28,7 @@
     <header>
         <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img"></div>
         <h1 class="title">Cynosura</h1>
+        <p class="mobile-description">Trying to light up the dark.</p>
         <nav class="menu">
             <ul>
                 <li><a href="index.html" class="menu-link">首页</a></li>
@@ -37,14 +38,18 @@
             </ul>
         </nav>
     </header>
-    <main class="index-body">
-        <div class="about-index about card">
-            <h1 class="about-title">关于</h1>
-            <p class="about-description">有关本站的一些建站信息</p>
-            <div class="toggle-info-div">
-                <button class="toggleButton"><img src="img/icons/menu.svg" alt="menu-button" class="toggle-icon"></button>
-            </div>
+    <nav class="mobile-menu">
+        <div class="mobile-menu-a">
+            <button class="mobile-menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="mobile-menu-icon"></button>
+            <button class="mobile-menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="mobile-menu-icon"></button>
+            <button class="mobile-menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="mobile-menu-icon"></button>
+            <button class="mobile-menu-button-active mobile-menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="mobile-menu-icon"></button>
         </div>
+        <div class="mobile-menu-b">
+            <button class="toggleButton"><img src="img/icons/menu.svg" alt="menu-button" class="mobile-menu-icon"></button>
+        </div>
+    </nav>
+    <main class="index-body">
         <div class="index-main">
             <div class="left-menu hidden contentDiv">
                 <div class="about-left-menu left-menu-info card">
