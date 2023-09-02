@@ -119,11 +119,6 @@ header, footer {
     text-align: center;
 }
 
-/* 页面顶部介绍卡片 */
-.about {
-    margin-bottom: 0;
-}
-
 /* 页面样式 */
 .page-main {
     display: grid;
