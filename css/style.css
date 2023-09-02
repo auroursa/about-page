@@ -188,12 +188,16 @@ article p {
     padding: 1.5rem 0;
 }
 
-/* PC端不显示移动菜单 */
+/* PC端不显示移动端容器 */
 .mobile-menu {
     display: none;
 }
 
 .mobile-description {
+    display: none;
+}
+
+.mobile-div {
     display: none;
 }
 
@@ -489,11 +493,15 @@ article p {
     border-radius: 1rem;
     width: 3rem;
     height: 3rem;
+    color: #FFFFFB;
     background-color: #FFFFFB;
     vertical-align: middle;
 }
 
 .mobile-menu-button-active {
+    font-size: 1rem;
+    line-height: 2rem;
+    width: 5rem;
     background-color: #6C9BD2;
 }
 
@@ -721,6 +729,12 @@ article p {
     .card {
         padding: 1.2rem;
     }
+    
+    /* 移动端专属卡片 */
+    .mobile-div {
+        display: block;
+        text-align: left;
+    }
 
     header {
         margin: 0;
@@ -778,10 +792,6 @@ article p {
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
-    }
-
-    .friends-card {
-        text-align: center;
     }
 
     .skills-list-card {
