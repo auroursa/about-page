@@ -750,10 +750,6 @@ article p {
         padding: 2rem;
     }
 
-    .title {
-        margin-bottom: 0;
-    }
-
     /* 移动端显示移动菜单，并把需展开容器默认隐藏 */
     .menu {
         display: none;
