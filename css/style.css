@@ -214,8 +214,8 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     background-color: #2C2C2C;
 }
 
@@ -225,9 +225,9 @@ article p {
 
 .social-im-button {
     display: inline-block;
-    line-height: 1.625rem;
-    height: 1.75rem;
-    width: 5.5rem;
+    line-height: 2rem;
+    height: 2rem;
+    width: 5.8rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
     border-radius: 0.5rem;
@@ -332,7 +332,7 @@ article p {
     display: inline-block;
     line-height: 2rem;
     height: 2rem;
-    width: 4rem;
+    width: 3.75rem;
     color: #FFFFFB;
     background-color: #2C2C2C;
     border-radius: 0.5rem;
@@ -391,8 +391,8 @@ article p {
     cursor: pointer;
     border: none;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     background-color: #2C2C2C;
 }
 
