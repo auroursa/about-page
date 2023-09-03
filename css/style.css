@@ -94,13 +94,12 @@ header, footer {
 .menu {
     display: flex;
     margin-bottom: 0.4rem;
-    border-bottom: 0.1rem solid #EBF4F4;
 }
 
 .menu-a {
     display: flex;
     justify-content: center;
-    background-color: #FFFFFB;
+    background-color: #D0DFE6;
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
@@ -271,7 +270,7 @@ article p {
 /* 左侧菜单滚动置顶 */
 .left-menu, .friends-left-menu {
     position: sticky;
-    top: 3.1rem;
+    top: 3rem;
 }
 
 .friends-img {
@@ -485,7 +484,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #FFFFFB;
+    background-color: #D0DFE6;
     vertical-align: middle;
 }
 
@@ -499,7 +498,7 @@ article p {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #D0DFE6;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -766,7 +765,6 @@ article p {
 
     .mobile-menu {
         display: flex;
-        border-bottom: 0.1rem solid #EBF4F4;
     }
 
     .mobile-menu-button {
@@ -778,7 +776,7 @@ article p {
         width: 3rem;
         height: 3rem;
         color: #FFFFFB;
-        background-color: #FFFFFB;
+        background-color: #D0DFE6;
         vertical-align: middle;
     }
     
@@ -799,11 +797,11 @@ article p {
 
     /* 首页 & 友人双栏布局 */
     .index-main .main-content {
-        margin-top: 0.4rem;
+        margin-top: 0.5rem;
     }
 
     .friends-main .main-content {
-        margin-top: 0.4rem
+        margin-top: 0.5rem
     }
 
     .index-main, .friends-main, .friends-list {
@@ -814,16 +812,16 @@ article p {
     .index-main .contentDiv,
     .friends-main .contentDiv {
         position: sticky;
-        top: 3.1rem;
+        top: 3rem;
         z-index: 2;
     }
 
     .social-button, .post-button {
-        background-color: #FFFFFB;
+        background-color: #D8E3E7;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #FFFFFB;
+        background-color: #D8E3E7;
     }
 
     /* 首页及页面样式 */
@@ -862,8 +860,7 @@ article p {
     }
 
     .left-menu-info {
-        background-color: #FFFFFB;
-        border-bottom: 0.1rem solid #EBF4F4;
+        background-color: #D8E3E7;
     }
 
     /* 友链列表 */
@@ -942,7 +939,6 @@ article p {
 
     /* 菜单 */
     .menu {
-        border-bottom: 0.1rem solid #121212;
         border-left: #121212;
     }
     .menu-link {
@@ -955,7 +951,7 @@ article p {
 
     /* 菜单 */
     .menu-a {
-        background-color: #1C1C1C;
+        background-color: #242424;
     }
 
     .menu-a::before {
@@ -964,7 +960,7 @@ article p {
 
     .menu-button {
         color: #FFFFFB;
-        background-color: #1C1C1C;
+        background-color: #242424;
     }
 
     .menu-button-active {
@@ -972,12 +968,8 @@ article p {
     }
 
     /* 移动端菜单 */
-    .mobile-menu {
-        border-bottom: 0.1rem solid #121212;
-    }
-
     .mobile-menu-button {
-        background: #1C1C1C;
+        background: #242424;
     }
 
     .mobile-menu-button-active {
@@ -1011,7 +1003,7 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #1C1C1C;
+        background-color: #242424;
     }
 
     .menu-icon {
@@ -1085,19 +1077,18 @@ article p {
 
 @media screen and (max-width:680px) and (prefers-color-scheme: dark) {
     .left-menu-info {
-        background-color: #1C1C1C;
-        border-bottom: 0.1rem solid #121212;
+        background-color: #2C2C2C;
     }
 
     .site-info {
-        background-color: #1C1C1C;
+        background-color: #2C2C2C;
     }
 
     .social-button, .post-button {
-        background-color: #1C1C1C;
+        background-color: #2C2C2C;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #1C1C1C;
+        background-color: #2C2C2C;
     }
 }
