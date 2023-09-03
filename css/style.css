@@ -195,10 +195,6 @@ article p {
     display: none;
 }
 
-.mobile-div {
-    display: none;
-}
-
 /* 首页左侧菜单（社交媒体栏） */
 .social-title {
     margin: 0.5rem;
@@ -748,12 +744,6 @@ article p {
     /* 卡片 */
     .card {
         padding: 1.2rem;
-    }
-    
-    /* 移动端专属卡片 */
-    .mobile-div {
-        display: block;
-        text-align: left;
     }
 
     header {
