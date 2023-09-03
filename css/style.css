@@ -99,7 +99,7 @@ header, footer {
 .menu-a {
     display: flex;
     justify-content: center;
-    background-color: #D0DFE6;
+    background-color: #D8E3E7;
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
@@ -488,7 +488,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #D8E3E7;
+    background-color: #D0DFE6;
     vertical-align: middle;
 }
 
@@ -502,7 +502,7 @@ article p {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #D0DFE6;
+    background-color: #D8E3E7;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -784,7 +784,7 @@ article p {
         width: 3rem;
         height: 3rem;
         color: #FFFFFB;
-        background-color: #D0DFE6;
+        background-color: #D8E3E7;
         vertical-align: middle;
     }
     
@@ -818,11 +818,11 @@ article p {
     }
 
     .social-button, .post-button {
-        background-color: #D8E3E7;
+        background-color: #D0DFE6;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #D8E3E7;
+        background-color: #D0DFE6;
     }
 
     /* 首页及页面样式 */
@@ -861,7 +861,7 @@ article p {
     }
 
     .left-menu-info {
-        background-color: #D8E3E7;
+        background-color: #D0DFE6;
     }
 
     /* 友链列表 */
