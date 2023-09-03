@@ -95,6 +95,7 @@ header, footer {
     display: flex;
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
+    border-bottom: 1px solid #EBF4F4;
 }
 
 .menu-a {
@@ -936,6 +937,9 @@ article p {
     }
 
     /* 菜单 */
+    .menu {
+        border-bottom: 1px solid #121212;
+    }
     .menu-link {
         color: #FFFFFB;
     }
