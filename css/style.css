@@ -815,11 +815,11 @@ article p {
         z-index: 2;
     }
 
-    .social-button {
+    .social-button, .post-button {
         background-color: #E1EAEA;
     }
 
-    .social-im-button {
+    .social-im-button, .post-left-menu-category {
         background-color: #E1EAEA;
     }
 
@@ -1082,11 +1082,11 @@ article p {
         background-color: #2B2B2B;
     }
 
-    .social-button {
+    .social-button, .post-button {
         background-color: #2B2B2B;
     }
 
-    .social-im-button {
+    .social-im-button, .post-left-menu-category {
         background-color: #2B2B2B;
     }
 }
