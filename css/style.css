@@ -804,6 +804,10 @@ article p {
         margin-top: 0.5rem
     }
 
+    .page-main-center .post-card {
+        margin-top: 0.5rem;
+    }
+
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
