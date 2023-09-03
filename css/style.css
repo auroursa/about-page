@@ -93,7 +93,7 @@ header, footer {
 
 .menu {
     display: flex;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     border-bottom: 0.1rem solid #EBF4F4;
 }
 
@@ -799,7 +799,7 @@ article p {
 
     /* 首页 & 友人双栏布局 */
     .index-main .main-content {
-        margin-top: 0.5rem;
+        margin-top: 0.4rem;
     }
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
