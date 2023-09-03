@@ -100,7 +100,7 @@ header, footer {
 .menu-a {
     display: flex;
     justify-content: center;
-    background-color: #D8E3E7;
+    background-color: #E1EAEA;
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
@@ -485,7 +485,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #D8E3E7;
+    background-color: #E1EAEA;
     vertical-align: middle;
 }
 
@@ -499,7 +499,7 @@ article p {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #D8E3E7;
+    background-color: #E1EAEA;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -783,7 +783,7 @@ article p {
         width: 3rem;
         height: 3rem;
         color: #FFFFFB;
-        background-color: #D8E3E7;
+        background-color: #E1EAEA;
         vertical-align: middle;
     }
     
