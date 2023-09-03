@@ -85,6 +85,12 @@ header, footer {
 }
 
 /* 菜单 */
+.menu-div {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
 .menu {
     display: flex;
     border-radius: 0.5rem;
@@ -94,8 +100,7 @@ header, footer {
 .menu-a {
     display: flex;
     justify-content: center;
-    background-color: #FFFFFB;
-    border-radius: 1rem;
+    background-color: #D8E3E7;
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
@@ -104,7 +109,6 @@ header, footer {
 /* 卡片 */
 .card {
     background-color: #FFFFFB;
-    border-radius: 1rem;
     margin: 0.5rem;
     padding: 1rem 1.5rem;
     text-align: center;
@@ -165,6 +169,7 @@ header, footer {
     width: 0.3rem;
     height: 75%;
     background-color: #6C9BD2;
+    z-index: 1;
 }
 
 /* 首页左右单列指定 */
@@ -264,7 +269,7 @@ article p {
 /* 左侧菜单滚动置顶 */
 .left-menu, .friends-left-menu {
     position: sticky;
-    top: 0;
+    top: 3rem;
 }
 
 .friends-img {
@@ -273,7 +278,6 @@ article p {
 }
 
 .friends-card {
-    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -467,25 +471,23 @@ article p {
     justify-content: center;
     cursor: pointer;
     border: none;
-    border-radius: 1rem;
     width: 3rem;
     height: 3rem;
-    background-color: #FFFFFB;
+    background-color: #D8E3E7;
     vertical-align: middle;
 }
 
-/* 移动菜单按钮 */
+/* 菜单按钮 */
 .menu-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border: none;
-    border-radius: 1rem;
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #D8E3E7;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -634,7 +636,6 @@ article p {
         background-color: #FFFFFB;
         padding: 1.5rem 0;
         padding-left: 1.5rem;
-        border-radius: 1rem;
         text-align: left;
     }
 
@@ -756,11 +757,11 @@ article p {
     .mobile-menu {
         display: flex;
         border-radius: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.5rem;    
     }
 
-    .mobile-menu .menu-b {
-        margin-left: 0.25rem;
+    .mobile-menu-space {
+        padding: 0.15rem;
     }
 
     .mobile-menu-button {
@@ -769,11 +770,10 @@ article p {
         justify-content: center;
         cursor: pointer;
         border: none;
-        border-radius: 1rem;
         width: 3rem;
         height: 3rem;
         color: #FFFFFB;
-        background-color: #FFFFFB;
+        background-color: #D8E3E7;
         vertical-align: middle;
     }
     
@@ -843,6 +843,18 @@ article p {
     }
 }
 
+/* 超小屏幕 */
+@media screen and (max-width:320px) {
+    /* 不显示菜单文字 */
+    .mobile-menu-button-text {
+        display: none;
+    }
+
+    .mobile-menu-button-active {
+        width: 3rem;
+    }
+}
+
 @media (prefers-color-scheme: dark){
     html {
         background: #121212;
@@ -900,7 +912,7 @@ article p {
 
     /* 菜单 */
     .menu-a {
-        background-color: #1C1C1C;
+        background-color: #2B2B2B;
     }
 
     .menu-a::before {
@@ -909,7 +921,7 @@ article p {
 
     .menu-button {
         color: #FFFFFB;
-        background-color: #1C1C1C;
+        background-color: #2B2B2B;
     }
 
     .menu-button-active {
@@ -918,7 +930,7 @@ article p {
 
     /* 移动端菜单 */
     .mobile-menu-button {
-        background: #1C1C1C;
+        background: #2B2B2B;
     }
 
     .mobile-menu-button-active {
@@ -952,7 +964,7 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #1C1C1C;
+        background-color: #2B2B2B;
     }
 
     .menu-icon {
