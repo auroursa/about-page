@@ -100,7 +100,7 @@ header, footer {
 .menu-a {
     display: flex;
     justify-content: center;
-    background-color: #E1EAEA;
+    background-color: #FFFFFB;
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
@@ -485,7 +485,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #E1EAEA;
+    background-color: #FFFFFB;
     vertical-align: middle;
 }
 
@@ -499,7 +499,7 @@ article p {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #E1EAEA;
+    background-color: #FFFFFB;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -764,14 +764,9 @@ article p {
         display: none;
     }
 
-    .menu-b {
-        border-left: 1px solid #EBF4F4;
-    }
-
     .mobile-menu {
         display: flex;
-        border-radius: 0.5rem;
-        margin-bottom: 0.5rem;    
+        border-bottom: 1px solid #EBF4F4;
     }
 
     .mobile-menu-button {
@@ -783,7 +778,7 @@ article p {
         width: 3rem;
         height: 3rem;
         color: #FFFFFB;
-        background-color: #E1EAEA;
+        background-color: #FFFFFB;
         vertical-align: middle;
     }
     
@@ -803,6 +798,9 @@ article p {
     }
 
     /* 首页 & 友人双栏布局 */
+    .index-main .main-content {
+        margin-top: 0.5rem;
+    }
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
@@ -816,11 +814,11 @@ article p {
     }
 
     .social-button, .post-button {
-        background-color: #E1EAEA;
+        background-color: #FFFFFB;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #E1EAEA;
+        background-color: #FFFFFB;
     }
 
     /* 首页及页面样式 */
@@ -859,8 +857,8 @@ article p {
     }
 
     .left-menu-info {
-        background-color: #E1EAEA;
-        border-top: 1px solid #EBF4F4;
+        background-color: #FFFFFB;
+        border-bottom: 1px solid #EBF4F4;
     }
 
     /* 友链列表 */
@@ -948,7 +946,7 @@ article p {
 
     /* 菜单 */
     .menu-a {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 
     .menu-a::before {
@@ -957,7 +955,7 @@ article p {
 
     .menu-button {
         color: #FFFFFB;
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 
     .menu-button-active {
@@ -965,8 +963,12 @@ article p {
     }
 
     /* 移动端菜单 */
+    .mobile-menu {
+        border-bottom: 1px solid #121212;
+    }
+
     .mobile-menu-button {
-        background: #2B2B2B;
+        background: #1C1C1C;
     }
 
     .mobile-menu-button-active {
@@ -1000,7 +1002,7 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 
     .menu-icon {
@@ -1074,19 +1076,19 @@ article p {
 
 @media screen and (max-width:680px) and (prefers-color-scheme: dark) {
     .left-menu-info {
-        background-color: #2B2B2B;
-        border-top: 1px solid #121212;
+        background-color: #1C1C1C;
+        border-bottom: 1px solid #121212;
     }
 
     .site-info {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 
     .social-button, .post-button {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #2B2B2B;
+        background-color: #1C1C1C;
     }
 }
