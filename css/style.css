@@ -801,6 +801,11 @@ article p {
     .index-main .main-content {
         margin-top: 0.4rem;
     }
+
+    .friends-main .main-content {
+        margin-top: 0.4rem
+    }
+
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
