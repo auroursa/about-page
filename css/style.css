@@ -804,17 +804,6 @@ article p {
     }
 
     /* 首页 & 友人双栏布局 */
-    .index-main .main-content {
-        margin-top: 0.5rem;
-    }
-
-    .friends-main .main-content {
-        margin-top: 0.5rem
-    }
-
-    .page-main-center .post-card {
-        margin-top: 0.5rem;
-    }
 
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
