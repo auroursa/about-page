@@ -136,6 +136,10 @@ header, footer {
     margin: 0;
 }
 
+.page-card {
+    grid-column: 2;
+}
+
 /* 首页 & 友人双栏布局 */
 .index-main, .friends-main {
     display: grid;
@@ -571,6 +575,10 @@ article p {
     .page-main .menu-div {
         grid-column: 2;
     }
+
+    .page-card {
+        grid-column: 2;
+    }
 }
 
 @media screen and (min-width: 961px) and (max-width: 1280px) {
@@ -821,6 +829,10 @@ article p {
     }
 
     .page-main-center {
+        grid-column: 1;
+    }
+
+    .page-card {
         grid-column: 1;
     }
 
