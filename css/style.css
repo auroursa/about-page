@@ -93,9 +93,8 @@ header, footer {
 
 .menu {
     display: flex;
-    border-radius: 0.5rem;
     margin-bottom: 0.5rem;
-    border-bottom: 1px solid #EBF4F4;
+    border-bottom: 0.1rem solid #EBF4F4;
 }
 
 .menu-a {
@@ -272,7 +271,7 @@ article p {
 /* 左侧菜单滚动置顶 */
 .left-menu, .friends-left-menu {
     position: sticky;
-    top: 3rem;
+    top: 3.1rem;
 }
 
 .friends-img {
@@ -767,7 +766,7 @@ article p {
 
     .mobile-menu {
         display: flex;
-        border-bottom: 1px solid #EBF4F4;
+        border-bottom: 0.1rem solid #EBF4F4;
     }
 
     .mobile-menu-button {
@@ -810,7 +809,7 @@ article p {
     .index-main .contentDiv,
     .friends-main .contentDiv {
         position: sticky;
-        top: 3rem;
+        top: 3.1rem;
         z-index: 2;
     }
 
@@ -859,7 +858,7 @@ article p {
 
     .left-menu-info {
         background-color: #FFFFFB;
-        border-bottom: 1px solid #EBF4F4;
+        border-bottom: 0.1rem solid #EBF4F4;
     }
 
     /* 友链列表 */
@@ -938,7 +937,8 @@ article p {
 
     /* 菜单 */
     .menu {
-        border-bottom: 1px solid #121212;
+        border-bottom: 0.1rem solid #121212;
+        border-left: #121212;
     }
     .menu-link {
         color: #FFFFFB;
@@ -968,7 +968,7 @@ article p {
 
     /* 移动端菜单 */
     .mobile-menu {
-        border-bottom: 1px solid #121212;
+        border-bottom: 0.1rem solid #121212;
     }
 
     .mobile-menu-button {
@@ -1081,7 +1081,7 @@ article p {
 @media screen and (max-width:680px) and (prefers-color-scheme: dark) {
     .left-menu-info {
         background-color: #1C1C1C;
-        border-bottom: 1px solid #121212;
+        border-bottom: 0.1rem solid #121212;
     }
 
     .site-info {
