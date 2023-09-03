@@ -764,14 +764,14 @@ article p {
         display: none;
     }
 
+    .menu-b {
+        border-left: 1px solid #EBF4F4;
+    }
+
     .mobile-menu {
         display: flex;
         border-radius: 0.5rem;
         margin-bottom: 0.5rem;    
-    }
-
-    .mobile-menu-space {
-        padding: 0.15rem;
     }
 
     .mobile-menu-button {
@@ -807,6 +807,23 @@ article p {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
 
+    /* social-menu-b 详情菜单 */
+    .index-main .contentDiv,
+    .friends-main .contentDiv {
+        position: sticky;
+        top: 3rem;
+        z-index: 2;
+    }
+
+    .social-button {
+        background-color: #E1EAEA;
+    }
+
+    .social-im-button {
+        background-color: #E1EAEA;
+    }
+
+    /* 首页及页面样式 */
     .skills-list-card {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -839,6 +856,11 @@ article p {
     /* 双栏左侧菜单 */
     .left-menu {
         margin: 0.5rem;
+    }
+
+    .left-menu-info {
+        background-color: #E1EAEA;
+        border-top: 1px solid #EBF4F4;
     }
 
     /* 友链列表 */
@@ -1047,5 +1069,24 @@ article p {
     .left-menu-a,
     .left-menu-b {
         background-color: #1C1C1C;
+    }
+}
+
+@media screen and (max-width:680px) and (prefers-color-scheme: dark) {
+    .left-menu-info {
+        background-color: #2B2B2B;
+        border-top: 1px solid #121212;
+    }
+
+    .site-info {
+        background-color: #2B2B2B;
+    }
+
+    .social-button {
+        background-color: #2B2B2B;
+    }
+
+    .social-im-button {
+        background-color: #2B2B2B;
     }
 }
