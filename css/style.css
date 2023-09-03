@@ -198,6 +198,10 @@ article p {
     display: none;
 }
 
+.mobile-div {
+    display: none;
+}
+
 /* 首页左侧菜单（社交媒体栏） */
 .social-title {
     margin: 0.5rem;
@@ -484,7 +488,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #D0DFE6;
+    background-color: #D8E3E7;
     vertical-align: middle;
 }
 
@@ -767,6 +771,10 @@ article p {
         display: flex;
     }
 
+    .mobile-div {
+        display: block;
+    }
+
     .mobile-menu-button {
         display: inline-flex;
         align-items: center;
@@ -1007,7 +1015,7 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #242424;
+        background-color: #2C2C2C;
     }
 
     .menu-icon {
