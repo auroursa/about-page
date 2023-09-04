@@ -34,13 +34,13 @@ main {
 
 a {
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     text-decoration-color: #6C9BD2;
     transition: 0.5s background-color, 0.25s color;
 }
 
 a:hover {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
     text-decoration: none;
     transition: 0.5s background-color, 0.25s color;
@@ -77,7 +77,7 @@ pre {
 
 code {
     font-family: "overpass-mono";
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #2B2B2B;
 }
 
@@ -126,7 +126,7 @@ p code {
 
 /* 卡片 */
 .card {
-    background-color: #FFFFFB;
+    background-color: #FFF;
     margin: 0.5rem;
     padding: 1rem 1.5rem;
     text-align: center;
@@ -235,7 +235,7 @@ article p {
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     transition: 0.5s background-color, 0.25s border;
 }
 
@@ -260,7 +260,7 @@ article p {
     height: 2rem;
     width: 5.8rem;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     border: 0.1rem solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
@@ -268,7 +268,7 @@ article p {
 }
 
 .social-im-button:hover {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
     border: 0.1rem solid transparent;
     transition: 0.5s background-color, 0.25s color, 0.1s border;
@@ -285,7 +285,7 @@ article p {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
-    background-color: #FAFAF6;
+    background-color: #F6F7F8;
     transition: 0.5s background-color;
 }
 
@@ -305,7 +305,7 @@ article p {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
-    background-color: #FAFAF6;
+    background-color: #F6F7F8;
     transition: 0.5s background-color;
 }
 
@@ -354,12 +354,12 @@ article p {
     padding: 1.2rem;
     text-decoration: none;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     transition: background-color 0.5s, color 0.25s;
 }
 
 .friends-card-link:hover {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
     transition: background-color 0.5s, color 0.25s;
 
@@ -395,7 +395,7 @@ article p {
     height: 2rem;
     width: 3.75rem;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     border: 0.1rem solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
@@ -403,7 +403,7 @@ article p {
 }
 
 .post-left-menu-category:hover {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
     border: 0.1rem solid transparent;
     transition: 0.5s background-color, 0.25s color, 0.1s border;
@@ -427,7 +427,7 @@ article p {
     display: block;
     padding: 1.2rem 2rem;
     color: #0C0C0C;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     transition: background-color 0.5s, color 0.25s;
     overflow: hidden;
 }
@@ -463,7 +463,7 @@ article p {
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
-    background-color: #FFFFFB;
+    background-color: #FFF;
     transition: 0.5s background-color, 0.25s border;
 }
 
@@ -538,7 +538,7 @@ article p {
 
 /* 按钮 */
 .button {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
     border: none;
     padding: 0.5rem 1.5rem;
@@ -590,7 +590,7 @@ article p {
 }
 
 .menu-button-active {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #6C9BD2;
 }
 
@@ -604,7 +604,7 @@ article p {
 
 /* 分页 */
 .paginator {
-    color: #FFFFFB;
+    color: #FFF;
     background-color: #A8D8B9;
     text-align: center;
     width: 8rem;
@@ -614,7 +614,7 @@ article p {
 }
 
 .paginator a {
-    color: #FFFFFB;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -730,14 +730,14 @@ article p {
     .site-info {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        background-color: #FFFFFB;
+        background-color: #FFF;
         border-radius: 1rem;
     }
 
     /* 单独设置左右的样式 */
     .left-menu-a,
     .left-menu-b {
-        background-color: #FFFFFB;
+        background-color: #FFF;
         padding: 1.5rem 0;
         padding-left: 1.5rem;
         text-align: left;
@@ -872,7 +872,7 @@ article p {
         border: none;
         width: 3rem;
         height: 3rem;
-        color: #FFFFFB;
+        color: #FFF;
         background-color: #D8E3E7;
         vertical-align: middle;
     }
@@ -987,7 +987,7 @@ article p {
 @media (prefers-color-scheme: dark){
     html {
         background: #121212;
-        color: #FFFFFB;
+        color: #FFF;
     }
 
     main {
@@ -995,7 +995,7 @@ article p {
     }
 
     a {
-        color: #FFFFFB;
+        color: #FFF;
         background-color: #1C1C1C;
         text-decoration-color: #00558F;
     }
@@ -1012,7 +1012,7 @@ article p {
 
     /* 卡片 */
     .card {
-        color: #FFFFFB;
+        color: #FFF;
         background: #1C1C1C;
     }
 
@@ -1041,7 +1041,7 @@ article p {
         border-left: #121212;
     }
     .menu-link {
-        color: #FFFFFB;
+        color: #FFF;
     }
 
     .menu-link-active {
@@ -1058,7 +1058,7 @@ article p {
     }
 
     .menu-button {
-        color: #FFFFFB;
+        color: #FFF;
         background-color: #242424;
     }
 
@@ -1085,7 +1085,7 @@ article p {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
-        border: 0.1rem solid #FFFFFB;
+        border: 0.1rem solid #FFF;
         background-color: #1C1C1C;
     }
 
@@ -1095,8 +1095,8 @@ article p {
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
-        color: #FFFFFB;
-        border: 0.1rem solid #FFFFFB;
+        color: #FFF;
+        border: 0.1rem solid #FFF;
         background-color: #1C1C1C;
     }
 
@@ -1106,7 +1106,7 @@ article p {
 
     /* 文章页左侧菜单 */
     .post-button {
-        border: 0.1rem solid #FFFFFB;
+        border: 0.1rem solid #FFF;
         background-color: #1C1C1C;
     }
 
@@ -1115,8 +1115,8 @@ article p {
     }
 
     .post-left-menu-category {
-        color: #FFFFFB;
-        border: 0.1rem solid #FFFFFB;
+        color: #FFF;
+        border: 0.1rem solid #FFF;
         background-color: #1C1C1C;
     }
 
@@ -1164,7 +1164,7 @@ article p {
     }
 
     .friends-card a {
-        color: #FFFFFB;
+        color: #FFF;
     }
     
     .friends-card-link {
