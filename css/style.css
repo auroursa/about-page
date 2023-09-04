@@ -866,6 +866,9 @@ article p {
     .mobile-div {
         display: block;
         background-color: #C3D7DF;
+        position: sticky;
+        top: 3rem;
+        z-index: 2;
     }
 
     .mobile-div a {
