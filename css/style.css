@@ -959,6 +959,10 @@ article p {
         margin: 0.5rem;
     }
 
+    .post-link {
+        padding: 1.2rem;
+    }
+
     .left-menu-info {
         background-color: #C3D7DF;
     }
@@ -1246,6 +1250,14 @@ article p {
     }
 
     .social-im-button, .post-left-menu-category {
+        background-color: #2C2C2C;
+    }
+
+    .mobile-div {
+        background-color: #2C2C2C;
+    }
+
+    .mobile-div a {
         background-color: #2C2C2C;
     }
 }
