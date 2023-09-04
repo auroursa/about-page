@@ -545,12 +545,10 @@ article p {
     background-color: #6C9BD2;
     border: none;
     padding: 0.5rem 1.5rem;
-    margin: 0 auto;
     text-align: center;
     text-decoration: none;
     display: block;
     font-size: 1rem;
-    border-radius: 1rem;
 }
 
 .comments-button {

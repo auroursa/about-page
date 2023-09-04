@@ -100,6 +100,33 @@
                         <p>强调色：<span class="about-color" style="color: #0C0C0C; background-color: #D8E3E7">#D8E3E7</span> <span class="about-color" style="color: #FFFFFB; background-color: #6C9BD2">#6C9BD2</span> <span class="about-color" style="color: #FFFFFB; background-color: #00558F">#00558F</span></p>
                     </div>
                 </article>
+                <div class="index-article card" id="comments">
+                    <h2 class="index-article-title">留言板</h2>
+                    <p>有什么想对我说的，或者想与我交换友链，都欢迎在下面留言，看到都会及时回复。</p>
+                    <p>因为觉得那种基于 GitHub Issue 的方案太灵车了，所以还是选择了目前比较成熟的评论系统。但由于评论数据不留存于本地，可能会出现评论信息丢失的情况。</p>
+                    <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
+                    <div id="disqus_thread"></div>
+                    <!-- 添加一个按钮 -->
+                    <button id="load_disqus" class="button">加载 Disqus</button>
+                    <!-- Disqus 留言板容器 -->
+                    <div id="disqus_thread_container"></div>
+                </div>
+                <script>
+                    // 点击按钮后加载 Disqus 留言板
+                    document.getElementById('load_disqus').addEventListener('click', function() {
+                    // 添加 Disqus 留言板脚本
+                    var disqusScript = document.createElement('script');
+                    disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                    disqusScript.setAttribute('data-timestamp', +new Date());
+                    document.head.appendChild(disqusScript);
+                    // 移动 Disqus 留言板内容到容器中
+                    var disqusContainer = document.getElementById('disqus_thread_container');
+                    disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                    // 隐藏按钮，防止重复加载
+                    this.style.display = 'none';
+                });
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
         </div>
     </main>
