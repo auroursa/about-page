@@ -276,6 +276,12 @@ article p {
     padding-top: 1rem;
     padding-left: 1rem;
     background-color: #FAFAF6;
+    transition: 0.5s background-color;
+}
+
+.skills-list-content:hover {
+    background-color: #D8E3E7;
+    transition: 0.5s background-color;
 }
 
 /* 设备列表 */
@@ -290,6 +296,12 @@ article p {
     padding-top: 1rem;
     padding-left: 1rem;
     background-color: #FAFAF6;
+    transition: 0.5s background-color;
+}
+
+.devices-list-content:hover {
+    background-color: #D8E3E7;
+    transition: 0.5s background-color;
 }
 
 /* 友链列表 */
@@ -953,6 +965,12 @@ article p {
 
     a {
         color: #FFFFFB;
+        background-color: #1C1C1C;
+        text-decoration-color: #00558F;
+    }
+
+    a:hover {
+        background-color: #00558F;
     }
 
     /* 引用标签 */
@@ -965,10 +983,6 @@ article p {
     .card {
         color: #FFFFFB;
         background: #1C1C1C;
-    }
-
-    .card a {
-        color: #FFFFFB;
     }
 
     /* 首页标题颜色 */
@@ -1083,11 +1097,22 @@ article p {
     /* 设备列表 */
     .devices-list-content {
         background-color: #212121;
+        transition: 0.5s background-color;
+    }
+
+    .skills-list-content:hover {
+        background-color: #3C3C3C;
+        transition: 0.5s background-color;
     }
 
     /* 技能列表 */
     .skills-list-content {
         background-color: #212121;
+    }
+
+    .skills-list-content:hover {
+        background-color: #3C3C3C;
+        transition: 0.5s background-color;
     }
 
     .site-info {
