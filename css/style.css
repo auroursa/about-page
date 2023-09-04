@@ -865,6 +865,11 @@ article p {
 
     .mobile-div {
         display: block;
+        background-color: #C3D7DF;
+    }
+
+    .mobile-div a {
+        background-color: #C3D7DF;
     }
 
     .mobile-menu-button {
