@@ -20,12 +20,17 @@ html {
 header, footer {
     margin: 2rem;
     text-align: center;
+    font-family: "overpass";
 }
 
 header {
     position: sticky;
     z-index: -1;
     top: 2rem;
+}
+
+footer a {
+    background-color: #EBF4F4;
 }
 
 main {
@@ -88,12 +93,10 @@ p code {
 
 /* 标题 */
 .title {
-    font-family: "overpass";
     margin: 0.8rem auto;
 }
 
 .description {
-    font-family: "overpass";
     margin: 0;
 }
 
@@ -988,6 +991,10 @@ article p {
     html {
         background: #121212;
         color: #FFF;
+    }
+
+    footer a {
+        background-color: #121212;
     }
 
     main {
