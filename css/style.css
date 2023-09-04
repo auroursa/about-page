@@ -553,7 +553,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #D0DFE6;
+    background-color: #C3D7DF;
     vertical-align: middle;
 }
 
@@ -571,10 +571,20 @@ article p {
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
+    transition: 0.5s background-color;
+}
+
+.menu-button:hover {
+    background-color: #C3D7DF;
+    transition: 0.5s background-color;
 }
 
 .menu-button-active {
     color: #FFFFFB;
+    background-color: #6C9BD2;
+}
+
+.menu-button-active:hover {
     background-color: #6C9BD2;
 }
 
@@ -869,7 +879,6 @@ article p {
     }
 
     /* 首页 & 友人双栏布局 */
-
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
     }
@@ -883,11 +892,11 @@ article p {
     }
 
     .social-button, .post-button {
-        background-color: #D0DFE6;
+        background-color: #C3D7DF;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #D0DFE6;
+        background-color: #C3D7DF;
     }
 
     /* 首页及页面样式 */
@@ -926,7 +935,11 @@ article p {
     }
 
     .left-menu-info {
-        background-color: #D0DFE6;
+        background-color: #C3D7DF;
+    }
+
+    .left-menu-info a {
+        background-color: #C3D7DF;
     }
 
     /* 友链列表 */
@@ -1031,7 +1044,15 @@ article p {
         background-color: #242424;
     }
 
+    .menu-button:hover {
+        background-color: #3C3C3C;
+    }
+
     .menu-button-active {
+        background-color: #00558F;
+    }
+
+    .menu-button-active:hover {
         background-color: #00558F;
     }
 
@@ -1123,6 +1144,10 @@ article p {
     .main-content-social {
         background: #121212;
     }
+
+    .friends-card a {
+        color: #FFFFFB;
+    }
     
     .friends-card-link {
         background-color: #1C1C1C;
@@ -1172,6 +1197,10 @@ article p {
 
 @media screen and (max-width:680px) and (prefers-color-scheme: dark) {
     .left-menu-info {
+        background-color: #2C2C2C;
+    }
+
+    .left-menu-info a {
         background-color: #2C2C2C;
     }
 
