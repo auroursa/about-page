@@ -1100,7 +1100,7 @@ article p {
         transition: 0.5s background-color;
     }
 
-    .skills-list-content:hover {
+    .devices-list-content:hover {
         background-color: #3C3C3C;
         transition: 0.5s background-color;
     }
