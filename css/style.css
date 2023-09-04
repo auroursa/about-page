@@ -16,6 +16,16 @@ html {
     color: #0C0C0C;
 }
 
+header {
+    position: sticky;
+    z-index: -1;
+    top: 2rem;
+}
+
+main {
+    background-color: #EBF4F4;
+}
+
 a {
     color: #0C0C0C;
     background-color: #FFFFFB;
@@ -823,6 +833,10 @@ article p {
 }
 
 @media screen and (max-width:680px) {
+    header {
+        top: 0.5rem;
+    }
+
     img {
         max-width: 100%; 
     }
@@ -974,6 +988,10 @@ article p {
     html {
         background: #121212;
         color: #FFFFFB;
+    }
+
+    main {
+        background-color: #121212;
     }
 
     a {
