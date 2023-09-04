@@ -16,6 +16,12 @@ html {
     color: #0C0C0C;
 }
 
+/* 页首、页尾 */
+header, footer {
+    margin: 2rem;
+    text-align: center;
+}
+
 header {
     position: sticky;
     z-index: -1;
@@ -89,12 +95,6 @@ p code {
 .description {
     font-family: "overpass";
     margin: 0;
-}
-
-/* 页首、页尾 */
-header, footer {
-    margin: 2rem;
-    text-align: center;
 }
 
 /* 顶部头像 */
