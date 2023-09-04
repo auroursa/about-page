@@ -18,6 +18,16 @@ html {
 
 a {
     color: #0C0C0C;
+    background-color: #FFFFFB;
+    text-decoration-color: #6C9BD2;
+    transition: 0.5s background-color, 0.25s color;
+}
+
+a:hover {
+    color: #FFFFFB;
+    background-color: #6C9BD2;
+    text-decoration: none;
+    transition: 0.5s background-color, 0.25s color;
 }
 
 img {
@@ -41,7 +51,6 @@ blockquote {
     width:-webkit-fit-content;
     width:-moz-fit-content;
     padding: 0.5rem;
-    border-radius: 0.5rem;
 }
 
 pre {
@@ -59,7 +68,6 @@ code {
 p code {
     padding: 0.15rem 0.2rem;
     vertical-align: middle;
-    border-radius: 0.2rem;
 }
 
 /* 标题 */
@@ -213,11 +221,27 @@ article p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid #0C0C0C;
+    border: 0.1rem solid #0C0C0C;
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
     background-color: #FFFFFB;
+    transition: 0.5s background-color, 0.25s border;
+}
+
+.social-button:hover {
+    background-color: #6C9BD2;
+    border: 0.1rem solid transparent;
+    transition: 0.5s background-color, 0.25s border;
+}
+
+.social-button:hover img {
+    filter: invert(100%);
+    transition: 0.25s filter;
+}
+
+.social-button img {
+    transition: 0.25s filter;
 }
 
 .social-im-button {
@@ -227,9 +251,17 @@ article p {
     width: 5.8rem;
     color: #0C0C0C;
     background-color: #FFFFFB;
-    border: 1px solid #0C0C0C;
+    border: 0.1rem solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
+    transition: 0.5s background-color, 0.25s color, 0.1s border;
+}
+
+.social-im-button:hover {
+    color: #FFFFFB;
+    background-color: #6C9BD2;
+    border: 0.1rem solid transparent;
+    transition: 0.5s background-color, 0.25s color, 0.1s border;
 }
 
 /* 技能列表 */
@@ -342,9 +374,17 @@ article p {
     width: 3.75rem;
     color: #0C0C0C;
     background-color: #FFFFFB;
-    border: 1px solid #0C0C0C;
+    border: 0.1rem solid #0C0C0C;
     border-radius: 0.5rem;
     text-align: center;
+    transition: 0.5s background-color, 0.25s color, 0.1s border;
+}
+
+.post-left-menu-category:hover {
+    color: #FFFFFB;
+    background-color: #6C9BD2;
+    border: 0.1rem solid transparent;
+    transition: 0.5s background-color, 0.25s color, 0.1s border;
 }
 
 /* 文章页卡片 */
@@ -397,11 +437,27 @@ article p {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid #0C0C0C;
+    border: 0.1rem solid #0C0C0C;
     border-radius: 50%;
     width: 2.75rem;
     height: 2.75rem;
     background-color: #FFFFFB;
+    transition: 0.5s background-color, 0.25s border;
+}
+
+.post-button:hover {
+    background-color: #6C9BD2;
+    border: 0.1rem solid transparent;
+    transition: 0.5s background-color, 0.25s border;
+}
+
+.post-button:hover img {
+    filter: invert(100%);
+    transition: 0.25s filter;
+}
+
+.post-button img {
+    transition: 0.25s filter;
 }
 
 /* 文章尾注 */
@@ -456,10 +512,6 @@ article p {
 
 .about-left-menu-list li {
     padding: 0.3rem 0;
-}
-
-.about-left-menu-list a {
-    text-decoration: none;
 }
 
 /* 按钮 */
@@ -718,7 +770,7 @@ article p {
     }
 
     .social-button, .post-button {
-        border-radius: 0.4rem;
+        border-radius: 0.5rem;
     }
 
     .social-im-button, .post-left-menu-category {
@@ -980,27 +1032,43 @@ article p {
 
     /* 首页左侧菜单（社交媒体图标） */
     .social-button {
-        border: 1px solid #FFFFFB;
+        border: 0.1rem solid #FFFFFB;
         background-color: #1C1C1C;
+    }
+
+    .social-button:hover {
+        background-color: #00558F;
     }
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
     .social-im-button {
         color: #FFFFFB;
-        border: 1px solid #FFFFFB;
+        border: 0.1rem solid #FFFFFB;
         background-color: #1C1C1C;
+    }
+
+    .social-im-button:hover {
+        background-color: #00558F;
     }
 
     /* 文章页左侧菜单 */
     .post-button {
-        border: 1px solid #FFFFFB;
+        border: 0.1rem solid #FFFFFB;
         background-color: #1C1C1C;
+    }
+
+    .post-button:hover {
+        background-color: #00558F;
     }
 
     .post-left-menu-category {
         color: #FFFFFB;
-        border: 1px solid #FFFFFB;
+        border: 0.1rem solid #FFFFFB;
         background-color: #1C1C1C;
+    }
+
+    .post-left-menu-category:hover {
+        background-color: #00558F;
     }
 
     /* 展开按钮 */
