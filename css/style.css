@@ -6,6 +6,8 @@
 
 @font-face {
     font-family: "overpass-bold";
+    font-style: normal;
+    font-weight: bold;
     src: url("../font/overpass-bold.otf") format("opentype");
     font-display: swap;
 }
