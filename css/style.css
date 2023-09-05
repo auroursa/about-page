@@ -725,7 +725,8 @@ article p {
     }
 
     .friends-card-info {
-        grid-column: 1 / 3;
+        display: none;
+        /* grid-column: 1 / 3; */
     }
 
     /* 社交图标改为左右分栏 */
