@@ -232,10 +232,17 @@ article p {
     cursor: pointer;
     border: 0.1rem solid #0C0C0C;
     border-radius: 50%;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-sizing: content-box;
+    padding: 0;
     background-color: #FFF;
     transition: 0.5s background-color, 0.25s border;
+}
+
+.social-button img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .social-button:hover {
@@ -464,10 +471,17 @@ article p {
     cursor: pointer;
     border: 0.1rem solid #0C0C0C;
     border-radius: 50%;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-sizing: content-box;
+    padding: 0;
     background-color: #FFF;
     transition: 0.5s background-color, 0.25s border;
+}
+
+.post-button img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .post-button:hover {
