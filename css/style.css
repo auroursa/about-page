@@ -347,6 +347,10 @@ article p {
     text-align: left;
 }
 
+.friends-card-info {
+    grid-column: 1 / 4;
+}
+
 .friends-card-title {
     margin-bottom: 0.5rem;
 
@@ -679,6 +683,10 @@ article p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .friends-card-info {
+        grid-column: 1 / 3;
+    }
+
     .skills-list-card {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -714,6 +722,10 @@ article p {
 
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .friends-card-info {
+        grid-column: 1 / 3;
     }
 
     /* 社交图标改为左右分栏 */
@@ -904,6 +916,10 @@ article p {
     /* 首页 & 友人双栏布局 */
     .index-main, .friends-main, .friends-list {
         grid-template-columns: 1fr; /* Use one column for mobile devices */
+    }
+
+    .friends-card-info {
+        grid-column: 1;
     }
 
     /* social-menu-b 详情菜单 */
