@@ -5,6 +5,12 @@
 }
 
 @font-face {
+    font-family: "overpass-bold";
+    src: url("../font/overpass-bold.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "overpass-mono";
     src: url("../font/overpass-mono.otf") format("opentype");
     font-display: swap;
@@ -95,6 +101,7 @@ p code {
 /* 标题 */
 .title {
     margin: 0.8rem auto;
+    font-family: "overpass-bold";
 }
 
 .description {
