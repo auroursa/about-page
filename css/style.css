@@ -115,7 +115,7 @@ p code {
 
 .menu {
     display: flex;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .menu-a {
@@ -330,7 +330,7 @@ article p {
 }
 
 /* 左侧菜单滚动置顶 */
-.left-menu, .friends-left-menu {
+.left-menu {
     position: sticky;
     top: 3rem;
 }
@@ -698,6 +698,10 @@ article p {
 
 /* for iPad */
 @media screen and (min-width: 681px) and (max-width: 960px) {
+    .menu {
+        margin-bottom: 0;
+    }
+    
     .menu-div {
         grid-column: 2;
     }
@@ -725,8 +729,7 @@ article p {
     }
 
     .friends-card-info {
-        display: none;
-        /* grid-column: 1 / 3; */
+        grid-column: 1 / 3;
     }
 
     /* 社交图标改为左右分栏 */
@@ -734,31 +737,16 @@ article p {
         padding: 0;
     }
     
-    .social, .post, .about-site-info {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 0.5rem;
-        background-color: #EBF4F4;
-    }
-
-    .site-info {
+    .social, .post, .site-info, .about-site-info {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         background-color: #FFF;
-        border-radius: 1rem;
     }
 
     /* 单独设置左右的样式 */
     .left-menu-a,
     .left-menu-b {
         background-color: #FFF;
-        padding: 1.5rem 0;
-        padding-left: 1.5rem;
-        text-align: left;
-    }
-
-    .friends-left-menu-a,
-    .friends-left-menu-b {
         padding: 1.5rem 0;
         padding-left: 1.5rem;
         text-align: left;
@@ -833,7 +821,7 @@ article p {
     }
 
     /* 取消左侧菜单滚动置顶 */
-    .left-menu, .friends-left-menu {
+    .left-menu {
         position: static;
     }
 
@@ -992,7 +980,7 @@ article p {
     }
 
     /* 取消左侧菜单滚动置顶 */
-    .left-menu, .friends-left-menu {
+    .left-menu {
         position: static;
     }
 
@@ -1188,10 +1176,6 @@ article p {
         transition: 0.5s background-color;
     }
 
-    .site-info {
-        background: #1C1C1C;
-    }
-
     /* 友链列表 */
     .main-content-social {
         background: #121212;
@@ -1237,7 +1221,7 @@ article p {
 
 /* for iPad dark mode */
 @media screen and (min-width: 681px) and (max-width: 960px) and (prefers-color-scheme: dark) {
-    .social, .post, .about-site-info {
+    .social, .post, .site-info, .about-site-info {
         background-color: #121212;
     }
 
@@ -1253,10 +1237,6 @@ article p {
     }
 
     .left-menu-info a {
-        background-color: #2C2C2C;
-    }
-
-    .site-info {
         background-color: #2C2C2C;
     }
 
