@@ -18,7 +18,9 @@ function checkScroll() {
 
 function onScroll() {
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(checkScroll, 120);
+    scrollTimeout = setTimeout(() => {
+        checkScroll();
+    }, 100); // 设置延迟时间等待滚动停止
 }
 
 window.addEventListener('scroll', onScroll);
