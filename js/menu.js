@@ -1,14 +1,19 @@
 const menu = document.querySelector('.menu-div');
-let scrollTimer;
+let isAtTop = false;
 
-window.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-        const rect = menu.getBoundingClientRect();
-        if (rect.top === 0) {
-            menu.classList.add('at-top');
-        } else {
-            menu.classList.remove('at-top');
-        }
-    }, 200);
-});
+function checkScroll() {
+    const rect = menu.getBoundingClientRect();
+    isAtTop = rect.top === 0;
+
+    if (isAtTop) {
+        menu.classList.add('at-top');
+    } else {
+        menu.classList.remove('at-top');
+    }
+}
+
+function onScroll() {
+    requestAnimationFrame(checkScroll);
+}
+
+window.addEventListener('scroll', onScroll);
