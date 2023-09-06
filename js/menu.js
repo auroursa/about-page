@@ -1,11 +1,9 @@
 const menu = document.querySelector('.menu-div');
-let isAtTop = false;
+let scrollTimeout;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
-    isAtTop = rect.top === 0;
-
-    if (isAtTop) {
+    if (rect.top === 0) {
         menu.classList.add('at-top');
     } else {
         menu.classList.remove('at-top');
@@ -13,7 +11,8 @@ function checkScroll() {
 }
 
 function onScroll() {
-    requestAnimationFrame(checkScroll);
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(checkScroll, 120);
 }
 
 window.addEventListener('scroll', onScroll);
