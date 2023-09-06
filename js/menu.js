@@ -1,24 +1,41 @@
 const menu = document.querySelector('.menu-div');
 let isAtTop = false;
+let isScrolling = false;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
-    isAtTop = rect.top === 0;
+    const newIsAtTop = rect.top === 0;
 
-    if (isAtTop) {
-        menu.classList.add('at-top');
-    } else {
-        menu.classList.remove('at-top');
+    if (newIsAtTop !== isAtTop) {
+        isAtTop = newIsAtTop;
+        if (isAtTop) {
+            menu.classList.add('at-top');
+        } else {
+            menu.classList.remove('at-top');
+        }
     }
 }
 
-function onTouchEnd() {
-    setTimeout(checkScroll, 0);
+function startScroll() {
+    if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            checkScroll();
+            isScrolling = false;
+        });
+    }
 }
 
-function onScroll() {
-    checkScroll();
+function stopScroll() {
+    if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            checkScroll();
+            isScrolling = false;
+        });
+    }
 }
 
-window.addEventListener('scroll', onScroll);
-window.addEventListener('touchend', onTouchEnd);
+window.addEventListener('scroll', startScroll);
+window.addEventListener('touchstart', startScroll);
+window.addEventListener('touchend', stopScroll);
