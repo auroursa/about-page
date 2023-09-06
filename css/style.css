@@ -123,6 +123,11 @@ p code {
     position: relative;
     padding-left: 0.9rem;
     width: 100%;
+    transition: 0.5s background-color;
+}
+
+.menu-div.at-top .menu-a {
+    background-color: #EBF4F4;
 }
 
 /* 卡片 */
@@ -605,6 +610,11 @@ article p {
     height: 3rem;
     background-color: #D8E3E7;
     vertical-align: middle;
+    transition: 0.5s background-color;
+}
+
+.menu-div.at-top .toggleButton {
+    background-color: #EBF4F4;
 }
 
 /* 菜单按钮 */
@@ -624,6 +634,10 @@ article p {
     transition: 0.5s background-color;
 }
 
+.menu-div.at-top .menu-button {
+    background-color: #EBF4F4;
+}
+
 @media (hover: hover), (pointer: fine) {
     .menu-button:hover {
         background-color: #D8E3E7;
@@ -633,6 +647,10 @@ article p {
 
 .menu-button-active {
     color: #FFF;
+    background-color: #6C9BD2;
+}
+
+.menu-div.at-top .menu-button-active {
     background-color: #6C9BD2;
 }
 
@@ -919,12 +937,21 @@ article p {
         color: #FFF;
         background-color: #D8E3E7;
         vertical-align: middle;
+        transition: 0.5s background-color;
+    }
+
+    .menu-div.at-top .mobile-menu-button {
+        background-color: #EBF4F4;
     }
     
     .mobile-menu-button-active {
         font-size: 1rem;
         line-height: 2rem;
         width: 6rem;
+        background-color: #6C9BD2;
+    }
+
+    .menu-div.at-top .mobile-menu-button-active {
         background-color: #6C9BD2;
     }
 
@@ -955,10 +982,21 @@ article p {
 
     .social-button, .post-button {
         background-color: #D8E3E7;
+        transition: 0.5s background-color;
+    }
+
+    .menu-div.at-top + .index-main .social-button, .menu-div.at-top + .index-main .post-button {
+        background-color: #EBF4F4;
+        transition: 0.5s background-color;
     }
 
     .social-im-button, .post-left-menu-category {
         background-color: #D8E3E7;
+    }
+
+    .menu-div.at-top + .index-main .social-im-button, .menu-div.at-top + .index-main .post-left-menu-category {
+        background-color: #EBF4F4;
+        transition: 0.5s background-color;
     }
 
     /* 首页及页面样式 */
@@ -1002,10 +1040,22 @@ article p {
 
     .left-menu-info {
         background-color: #D8E3E7;
+        transition: 0.5s background-color;
+    }
+
+    .menu-div.at-top + .index-main .left-menu-info {
+        background-color: #EBF4F4;
+        transition: 0.5s background-color;
     }
 
     .left-menu-info a {
         background-color: #D8E3E7;
+        transition: 0.5s background-color;
+    }
+
+    .menu-div.at-top + .index-main .left-menu-info a {
+        background-color: #EBF4F4;
+        transition: 0.5s background-color;
     }
 
     /* 友链列表 */
@@ -1113,13 +1163,17 @@ article p {
         background-color: #242424;
     }
 
-    .menu-a::before {
-        background-color: #00558F;
+    .menu-div.at-top .menu-a {
+        background-color: #121212;
     }
 
     .menu-button {
         color: #FFF;
         background-color: #242424;
+    }
+
+    .menu-div.at-top .menu-button {
+        background-color: #121212;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1129,6 +1183,10 @@ article p {
     }
 
     .menu-button-active {
+        background-color: #00558F;
+    }
+
+    .menu-div.at-top .menu-button-active {
         background-color: #00558F;
     }
 
@@ -1143,7 +1201,15 @@ article p {
         background: #242424;
     }
 
+    .menu-div.at-top .mobile-menu-button {
+        background-color: #121212;
+    }
+
     .mobile-menu-button-active {
+        background-color: #00558F;
+    }
+
+    .menu-div.at-top .mobile-menu-button-active {
         background-color: #00558F;
     }
 
@@ -1199,6 +1265,10 @@ article p {
     /* 展开按钮 */
     .toggleButton {
         background-color: #242424;
+    }
+
+    .menu-div.at-top .toggleButton {
+        background-color: #121212;
     }
 
     .menu-icon {
@@ -1292,23 +1362,47 @@ article p {
         background-color: #242424;
     }
 
+    .menu-div.at-top + .index-main .left-menu-info {
+        background-color: #121212;
+    }
+
     .left-menu-info a {
         background-color: #242424;
+    }
+
+    .menu-div.at-top + .index-main .left-menu-info a {
+        background-color: #121212;
     }
 
     .social-button, .post-button {
         background-color: #242424;
     }
 
+    .menu-div.at-top + .index-main .social-button, .menu-div.at-top + .index-main .post-button {
+        background-color: #121212;
+    }
+
     .social-im-button, .post-left-menu-category {
         background-color: #242424;
+    }
+
+    .menu-div.at-top + .index-main .social-im-button, .menu-div.at-top + .index-main .post-left-menu-category {
+        background-color: #121212;
     }
 
     .mobile-div {
         background-color: #242424;
     }
 
+    .menu-div.at-top + .index-main .mobile-div {
+        background-color: #121212;
+    }
+
     .mobile-div a {
         background-color: #242424;
+    }
+
+    .menu-div.at-top + .index-main .mobile-div a {
+        background-color: #121212;
     }
 }
