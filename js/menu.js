@@ -1,6 +1,6 @@
 const menu = document.querySelector('.menu-div');
 let isAtTop = false;
-let isScrolling = false;
+let scrollTimeout;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
@@ -16,18 +16,17 @@ function checkScroll() {
     }
 }
 
+function onScroll() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(checkScroll, 100); // 设置延迟时间等待滚动停止
+}
+
 function onTouchMove() {
-    if (!isScrolling) {
-        isScrolling = true;
-        requestAnimationFrame(() => {
-            checkScroll();
-            isScrolling = false;
-        });
-    }
+    clearTimeout(scrollTimeout); // 用户滚动时清除计时器
 }
 
 function onTouchEnd() {
-    checkScroll();
+    checkScroll(); // 在touchend事件中进行滚动检测
 }
 
 function isIOS() {
@@ -38,5 +37,5 @@ if (isIOS()) {
     window.addEventListener('touchmove', onTouchMove);
     window.addEventListener('touchend', onTouchEnd);
 } else {
-    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', onScroll); // 在其他平台上使用scroll事件
 }
