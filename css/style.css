@@ -35,11 +35,13 @@ a {
     transition: 0.5s background-color, 0.25s color;
 }
 
-a:hover {
-    color: #FFF;
-    background-color: #6C9BD2;
-    text-decoration: none;
-    transition: 0.5s background-color, 0.25s color;
+@media (hover: hover), (pointer: fine) {
+    a:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        text-decoration: none;
+        transition: 0.5s background-color, 0.25s color;
+    }
 }
 
 img {
@@ -245,15 +247,17 @@ article p {
     height: 1.5rem;
 }
 
-.social-button:hover {
-    background-color: #6C9BD2;
-    border: 0.1rem solid transparent;
-    transition: 0.5s background-color, 0.25s border;
-}
-
-.social-button:hover img {
-    filter: invert(100%);
-    transition: 0.25s filter;
+@media (hover: hover), (pointer: fine) {
+    .social-button:hover {
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+        transition: 0.5s background-color, 0.25s border;
+    }
+    
+    .social-button:hover img {
+        filter: invert(100%);
+        transition: 0.25s filter;
+    }
 }
 
 .social-button img {
@@ -273,11 +277,13 @@ article p {
     transition: 0.5s background-color, 0.25s color, 0.1s border;
 }
 
-.social-im-button:hover {
-    color: #FFF;
-    background-color: #6C9BD2;
-    border: 0.1rem solid transparent;
-    transition: 0.5s background-color, 0.25s color, 0.1s border;
+@media (hover: hover), (pointer: fine) {
+    .social-im-button:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+        transition: 0.5s background-color, 0.25s color, 0.1s border;
+    }
 }
 
 /* 技能列表 */
@@ -295,9 +301,11 @@ article p {
     transition: 0.5s background-color;
 }
 
-.skills-list-content:hover {
-    background-color: #D8E3E7;
-    transition: 0.5s background-color;
+@media (hover: hover), (pointer: fine) {
+    .skills-list-content:hover {
+        background-color: #D8E3E7;
+        transition: 0.5s background-color;
+    }
 }
 
 /* 设备列表 */
@@ -315,9 +323,11 @@ article p {
     transition: 0.5s background-color;
 }
 
-.devices-list-content:hover {
-    background-color: #D8E3E7;
-    transition: 0.5s background-color;
+@media (hover: hover), (pointer: fine) {
+    .devices-list-content:hover {
+        background-color: #D8E3E7;
+        transition: 0.5s background-color;
+    }
 }
 
 /* 友链列表 */
@@ -368,10 +378,12 @@ article p {
     transition: background-color 0.5s, color 0.25s;
 }
 
-.friends-card-link:hover {
-    color: #FFF;
-    background-color: #6C9BD2;
-    transition: background-color 0.5s, color 0.25s;
+@media (hover: hover), (pointer: fine) {
+    .friends-card-link:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        transition: background-color 0.5s, color 0.25s;
+    }
 
     .index-article-title {
         padding-left: 0;
@@ -412,11 +424,13 @@ article p {
     transition: 0.5s background-color, 0.25s color, 0.1s border;
 }
 
-.post-left-menu-category:hover {
-    color: #FFF;
-    background-color: #6C9BD2;
-    border: 0.1rem solid transparent;
-    transition: 0.5s background-color, 0.25s color, 0.1s border;
+@media (hover: hover), (pointer: fine) {
+    .post-left-menu-category:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+        transition: 0.5s background-color, 0.25s color, 0.1s border;
+    }
 }
 
 /* 文章页卡片 */
@@ -442,10 +456,12 @@ article p {
     overflow: hidden;
 }
 
-.post-link:hover {
-    color: #FCFAF2;
-    background-color: #6C9BD2;
-    transition: background-color 0.5s, color 0.25s;
+@media (hover: hover), (pointer: fine) {
+    .post-link:hover {
+        color: #FCFAF2;
+        background-color: #6C9BD2;
+        transition: background-color 0.5s, color 0.25s;
+    }
 }
 
 .post-category {
@@ -484,15 +500,17 @@ article p {
     height: 1.5rem;
 }
 
-.post-button:hover {
-    background-color: #6C9BD2;
-    border: 0.1rem solid transparent;
-    transition: 0.5s background-color, 0.25s border;
-}
-
-.post-button:hover img {
-    filter: invert(100%);
-    transition: 0.25s filter;
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover {
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+        transition: 0.5s background-color, 0.25s border;
+    }
+    
+    .post-button:hover img {
+        filter: invert(100%);
+        transition: 0.25s filter;
+    }
 }
 
 .post-button img {
@@ -606,9 +624,11 @@ article p {
     transition: 0.5s background-color;
 }
 
-.menu-button:hover {
-    background-color: #C3D7DF;
-    transition: 0.5s background-color;
+@media (hover: hover), (pointer: fine) {
+    .menu-button:hover {
+        background-color: #C3D7DF;
+        transition: 0.5s background-color;
+    }
 }
 
 .menu-button-active {
@@ -616,8 +636,10 @@ article p {
     background-color: #6C9BD2;
 }
 
-.menu-button-active:hover {
-    background-color: #6C9BD2;
+@media (hover: hover), (pointer: fine) {
+    .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
 }
 
 .menu-button-active .menu-icon {
@@ -1034,8 +1056,10 @@ article p {
         text-decoration-color: #00558F;
     }
 
-    a:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        a:hover {
+            background-color: #00558F;
+        }
     }
 
     /* 引用标签 */
@@ -1060,10 +1084,12 @@ article p {
         background-color: #1C1C1C;
         transition: background-color 0.5s;
     }
-    
-    .post-link:hover {
-        background-color: #00558F;
-        transition: background-color 0.5s;
+
+    @media (hover: hover), (pointer: fine) {
+        .post-link:hover {
+            background-color: #00558F;
+            transition: background-color 0.5s;
+        }
     }
 
     .post-category {
@@ -1096,16 +1122,20 @@ article p {
         background-color: #242424;
     }
 
-    .menu-button:hover {
-        background-color: #3C3C3C;
+    @media (hover: hover), (pointer: fine) {
+        .menu-button:hover {
+            background-color: #3C3C3C;
+        }
     }
 
     .menu-button-active {
         background-color: #00558F;
     }
 
-    .menu-button-active:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        .menu-button-active:hover {
+            background-color: #00558F;
+        }
     }
 
     /* 移动端菜单 */
@@ -1123,8 +1153,10 @@ article p {
         background-color: #1C1C1C;
     }
 
-    .social-button:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        .social-button:hover {
+            background-color: #00558F;
+        }
     }
 
     /* 首页左侧菜单（即时通讯 IM 按钮） */
@@ -1134,8 +1166,10 @@ article p {
         background-color: #1C1C1C;
     }
 
-    .social-im-button:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        .social-im-button:hover {
+            background-color: #00558F;
+        }
     }
 
     /* 文章页左侧菜单 */
@@ -1144,8 +1178,10 @@ article p {
         background-color: #1C1C1C;
     }
 
-    .post-button:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        .post-button:hover {
+            background-color: #00558F;
+        }
     }
 
     .post-left-menu-category {
@@ -1154,8 +1190,10 @@ article p {
         background-color: #1C1C1C;
     }
 
-    .post-left-menu-category:hover {
-        background-color: #00558F;
+    @media (hover: hover), (pointer: fine) {
+        .post-left-menu-category:hover {
+            background-color: #00558F;
+        }
     }
 
     /* 展开按钮 */
@@ -1173,9 +1211,11 @@ article p {
         transition: 0.5s background-color;
     }
 
-    .devices-list-content:hover {
-        background-color: #3C3C3C;
-        transition: 0.5s background-color;
+    @media (hover: hover), (pointer: fine) {
+        .devices-list-content:hover {
+            background-color: #3C3C3C;
+            transition: 0.5s background-color;
+        }
     }
 
     /* 技能列表 */
@@ -1183,9 +1223,11 @@ article p {
         background-color: #212121;
     }
 
-    .skills-list-content:hover {
-        background-color: #3C3C3C;
-        transition: 0.5s background-color;
+    @media (hover: hover), (pointer: fine) {
+        .skills-list-content:hover {
+            background-color: #3C3C3C;
+            transition: 0.5s background-color;
+        }
     }
 
     /* 友链列表 */
@@ -1202,9 +1244,11 @@ article p {
         transition: background-color 0.5s;
     }
 
-    .friends-card-link:hover {
-        background-color: #00558F;
-        transition: background-color 0.5s;
+    @media (hover: hover), (pointer: fine) {
+        .friends-card-link:hover {
+            background-color: #00558F;
+            transition: background-color 0.5s;
+        }
     }
 
     /* 按钮 */
