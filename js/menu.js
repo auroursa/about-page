@@ -1,26 +1,14 @@
 const menu = document.querySelector('.menu-div');
-let isAtTop = false;
-let scrollTimeout;
 
-function checkScroll() {
-    const rect = menu.getBoundingClientRect();
-    const newIsAtTop = rect.top === 0;
-
-    if (newIsAtTop !== isAtTop) {
-        isAtTop = newIsAtTop;
-        if (isAtTop) {
-            menu.classList.add('at-top');
-        } else {
-            menu.classList.remove('at-top');
-        }
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.intersectionRatio < 1) {
+      menu.classList.add('at-top');
+    } else {
+      menu.classList.remove('at-top');
     }
-}
+  },
+  { threshold: [1] }
+);
 
-function onScroll() {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        checkScroll();
-    }, 100); // 设置延迟时间等待滚动停止
-}
-
-window.addEventListener('scroll', onScroll);
+observer.observe(menu);

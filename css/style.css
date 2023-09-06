@@ -107,7 +107,7 @@ p code {
 /* 菜单 */
 .menu-div {
     position: sticky;
-    top: 0;
+    top: -0.1rem;
     z-index: 2;
 }
 
