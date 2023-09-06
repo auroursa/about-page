@@ -1,5 +1,5 @@
 const menu = document.querySelector('.menu-div');
-let scrollTimeout;
+let isScrolling = false;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
@@ -11,8 +11,13 @@ function checkScroll() {
 }
 
 function onScroll() {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(checkScroll, 120);
+    if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            checkScroll();
+            isScrolling = false;
+        });
+    }
 }
 
 window.addEventListener('scroll', onScroll);
