@@ -1,23 +1,23 @@
 const menu = document.querySelector('.menu-div');
-let isScrolling = false;
+let isAtTop = false;
+let scrollTimeout;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
-    if (rect.top === 0) {
-        menu.classList.add('at-top');
-    } else {
+    isAtTop = rect.top === 0;
+    if (!isAtTop) {
         menu.classList.remove('at-top');
     }
 }
 
 function onScroll() {
-    if (!isScrolling) {
-        isScrolling = true;
-        requestAnimationFrame(() => {
-            checkScroll();
-            isScrolling = false;
-        });
-    }
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        checkScroll();
+        if (isAtTop) {
+            menu.classList.add('at-top');
+        }
+    }, 120);
 }
 
 window.addEventListener('scroll', onScroll);
