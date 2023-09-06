@@ -1,5 +1,6 @@
 const menu = document.querySelector('.menu-div');
 let isAtTop = false;
+let isScrolling = false;
 
 function checkScroll() {
     const rect = menu.getBoundingClientRect();
@@ -15,6 +16,16 @@ function checkScroll() {
     }
 }
 
+function onTouchMove() {
+    if (!isScrolling) {
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            checkScroll();
+            isScrolling = false;
+        });
+    }
+}
+
 function onTouchEnd() {
     checkScroll();
 }
@@ -24,7 +35,8 @@ function isIOS() {
 }
 
 if (isIOS()) {
-    window.addEventListener('touchend', onTouchEnd); // 只在 iOS 上使用touchend事件
+    window.addEventListener('touchmove', onTouchMove);
+    window.addEventListener('touchend', onTouchEnd);
 } else {
-    window.addEventListener('scroll', checkScroll); // 在其他平台上使用scroll事件
+    window.addEventListener('scroll', checkScroll);
 }
