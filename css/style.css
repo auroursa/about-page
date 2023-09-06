@@ -975,7 +975,7 @@ article p {
     .index-main .contentDiv,
     .friends-main .contentDiv {
         position: sticky;
-        top: 3rem;
+        top: 2.9rem;
         z-index: 2;
     }
 
