@@ -121,7 +121,6 @@ p code {
     justify-content: center;
     background-color: #D8E3E7;
     position: relative;
-    padding-left: 0.9rem;
     width: 100%;
     transition: 0.5s background-color;
 }
