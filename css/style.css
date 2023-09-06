@@ -603,7 +603,7 @@ article p {
     border: none;
     width: 3rem;
     height: 3rem;
-    background-color: #C3D7DF;
+    background-color: #D8E3E7;
     vertical-align: middle;
 }
 
@@ -626,7 +626,7 @@ article p {
 
 @media (hover: hover), (pointer: fine) {
     .menu-button:hover {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
         transition: 0.5s background-color;
     }
 }
@@ -898,14 +898,14 @@ article p {
 
     .mobile-div {
         display: block;
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
         position: sticky;
         top: 3rem;
         z-index: 2;
     }
 
     .mobile-div a {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
     }
 
     .mobile-menu-button {
@@ -954,11 +954,11 @@ article p {
     }
 
     .social-button, .post-button {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
     }
 
     /* 首页及页面样式 */
@@ -1001,11 +1001,11 @@ article p {
     }
 
     .left-menu-info {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
     }
 
     .left-menu-info a {
-        background-color: #C3D7DF;
+        background-color: #D8E3E7;
     }
 
     /* 友链列表 */
@@ -1198,7 +1198,7 @@ article p {
 
     /* 展开按钮 */
     .toggleButton {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .menu-icon {
@@ -1289,26 +1289,26 @@ article p {
 
 @media screen and (max-width:680px) and (prefers-color-scheme: dark) {
     .left-menu-info {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .left-menu-info a {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .social-button, .post-button {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .social-im-button, .post-left-menu-category {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .mobile-div {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 
     .mobile-div a {
-        background-color: #2C2C2C;
+        background-color: #242424;
     }
 }
