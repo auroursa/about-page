@@ -654,9 +654,22 @@ article p {
     background-color: #6C9BD2;
 }
 
+@media (hover: hover), (pointer: fine) {
+    .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
 .menu-div.at-top .menu-button-active {
     background-color: #6C9BD2;
 }
+
+@media (hover: hover), (pointer: fine) {
+    .menu-div.at-top .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
 
 .menu-button-active .menu-icon {
     filter: invert(100%);
@@ -1192,12 +1205,18 @@ article p {
         background-color: #00558F;
     }
 
+    @media (hover: hover), (pointer: fine) {
+        .menu-button-active:hover {
+            background-color: #00558F;
+        }
+    }
+
     .menu-div.at-top .menu-button-active {
         background-color: #00558F;
     }
 
     @media (hover: hover), (pointer: fine) {
-        .menu-button-active:hover {
+        .menu-div.at-top .menu-button-active:hover {
             background-color: #00558F;
         }
     }
