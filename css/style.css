@@ -635,7 +635,7 @@ article p {
 
 @media (hover: hover), (pointer: fine) {
     .menu-button:hover {
-        background-color: #C5E4ED;
+        background-color: #C3D7DF;
     }
 }
 
@@ -645,7 +645,7 @@ article p {
 
 @media (hover: hover), (pointer: fine) {
     .menu-div.at-top .menu-button:hover {
-        background-color: #C5E4ED;
+        background-color: #C3D7DF;
     }
 }
 
