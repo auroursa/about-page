@@ -633,14 +633,19 @@ article p {
     transition: 0.5s background-color;
 }
 
+@media (hover: hover), (pointer: fine) {
+    .menu-button:hover {
+        background-color: #C5E4ED;
+    }
+}
+
 .menu-div.at-top .menu-button {
     background-color: #EBF4F4;
 }
 
 @media (hover: hover), (pointer: fine) {
-    .menu-button:hover {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
+    .menu-div.at-top .menu-button:hover {
+        background-color: #C5E4ED;
     }
 }
 
@@ -651,12 +656,6 @@ article p {
 
 .menu-div.at-top .menu-button-active {
     background-color: #6C9BD2;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-button-active:hover {
-        background-color: #6C9BD2;
-    }
 }
 
 .menu-button-active .menu-icon {
@@ -1173,12 +1172,18 @@ article p {
         background-color: #242424;
     }
 
+    @media (hover: hover), (pointer: fine) {
+        .menu-button:hover {
+            background-color: #3C3C3C;
+        }
+    }
+
     .menu-div.at-top .menu-button {
         background-color: #121212;
     }
 
     @media (hover: hover), (pointer: fine) {
-        .menu-button:hover {
+        .menu-div.at-top .menu-button:hover {
             background-color: #3C3C3C;
         }
     }
