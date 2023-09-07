@@ -349,7 +349,7 @@ article p {
 /* 左侧菜单滚动置顶 */
 .left-menu {
     position: sticky;
-    top: 3rem;
+    top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
 }
 
 .friends-img {
