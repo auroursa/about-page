@@ -107,7 +107,7 @@ p code {
 /* 菜单 */
 .menu-div {
     position: sticky;
-    top: -0.1rem; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu-div 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
+    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu-div 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
     z-index: 2;
 }
 
@@ -975,7 +975,7 @@ article p {
     .index-main .contentDiv,
     .friends-main .contentDiv {
         position: sticky;
-        top: 2.9rem;
+        top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
         z-index: 2;
     }
 
