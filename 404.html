@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="Page Not Found">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.jpg">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="/css/style.css?v=5.7">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <!--加载字体-->
     <link rel="preload" href="/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -33,38 +33,29 @@
 </head>
 <body>
     <header>
-        <div class="avatar"><img src="/img/avatar.webp" alt="avatar" class="avatar-img"></div>
-        <h1 class="title">Cynosura</h1>
-        <p class="description">Trying to light up the dark.</p>
+        <img class="header-avatar" src="/img/avatar.webp" alt="site-avatar">
+        <h1 class="header-title">Cynosura</h1>
+        <p class="header-description">Trying to light up the dark.</p>
     </header>
     <main class="page-main">
-        <div class="menu-div">
-            <nav class="menu">
-                <div class="menu-a">
-                    <button class="menu-button" onclick="window.location.href='index.html'"><img src="/img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
-                    <button class="menu-button" onclick="window.location.href='/posts'"><img src="/img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
-                    <button class="menu-button" onclick="window.location.href='friends.html'"><img src="/img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
-                    <button class="menu-button" onclick="window.location.href='about.html'"><img src="/img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
-                </div>
-            </nav>
-            <nav class="mobile-menu">
-                <div class="menu-a">
-                    <button class="mobile-menu-button" onclick="window.location.href='index.html'"><img src="/img/icons/home.svg" alt="home-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='/posts'"><img src="/img/icons/article.svg" alt="posts-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='friends.html'"><img src="/img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='about.html'"><img src="/img/icons/about.svg" alt="about-button" class="menu-icon"></button>
-                </div>
-            </nav>
-        </div>
-        <div class="page-card card">
-            <h1>404</h1>
-            <p>Page Not Found</p>
+        <nav class="menu">
+            <div class="menu-a">
+                <button class="menu-button" onclick="window.location.href='/index.html'"><img src="/img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
+                <button class="menu-button" onclick="window.location.href='/posts'"><img src="/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text">文章</span></button>
+                <button class="menu-button" onclick="window.location.href='/friends.html'"><img src="/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+                <button class="menu-button" onclick="window.location.href='/about.html'"><img src="/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
+            </div>
+        </nav>
+        <div class="main-content">
+            <div class="page-center card">
+                <h1>404</h1>
+                <p>Page Not Found</p>
+            </div>
         </div>
     </main>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
-        <script src="/js/toggle.js?v=1.1" defer></script>
-        <script src="/js/menu.js?v=1.5" defer></script>
+        <script src="/js/menu.js" defer></script>
     </footer>
 </body>
 </html>

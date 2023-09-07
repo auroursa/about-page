@@ -22,7 +22,7 @@
     <meta name="twitter:description" content="赤茶的个人页面">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=5.7">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
     <!--加载字体-->
@@ -34,168 +34,145 @@
 </head>
 <body>
     <header>
-        <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img"></div>
-        <h1 class="title">Cynosura</h1>
-        <p class="description">Trying to light up the dark.</p>
+        <img class="header-avatar" src="img/avatar.webp" alt="site-avatar">
+        <h1 class="header-title">Cynosura</h1>
+        <p class="header-description">Trying to light up the dark.</p>
     </header>
-    <main class="index-body">
-        <div class="menu-div">
-            <nav class="menu">
-                <div class="menu-a">
-                    <button class="menu-button-active menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
-                    <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
-                    <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
-                    <button class="menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
+    <main class="index-main">
+        <nav class="menu">
+            <div class="menu-a">
+                <button class="menu-button-active menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text-active">首页</span></button>
+                <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text">文章</span></button>
+                <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+                <button class="menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
+            </div>
+        </nav>
+        <div class="main-header">
+            <div class="main-header-left center-card card">
+                <div class="main-header-left-a">
+                    <img class="personal-avatar" src="img/profile-avatar.webp" alt="personal-avatar">
+                    <h2 class="main-header-left-a-title subtitle">赤茶</h2>
+                    <p class="main-header-left-a-description">Per aspera, ad astra.</p>
                 </div>
-            </nav>
-            <nav class="mobile-menu">
-                <div class="menu-a">
-                    <button class="mobile-menu-button-active mobile-menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"><span class="mobile-menu-button-text">首页</span></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"></button>
-                </div>
-                <div class="menu-b">
-                    <button class="toggleButton"><img src="img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
-                </div>
-            </nav>
-        </div>
-        <div class="index-main">
-            <div class="left-menu hidden contentDiv">
-                <div class="left-menu-info card">
-                    <div class="social">
-                        <div class="left-menu-a">
-                            <img src="img/profile-avatar.webp" alt="avatar" class="avatar-self avatar-img">
-                            <h2 class="left-menu-a-title social-title">赤茶</h2>
-                            <p class="social-description">Per aspera, ad astra. / 终抵繁星</p>
-                        </div>
-                        <div class="left-menu-b">
-                            <div class="social-link">
-                                <h3 class="left-menu-b-title social-title">社交平台</h3>
-                                <button class="social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter" title="Twitter"><img src="img/icons/twitter.svg" class="social-icons"></button>
-                                <button class="social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon" title="Mastodon"><img src="img/icons/mastodon.svg" class="social-icons"></button>
-                                <button class="social-button" onclick="window.location.href='https://bsky.app/profile/cynosura.one'" type="button" id="social-atprotocol" title="Bluesky"><img src="img/icons/atprotocol.svg" class="social-icons"></button>
-                                <button class="social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads" title="Threads"><img src="img/icons/threads.svg" class="social-icons"></button>
-                            </div>
-                            <div class="left-menu-b-space"></div>
-                            <div class="social-im-link">
-                                <h3 class="left-menu-b-title social-title">即时通讯 / IM</h3>
-                                <a href="https://t.me/arcuscha"><span class="social-im-button">Telegram</span></a>
-                                <a href="https://matrix.to/#/@froseiun:matrix.org"><span class="social-im-button">Matrix</span></a>
-                            </div>
-                        </div>
+                <div class="main-header-left-b">
+                    <div class="social-link">
+                        <h3 class="main-header-left-b-title subtitle">社交平台</h3>
+                        <button class="social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter" title="Twitter"><img src="img/icons/twitter.svg" class="social-icon"></button>
+                        <button class="social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon" title="Mastodon"><img src="img/icons/mastodon.svg" class="social-icon"></button>
+                        <button class="social-button" onclick="window.location.href='https://bsky.app/profile/cynosura.one'" type="button" id="social-atprotocol" title="Bluesky"><img src="img/icons/atprotocol.svg" class="social-icon"></button>
+                        <button class="social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads" title="Threads"><img src="img/icons/threads.svg" class="social-icon"></button>
+                    </div>
+                    <div class="main-header-left-b-space"></div>
+                    <div class="social-im-link">
+                        <h3 class="main-header-left-b-title subtitle">即时通讯 / IM</h3>
+                        <a href="https://t.me/arcuscha"><span class="social-im-button">Telegram</span></a>
+                        <a href="https://matrix.to/#/@froseiun:matrix.org"><span class="social-im-button">Matrix</span></a>
                     </div>
                 </div>
-                <div class="hitokoto card">
-                    <h2>一言</h2>
-                    <p id="hitokoto">加载中...需启用 JavaScript</p>
-                    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-                </div>
             </div>
-            <div class="main-content">
-                <article class="index-article card">
-                    <h2 class="index-article-title">自介</h2>
-                    <h3>Per aspera, ad astra. / 终抵繁星</h3>
+            <div class="main-header-right card">
+                <div class="main-header-right-content">
+                    <h2 class="card-title">自介</h2>
                     <p>嗨！这里是赤茶，你也可以叫我楓々 or 熊，很高兴认识你。特别爱折腾，把能用的折腾成电子垃圾的水平。目前在做运维相关的工作，喜欢摄影及乱跑，但比较习惯一个人出门。</p>
-                    <p>在家偶尔滑滑社群平台，或者翻翻 YouTube 首页推荐。偶尔会打游戏，但仅限回合策略，或是拥有丰富架空世界观的类型。通勤出门或在家一般会循环自己的歌单，是喜欢重复单曲循环的怪人。</p>
-                </article>
-                <div class="skills-list index-card card">
-                    <h2 class="index-article-title">技能</h2>
-                    <h3>技能树点得很烂，会的也不精</h3>
-                    <div class="skills-list-card">
-                        <div class="skills-list-content">
-                            <img src="img/icons/html.svg" alt="html-icon" class="skill-icon">
-                            <p>HTML & CSS</p>
-                        </div>
-                        <div class="skills-list-content">
-                            <img src="img/icons/linux.svg" alt="linux-icon" class="skill-icon">
-                            <p>Linux Shell</p>
-                        </div>
-                        <div class="skills-list-content">
-                            <img src="img/icons/database.svg" alt="database-icon" class="skill-icon">
-                            <p>Database</p>
-                        </div>
-                        <div class="skills-list-content">
-                            <img src="img/icons/network.svg" alt="network-icon" class="skill-icon">
-                            <p>Network</p>
-                        </div>
-                        <div class="skills-list-content">
-                            <img src="img/icons/python.svg" alt="python-icon" class="skill-icon">
-                            <p>Python</p>
-                        </div>
-                        <div class="skills-list-content">
-                            <img src="img/icons/ellipsis.svg" alt="ellipsis-icon" class="skill-icon">
-                            <p>学习中...</p>
-                        </div>
-                    </div>
+                    <p>这是我的 PGP Key: <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/7EC1B2BE6A40751208380768C1773E640F6999E6">C177 3E64 0F69 99E6</a></p>
                 </div>
-                <article class="index-article card">
-                    <h2 class="index-article-title">社交</h2>
-                    <h3>有关社交状况的一点说明</h3>
-                    <p>介绍资料卡中有我的 PGP Key 及常用社交平台的联系方式。为防止 spam 轰炸，邮箱不公开列出，如需发送邮件请移步 PGP Key 查看签名邮箱，这是我的 PGP Key 公钥信息: <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/7EC1B2BE6A40751208380768C1773E640F6999E6">C177 3E64 0F69 99E6</a>。也可通过各社交平台联系我，并获取我的 IM 账号。</p>
-                    <p>全平台都有同步更新内容。我也希望未来有一天能够缩减社交平台数量，但目前单靠任一平台无法联系上所有朋友 (如各种原因逃离 Twitter 的难民们)，维护多平台纯属无奈之举。</p>
-                    <p>在过去两年里，我眼睁睁看着曾经熟悉的事物变得四分五裂，却无力改变这一切。虽然还是比较常用 Twitter(X)，却一直在寻找机会逃离这个平台。Bluesky 并不完美，而 Mastodon 社群一直在固步自封，能选择的似乎也只有继续使用下去而已。于是就有了这篇 <a href="https://cynosura.one/posts/the-end-of-the-social-era">写于社交平台终结之时</a> 的感慨。</p>
-                </article>
-                <div class="devices-list index-card card">
-                    <h2 class="index-article-title">设备</h2>
-                    <h3>详细列出的都是在经常使用的</h3>
-                    <div class="devices-list-card">
-                        <div class="devices-list-content">
-                            <img src="img/icons/laptop.svg" alt="laptop-icon" class="device-icon">
-                            <p>Zenbook 14 2022</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/laptop.svg" alt="laptop-icon" class="device-icon">
-                            <p>ZHAN66 Pro A G3</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/tablet.svg" alt="tablet-icon" class="device-icon">
-                            <p>iPad Pro 2022</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/iphone.svg" alt="iPhone-icon" class="device-icon">
-                            <p>iPhone 13 mini</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/android.svg" alt="android-icon" class="device-icon">
-                            <p>Galaxy S22</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/watch.svg" alt="watch-icon" class="device-icon">
-                            <p>Apple Watch S7</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/earphone.svg" alt="earphone-icon" class="device-icon">
-                            <p>AirPods Pro</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/camera.svg" alt="camera-icon" class="device-icon">
-                            <p>Lumix DC-GX9</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/book.svg" alt="book-icon" class="device-icon">
-                            <p>Kindle PW4</p>
-                        </div>
-                        <div class="devices-list-content">
-                            <img src="img/icons/ellipsis.svg" alt="ellipsis-icon" class="device-icon">
-                            <p>更多电子垃圾...</p>
-                        </div>
-                    </div>
-                </div>
-                <article class="index-article card">
-                    <h2 class="index-article-title">随笔</h2>
-                    <h3>随便说说一些感想</h3>
-                    <p>其实我一直不知道该怎么写介绍，换句话说，介绍自己对我而言是很困难的事。就连在这里，我也只是简单挂出了自己的社交链接及联系方式而已，没什么新内容。</p>
-                    <p>其实有很多形容标签适用于我，例如我是 INFP-T，没事喜欢出门乱跑等等。但我认为再多的标签也无法准确描述一个人，而最好的介绍方式就是挂出自己的社交链接。通过我每天发布的日常，去感受我是怎样的一个人，这样很好。</p>
-                    <p>很喜欢歌词中的一句话："Trying to light up the dark."，即使身处黑暗，也要向往光明。但只顾仰望着星空的人，注定不会留意到自己下一步是否会跨入深渊。希望有朝一日能真正做些什么，即使能改变的只有自己。</p>
-                </article>
             </div>
+        </div>
+        <div class="main-content">
+            <div class="skill-list card">
+                <h2 class="card-title">技能</h2>
+                <h3>技能树点得很烂，会的也不精</h3>
+                <div class="skill-list-card">
+                    <div class="skill-list-content">
+                        <img src="img/icons/html.svg" alt="html-icon" class="skill-icon">
+                        <p>HTML & CSS</p>
+                    </div>
+                    <div class="skill-list-content">
+                        <img src="img/icons/linux.svg" alt="linux-icon" class="skill-icon">
+                        <p>Linux Shell</p>
+                    </div>
+                    <div class="skill-list-content">
+                        <img src="img/icons/database.svg" alt="database-icon" class="skill-icon">
+                        <p>Database</p>
+                    </div>
+                    <div class="skill-list-content">
+                        <img src="img/icons/network.svg" alt="network-icon" class="skill-icon">
+                        <p>Network</p>
+                    </div>
+                    <div class="skill-list-content">
+                        <img src="img/icons/python.svg" alt="python-icon" class="skill-icon">
+                        <p>Python</p>
+                    </div>
+                    <div class="skill-list-content">
+                        <img src="img/icons/ellipsis.svg" alt="ellipsis-icon" class="skill-icon">
+                        <p>学习中...</p>
+                    </div>
+                </div>
+            </div>
+            <article class="index-article card">
+                <h2 class="card-title">社交</h2>
+                <h3>有关社交状况的一点说明</h3>
+                <p>介绍资料卡中有我的 PGP Key 及常用社交平台的联系方式。为防止 spam 轰炸，邮箱不公开列出，如需发送邮件请移步 PGP Key 查看签名邮箱。也可通过各社交平台联系我，并获取我的 IM 账号。</p>
+                <p>全平台都有同步更新内容。我也希望未来有一天能够缩减社交平台数量，但目前单靠任一平台无法联系上所有朋友 (如各种原因逃离 Twitter 的难民们)，维护多平台纯属无奈之举。</p>
+                <p>在过去两年里，我眼睁睁看着曾经熟悉的事物变得四分五裂，却无力改变这一切。虽然还是比较常用 Twitter(X)，却一直在寻找机会逃离这个平台。Bluesky 并不完美，而 Mastodon 社群一直在固步自封，能选择的似乎也只有继续使用下去而已。于是就有了这篇 <a href="https://cynosura.one/posts/the-end-of-the-social-era">写于社交平台终结之时</a> 的感慨。</p>
+            </article>
+            <div class="devices-list card">
+                <h2 class="card-title">设备</h2>
+                <h3>详细列出的都是在经常使用的</h3>
+                <div class="device-list-card">
+                    <div class="device-list-content">
+                        <img src="img/icons/laptop.svg" alt="laptop-icon" class="device-icon">
+                        <p>Zenbook 14 2022</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/laptop.svg" alt="laptop-icon" class="device-icon">
+                        <p>ZHAN66 Pro A G3</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/tablet.svg" alt="tablet-icon" class="device-icon">
+                        <p>iPad Pro 2022</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/iphone.svg" alt="iPhone-icon" class="device-icon">
+                        <p>iPhone 13 mini</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/android.svg" alt="android-icon" class="device-icon">
+                        <p>Galaxy S22</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/watch.svg" alt="watch-icon" class="device-icon">
+                        <p>Apple Watch S7</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/earphone.svg" alt="earphone-icon" class="device-icon">
+                        <p>AirPods Pro</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/camera.svg" alt="camera-icon" class="device-icon">
+                        <p>Lumix DC-GX9</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/book.svg" alt="book-icon" class="device-icon">
+                        <p>Kindle PW4</p>
+                    </div>
+                    <div class="device-list-content">
+                        <img src="img/icons/ellipsis.svg" alt="ellipsis-icon" class="device-icon">
+                        <p>更多电子垃圾...</p>
+                    </div>
+                </div>
+            </div>
+            <article class="index-article card">
+                <h2 class="card-title">随笔</h2>
+                <h3>随便说说一些感想</h3>
+                <p>其实我一直不知道该怎么写介绍，换句话说，介绍自己对我而言是很困难的事。就连在这里，我也只是简单挂出了自己的社交链接及联系方式而已，没什么新内容。</p>
+                <p>其实有很多形容标签适用于我，例如我是 INFP-T，没事喜欢出门乱跑等等。但我认为再多的标签也无法准确描述一个人，而最好的介绍方式就是挂出自己的社交链接。通过我每天发布的日常，去感受我是怎样的一个人，这样很好。</p>
+                <p>很喜欢歌词中的一句话："Trying to light up the dark."，即使身处黑暗，也要向往光明。但只顾仰望着星空的人，注定不会留意到自己下一步是否会跨入深渊。希望有朝一日能真正做些什么，即使能改变的只有自己。</p>
+            </article>
         </div>
     </main>
     <footer>
         <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy 2023</p>
-        <script src="js/toggle.js?v=1.1" defer></script>
-        <script src="js/menu.js?v=1.5" defer></script>
+        <script src="js/menu.js" defer></script>
     </footer>
 </body>
-</html>

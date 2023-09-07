@@ -1,31 +1,7 @@
-html {
+body {
     overflow-y: overlay;
     background-color: #EBF4F4;
     color: #0C0C0C;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Roboto,PingFang SC,Hiragino Sans GB,Source Han Sans SC,Noto Sans CJK SC,Noto Sans SC,WenQuanYi Micro Hei,WenQuanYi Zen Hei,Helvetica Neue,Microsoft YaHei,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-}
-
-/* 页首、页尾 */
-header, footer {
-    margin: 2rem;
-    text-align: center;
-    font-family: 'Overpass';
-    font-weight: normal;
-    font-style: normal;
-}
-
-header {
-    position: sticky;
-    z-index: -1;
-    top: 2rem;
-}
-
-footer a {
-    background-color: #EBF4F4;
-}
-
-main {
-    background-color: #EBF4F4;
 }
 
 a {
@@ -82,113 +58,76 @@ code {
 }
 
 p code {
-    padding: 0.15rem 0.2rem;
+    padding: 0 0.2rem;
     vertical-align: middle;
 }
 
-/* 标题 */
-.title {
+/* 页首、页尾通用设定 */
+header, footer {
+    margin: 2rem;
+    text-align: center;
+    font-family: 'Overpass';
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 页首 */
+header {
+    position: sticky;
+    z-index: -1;
+    top: 2rem;
+}
+
+/* 页首网站头像 */
+.header-avatar {
+    width: 6rem;
+    border-radius: 50%;
+}
+
+/* 页首标题 */
+.header-title {
     margin: 0.8rem auto;
     font-family: 'Overpass';
     font-weight: bold;
     font-style: normal;
 }
 
-.description {
+/* 页首描述 */
+.header-description {
     margin: 0;
 }
 
-/* 顶部头像 */
-.avatar-img {
-    width: 6rem;
-    border-radius: 50%;
-}
-
-/* 菜单 */
-.menu-div {
-    position: sticky;
-    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu-div 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
-    z-index: 2;
-}
-
-.menu {
-    display: flex;
-    margin-bottom: 0.5rem;
-}
-
-.menu-a {
-    display: flex;
-    justify-content: center;
-    background-color: #D8E3E7;
-    position: relative;
-    width: 100%;
-    transition: 0.5s background-color;
-}
-
-.menu-div.at-top .menu-a {
+/* 页尾 */
+footer a {
     background-color: #EBF4F4;
+}
+
+/* 主容器 */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: #EBF4F4;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 /* 卡片 */
 .card {
     background-color: #FFF;
-    margin: 0.5rem;
     padding: 1rem 1.5rem;
+}
+
+.center-card {
     text-align: center;
 }
 
-/* 页面样式 */
-.page-main {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-}
-
-.page-main .menu-div {
-    grid-column: 2;
-}
-
-.page-main-center {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0.5rem;
-}
-
-.page-main div,
-.page-main article {
-    margin: 0;
-}
-
-.page-card {
-    grid-column: 2;
-}
-
-/* 首页 & 友人双栏布局 */
-.index-main, .friends-main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: start;
-    grid-gap: 0.5rem;
-    margin: 0.5rem;
-}
-
-.index-body div, .friends-main div, .index-article {
-    margin: 0;
-}
-
-.index-article, .index-card {
-    padding: 1rem 2rem;
-    text-align: left;
-}
-
-/* 首页标题样式 */
-.index-article-title {
+.card-title {
     position: relative;
     padding-left: 0.65rem;
     transition: 0.25s padding ease-out;
 }
 
-.index-article-title::before {
+.card-title::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -201,36 +140,118 @@ p code {
     transition: 0.1s width ease-out;
 }
 
-/* 首页左右单列指定 */
-.left-menu, .main-content {
+.main-header {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 3fr;
     grid-gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-article p {
-    text-align: left;
+.main-header-right {
+    padding: 0;
+    background: url(../img/background.webp) center center no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
-/* 首页左侧菜单 */
-.left-menu-info {
-    padding: 1.5rem 0;
+.main-header-right-content {
+    margin-top: 12rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 25%, #ffffff 75%);
+    padding: 1rem 1.5rem;
 }
 
-/* PC端不显示移动端容器 */
-.mobile-menu {
-    display: none;
+/* 菜单 */
+.menu {
+    position: sticky;
+    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
+    z-index: 2;
+    margin-bottom: 0.5rem;
 }
 
-.mobile-div {
-    display: none;
+.menu-a {
+    display: flex;
+    justify-content: center;
+    background-color: #D8E3E7;
+    position: relative;
+    width: 100%;
+    transition: 0.5s background-color;
 }
 
-/* 首页左侧菜单（社交媒体栏） */
-.social-title {
+.menu.at-top .menu-a {
+    background-color: #EBF4F4;
+}
+
+/* 菜单按钮 */
+.menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    width: 6rem;
+    height: 3rem;
+    color: #0C0C0C;
+    background-color: #D8E3E7;
+    vertical-align: middle;
+    font-size: 1rem;
+    line-height: 2rem;
+    transition: 0.5s background-color;
+}
+
+.menu-button-active {
+    color: #FFF;
+    background-color: #6C9BD2;
+}
+
+.menu-button-active .menu-icon {
+    filter: invert(100%);
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button:hover {
+        background-color: #C3D7DF;
+    }
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
+/* 菜单吸顶样式 */
+.menu.at-top .menu-button {
+    background-color: #EBF4F4;
+}
+
+.menu.at-top .menu-button-active {
+    background-color: #6C9BD2;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button:hover {
+        background-color: #C3D7DF;
+    }
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
+/* 个人头像 */
+.personal-avatar {
+    width: 6rem;
+    border-radius: 50%;
+}
+
+/* 子标题 */
+.subtitle {
     margin: 0.5rem;
 }
 
+/* 社交图标 */
 .social-button {
     display: inline-flex;
     align-items: center;
@@ -246,9 +267,10 @@ article p {
     transition: 0.5s background-color, 0.25s border;
 }
 
-.social-button img {
+.social-icon {
     width: 1.5rem;
     height: 1.5rem;
+    transition: 0.25s filter;
 }
 
 @media (hover: hover), (pointer: fine) {
@@ -258,14 +280,138 @@ article p {
         transition: 0.5s background-color, 0.25s border;
     }
     
-    .social-button:hover img {
+    .social-button:hover .social-icon {
         filter: invert(100%);
         transition: 0.25s filter;
     }
 }
 
-.social-button img {
+/* 文章页 */
+.post-index {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 0.5rem;
+    align-items: start;
+}
+
+.post-index .main-content .card {
+    padding: 0;
+}
+
+.post-index-content a {
+    text-decoration: none;
+}
+
+.post-index-title {
+    margin-top: 0;
+}
+
+.post-link {
+    display: block;
+    padding: 1.2rem 2rem;
+    color: #0C0C0C;
+    background-color: #FFF;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-link:hover {
+        color: #FCFAF2;
+        background-color: #6C9BD2;
+        transition: background-color 0.5s, color 0.25s;
+    }
+}
+
+.post-left-menu {
+    position: sticky;
+    top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
+}
+
+.post-article-main {
+    max-width: 65%;
+}
+
+.post-article-title {
+    text-align: center;
+}
+
+.post-article {
+    margin-bottom: 0.5rem;
+}
+
+.post-article-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-article-copyright-icon {
+    width: 2rem;
+}
+
+.post-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 0.1rem solid #0C0C0C;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-sizing: content-box;
+    padding: 0;
+    background-color: #FFF;
+    transition: 0.5s background-color, 0.25s border;
+}
+
+.post-icon {
+    width: 1.5rem;
+    height: 1.5rem;
     transition: 0.25s filter;
+}
+
+.post-category {
+    color: #FCFAF2;
+    background-color: #6C9BD2;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover {
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+    }
+    
+    .post-button:hover .post-icon {
+        filter: invert(100%);
+    }
+}
+
+.post-left-menu-category {
+    display: inline-block;
+    line-height: 2rem;
+    height: 2rem;
+    width: 3.75rem;
+    color: #0C0C0C;
+    background-color: #FFF;
+    border: 0.1rem solid #0C0C0C;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: 0.5s background-color, 0.25s color, 0.1s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-left-menu-category:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        border: 0.1rem solid transparent;
+    }
+}
+
+.p-link {
+    word-break: break-all;
 }
 
 .social-im-button {
@@ -290,14 +436,20 @@ article p {
     }
 }
 
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+}
+
 /* 技能列表 */
-.skills-list-card {
+.skill-list-card {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 0.5rem;
 }
 
-.skills-list-content {
+.skill-list-content {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
@@ -305,21 +457,19 @@ article p {
     transition: 0.5s background-color;
 }
 
-@media (hover: hover), (pointer: fine) {
-    .skills-list-content:hover {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
-    }
+.skill-icon {
+    width: 3.5rem;
+    pointer-events: none;
 }
 
 /* 设备列表 */
-.devices-list-card {
+.device-list-card {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0.5rem;
 }
 
-.devices-list-content {
+.device-list-content {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
@@ -327,34 +477,20 @@ article p {
     transition: 0.5s background-color;
 }
 
-@media (hover: hover), (pointer: fine) {
-    .devices-list-content:hover {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
-    }
+.device-icon {
+    width: 3.5rem;
+    pointer-events: none;
 }
 
 /* 友链列表 */
-.main-content-social {
-    padding: 0;
-    background: #EBF4F4;
-}
-
 .friends-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.5rem;
 }
 
-/* 左侧菜单滚动置顶 */
-.left-menu {
-    position: sticky;
-    top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
-}
-
-.friends-img {
-    width: 5rem;
-    border-radius: 0.75rem;
+.friends-card-info {
+    grid-column: 1 / 4;
 }
 
 .friends-card {
@@ -368,9 +504,23 @@ article p {
     grid-column: 1 / 4;
 }
 
+.friends-card-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .friends-card-title {
     margin-bottom: 0.5rem;
+}
 
+.friends-card-description {
+    display: inline;
+}
+
+.friends-img {
+    width: 5rem;
+    border-radius: 0.75rem;
 }
 
 /* 卡片悬停点击效果 */
@@ -400,188 +550,6 @@ article p {
     }
 }
 
-.friends-card-content {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.friends-card-description {
-    display: inline;
-}
-
-/* 文章页侧栏 */
-.post-left-menu-title {
-    margin: 0.5rem;
-}
-
-.post-left-menu-category {
-    display: inline-block;
-    line-height: 2rem;
-    height: 2rem;
-    width: 3.75rem;
-    color: #0C0C0C;
-    background-color: #FFF;
-    border: 0.1rem solid #0C0C0C;
-    border-radius: 0.5rem;
-    text-align: center;
-    transition: 0.5s background-color, 0.25s color, 0.1s border;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-left-menu-category:hover {
-        color: #FFF;
-        background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
-        transition: 0.5s background-color, 0.25s color, 0.1s border;
-    }
-}
-
-/* 文章页卡片 */
-.post-card {
-    text-align: left;
-    overflow: hidden;
-}
-
-.post-card-index {
-    padding: 0;
-}
-
-.post-card-index a {
-    text-decoration: none;
-}
-
-.post-link {
-    display: block;
-    padding: 1.2rem 2rem;
-    color: #0C0C0C;
-    background-color: #FFF;
-    transition: background-color 0.5s, color 0.25s;
-    overflow: hidden;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-link:hover {
-        color: #FCFAF2;
-        background-color: #6C9BD2;
-        transition: background-color 0.5s, color 0.25s;
-    }
-}
-
-.post-category {
-    color: #FCFAF2;
-    background-color: #6C9BD2;
-    padding: 0 0.5rem;
-    border-radius: 0.25rem;
-}
-
-.post-list h2 {
-    margin-top: 0;
-}
-
-.post-title {
-    text-align: center;
-}
-
-/* 侧栏按钮 */
-.post-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 0.1rem solid #0C0C0C;
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-    box-sizing: content-box;
-    padding: 0;
-    background-color: #FFF;
-    transition: 0.5s background-color, 0.25s border;
-}
-
-.post-button img {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-button:hover {
-        background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
-        transition: 0.5s background-color, 0.25s border;
-    }
-    
-    .post-button:hover img {
-        filter: invert(100%);
-        transition: 0.25s filter;
-    }
-}
-
-.post-button img {
-    transition: 0.25s filter;
-}
-
-/* 文章尾注 */
-.post-footer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5rem;
-}
-
-.post-footer div {
-    text-align: left;
-}
-
-/* 评论 */
-.post-comments {
-    text-align: left;
-}
-
-.p-link {
-    word-break: break-all;
-}
-
-.about-color {
-    font-family: 'Overpass Mono';
-    font-weight: normal;
-    font-style: normal;
-    padding: 0.2rem;
-    vertical-align: bottom;
-}
-
-/* 图标 */
-.icon {
-    width: 2rem;
-}
-
-.skill-icon, .device-icon {
-    width: 3.5rem;
-    pointer-events: none;
-}
-
-/* 列表样式 */
-.friends-left-menu-list {
-    margin: 0;
-    padding: 0;
-    padding-top: 0.5rem;
-    list-style-position: inside;
-    display: inline-block;
-    text-align: left;
-}
-
-.about-left-menu-list {
-    margin: 0;
-    padding: 0;
-    list-style-position: inside;
-    display: inline-block;
-    text-align: left;
-    list-style-type: square;
-}
-
-.about-left-menu-list li {
-    padding: 0.15rem 0;
-}
-
 /* 按钮 */
 .button {
     color: #FFF;
@@ -594,143 +562,16 @@ article p {
     font-size: 1rem;
 }
 
-.comments-button {
-    margin-bottom: 1rem;
-}
-
-/* 展开按钮 */
-.toggleButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    width: 3rem;
-    height: 3rem;
-    background-color: #D8E3E7;
-    vertical-align: middle;
-    transition: 0.5s background-color;
-}
-
-.menu-div.at-top .toggleButton {
-    background-color: #EBF4F4;
-}
-
-/* 菜单按钮 */
-.menu-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    width: 6rem;
-    height: 3rem;
-    color: #0C0C0C;
-    background-color: #D8E3E7;
-    vertical-align: middle;
-    font-size: 1rem;
-    line-height: 2rem;
-    transition: 0.5s background-color;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-button:hover {
-        background-color: #C3D7DF;
-    }
-}
-
-.menu-div.at-top .menu-button {
-    background-color: #EBF4F4;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-div.at-top .menu-button:hover {
-        background-color: #C3D7DF;
-    }
-}
-
-.menu-button-active {
-    color: #FFF;
-    background-color: #6C9BD2;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-button-active:hover {
-        background-color: #6C9BD2;
-    }
-}
-
-.menu-div.at-top .menu-button-active {
-    background-color: #6C9BD2;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-div.at-top .menu-button-active:hover {
-        background-color: #6C9BD2;
-    }
-}
-
-
-.menu-button-active .menu-icon {
-    filter: invert(100%);
-}
-
-/* 分页 */
-.paginator {
-    color: #FFF;
-    background-color: #A8D8B9;
+.page-center {
     text-align: center;
-    width: 8rem;
-    margin: 0 auto;
-    padding: 0.5rem 1.2rem;
-    border-radius: 0.5rem;
 }
 
-.paginator a {
-    color: #FFF;
-    text-decoration: none;
-}
-
-/* 页脚图标 */
-.footer-button {
-    cursor: pointer;
-    border: none;
-    width: 1.2em;
-    height: 1.2rem;
-    vertical-align: middle;
-}
-
-/* 文字图标 */
-.text-icon {
-    height: 1rem;
-    vertical-align: middle;
-}
-
-#rss-button {
-    background: url(../img/icons/rss-icon.svg) no-repeat center center;
-}
-
-@media screen and (min-width: 1800px) {
-    .menu-div {
-        grid-column: 2;
+@media screen and (max-width: 1280px) {
+    .post-article-main {
+        max-width: 75%;
     }
 
-    .index-body {
-        display: grid;
-        grid-template-columns: 1fr 5fr 1fr;
-    }
-
-    .index-main, .friends-main {
-        grid-column: 2;
-    }
-
-    .page-main {
-        grid-template-columns: 2fr 5fr 2fr;
-    }
-}
-
-@media screen and (min-width: 961px) and (max-width: 1280px) {
-    .index-main, .friends-main {
+    .main-header {
         grid-template-columns: 1fr 2fr;
     }
 
@@ -742,86 +583,44 @@ article p {
         grid-column: 1 / 3;
     }
 
-    .skills-list-card {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .devices-list-card {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* for iPad */
-@media screen and (min-width: 681px) and (max-width: 960px) {
-    .menu {
-        margin-bottom: 0;
-    }
-
-    .menu-div {
-        grid-column: 2;
-    }
-
-    .index-body {
-        display: grid;
-        grid-template-columns: 1fr 8fr 1fr;
-    }
-
-    .index-main, .friends-main {
-        grid-column: 2;
-    }
-
-    .index-main, .friends-main {
+    /* 文章侧栏收缩 */
+    .post-index {
         grid-template-columns: 1fr;
     }
 
-    .index-article, .index-card {
-        padding: 1rem 1.5rem;
-        text-align: left;
-    }
-
-    .friends-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .friends-card-info {
-        grid-column: 1 / 3;
-    }
-
-    /* 社交图标改为左右分栏 */
-    .left-menu-info {
-        padding: 0;
-    }
-    
-    .social, .post, .site-info, .about-site-info {
+    .post-left-menu {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        background-color: #FFF;
+        position: static;
     }
 
     /* 单独设置左右的样式 */
-    .left-menu-a,
-    .left-menu-b {
-        background-color: #FFF;
-        padding: 1.5rem 0;
-        padding-left: 1.5rem;
+    .post-left-menu-a,
+    .post-left-menu-b {
         text-align: left;
     }
 
-    .left-menu-a-title {
+    .post-left-menu-a-title {
         margin: 1.2rem 0 0;
     }
 
-    .social-description, .post-left-menu-description {
-        margin: 0.2rem 0;
+    .post-left-menu-a-description {
+        margin: 0.5rem 0;
     }
 
-    .left-menu-b-title {
+    /* 缩小个人头像 */
+    .post-avatar {
+        width: 5rem;
+        border-radius: 1rem;
+    }
+
+    .post-left-menu-b-title {
         position: relative;
         padding-left: 0.65rem;
         margin: 0 0 0.5rem;
     }
     
-    .left-menu-b-title::before {
+    .post-left-menu-b-title::before {
         content: "";
         position: absolute;
         top: 50%;
@@ -832,66 +631,115 @@ article p {
         background-color: #6C9BD2;
     }
 
-    .left-menu-b-space {
+    .post-left-menu-b-space {
         padding: 0.75rem 0;
     }
 
-    .post-left-menu-categories {
-        padding-left: 0;
+    .post-button {
+        border-radius: 0.5rem;
     }
 
-    .post-link {
-        padding: 1.5rem;
+    .post-left-menu-category {
+        border-radius: 0.5rem;
     }
 
-    .page-main {
-        grid-template-columns: 1fr 8fr 1fr;
+    .skill-list-card {
+        grid-template-columns: repeat(5, 1fr);
     }
 
-    .page-main .menu-div {
-        grid-column: 2;
+    .device-list-card {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* for iPad */
+@media screen and (max-width: 1024px) {
+    main {
+        max-width: 85%;
+    }
+    
+    .post-article-main {
+        max-width: 85%;
+    }
+
+    .menu {
+        margin-bottom: 0;
+    }
+
+    .main-header {
+        grid-template-columns: 1fr;
+    }
+
+    .main-header-left {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 单独设置左右的样式 */
+    .main-header-left-a,
+    .main-header-left-b {
+        text-align: left;
+    }
+
+    .main-header-left-a-title {
+        margin: 1.2rem 0 0;
+    }
+
+    .main-header-left-a-description {
+        margin: 0.5rem 0;
     }
 
     /* 缩小个人头像 */
-    .avatar-self {
+    .personal-avatar {
         width: 5rem;
         border-radius: 1rem;
     }
 
-    .social-button, .post-button {
+    .main-header-left-b-title {
+        position: relative;
+        padding-left: 0.65rem;
+        margin: 0 0 0.5rem;
+    }
+    
+    .main-header-left-b-title::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-45%);
+        width: 0.3rem;
+        height: 75%;
+        background-color: #6C9BD2;
+    }
+
+    .main-header-left-b-space {
+        padding: 0.75rem 0;
+    }
+
+    .social-button {
         border-radius: 0.5rem;
     }
 
-    .social-im-button, .post-left-menu-category {
+    .social-im-button {
         border-radius: 0.5rem;
     }
 
-    /* iPad 端不显示一言 */
-    .hitokoto {
-        display: none;
-    }
-
-    .friends-single-menu {
-        display: none;
-    }
-
-    /* 取消左侧菜单滚动置顶 */
-    .left-menu {
-        position: static;
-    }
-
-    .skills-list-card {
+    .skill-list-card {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .devices-list-card {
-        grid-template-columns: repeat(2, 1fr);
+    .device-list-card {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (max-width:680px) {
-    header {
-        top: 0.5rem;
+    main {
+        max-width: 100%;
+    }
+
+    .post-article-main {
+        max-width: 100%;
     }
 
     img {
@@ -906,208 +754,117 @@ article p {
     header {
         margin: 0;
         padding: 2rem;
+        top: 0.5rem;
     }
 
-    /* 移动端显示移动菜单，并把需展开容器默认隐藏 */
-    .menu {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: flex;
-    }
-
-    .mobile-div {
-        display: block;
-        background-color: #D8E3E7;
-        position: sticky;
-        top: 3rem;
-        z-index: 2;
-    }
-
-    .mobile-div a {
-        background-color: #D8E3E7;
-    }
-
-    .mobile-menu-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: none;
+    .menu-button {
         width: 3rem;
         height: 3rem;
-        color: #FFF;
-        background-color: #D8E3E7;
-        vertical-align: middle;
-        transition: 0.5s background-color;
     }
 
-    .menu-div.at-top .mobile-menu-button {
-        background-color: #EBF4F4;
-    }
-    
-    .mobile-menu-button-active {
-        font-size: 1rem;
-        line-height: 2rem;
+    .menu-button-active {
         width: 6rem;
-        background-color: #6C9BD2;
     }
 
-    .menu-div.at-top .mobile-menu-button-active {
-        background-color: #6C9BD2;
-    }
-
-    .mobile-menu-button-active .menu-icon {
-        filter: invert(100%);
-    }
-
-    .hidden {
+    .menu-button-text {
         display: none;
     }
 
-    /* 首页 & 友人双栏布局 */
-    .index-main, .friends-main, .friends-list {
-        grid-template-columns: 1fr; /* Use one column for mobile devices */
+    .main-header-left {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .main-header-right {
+        padding: 0;
+    }
+
+    .post-left-menu {
+        grid-template-columns: 1fr;
+    }
+
+    .post-left-menu-a {
+        display: none;
+    }
+
+    /* 单独设置左右的样式 */
+    .main-header-left-a,
+    .main-header-left-b,
+    .post-left-menu-b {
+        text-align: center;
+    }
+
+    .main-header-left-a-title,
+    .main-header-left-b-title,
+    .post-left-menu-b-title {
+        margin: 0.5rem;
+    }
+
+    .main-header-left-b-title,
+    .post-left-menu-b-title {
+        padding-left: 0;
+    }
+    
+    .main-header-left-b-title::before,
+    .post-left-menu-b-title::before {
+        width: 0;
+    }
+
+    .main-header-left-b-space,
+    .post-left-menu-b-space {
+        padding: 0;
+    }
+
+    .friends-list {
+        grid-template-columns: 1fr;
     }
 
     .friends-card-info {
         grid-column: 1;
     }
 
-    /* social-menu-b 详情菜单 */
-    .index-main .contentDiv,
-    .friends-main .contentDiv {
-        position: sticky;
-        top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
-        z-index: 2;
-    }
-
-    .social-button, .post-button {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
-    }
-
-    .menu-div.at-top + .index-main .social-button, .menu-div.at-top + .index-main .post-button {
-        background-color: #EBF4F4;
-        transition: 0.5s background-color;
-    }
-
-    .social-im-button, .post-left-menu-category {
-        background-color: #D8E3E7;
-    }
-
-    .menu-div.at-top + .index-main .social-im-button, .menu-div.at-top + .index-main .post-left-menu-category {
-        background-color: #EBF4F4;
-        transition: 0.5s background-color;
-    }
-
-    /* 首页及页面样式 */
-    .skills-list-card {
+    .skill-list-card {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .devices-list-card {
+    .device-list-card {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .post-card-index {
-        padding: 0;
-    }
-
-    /* 页面样式 */
-    .page-main, .post-footer {
+    .post-article-footer {
         grid-template-columns: 1fr;
-    }
-
-    .page-main .menu-div {
-        grid-column: 1;
-    }
-
-    .page-main-center {
-        grid-column: 1;
-    }
-
-    .page-card {
-        grid-column: 1;
-    }
-
-    /* 双栏左侧菜单 */
-    .left-menu {
-        margin: 0.5rem;
-    }
-
-    .post-link {
-        padding: 1.2rem;
-    }
-
-    .left-menu-info {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
-    }
-
-    .menu-div.at-top + .index-main .left-menu-info,
-    .menu-div.at-top + .friends-main .left-menu-info {
-        background-color: #EBF4F4;
-        transition: 0.5s background-color;
-    }
-
-    .left-menu-info a {
-        background-color: #D8E3E7;
-        transition: 0.5s background-color;
-    }
-
-    .menu-div.at-top + .index-main .left-menu-info a,
-    .menu-div.at-top + .friends-main .left-menu-info a {
-        background-color: #EBF4F4;
-        transition: 0.5s background-color;
-    }
-
-    /* 友链列表 */
-    .main-content-social {
-        padding: 0;
-    }
-
-    /* 取消左侧菜单滚动置顶 */
-    .left-menu {
-        position: static;
-    }
-
-    /* 移动端不显示一言及徽章 */
-    .hitokoto {
-        display: none;
     }
 }
 
 /* 超小屏幕 */
 @media screen and (max-width:320px) {
     /* 不显示菜单文字 */
-    .mobile-menu-button-text {
+    .menu-button-text-active {
         display: none;
     }
 
-    .mobile-menu-button-active {
+    .menu-button-active {
         width: 3rem;
+    }
+
+    .skill-list-card {
+        grid-template-columns: 1fr;
+    }
+
+    .device-list-card {
+        grid-template-columns: 1fr;
     }
 }
 
-@media (prefers-color-scheme: dark){
-    html {
-        background: #121212;
+@media (prefers-color-scheme: dark) {
+    body {
         color: #FFF;
-    }
-
-    footer a {
-        background-color: #121212;
-    }
-
-    main {
         background-color: #121212;
     }
 
     a {
         color: #FFF;
-        background-color: #1C1C1C;
+        background-color: #2C2C2C;
         text-decoration-color: #00558F;
     }
 
@@ -1117,50 +874,30 @@ article p {
         }
     }
 
+    footer a {
+        background-color: #121212;
+    }
+
     /* 引用标签 */
     blockquote {
         border-left: 0.35rem solid #00558F;
         background-color: #434343;
     }
 
-    /* 卡片 */
+    main {
+        background-color: #121212;
+    }
+
+    .main-header-right-content {
+        background: linear-gradient(to bottom, rgba(44, 44, 44, 0.9) 25%, #2C2C2C 75%);
+    }
+
     .card {
-        color: #FFF;
-        background: #1C1C1C;
+        background-color: #2C2C2C;
     }
 
-    /* 首页标题颜色 */
-    .index-article-title::before, .left-menu-b-title::before {
+    .card-title::before {
         background-color: #00558F;
-    }
-
-    .post-link {
-        color: #FCFAF2;
-        background-color: #1C1C1C;
-        transition: background-color 0.5s;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .post-link:hover {
-            background-color: #00558F;
-            transition: background-color 0.5s;
-        }
-    }
-
-    .post-category {
-        background: #00558F;
-    }
-
-    /* 菜单 */
-    .menu {
-        border-left: #121212;
-    }
-    .menu-link {
-        color: #FFF;
-    }
-
-    .menu-link-active {
-        color: #00558F;
     }
 
     /* 菜单 */
@@ -1168,13 +905,25 @@ article p {
         background-color: #242424;
     }
 
-    .menu-div.at-top .menu-a {
-        background-color: #121212;
-    }
-
     .menu-button {
         color: #FFF;
         background-color: #242424;
+    }
+
+    .menu-button-active {
+        background-color: #00558F;
+    }
+
+    .menu.at-top .menu-a {
+        background-color: #121212;
+    }
+
+    .menu.at-top .menu-button {
+        background-color: #121212;
+    }
+
+    .menu.at-top .menu-button-active {
+        background-color: #00558F;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1183,245 +932,116 @@ article p {
         }
     }
 
-    .menu-div.at-top .menu-button {
-        background-color: #121212;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu-div.at-top .menu-button:hover {
-            background-color: #3C3C3C;
-        }
-    }
-
-    .menu-button-active {
-        background-color: #00558F;
-    }
-
     @media (hover: hover), (pointer: fine) {
         .menu-button-active:hover {
             background-color: #00558F;
         }
     }
 
-    .menu-div.at-top .menu-button-active {
-        background-color: #00558F;
-    }
-
     @media (hover: hover), (pointer: fine) {
-        .menu-div.at-top .menu-button-active:hover {
-            background-color: #00558F;
+        .menu.at-top .menu-button:hover {
+            background-color: #3C3C3C;
         }
     }
 
-    /* 移动端菜单 */
-    .mobile-menu-button {
-        background: #242424;
-    }
-
-    .menu-div.at-top .mobile-menu-button {
-        background-color: #121212;
-    }
-
-    .mobile-menu-button-active {
-        background-color: #00558F;
-    }
-
-    .menu-div.at-top .mobile-menu-button-active {
-        background-color: #00558F;
-    }
-
-    /* 首页左侧菜单（社交媒体图标） */
-    .social-button {
-        border: 0.1rem solid #FFF;
-        background-color: #1C1C1C;
-    }
-
     @media (hover: hover), (pointer: fine) {
-        .social-button:hover {
+        .menu.at-top .menu-button-active:hover {
             background-color: #00558F;
         }
-    }
-
-    /* 首页左侧菜单（即时通讯 IM 按钮） */
-    .social-im-button {
-        color: #FFF;
-        border: 0.1rem solid #FFF;
-        background-color: #1C1C1C;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .social-im-button:hover {
-            background-color: #00558F;
-        }
-    }
-
-    /* 文章页左侧菜单 */
-    .post-button {
-        border: 0.1rem solid #FFF;
-        background-color: #1C1C1C;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .post-button:hover {
-            background-color: #00558F;
-        }
-    }
-
-    .post-left-menu-category {
-        color: #FFF;
-        border: 0.1rem solid #FFF;
-        background-color: #1C1C1C;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .post-left-menu-category:hover {
-            background-color: #00558F;
-        }
-    }
-
-    /* 展开按钮 */
-    .toggleButton {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top .toggleButton {
-        background-color: #121212;
     }
 
     .menu-icon {
         filter: invert(100%);
     }
 
-    /* 设备列表 */
-    .devices-list-content {
+    /* 技能与设备卡片 */
+    .skill-list-content,
+    .device-list-content {
         background-color: #212121;
-        transition: 0.5s background-color;
+    }
+
+    .skill-icon,
+    .device-icon {
+        filter: invert(100%);
     }
 
     @media (hover: hover), (pointer: fine) {
-        .devices-list-content:hover {
+        .skill-list-content:hover,
+        .device-list-content:hover {
             background-color: #3C3C3C;
             transition: 0.5s background-color;
         }
     }
 
-    /* 技能列表 */
-    .skills-list-content {
-        background-color: #212121;
+    .social-button,
+    .post-button {
+        border: 0.1rem solid #FFF;
+        background-color: #2C2C2C;
     }
 
     @media (hover: hover), (pointer: fine) {
-        .skills-list-content:hover {
-            background-color: #3C3C3C;
-            transition: 0.5s background-color;
+        .social-button:hover,
+        .post-button:hover {
+            background-color: #00558F;
+        }
+    }
+
+    .social-icon,
+    .post-icon {
+        filter: invert(100%);
+    }
+
+    .social-im-button,
+    .post-left-menu-category {
+        color: #FFF;
+        border: 0.1rem solid #FFF;
+        background-color: #2C2C2C;
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .social-im-button:hover,
+        .post-left-menu-category:hover {
+            background-color: #00558F;
         }
     }
 
     /* 友链列表 */
-    .main-content-social {
-        background: #121212;
-    }
-
     .friends-card a {
         color: #FFF;
     }
     
     .friends-card-link {
-        background-color: #1C1C1C;
-        transition: background-color 0.5s;
+        background-color: #2C2C2C;
     }
 
     @media (hover: hover), (pointer: fine) {
         .friends-card-link:hover {
             background-color: #00558F;
-            transition: background-color 0.5s;
         }
+    }
+
+    /* 文章 */
+    .post-link {
+        color: #FCFAF2;
+        background-color: #2C2C2C;
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .post-link:hover {
+            background-color: #00558F;
+        }
+    }
+
+    .post-category {
+        background: #00558F;
+    }
+
+    .post-article-copyright-icon {
+        filter: invert(100%);
     }
 
     /* 按钮 */
     .button {
         background-color: #00558F;
-    }
-
-    /* 图标 */
-    .icon, .skill-icon, .device-icon, .footer-button {
-        filter:invert(100%);
-    }
-
-    .social-icons, .post-icons {
-        filter: invert(100%);
-    }
-
-    /* 代码块样式 */
-    .highlight {
-        background-color: #434343;
-    }
-
-    code {
-        background-color: #434343;
-    }
-}
-
-/* for iPad dark mode */
-@media screen and (min-width: 681px) and (max-width: 960px) and (prefers-color-scheme: dark) {
-    .social, .post, .site-info, .about-site-info {
-        background-color: #121212;
-    }
-
-    .left-menu-a,
-    .left-menu-b {
-        background-color: #1C1C1C;
-    }
-}
-
-@media screen and (max-width:680px) and (prefers-color-scheme: dark) {
-    .left-menu-info {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .left-menu-info,
-    .menu-div.at-top + .friends-main .left-menu-info {
-        background-color: #121212;
-    }
-
-    .left-menu-info a {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .left-menu-info a,
-    .menu-div.at-top + .friends-main .left-menu-info a {
-        background-color: #121212;
-    }
-
-    .social-button, .post-button {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .social-button, .menu-div.at-top + .index-main .post-button {
-        background-color: #121212;
-    }
-
-    .social-im-button, .post-left-menu-category {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .social-im-button, .menu-div.at-top + .index-main .post-left-menu-category {
-        background-color: #121212;
-    }
-
-    .mobile-div {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .mobile-div {
-        background-color: #121212;
-    }
-
-    .mobile-div a {
-        background-color: #242424;
-    }
-
-    .menu-div.at-top + .index-main .mobile-div a {
-        background-color: #121212;
     }
 }

@@ -14,7 +14,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="2022 年末总结 - Cynosura">
     <meta property="og:description" content="一年写了三篇「总结」类型的文章，不愧是我">
-    <meta property="og:url" content="https://cynosura.one/posts/2022-year-end-summary.html">
+    <meta property="og:url" content="http://127.0.0.1:8000/2022-year-end-summary.html">
     <meta property="og:image" content="https://cynosura.one/img/banner.webp">
     <!--Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
@@ -23,74 +23,47 @@
     <meta name="twitter:description" content="一年写了三篇「总结」类型的文章，不愧是我">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css?v=5.7">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/img/favicon.ico">
     <!--加载字体-->
     <link rel="preload" href="https://cynosura.one/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cynosura.one/font/Overpass-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cynosura.one/font/OverpassMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <!--Sitemap-->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://cynosura.one/posts/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="http://127.0.0.1:8000/sitemap.xml">
     <!--Feed RSS-->
-    <link rel="alternate" type="application/atom+xml" title="Cynosura Full Atom Feed" href="https://cynosura.one/posts/feeds/all.atom.xml">
+    <link rel="alternate" type="application/atom+xml" title="Cynosura Full Atom Feed" href="http://127.0.0.1:8000/feeds/all.atom.xml">
 </head>
 <body>
     <header>
-        <div class="avatar"><img src="https://cynosura.one/img/avatar.webp" alt="avatar" class="avatar-img"></div>
-        <h1 class="title">Cynosura</h1>
-        <p class="description">Trying to light up the dark.</p>
+        <img class="header-avatar" src="https://cynosura.one/img/avatar.webp" alt="site-avatar">
+        <h1 class="header-title">Cynosura</h1>
+        <p class="header-description">Trying to light up the dark.</p>
         <nav class="old-menu" style="display: none;">
             <ul>
                 <li><a href="https://cynosura.one" class="menu-link">首页</a></li>
-                <li><a href="https://cynosura.one/posts" class="menu-link-active">文章</a></li>
+                <li><a href="http://127.0.0.1:8000" class="menu-link-active">文章</a></li>
                 <li><a href="https://cynosura.one/friends" class="menu-link">友人</a></li>
                 <li><a href="https://cynosura.one/about" class="menu-link">关于</a></li>
             </ul>
         </nav>
     </header>
-<main class="page-main">
-    <div class="menu-div">
-        <nav class="menu">
-            <div class="menu-a">
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
-                <button class="menu-button-active menu-button" onclick="window.location.href='https://cynosura.one/posts'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
-            </div>
-        </nav>
-        <nav class="mobile-menu">
-            <div class="menu-a">
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon"></button>
-                <button class="mobile-menu-button-active mobile-menu-button" onclick="window.location.href='https://cynosura.one/posts'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="mobile-menu-button-text">文章</span></button>
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"></button>
-            </div>
-            <div class="menu-b">
-                <button class="toggleButton"><img src="https://cynosura.one/img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
-            </div>
-        </nav>
-    </div>
-    <div class="page-main-center">
-        <div class="mobile-div card hidden contentDiv">
-            <div class="post-meta">
-                <h2>本文信息</h2>
-                    <p><strong>作者: </strong>Frudrax Cheng</p>
-                <p><strong>发布时间:</strong>
-                    <time class="published" datetime="2022-12-29T14:21:21+08:00">
-                    2022-12-29 (周四)
-                    </time>
-                </p>
-                <p><strong>文章分类: </strong>日常</p>
-                <p><strong>链接: </strong><a href="https://cynosura.one/posts/2022-year-end-summary.html" title="2022 年末总结" class="p-link">https://cynosura.one/posts/2022-year-end-summary.html</a></p>
-            </div>
+<main class="post-article-main">
+    <nav class="menu">
+        <div class="menu-a">
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
+            <button class="menu-button-active menu-button" onclick="window.location.href='http://127.0.0.1:8000'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text-active">文章</span></button>
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
         </div>
-        <article class="post-card card">
-            <div>
-                <h1 class="post-title">2022 年末总结</h1>
-                
-            </div>
-            <div class="post-content">
-                <p>首先预祝各位 2023 新年愉快。一年写了三篇「总结」类型的文章，不愧是我。但无论如何，年末总结还是要写的。</p>
+    </nav>
+    <article class="post-article card">
+        <div>
+            <h1 class="post-article-title">2022 年末总结</h1>
+            
+        </div>
+        <div class="post-article-content">
+            <p>首先预祝各位 2023 新年愉快。一年写了三篇「总结」类型的文章，不愧是我。但无论如何，年末总结还是要写的。</p>
 <p>我想以这种方式来记录我这一年做了什么，像封存一段记忆那样，等待未来某一天重新打开，通过今日所写去回忆过往生活的点滴。</p>
 <blockquote>
 <p>只顾仰望着星空的人，注定不会留意到自己下一步是否会跨入深渊。</p>
@@ -127,59 +100,58 @@
 <p>其次就是希望继续提升摄影技术了，既然花巨款买了相机，就要经常使用，尽量别吃灰。</p>
 <p>在明年想认识更多有趣的人，也希望未来的自己不会忘记现在陪伴自己的人，多陪陪他们。</p>
 <p>也感谢愿意浪费时间阅读这篇流水线式无聊年末总结的你，谢谢你能看到最后，让我们 2023 年再见。</p>
-            </div>
-        </article>
-        <div class="post-footer">
-            <div class="post-meta card">
-                <h2 class="index-article-title">本文信息</h2>
-                    <p><strong>作者: </strong>Frudrax Cheng</p>
-                <p><strong>发布时间:</strong>
-                    <time class="published" datetime="2022-12-29T14:21:21+08:00">
-                    2022-12-29 (周四)
-                    </time>
-                </p>
-                <p><strong>文章分类: </strong>日常</p>
-                <p><strong>链接: </strong><a href="https://cynosura.one/posts/2022-year-end-summary.html" title="2022 年末总结" class="p-link">https://cynosura.one/posts/2022-year-end-summary.html</a></p>
-            </div>
-            <div class="copyright card">
-                <h2 class="index-article-title">版权许可</h2>
-                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权</p>
-                <p>转载请注明出处，并附上本声明内容</p>
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon.svg" alt="creative-icon">
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-            </div>
         </div>
-        <div class="post-comments card">
-            <h2 class="index-article-title">评论</h2>
-            <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
-            <div id="disqus_thread"></div>
-            <!-- 添加一个按钮 -->
-            <button id="load_disqus" class="comments-button button">加载评论</button>
-            <!-- Disqus 留言板容器 -->
-            <div id="disqus_thread_container"></div>
+    </article>
+    <div class="post-article-footer">
+        <div class="post-article-meta card">
+            <h2 class="card-title">本文信息</h2>
+                <p><strong>作者: </strong>Frudrax Cheng</p>
+            <p><strong>发布时间:</strong>
+                <time class="published" datetime="2022-12-29T14:21:21+08:00">
+                2022-12-29 (周四)
+                </time>
+            </p>
+            <p><strong>文章分类: </strong>日常</p>
+            <p><strong>链接: </strong><a href="http://127.0.0.1:8000/2022-year-end-summary.html" title="2022 年末总结" class="p-link">http://127.0.0.1:8000/2022-year-end-summary.html</a></p>
         </div>
-        <script>
-            // 点击按钮后加载 Disqus 留言板
-            document.getElementById('load_disqus').addEventListener('click', function() {
-                // 添加 Disqus 留言板脚本
-                var disqusScript = document.createElement('script');
-                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-                disqusScript.setAttribute('data-timestamp', +new Date());
-                document.head.appendChild(disqusScript);
-                // 移动 Disqus 留言板内容到容器中
-                var disqusContainer = document.getElementById('disqus_thread_container');
-                disqusContainer.appendChild(document.getElementById('disqus_thread'));
-                // 隐藏按钮，防止重复加载
-                this.style.display = 'none';
-            });
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <div class="post-article-copyright card">
+            <h2 class="card-title">版权许可</h2>
+            <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+            <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权</p>
+            <p>转载请注明出处，并附上本声明内容</p>
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon.svg" alt="creative-icon">
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+        </div>
+    </div>
+    <div class="post-article-comments card">
+        <h2 class="card-title">评论</h2>
+        <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
+        <div id="disqus_thread"></div>
+        <!-- 添加一个按钮 -->
+        <button id="load_disqus" class="comments-button button">加载评论</button>
+        <!-- Disqus 留言板容器 -->
+        <div id="disqus_thread_container"></div>
+    </div>
+    <script>
+        // 点击按钮后加载 Disqus 留言板
+        document.getElementById('load_disqus').addEventListener('click', function() {
+            // 添加 Disqus 留言板脚本
+            var disqusScript = document.createElement('script');
+            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            document.head.appendChild(disqusScript);
+            // 移动 Disqus 留言板内容到容器中
+            var disqusContainer = document.getElementById('disqus_thread_container');
+            disqusContainer.appendChild(document.getElementById('disqus_thread'));
+            // 隐藏按钮，防止重复加载
+            this.style.display = 'none';
+        });
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy 2023</p>
-        <script src="https://cynosura.one/js/toggle.js?v=1.1" defer></script>
-        <script src="https://cynosura.one/js/menu.js?v=1.5" defer></script>
+        <script src="https://cynosura.one/js/menu.js" defer></script>
     </footer>
 </body>
 </html>

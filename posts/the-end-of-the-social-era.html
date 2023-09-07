@@ -14,7 +14,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="写于社交平台终结之时 - Cynosura">
     <meta property="og:description" content="没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变">
-    <meta property="og:url" content="https://cynosura.one/posts/the-end-of-the-social-era.html">
+    <meta property="og:url" content="http://127.0.0.1:8000/the-end-of-the-social-era.html">
     <meta property="og:image" content="https://cynosura.one/img/banner.webp">
     <!--Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
@@ -23,74 +23,47 @@
     <meta name="twitter:description" content="没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css?v=5.7">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/img/favicon.ico">
     <!--加载字体-->
     <link rel="preload" href="https://cynosura.one/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cynosura.one/font/Overpass-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cynosura.one/font/OverpassMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <!--Sitemap-->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://cynosura.one/posts/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="http://127.0.0.1:8000/sitemap.xml">
     <!--Feed RSS-->
-    <link rel="alternate" type="application/atom+xml" title="Cynosura Full Atom Feed" href="https://cynosura.one/posts/feeds/all.atom.xml">
+    <link rel="alternate" type="application/atom+xml" title="Cynosura Full Atom Feed" href="http://127.0.0.1:8000/feeds/all.atom.xml">
 </head>
 <body>
     <header>
-        <div class="avatar"><img src="https://cynosura.one/img/avatar.webp" alt="avatar" class="avatar-img"></div>
-        <h1 class="title">Cynosura</h1>
-        <p class="description">Trying to light up the dark.</p>
+        <img class="header-avatar" src="https://cynosura.one/img/avatar.webp" alt="site-avatar">
+        <h1 class="header-title">Cynosura</h1>
+        <p class="header-description">Trying to light up the dark.</p>
         <nav class="old-menu" style="display: none;">
             <ul>
                 <li><a href="https://cynosura.one" class="menu-link">首页</a></li>
-                <li><a href="https://cynosura.one/posts" class="menu-link-active">文章</a></li>
+                <li><a href="http://127.0.0.1:8000" class="menu-link-active">文章</a></li>
                 <li><a href="https://cynosura.one/friends" class="menu-link">友人</a></li>
                 <li><a href="https://cynosura.one/about" class="menu-link">关于</a></li>
             </ul>
         </nav>
     </header>
-<main class="page-main">
-    <div class="menu-div">
-        <nav class="menu">
-            <div class="menu-a">
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
-                <button class="menu-button-active menu-button" onclick="window.location.href='https://cynosura.one/posts'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
-                <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
-            </div>
-        </nav>
-        <nav class="mobile-menu">
-            <div class="menu-a">
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon"></button>
-                <button class="mobile-menu-button-active mobile-menu-button" onclick="window.location.href='https://cynosura.one/posts'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="mobile-menu-button-text">文章</span></button>
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-                <button class="mobile-menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"></button>
-            </div>
-            <div class="menu-b">
-                <button class="toggleButton"><img src="https://cynosura.one/img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
-            </div>
-        </nav>
-    </div>
-    <div class="page-main-center">
-        <div class="mobile-div card hidden contentDiv">
-            <div class="post-meta">
-                <h2>本文信息</h2>
-                    <p><strong>作者: </strong>Frudrax Cheng</p>
-                <p><strong>发布时间:</strong>
-                    <time class="published" datetime="2023-07-12T10:04:47+08:00">
-                    2023-07-12 (周三)
-                    </time>
-                </p>
-                <p><strong>文章分类: </strong>杂谈</p>
-                <p><strong>链接: </strong><a href="https://cynosura.one/posts/the-end-of-the-social-era.html" title="写于社交平台终结之时" class="p-link">https://cynosura.one/posts/the-end-of-the-social-era.html</a></p>
-            </div>
+<main class="post-article-main">
+    <nav class="menu">
+        <div class="menu-a">
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
+            <button class="menu-button-active menu-button" onclick="window.location.href='http://127.0.0.1:8000'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text-active">文章</span></button>
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+            <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
         </div>
-        <article class="post-card card">
-            <div>
-                <h1 class="post-title">写于社交平台终结之时</h1>
-                
-            </div>
-            <div class="post-content">
-                <p>没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变。</p>
+    </nav>
+    <article class="post-article card">
+        <div>
+            <h1 class="post-article-title">写于社交平台终结之时</h1>
+            
+        </div>
+        <div class="post-article-content">
+            <p>没有什么东西能永远保持热度，但当曾经熟悉的事物变得四分五裂，才惊觉世界已经发生了如此多的转变。</p>
 <blockquote>
 <p>眼见何事，情系何处，身在何方，心思何人</p>
 </blockquote>
@@ -112,59 +85,58 @@
 <p>从目前来看 Bluesky 最贴合我的理想社群环境，但其也有短期内无法解决的硬伤，也是社群发展最重要的指标——用户数。社群的粘性是由用户和内容共同决定的，而非其理念先进与否。无人使用的社群平台也就失去了社群使用的最大意义。读完 Bluesky 的 <a href="https://blueskyweb.xyz/faq">FAQ</a> 以后，我发现 Bluesky 似乎有意促成这点。Bluesky 非常推崇邀请机制，并认为其为社群发展带来诸多好处，还将在后续开发过程中引导新实例的管理员使用邀请机制。若是如此，我认为 Bluesky 的前景也并不明朗。它或许能建立去中心化的理想国，却难以容纳社群中的多数用户，注定小众。</p>
 <h2>后社交时代</h2>
 <p>旧的秩序正快速分崩离析，快到甚至没有足够成熟的接替者出现。与十几年前社群平台百家争鸣不同的是，如今已不再是网络快速发展的阶段，在存量市场中社群平台又是需求量最大，又最难以实现商业化布局的高地。或许最后没有谁能够替代 Twitter，而是整个社群平台随 Twitter 一起慢慢死去，被时效性更强，也更具个性的即时通讯工具所替代。</p>
-            </div>
-        </article>
-        <div class="post-footer">
-            <div class="post-meta card">
-                <h2 class="index-article-title">本文信息</h2>
-                    <p><strong>作者: </strong>Frudrax Cheng</p>
-                <p><strong>发布时间:</strong>
-                    <time class="published" datetime="2023-07-12T10:04:47+08:00">
-                    2023-07-12 (周三)
-                    </time>
-                </p>
-                <p><strong>文章分类: </strong>杂谈</p>
-                <p><strong>链接: </strong><a href="https://cynosura.one/posts/the-end-of-the-social-era.html" title="写于社交平台终结之时" class="p-link">https://cynosura.one/posts/the-end-of-the-social-era.html</a></p>
-            </div>
-            <div class="copyright card">
-                <h2 class="index-article-title">版权许可</h2>
-                <p><strong>声明: </strong>本文所有内容（包括图片）</p>
-                <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权</p>
-                <p>转载请注明出处，并附上本声明内容</p>
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon.svg" alt="creative-icon">
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon-by.svg" alt="creative-icon-by">
-                <img class="icon" src="https://cynosura.one/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
-            </div>
         </div>
-        <div class="post-comments card">
-            <h2 class="index-article-title">评论</h2>
-            <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
-            <div id="disqus_thread"></div>
-            <!-- 添加一个按钮 -->
-            <button id="load_disqus" class="comments-button button">加载评论</button>
-            <!-- Disqus 留言板容器 -->
-            <div id="disqus_thread_container"></div>
+    </article>
+    <div class="post-article-footer">
+        <div class="post-article-meta card">
+            <h2 class="card-title">本文信息</h2>
+                <p><strong>作者: </strong>Frudrax Cheng</p>
+            <p><strong>发布时间:</strong>
+                <time class="published" datetime="2023-07-12T10:04:47+08:00">
+                2023-07-12 (周三)
+                </time>
+            </p>
+            <p><strong>文章分类: </strong>杂谈</p>
+            <p><strong>链接: </strong><a href="http://127.0.0.1:8000/the-end-of-the-social-era.html" title="写于社交平台终结之时" class="p-link">http://127.0.0.1:8000/the-end-of-the-social-era.html</a></p>
         </div>
-        <script>
-            // 点击按钮后加载 Disqus 留言板
-            document.getElementById('load_disqus').addEventListener('click', function() {
-                // 添加 Disqus 留言板脚本
-                var disqusScript = document.createElement('script');
-                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-                disqusScript.setAttribute('data-timestamp', +new Date());
-                document.head.appendChild(disqusScript);
-                // 移动 Disqus 留言板内容到容器中
-                var disqusContainer = document.getElementById('disqus_thread_container');
-                disqusContainer.appendChild(document.getElementById('disqus_thread'));
-                // 隐藏按钮，防止重复加载
-                this.style.display = 'none';
-            });
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <div class="post-article-copyright card">
+            <h2 class="card-title">版权许可</h2>
+            <p><strong>声明: </strong>本文所有内容（包括图片）</p>
+            <p>均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权</p>
+            <p>转载请注明出处，并附上本声明内容</p>
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon.svg" alt="creative-icon">
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon-by.svg" alt="creative-icon-by">
+            <img class="post-article-copyright-icon" src="https://cynosura.one/img/icons/creative-icon-sa.svg" alt="creative-icon-sa">
+        </div>
+    </div>
+    <div class="post-article-comments card">
+        <h2 class="card-title">评论</h2>
+        <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
+        <div id="disqus_thread"></div>
+        <!-- 添加一个按钮 -->
+        <button id="load_disqus" class="comments-button button">加载评论</button>
+        <!-- Disqus 留言板容器 -->
+        <div id="disqus_thread_container"></div>
+    </div>
+    <script>
+        // 点击按钮后加载 Disqus 留言板
+        document.getElementById('load_disqus').addEventListener('click', function() {
+            // 添加 Disqus 留言板脚本
+            var disqusScript = document.createElement('script');
+            disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            document.head.appendChild(disqusScript);
+            // 移动 Disqus 留言板内容到容器中
+            var disqusContainer = document.getElementById('disqus_thread_container');
+            disqusContainer.appendChild(document.getElementById('disqus_thread'));
+            // 隐藏按钮，防止重复加载
+            this.style.display = 'none';
+        });
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy 2023</p>
-        <script src="https://cynosura.one/js/toggle.js?v=1.1" defer></script>
-        <script src="https://cynosura.one/js/menu.js?v=1.5" defer></script>
+        <script src="https://cynosura.one/js/menu.js" defer></script>
     </footer>
 </body>
 </html>

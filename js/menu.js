@@ -1,4 +1,4 @@
-const menu = document.querySelector('.menu-div');
+const menu = document.querySelector('.menu');
 
 const observer = new IntersectionObserver(
   ([entry]) => {

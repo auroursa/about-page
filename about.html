@@ -22,7 +22,7 @@
     <meta name="twitter:description" content="有关本站的一些建站信息">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=5.7">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <!--加载字体-->
     <link rel="preload" href="font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -31,115 +31,77 @@
 </head>
 <body>
     <header>
-        <div class="avatar"><img src="img/avatar.webp" alt="avatar" class="avatar-img"></div>
-        <h1 class="title">Cynosura</h1>
-        <p class="description">Trying to light up the dark.</p>
+        <img class="header-avatar" src="img/avatar.webp" alt="site-avatar">
+        <h1 class="header-title">Cynosura</h1>
+        <p class="header-description">Trying to light up the dark.</p>
     </header>
-    <main class="index-body">
-        <div class="menu-div">
-            <nav class="menu">
-                <div class="menu-a">
-                    <button class="menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon">首页</button>
-                    <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon">文章</button>
-                    <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon">友人</button>
-                    <button class="menu-button-active menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon">关于</button>
-                </div>
-            </nav>
-            <nav class="mobile-menu">
-                <div class="menu-a">
-                    <button class="mobile-menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"></button>
-                    <button class="mobile-menu-button-active mobile-menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"><span class="mobile-menu-button-text">关于</span></button>
-                </div>
-                <div class="menu-b">
-                    <button class="toggleButton"><img src="img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
-                </div>
-            </nav>
-        </div>
-        <div class="index-main">
-            <div class="left-menu hidden contentDiv">
-                <div class="about-left-menu left-menu-info card">
-                    <div class="about-site-info">
-                        <div class="left-menu-a">
-                            <img src="img/avatar.webp" alt="avatar" class="avatar-self avatar-img">
-                            <h2 class="left-menu-a-title social-title">关于</h2>
-                            <p class="social-description">有关本站的一些建站信息</p>
-                        </div>
-                        <div class="left-menu-b">
-                            <h3 class="left-menu-b-title">目录</h3>
-                            <ul class="about-left-menu-list">
-                                <li><a href="#domain">域名含义</a></li>
-                                <li><a href="#environment">搭建环境</a></li>
-                                <li><a href="#font">字体选用</a></li>
-                                <li><a href="#color">色彩搭配</a></li>
-                                <li><a href="#comments">留言板</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <main class="about-main">
+        <nav class="menu">
+            <div class="menu-a">
+                <button class="menu-button" onclick="window.location.href='index.html'"><img src="img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
+                <button class="menu-button" onclick="window.location.href='/posts'"><img src="img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text">文章</span></button>
+                <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+                <button class="menu-button-active menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text-active">关于</span></button>
             </div>
-            <div class="main-content">
-                <article class="index-article card" id="domain">
-                    <h2 class="index-article-title">域名含义</h2>
-                    <h3>Cynosura / 小熊座</h3>
-                    <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称“熊”；而小熊座 α 星恰好为当前的北极星，在极北的夜空闪烁，指引正确的方向。Per aspera, ad astra. / 终抵繁星。</p>
-                </article>
-                <article class="index-article card">
-                    <h2 class="index-article-title" id="environment">搭建环境</h2>
-                    <h3>GitHub + Cloudflare Pages</h3>
-                    <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目。目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面，源码可在 <a href="https://github.com/auroursa/about-page">GitHub</a> 查看。</p>
-                    <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
-                </article>
-                <article class="index-article card">
-                    <h2 class="index-article-title" id="font">字体选用</h2>
-                    <h3>Overpass / 高速公路</h3>
-                    <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。许可协议：<a href="https://cynosura.one/font/OFL.txt">OFL</a></p>
-                    <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户。</p>
-                </article>
-                <article class="index-article card" id="color">
-                    <h2 class="index-article-title">色彩搭配</h2>
-                    <h3>水蓝 / 夏空和大海的颜色</h3>
-                    <p>全站使用“水蓝”作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
-                    <div>
-                        <p>背景色：<span class="about-color" style="color: #0C0C0C; background-color: #EBF4F4">#EBF4F4</span> <span class="about-color" style="color: #FFFFFB; background-color: #2C2C2C">#2C2C2C</span> <span class="about-color" style="color: #FFFFFB; background-color: #121212">#121212</span></p>
-                        <p>强调色：<span class="about-color" style="color: #0C0C0C; background-color: #D8E3E7">#D8E3E7</span> <span class="about-color" style="color: #FFFFFB; background-color: #6C9BD2">#6C9BD2</span> <span class="about-color" style="color: #FFFFFB; background-color: #00558F">#00558F</span></p>
-                    </div>
-                </article>
-                <div class="index-article card" id="comments">
-                    <h2 class="index-article-title">留言板</h2>
-                    <p>有什么想对我说的，或者想与我交换友链，都欢迎在下面留言，看到都会及时回复。</p>
-                    <p>因为觉得那种基于 GitHub Issue 的方案太灵车了，所以还是选择了目前比较成熟的评论系统。但由于评论数据不留存于本地，可能会出现评论信息丢失的情况。</p>
-                    <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
-                    <div id="disqus_thread"></div>
-                    <!-- 添加一个按钮 -->
-                    <button id="load_disqus" class="button">加载评论</button>
-                    <!-- Disqus 留言板容器 -->
-                    <div id="disqus_thread_container"></div>
+        </nav>
+        <div class="main-content">
+            <article class="about-article card" id="domain">
+                <h2 class="card-title">域名含义</h2>
+                <h3>Cynosura / 小熊座</h3>
+                <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称“熊”；而小熊座 α 星恰好为当前的北极星，在极北的夜空闪烁，指引正确的方向。Per aspera, ad astra. / 终抵繁星。</p>
+            </article>
+            <article class="about-article card">
+                <h2 class="card-title" id="environment">搭建环境</h2>
+                <h3>GitHub + Cloudflare Pages</h3>
+                <p>如你所见，全站均为纯手工打造，是我学习前端的练手项目。目前是基于 GitHub 仓库 + Cloudflare Pages 自动部署，全站除留言版外均为纯静态页面，源码可在 <a href="https://github.com/auroursa/about-page">GitHub</a> 查看。</p>
+                <p>分页下使用 Python 编写的 <a href="https://getpelican.com">Pelican</a> 生成文章，与 Hexo、Hugo 等一样是静态页面生成器。主题同样是纯手工打造的，与主站风格保持一致，如遇样式错误请在下方留言让我知道。</p>
+            </article>
+            <article class="about-article card">
+                <h2 class="card-title" id="font">字体选用</h2>
+                <h3>Overpass / 高速公路</h3>
+                <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。许可协议：<a href="https://cynosura.one/font/OFL.txt">OFL</a></p>
+                <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，作为对比，Overpass 仅占用 69KB 的空间，不如索性把字体选择权交给用户。</p>
+            </article>
+            <article class="about-article card" id="color">
+                <h2 class="card-title">色彩搭配</h2>
+                <h3>水蓝 / 夏空和大海的颜色</h3>
+                <p>全站使用“水蓝”作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
+                <div>
+                    <p>背景色：<span class="about-color" style="color: #0C0C0C; background-color: #EBF4F4">#EBF4F4</span> <span class="about-color" style="color: #FFFFFB; background-color: #2C2C2C">#2C2C2C</span> <span class="about-color" style="color: #FFFFFB; background-color: #121212">#121212</span></p>
+                    <p>强调色：<span class="about-color" style="color: #0C0C0C; background-color: #D8E3E7">#D8E3E7</span> <span class="about-color" style="color: #FFFFFB; background-color: #6C9BD2">#6C9BD2</span> <span class="about-color" style="color: #FFFFFB; background-color: #00558F">#00558F</span></p>
                 </div>
-                <script>
-                    // 点击按钮后加载 Disqus 留言板
-                    document.getElementById('load_disqus').addEventListener('click', function() {
-                    // 添加 Disqus 留言板脚本
-                    var disqusScript = document.createElement('script');
-                    disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-                    disqusScript.setAttribute('data-timestamp', +new Date());
-                    document.head.appendChild(disqusScript);
-                    // 移动 Disqus 留言板内容到容器中
-                    var disqusContainer = document.getElementById('disqus_thread_container');
-                    disqusContainer.appendChild(document.getElementById('disqus_thread'));
-                    // 隐藏按钮，防止重复加载
-                    this.style.display = 'none';
-                });
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </article>
+            <div class="about-article card" id="comments">
+                <h2 class="card-title">留言板</h2>
+                <p>有什么想对我说的，或者想与我交换友链，都欢迎在下面留言，看到都会及时回复。</p>
+                <p>因为觉得那种基于 GitHub Issue 的方案太灵车了，所以还是选择了目前比较成熟的评论系统。但由于评论数据不留存于本地，可能会出现评论信息丢失的情况。</p>
+                <p>注: 留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
+                <div id="disqus_thread"></div>
+                <!-- 添加一个按钮 -->
+                <button id="load_disqus" class="button">加载评论</button>
+                <!-- Disqus 留言板容器 -->
+                <div id="disqus_thread_container"></div>
             </div>
+            <script>
+                // 点击按钮后加载 Disqus 留言板
+                document.getElementById('load_disqus').addEventListener('click', function() {
+                // 添加 Disqus 留言板脚本
+                var disqusScript = document.createElement('script');
+                disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+                disqusScript.setAttribute('data-timestamp', +new Date());
+                document.head.appendChild(disqusScript);
+                // 移动 Disqus 留言板内容到容器中
+                var disqusContainer = document.getElementById('disqus_thread_container');
+                disqusContainer.appendChild(document.getElementById('disqus_thread'));
+                // 隐藏按钮，防止重复加载
+                this.style.display = 'none';
+            });
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </main>
     <footer>
         <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy 2023</p>
-        <script src="js/toggle.js?v=1.1" defer></script>
-        <script src="js/menu.js?v=1.5" defer></script>
+        <script src="js/menu.js" defer></script>
     </footer>
 </body>
-</html>
