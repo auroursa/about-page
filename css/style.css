@@ -646,10 +646,6 @@ main {
     .post-left-menu-category {
         border-radius: 0.5rem;
     }
-
-    .device-list-card {
-        grid-template-columns: repeat(5, 1fr);
-    }
 }
 
 /* for iPad */
