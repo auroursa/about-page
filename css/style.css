@@ -728,10 +728,6 @@ article p {
         grid-template-columns: 2fr 5fr 2fr;
     }
 
-    .page-main .menu-div {
-        grid-column: 2;
-    }
-
     .page-card {
         grid-column: 2;
     }
