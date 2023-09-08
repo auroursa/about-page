@@ -572,6 +572,16 @@ main {
     text-align: center;
 }
 
+@media screen and (min-width: 1800px) {
+    main {
+        max-width: 65%;
+    }
+
+    .post-article-main {
+        max-width: 55%;
+    }
+}
+
 @media screen and (max-width: 1280px) {
     main {
         max-width: 85%;
