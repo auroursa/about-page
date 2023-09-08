@@ -759,6 +759,10 @@ main {
         padding: 1.2rem;
     }
 
+    .main-header-right-content {
+        padding: 1.2rem;
+    }
+
     header {
         margin: 0;
         padding: 2rem;
