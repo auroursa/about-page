@@ -196,6 +196,7 @@ main {
     font-size: 1rem;
     line-height: 2rem;
     transition: 0.5s background-color;
+    box-sizing: content-box;
 }
 
 .menu-button-active {
