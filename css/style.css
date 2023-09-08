@@ -755,12 +755,12 @@ main {
     }
 
     .menu-button {
-        width: 3rem;
+        width: 2.5rem;
         height: 3rem;
     }
 
     .menu-button-active {
-        width: 5rem;
+        width: 4rem;
     }
 
     .menu-button-text {
