@@ -788,6 +788,7 @@ main {
     }
 
     .post-left-menu {
+        display: none;
         grid-template-columns: 1fr;
     }
 
