@@ -177,6 +177,15 @@ main {
     width: 100%;
 }
 
+/* 移动端抽屉菜单不展示 */
+.menu-b {
+    display: none;
+}
+
+.menu-b-drawer-container {
+    display: none;
+}
+
 .menu.at-top {
     background-color: #EBF4F4;
 }
@@ -769,6 +778,54 @@ main {
         top: 0.5rem;
     }
 
+    .menu-a {
+        justify-content: left;
+    }
+
+    .menu-b {
+        display: inline-flex;
+        justify-content: right;
+    }
+
+    .menu-b-drawer-container {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -80%; /* 初始时隐藏在屏幕右侧 */
+        width: 80%;
+        height: 100%;
+        background-color: #D8E3E7;
+        transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
+        z-index: 3;
+    }
+
+    /* 打开抽屉菜单时调整左边距 */
+    .menu-b-drawer-container.open {
+        right: 0;
+    }
+
+    .menu-b-drawer-content {
+        padding: 2rem 1.2rem;
+        text-align: center;
+    }
+
+    .menu-b-description {
+        margin-top: 0;
+    }
+
+    .menu-b-drawer-container hr {
+        border: 1px dashed #566C73;
+    }
+
+    .menu-b-personal-avatar {
+        width: 6rem;
+        border-radius: 50%;
+    }
+
+    .menu-b-button {
+        background-color: #D8E3E7;
+    }
+
     .menu-button {
         width: 3rem;
         height: 3rem;
@@ -782,9 +839,9 @@ main {
         display: none;
     }
 
+    /* 首页简介栏 */
     .main-header-left {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: none;
     }
 
     .main-header-right {

@@ -43,7 +43,30 @@
                 <button class="menu-button" onclick="window.location.href='friends.html'"><img src="img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
                 <button class="menu-button-active menu-button" onclick="window.location.href='about.html'"><img src="img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text-active">关于</span></button>
             </div>
+            <div class="menu-b">
+                <button class="menu-button" id="open-menu"><img src="img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
+            </div>
         </nav>
+        <div class="menu-b-drawer-container" id="drawer">
+            <div class="menu-b-drawer-content">
+                <img class="menu-b-personal-avatar" src="img/profile-avatar.webp" alt="personal-avatar">
+                <h2 class="subtitle">赤茶</h2>
+                <p class="menu-b-description">Per aspera, ad astra.</p>
+                <hr>
+                <div class="social-link">
+                    <h3 class="subtitle">社交平台</h3>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter" title="Twitter"><img src="img/icons/twitter.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon" title="Mastodon"><img src="img/icons/mastodon.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://bsky.app/profile/cynosura.one'" type="button" id="social-atprotocol" title="Bluesky"><img src="img/icons/atprotocol.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads" title="Threads"><img src="img/icons/threads.svg" class="social-icon"></button>
+                </div>
+                <div class="social-im-link">
+                    <h3 class="subtitle">即时通讯 / IM</h3>
+                    <a href="https://t.me/arcuscha"><span class="menu-b-button social-im-button">Telegram</span></a>
+                    <a href="https://matrix.to/#/@froseiun:matrix.org"><span class="menu-b-button social-im-button">Matrix</span></a>
+                </div>
+            </div>
+        </div>
         <div class="main-content">
             <article class="about-article card" id="domain">
                 <h2 class="card-title">域名含义</h2>
