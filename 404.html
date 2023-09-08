@@ -24,28 +24,51 @@
     <meta name="twitter:description" content="Page Not Found">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.jpg">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css?v=2.0">
+    <link rel="icon" type="image/x-icon" href="https://cynosura.one/img/favicon.ico">
     <!--加载字体-->
-    <link rel="preload" href="/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/font/Overpass-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/font/OverpassMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cynosura.one/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cynosura.one/font/Overpass-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cynosura.one/font/OverpassMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
     <header>
-        <img class="header-avatar" src="/img/avatar.webp" alt="site-avatar">
+        <img class="header-avatar" src="https://cynosura.one/img/avatar.webp" alt="site-avatar">
         <h1 class="header-title">Cynosura</h1>
         <p class="header-description">Trying to light up the dark.</p>
     </header>
     <main class="page-main">
         <nav class="menu">
             <div class="menu-a">
-                <button class="menu-button" onclick="window.location.href='/index.html'"><img src="/img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
-                <button class="menu-button" onclick="window.location.href='/posts'"><img src="/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text">文章</span></button>
-                <button class="menu-button" onclick="window.location.href='/friends.html'"><img src="/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
-                <button class="menu-button" onclick="window.location.href='/about.html'"><img src="/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
+                <button class="menu-button" onclick="window.location.href='https://cynosura.one'"><img src="https://cynosura.one/img/icons/home.svg" alt="home-button" class="menu-icon"><span class="menu-button-text">首页</span></button>
+                <button class="menu-button" onclick="window.location.href='https://cynosura.one/posts'"><img src="https://cynosura.one/img/icons/article.svg" alt="posts-button" class="menu-icon"><span class="menu-button-text">文章</span></button>
+                <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
+                <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
+            </div>
+            <div class="menu-b">
+                <button class="menu-button" id="open-menu"><img src="https://cynosura.one/img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
             </div>
         </nav>
+        <div class="menu-b-drawer-container" id="drawer">
+            <div class="menu-b-drawer-content">
+                <img class="menu-b-personal-avatar" src="https://cynosura.one/img/profile-avatar.webp" alt="personal-avatar">
+                <h2 class="subtitle">赤茶</h2>
+                <p class="menu-b-description">Per aspera, ad astra.</p>
+                <hr>
+                <div class="social-link">
+                    <h3 class="subtitle">社交平台</h3>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://twitter.com/astraorsa'" type="button" id="social-twitter" title="Twitter"><img src="https://cynosura.one/img/icons/twitter.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://mastodon.social/@cynosura'" type="button" id="social-mastodon" title="Mastodon"><img src="https://cynosura.one/img/icons/mastodon.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://bsky.app/profile/cynosura.one'" type="button" id="social-atprotocol" title="Bluesky"><img src="https://cynosura.one/img/icons/atprotocol.svg" class="social-icon"></button>
+                    <button class="menu-b-button social-button" onclick="window.location.href='https://www.threads.net/@skykousa'" type="button" id="social-threads" title="Threads"><img src="https://cynosura.one/img/icons/threads.svg" class="social-icon"></button>
+                </div>
+                <div class="social-im-link">
+                    <h3 class="subtitle">即时通讯 / IM</h3>
+                    <a href="https://t.me/arcuscha"><span class="menu-b-button social-im-button">Telegram</span></a>
+                    <a href="https://matrix.to/#/@froseiun:matrix.org"><span class="menu-b-button social-im-button">Matrix</span></a>
+                </div>
+            </div>
+        </div>
         <div class="main-content">
             <div class="page-center card">
                 <h1>404</h1>
@@ -55,7 +78,7 @@
     </main>
     <footer>
         <p>Copyright &copy; 2023 Cynosura</p>
-        <script src="/js/menu.js" defer></script>
+        <script src="https://cynosura.one/js/menu.js?v=2.0" defer></script>
     </footer>
 </body>
 </html>

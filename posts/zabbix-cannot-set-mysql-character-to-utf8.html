@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="简单记录在 zabbix 5.0 上遇到数据库乱码的解决过程">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
-    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/style.css?v=2.0">
     <link rel="icon" type="image/x-icon" href="https://cynosura.one/img/favicon.ico">
     <!--加载字体-->
     <link rel="preload" href="https://cynosura.one/font/Overpass-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -56,7 +56,26 @@
             <button class="menu-button" onclick="window.location.href='https://cynosura.one/friends'"><img src="https://cynosura.one/img/icons/links.svg" alt="friends-button" class="menu-icon"><span class="menu-button-text">友人</span></button>
             <button class="menu-button" onclick="window.location.href='https://cynosura.one/about'"><img src="https://cynosura.one/img/icons/about.svg" alt="about-button" class="menu-icon"><span class="menu-button-text">关于</span></button>
         </div>
+        <div class="menu-b">
+            <button class="menu-button" id="open-menu"><img src="https://cynosura.one/img/icons/menu.svg" alt="menu-button" class="menu-icon"></button>
+        </div>
     </nav>
+    <div class="menu-b-drawer-container" id="drawer">
+        <div class="menu-b-drawer-content">
+            <img class="menu-b-personal-avatar" src="https://cynosura.one/img/profile-avatar.webp" alt="personal-avatar">
+            <h2 class="subtitle">赤茶</h2>
+            <p class="menu-b-description">Per aspera, ad astra.</p>
+            <hr>
+            <h3 class="subtitle">订阅文章</h3>
+            <button class="menu-b-button post-button" onclick="window.location.href='https://cynosura.one/posts/feeds/all.atom.xml'" type="button" id="post-rss" title="RSS Feed"><img src="https://cynosura.one/img/icons/rss-icon.svg" class="post-icon"></button>
+            <h3 class="subtitle">文章分类</h3>
+            <div class="post-left-menu-categories">
+                <a href="https://cynosura.one/posts/category/ji-zhu.html"><span class="menu-b-button post-left-menu-category">技术</span></a>
+                <a href="https://cynosura.one/posts/category/ri-chang.html"><span class="menu-b-button post-left-menu-category">日常</span></a>
+                <a href="https://cynosura.one/posts/category/za-tan.html"><span class="menu-b-button post-left-menu-category">杂谈</span></a>
+            </div>
+        </div>
+    </div>
     <article class="post-article card">
         <div>
             <h1 class="post-article-title">记一次 zabbix 数据库编码排错</h1>
@@ -120,7 +139,7 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <footer>
         <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy 2023</p>
-        <script src="https://cynosura.one/js/menu.js" defer></script>
+        <script src="https://cynosura.one/js/menu.js?v=2.0" defer></script>
     </footer>
 </body>
 </html>
