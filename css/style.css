@@ -197,6 +197,7 @@ main {
     line-height: 2rem;
     transition: 0.5s background-color;
     box-sizing: content-box;
+    padding: 0;
 }
 
 .menu-button-active {
@@ -755,12 +756,12 @@ main {
     }
 
     .menu-button {
-        width: 2.5rem;
+        width: 3rem;
         height: 3rem;
     }
 
     .menu-button-active {
-        width: 4rem;
+        width: 5rem;
     }
 
     .menu-button-text {
