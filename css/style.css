@@ -204,6 +204,10 @@ main {
     background-color: #6C9BD2;
 }
 
+.menu-icon {
+    width: 1.5rem;
+}
+
 .menu-button-active .menu-icon {
     filter: invert(100%);
 }
