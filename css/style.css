@@ -162,22 +162,22 @@ main {
 
 /* 菜单 */
 .menu {
+    display: flex;
     position: sticky;
     top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
     z-index: 2;
     margin-bottom: 0.5rem;
-}
-
-.menu-a {
-    display: flex;
-    justify-content: center;
     background-color: #D8E3E7;
-    position: relative;
-    width: 100%;
     transition: 0.5s background-color;
 }
 
-.menu.at-top .menu-a {
+.menu-a {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.menu.at-top {
     background-color: #EBF4F4;
 }
 
@@ -914,7 +914,7 @@ main {
     }
 
     /* 菜单 */
-    .menu-a {
+    .menu {
         background-color: #242424;
     }
 
@@ -927,7 +927,7 @@ main {
         background-color: #00558F;
     }
 
-    .menu.at-top .menu-a {
+    .menu.at-top {
         background-color: #121212;
     }
 
