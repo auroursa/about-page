@@ -545,12 +545,12 @@ main {
         transition: background-color 0.5s, color 0.25s;
     }
     
-    .friends-card-link:hover .index-article-title {
+    .friends-card-link:hover .card-title {
         padding-left: 0;
         transition: 0.25s padding ease-out;
     }
     
-    .friends-card-link:hover .index-article-title::before {
+    .friends-card-link:hover .card-title::before {
         width: 0;
         transition: 0.1s width ease-out;
     }
