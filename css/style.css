@@ -791,10 +791,11 @@ main {
         display: block;
         position: fixed;
         top: 0;
-        right: -80%; /* 初始时隐藏在屏幕右侧 */
-        width: 80%;
+        right: -100%; /* 初始时隐藏在屏幕右侧 */
+        width: 100%;
         height: 100%;
-        background-color: #D8E3E7;
+        background-color: rgba(216, 227, 231, 0.85);
+        backdrop-filter: blur(5px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
         z-index: 3;
     }
@@ -807,6 +808,7 @@ main {
     .menu-b-drawer-content {
         padding: 2rem 1.2rem;
         text-align: center;
+        position: relative;
     }
 
     .menu-b-description {
@@ -823,7 +825,13 @@ main {
     }
 
     .menu-b-button {
-        background-color: #D8E3E7;
+        background-color: transparent;
+    }
+
+    .menu-b-close-div {
+        position: absolute;
+        top: 0;
+        right: 0.5rem;
     }
 
     .menu-button {
@@ -970,64 +978,6 @@ main {
         background-color: #00558F;
     }
 
-    /* 菜单 */
-    .menu {
-        background-color: #242424;
-    }
-
-    .menu-b-drawer-container {
-        background-color: #242424;
-    }
-
-    .menu-button {
-        color: #FFF;
-        background-color: #242424;
-    }
-
-    .menu-button-active {
-        background-color: #00558F;
-    }
-
-    .menu.at-top {
-        background-color: #121212;
-    }
-
-    .menu.at-top .menu-button {
-        background-color: #121212;
-    }
-
-    .menu.at-top .menu-button-active {
-        background-color: #00558F;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu-button:hover {
-            background-color: #3C3C3C;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu-button-active:hover {
-            background-color: #00558F;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu.at-top .menu-button:hover {
-            background-color: #3C3C3C;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu.at-top .menu-button-active:hover {
-            background-color: #00558F;
-        }
-    }
-
-    .menu-icon {
-        filter: invert(100%);
-    }
-
     /* 技能与设备卡片 */
     .skill-list-content,
     .device-list-content {
@@ -1111,6 +1061,68 @@ main {
     }
 
     .post-article-copyright-icon {
+        filter: invert(100%);
+    }
+
+    /* 菜单 */
+    .menu {
+        background-color: #242424;
+    }
+
+    .menu-b-drawer-container {
+        background-color: rgba(36, 36, 36, 0.85);
+    }
+
+    .menu-b-button {
+        background-color: transparent;
+    }
+
+    .menu-button {
+        color: #FFF;
+        background-color: #242424;
+    }
+
+    .menu-button-active {
+        background-color: #00558F;
+    }
+
+    .menu.at-top {
+        background-color: #121212;
+    }
+
+    .menu.at-top .menu-button {
+        background-color: #121212;
+    }
+
+    .menu.at-top .menu-button-active {
+        background-color: #00558F;
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .menu-button:hover {
+            background-color: #3C3C3C;
+        }
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .menu-button-active:hover {
+            background-color: #00558F;
+        }
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .menu.at-top .menu-button:hover {
+            background-color: #3C3C3C;
+        }
+    }
+
+    @media (hover: hover), (pointer: fine) {
+        .menu.at-top .menu-button-active:hover {
+            background-color: #00558F;
+        }
+    }
+
+    .menu-icon {
         filter: invert(100%);
     }
 
