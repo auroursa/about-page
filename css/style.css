@@ -1086,6 +1086,10 @@ main {
         background-color: transparent;
     }
 
+    .menu-button {
+        color: #FFF;
+    }
+
     .menu-button-active {
         background-color: #00558F;
     }
