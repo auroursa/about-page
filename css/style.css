@@ -1075,7 +1075,7 @@ main {
 
     /* 菜单 */
     .menu {
-        background-color: #242424;
+        background-color: #2C2C2C;
     }
 
     .menu-b-drawer-container {
@@ -1084,10 +1084,6 @@ main {
 
     .menu-b-button {
         background-color: transparent;
-    }
-
-    .menu-button {
-        color: #FFF;
     }
 
     .menu-button-active {
