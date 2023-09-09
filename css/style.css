@@ -951,7 +951,7 @@ main {
 
     a {
         color: #FFF;
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
         text-decoration-color: #00558F;
     }
 
@@ -976,11 +976,11 @@ main {
     }
 
     .main-header-right-content {
-        background: linear-gradient(to bottom, rgba(44, 44, 44, 0.9) 25%, #2C2C2C 75%);
+        background: linear-gradient(to bottom, rgba(27, 27, 27, 0.9) 25%, #1B1B1B 75%);
     }
 
     .card {
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
     }
 
     .card-title::before {
@@ -1009,7 +1009,7 @@ main {
     .social-button,
     .post-button {
         border: 0.1rem solid #FFF;
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1028,7 +1028,7 @@ main {
     .post-left-menu-category {
         color: #FFF;
         border: 0.1rem solid #FFF;
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1044,7 +1044,7 @@ main {
     }
     
     .friends-card-link {
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1056,7 +1056,7 @@ main {
     /* 文章 */
     .post-link {
         color: #FCFAF2;
-        background-color: #2C2C2C;
+        background-color: #1B1B1B;
     }
 
     @media (hover: hover), (pointer: fine) {
