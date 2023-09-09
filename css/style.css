@@ -204,7 +204,7 @@ main {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: rgba(235, 244, 244, 0);
+    background-color: transparent;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -239,14 +239,6 @@ main {
 }
 
 /* 菜单吸顶样式 */
-.menu.at-top .menu-button {
-    background-color: rgba(235, 244, 244, 0);
-}
-
-.menu.at-top .menu-button-active {
-    background-color: #6C9BD2;
-}
-
 @media (hover: hover), (pointer: fine) {
     .menu.at-top .menu-button:hover {
         background-color: #C3D7DF;
@@ -1088,7 +1080,6 @@ main {
 
     .menu-button {
         color: #FFF;
-        background-color: #242424;
     }
 
     .menu-button-active {
@@ -1097,14 +1088,6 @@ main {
 
     .menu.at-top {
         background-color: rgba(18, 18, 18, 0.85);
-    }
-
-    .menu.at-top .menu-button {
-        background-color: rgba(18, 18, 18, 0);
-    }
-
-    .menu.at-top .menu-button-active {
-        background-color: #00558F;
     }
 
     @media (hover: hover), (pointer: fine) {
