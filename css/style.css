@@ -157,8 +157,8 @@ main {
 .main-header-right-content {
     margin-top: 10.5rem;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
 }
 
@@ -190,8 +190,8 @@ main {
 
 .menu.at-top {
     background-color: rgba(235, 244, 244, 0.85);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* 菜单按钮 */
@@ -799,8 +799,8 @@ main {
         width: 100%;
         height: 100%;
         background-color: rgba(235, 244, 244, 0.85);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
         z-index: 3;
     }
