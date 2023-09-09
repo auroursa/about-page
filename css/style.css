@@ -156,7 +156,7 @@ main {
 
 .main-header-right-content {
     margin-top: 10.5rem;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 25%, #ffffff 75%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     padding: 1rem 1.5rem;
@@ -189,7 +189,9 @@ main {
 }
 
 .menu.at-top {
-    background-color: #EBF4F4;
+    background-color: rgba(235, 244, 244, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 /* 菜单按钮 */
@@ -238,7 +240,7 @@ main {
 
 /* 菜单吸顶样式 */
 .menu.at-top .menu-button {
-    background-color: #EBF4F4;
+    background-color: transparent;
 }
 
 .menu.at-top .menu-button-active {
@@ -1094,11 +1096,7 @@ main {
     }
 
     .menu.at-top {
-        background-color: #121212;
-    }
-
-    .menu.at-top .menu-button {
-        background-color: #121212;
+        background-color: rgba(18, 18, 18, 0.85);
     }
 
     .menu.at-top .menu-button-active {
