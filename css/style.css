@@ -204,7 +204,7 @@ main {
     width: 6rem;
     height: 3rem;
     color: #0C0C0C;
-    background-color: #D8E3E7;
+    background-color: rgba(235, 244, 244, 0);
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
@@ -240,7 +240,7 @@ main {
 
 /* 菜单吸顶样式 */
 .menu.at-top .menu-button {
-    background-color: transparent;
+    background-color: rgba(235, 244, 244, 0);
 }
 
 .menu.at-top .menu-button-active {
@@ -1097,6 +1097,10 @@ main {
 
     .menu.at-top {
         background-color: rgba(18, 18, 18, 0.85);
+    }
+
+    .menu.at-top .menu-button {
+        background-color: rgba(18, 18, 18, 0);
     }
 
     .menu.at-top .menu-button-active {
