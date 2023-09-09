@@ -156,7 +156,9 @@ main {
 
 .main-header-right-content {
     margin-top: 10.5rem;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 25%, #ffffff 75%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 25%, #ffffff 75%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     padding: 1rem 1.5rem;
 }
 
@@ -794,7 +796,7 @@ main {
         right: -100%; /* 初始时隐藏在屏幕右侧 */
         width: 100%;
         height: 100%;
-        background-color: rgba(216, 227, 231, 0.85);
+        background-color: rgba(235, 244, 244, 0.85);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
@@ -833,6 +835,10 @@ main {
         position: absolute;
         top: 0;
         right: 0.5rem;
+    }
+
+    .menu-b-close-div button {
+        background-color: transparent;
     }
 
     .menu-button {
@@ -1071,7 +1077,7 @@ main {
     }
 
     .menu-b-drawer-container {
-        background-color: rgba(36, 36, 36, 0.85);
+        background-color: rgba(18, 18, 18, 0.85);
     }
 
     .menu-b-button {
