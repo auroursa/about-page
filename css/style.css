@@ -796,6 +796,7 @@ main {
         height: 100%;
         background-color: rgba(216, 227, 231, 0.85);
         backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
         z-index: 3;
     }
