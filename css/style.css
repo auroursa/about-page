@@ -493,6 +493,14 @@ main {
     pointer-events: none;
 }
 
+@media (hover: hover), (pointer: fine) {
+    .skill-list-content:hover,
+    .device-list-content:hover {
+        background-color: #CDD1D3;
+        transition: 0.5s background-color;
+    }
+}
+
 /* 友链列表 */
 .friends-list {
     display: grid;
