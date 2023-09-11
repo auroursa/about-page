@@ -360,6 +360,7 @@ main {
 
 .post-article-copyright-icon {
     width: 2rem;
+    fill: #0C0C0C;
 }
 
 .post-button {
@@ -1072,7 +1073,7 @@ main {
     }
 
     .post-article-copyright-icon {
-        filter: invert(100%);
+        fill: #FFF;
     }
 
     /* 菜单 */
