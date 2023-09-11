@@ -760,6 +760,16 @@ main {
 }
 
 @media screen and (max-width:680px) {
+    .skill-list-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .device-list-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:576px) {
     main {
         max-width: 100%;
     }
