@@ -223,7 +223,7 @@ main {
 }
 
 .menu-button-active .menu-icon {
-    filter: invert(100%);
+    fill: #FFF;
 }
 
 @media (hover: hover), (pointer: fine) {
@@ -281,7 +281,8 @@ main {
 .social-icon {
     width: 1.5rem;
     height: 1.5rem;
-    transition: 0.25s filter;
+    fill: #0C0C0C;
+    transition: 0.25s fill;
 }
 
 @media (hover: hover), (pointer: fine) {
@@ -292,8 +293,8 @@ main {
     }
     
     .social-button:hover .social-icon {
-        filter: invert(100%);
-        transition: 0.25s filter;
+        fill: #FFF;
+        transition: 0.25s fill;
     }
 }
 
@@ -379,7 +380,8 @@ main {
 .post-icon {
     width: 1.5rem;
     height: 1.5rem;
-    transition: 0.25s filter;
+    fill: #0C0C0C;
+    transition: 0.25s fill;
 }
 
 .post-category {
@@ -396,7 +398,7 @@ main {
     }
     
     .post-button:hover .post-icon {
-        filter: invert(100%);
+        fill: #FFF;
     }
 }
 
@@ -1021,7 +1023,7 @@ main {
 
     .social-icon,
     .post-icon {
-        filter: invert(100%);
+        fill: #FFF;
     }
 
     .social-im-button,
@@ -1123,7 +1125,7 @@ main {
     }
 
     .menu-icon {
-        filter: invert(100%);
+        fill: #FFF;
     }
 
     /* 按钮 */
