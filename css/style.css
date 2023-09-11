@@ -1,11 +1,11 @@
 body {
     overflow-y: overlay;
     background-color: #EBF4F4;
-    color: #0C0C0C;
+    color: #322C28;
 }
 
 a {
-    color: #0C0C0C;
+    color: #322C28;
     background-color: #FFF;
     text-decoration-color: #6C9BD2;
     transition: 0.5s background-color, 0.25s color;
@@ -203,7 +203,7 @@ main {
     border: none;
     width: 6rem;
     height: 3rem;
-    color: #0C0C0C;
+    color: #322C28;
     background-color: transparent;
     vertical-align: middle;
     font-size: 1rem;
@@ -268,7 +268,7 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 0.1rem solid #0C0C0C;
+    border: 0.1rem solid #322C28;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
@@ -281,7 +281,7 @@ main {
 .social-icon {
     width: 1.5rem;
     height: 1.5rem;
-    fill: #0C0C0C;
+    fill: #322C28;
     transition: 0.25s fill;
 }
 
@@ -321,7 +321,7 @@ main {
 .post-link {
     display: block;
     padding: 1.2rem 2rem;
-    color: #0C0C0C;
+    color: #322C28;
     background-color: #FFF;
     transition: background-color 0.5s, color 0.25s;
 }
@@ -360,7 +360,7 @@ main {
 
 .post-article-copyright-icon {
     width: 2rem;
-    fill: #0C0C0C;
+    fill: #322C28;
 }
 
 .post-button {
@@ -368,7 +368,7 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 0.1rem solid #0C0C0C;
+    border: 0.1rem solid #322C28;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
@@ -381,7 +381,7 @@ main {
 .post-icon {
     width: 1.5rem;
     height: 1.5rem;
-    fill: #0C0C0C;
+    fill: #322C28;
     transition: 0.25s fill;
 }
 
@@ -408,9 +408,9 @@ main {
     line-height: 2rem;
     height: 2rem;
     width: 3.75rem;
-    color: #0C0C0C;
+    color: #322C28;
     background-color: #FFF;
-    border: 0.1rem solid #0C0C0C;
+    border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
     transition: 0.5s background-color, 0.25s color, 0.1s border;
@@ -433,9 +433,9 @@ main {
     line-height: 2rem;
     height: 2rem;
     width: 5.8rem;
-    color: #0C0C0C;
+    color: #322C28;
     background-color: #FFF;
-    border: 0.1rem solid #0C0C0C;
+    border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
     transition: 0.5s background-color, 0.25s color, 0.1s border;
@@ -474,6 +474,7 @@ main {
 .skill-icon {
     width: 3.5rem;
     pointer-events: none;
+    fill: #322C28;
 }
 
 /* 设备列表 */
@@ -494,12 +495,13 @@ main {
 .device-icon {
     width: 3.5rem;
     pointer-events: none;
+    fill: #322C28;
 }
 
 @media (hover: hover), (pointer: fine) {
     .skill-list-content:hover,
     .device-list-content:hover {
-        background-color: #CDD1D3;
+        background-color: #E6E6E6;
         transition: 0.5s background-color;
     }
 }
@@ -549,7 +551,7 @@ main {
 .friends-card-link {
     padding: 1.2rem;
     text-decoration: none;
-    color: #0C0C0C;
+    color: #322C28;
     background-color: #FFF;
     transition: background-color 0.5s, color 0.25s;
 }
@@ -948,12 +950,12 @@ main {
 
 @media (prefers-color-scheme: dark) {
     body {
-        color: #FFF;
+        color: #FCFAF2;
         background-color: #121212;
     }
 
     a {
-        color: #FFF;
+        color: #FCFAF2;
         background-color: #1B1B1B;
         text-decoration-color: #00558F;
     }
@@ -998,7 +1000,7 @@ main {
 
     .skill-icon,
     .device-icon {
-        filter: invert(100%);
+        fill: #FCFAF2;
     }
 
     @media (hover: hover), (pointer: fine) {
@@ -1011,7 +1013,7 @@ main {
 
     .social-button,
     .post-button {
-        border: 0.1rem solid #FFF;
+        border: 0.1rem solid #FCFAF2;
         background-color: #1B1B1B;
     }
 
@@ -1024,13 +1026,13 @@ main {
 
     .social-icon,
     .post-icon {
-        fill: #FFF;
+        fill: #FCFAF2;
     }
 
     .social-im-button,
     .post-left-menu-category {
-        color: #FFF;
-        border: 0.1rem solid #FFF;
+        color: #FCFAF2;
+        border: 0.1rem solid #FCFAF2;
         background-color: #1B1B1B;
     }
 
@@ -1043,7 +1045,7 @@ main {
 
     /* 友链列表 */
     .friends-card a {
-        color: #FFF;
+        color: #FCFAF2;
     }
     
     .friends-card-link {
@@ -1073,7 +1075,7 @@ main {
     }
 
     .post-article-copyright-icon {
-        fill: #FFF;
+        fill: #FCFAF2;
     }
 
     /* 菜单 */
@@ -1090,7 +1092,7 @@ main {
     }
 
     .menu-button {
-        color: #FFF;
+        color: #FCFAF2;
     }
 
     .menu-button-active {
@@ -1126,7 +1128,11 @@ main {
     }
 
     .menu-icon {
-        fill: #FFF;
+        fill: #FCFAF2;
+    }
+
+    .menu-button-active .menu-icon {
+        fill: #FCFAF2;
     }
 
     /* 按钮 */
