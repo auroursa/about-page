@@ -275,7 +275,7 @@ main {
     box-sizing: content-box;
     padding: 0;
     background-color: #FFF;
-    transition: 0.5s background-color, 0.25s border;
+    transition: 0.5s background-color, 0.5s border;
 }
 
 .social-icon {
@@ -288,8 +288,7 @@ main {
 @media (hover: hover), (pointer: fine) {
     .social-button:hover {
         background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
-        transition: 0.5s background-color, 0.25s border;
+        border: 0.1rem solid #6C9BD2;
     }
     
     .social-button:hover .social-icon {
@@ -375,7 +374,7 @@ main {
     box-sizing: content-box;
     padding: 0;
     background-color: #FFF;
-    transition: 0.5s background-color, 0.25s border;
+    transition: 0.5s background-color, 0.5s border;
 }
 
 .post-icon {
@@ -395,7 +394,7 @@ main {
 @media (hover: hover), (pointer: fine) {
     .post-button:hover {
         background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
+        border: 0.1rem solid #6C9BD2;
     }
     
     .post-button:hover .post-icon {
@@ -413,14 +412,14 @@ main {
     border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
-    transition: 0.5s background-color, 0.25s color, 0.1s border;
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
 }
 
 @media (hover: hover), (pointer: fine) {
     .post-left-menu-category:hover {
         color: #FFF;
         background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
+        border: 0.1rem solid #6C9BD2;
     }
 }
 
@@ -438,15 +437,15 @@ main {
     border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
-    transition: 0.5s background-color, 0.25s color, 0.1s border;
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
 }
 
 @media (hover: hover), (pointer: fine) {
     .social-im-button:hover {
         color: #FFF;
         background-color: #6C9BD2;
-        border: 0.1rem solid transparent;
-        transition: 0.5s background-color, 0.25s color, 0.1s border;
+        border: 0.1rem solid #6C9BD2;
+        transition: 0.5s background-color, 0.25s color, 0.5s border;
     }
 }
 
@@ -1031,6 +1030,7 @@ main {
         .social-button:hover,
         .post-button:hover {
             background-color: #00558F;
+            border: 0.1rem solid #00558F;
         }
     }
 
@@ -1050,6 +1050,7 @@ main {
         .social-im-button:hover,
         .post-left-menu-category:hover {
             background-color: #00558F;
+            border: 0.1rem solid #00558F;
         }
     }
 
