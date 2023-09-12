@@ -1,5 +1,58 @@
+:root {
+    --text-color: #322C28;
+    --bg-color: #EBF4F4;
+    --at-color: #FFFFFF;
+    --card-color: #FFFFFF;
+    --card-content-color: #F6F7F8;
+    --card-content-hv-color: #E6E6E6;
+    --main-color: #6C9BD2;
+    --hl-color: #2B2B2B;
+    --menu-color: #D8E3E7;
+    --menu-at-color: rgba(235, 244, 244, 0.85);
+    --menu-hv-color: #C3D7DF;
+    --menu-button-color: #322C28;
+    --main-header-right-content-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
+    --hr-line-color: #566C73;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #FCFAF2;
+        --bg-color: #121212;
+        --at-color: #FCFAF2;
+        --card-color: #1B1B1B;
+        --card-content-color: #212121;
+        --card-content-hv-color: #3C3C3C;
+        --main-color: #00558F;
+        --hl-color: #2B2B2B;
+        --menu-color: #2C2C2C;
+        --menu-at-color: rgba(18, 18, 18, 0.85);
+        --menu-hv-color: #3C3C3C;
+        --menu-button-color: #FCFAF2;
+        --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.9) 25%, #1B1B1B 75%);
+        --hr-line-color: #566C73;
+    }
+}
+
 body {
     overflow-y: overlay;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+a {
+    color: var(--text-color);
+    background-color: var(--card-color);
+    text-decoration-color: var(--main-color);
+    transition: 0.5s background-color, 0.25s color;
+}
+
+@media (hover: hover), (pointer: fine) {
+    a:hover {
+        color: var(--card-color);
+        background-color: var(--main-color);
+        text-decoration: none;
+    }
 }
 
 img {
@@ -12,6 +65,8 @@ blockquote {
     font-style: italic;
     padding: 0.5rem 1.2rem;
     margin: 1rem;
+    border-left: 0.35rem solid var(--main-color);
+    background-color: var(--bg-color);
 }
 
 /* 代码块样式 */
@@ -20,6 +75,7 @@ blockquote {
     width:-webkit-fit-content;
     width:-moz-fit-content;
     padding: 0.5rem;
+    background-color: var(--hl-color);
 }
 
 pre {
@@ -32,6 +88,8 @@ code {
     font-family: 'Overpass Mono';
     font-weight: normal;
     font-style: normal;
+    color: var(--card-color);
+    background-color: var(--hl-color);
 }
 
 p code {
@@ -74,17 +132,24 @@ header {
     margin: 0;
 }
 
+/* 页尾 */
+footer a {
+    background-color: var(--bg-color);
+}
+
 /* 主容器 */
 main {
     display: grid;
     grid-template-columns: 1fr;
     max-width: 80%;
     margin: 0 auto;
+    background-color: var(--bg-color);
 }
 
 /* 卡片 */
 .card {
     padding: 1rem 1.5rem;
+    background-color: var(--card-color);
 }
 
 .center-card {
@@ -107,6 +172,7 @@ main {
     height: 75%;
     z-index: 1;
     transition: 0.1s width ease-out;
+    background-color: var(--main-color);
 }
 
 .main-header {
@@ -128,6 +194,7 @@ main {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
+    background: var(--main-header-right-content-color);
 }
 
 /* 菜单 */
@@ -137,6 +204,8 @@ main {
     top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
     z-index: 2;
     margin-bottom: 0.5rem;
+    background-color: var(--menu-color);
+    transition: 0.5s background-color;
 }
 
 .menu-a {
@@ -157,6 +226,7 @@ main {
 .menu.at-top {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    background-color: var(--menu-at-color);
 }
 
 /* 菜单按钮 */
@@ -173,10 +243,48 @@ main {
     line-height: 2rem;
     box-sizing: content-box;
     padding: 0;
+    color: var(--menu-button-color);
+    background-color: transparent;
+    transition: 0.5s background-color;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button:hover {
+        background-color: var(--menu-hv-color);
+    }
+}
+
+.menu-button-active {
+    color: var(--at-color);
+    background-color: var(--main-color);
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button-active:hover {
+        background-color: var(--main-color);
+    }
+}
+
+/* 菜单吸顶样式 */
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button:hover {
+        background-color: var(--menu-hv-color);
+    }
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button-active:hover {
+        background-color: var(--main-color);
+    }
 }
 
 .menu-icon {
     width: 1.5rem;
+    fill: var(--menu-button-color);
+}
+
+.menu-button-active .menu-icon {
+    fill: var(--at-color);
 }
 
 /* 个人头像 */
@@ -201,11 +309,50 @@ main {
     height: 2.5rem;
     box-sizing: content-box;
     padding: 0;
+    border: 0.1rem solid var(--text-color);
+    background-color: var(--card-color);
+    transition: 0.5s background-color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-button:hover {
+        background-color: var(--main-color);
+        border: 0.1rem solid var(--main-color);
+    }
+}
+
+.social-im-button {
+    display: inline-block;
+    line-height: 2rem;
+    height: 2rem;
+    width: 5.8rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    border: 0.1rem solid var(--text-color);
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-im-button:hover {
+        color: var(--card-color);
+        background-color: var(--main-color);
+        border: 0.1rem solid var(--main-color);
+    }
 }
 
 .social-icon {
     width: 1.5rem;
     height: 1.5rem;
+    fill: var(--text-color);
+    transition: 0.25s fill;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-button:hover .social-icon {
+        fill: var(--card-color);
+    }
 }
 
 /* 文章页 */
@@ -231,6 +378,16 @@ main {
 .post-link {
     display: block;
     padding: 1.2rem 2rem;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    transition: background-color 0.5s, color 0.25s;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-link:hover {
+        color: var(--card-color);
+        background-color: var(--main-color);
+    }
 }
 
 .post-left-menu {
@@ -257,10 +414,6 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.post-article-copyright-icon {
-    width: 2rem;
-}
-
 .post-button {
     display: inline-flex;
     align-items: center;
@@ -271,16 +424,41 @@ main {
     height: 2.5rem;
     box-sizing: content-box;
     padding: 0;
+    border: 0.1rem solid var(--text-color);
+    background-color: var(--card-color);
+    transition: 0.5s background-color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover {
+        background-color: var(--main-color);
+        border: 0.1rem solid var(--main-color);
+    }
 }
 
 .post-icon {
     width: 1.5rem;
     height: 1.5rem;
+    fill: var(--text-color);
+    transition: 0.25s fill;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover .post-icon {
+        fill: var(--card-color);
+    }
+}
+
+.post-article-copyright-icon {
+    width: 2rem;
+    fill: var(--text-color);
 }
 
 .post-category {
     padding: 0 0.5rem;
     border-radius: 0.25rem;
+    color: var(--card-color);
+    background-color: var(--main-color);
 }
 
 .post-left-menu-category {
@@ -290,19 +468,22 @@ main {
     width: 3.75rem;
     border-radius: 0.5rem;
     text-align: center;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    border: 0.1rem solid var(--text-color);
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-left-menu-category:hover {
+        color: var(--card-color);
+        background-color: var(--main-color);
+        border: 0.1rem solid var(--main-color);
+    }
 }
 
 .p-link {
     word-break: break-all;
-}
-
-.social-im-button {
-    display: inline-block;
-    line-height: 2rem;
-    height: 2rem;
-    width: 5.8rem;
-    border-radius: 0.5rem;
-    text-align: center;
 }
 
 .main-content {
@@ -322,11 +503,14 @@ main {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
+    background-color: var(--card-content-color);
+    transition: 0.5s background-color;
 }
 
 .skill-icon {
     width: 3.5rem;
     pointer-events: none;
+    fill: var(--text-color);
 }
 
 /* 设备列表 */
@@ -340,11 +524,21 @@ main {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
+    background-color: var(--card-content-color);
+    transition: 0.5s background-color;
 }
 
 .device-icon {
     width: 3.5rem;
     pointer-events: none;
+    fill: var(--text-color);
+}
+
+@media (hover: hover), (pointer: fine) {
+    .skill-list-content:hover,
+    .device-list-content:hover {
+        background-color: var(--card-content-hv-color);
+    }
 }
 
 /* 友链列表 */
@@ -392,6 +586,16 @@ main {
 .friends-card-link {
     padding: 1.2rem;
     text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--card-color);
+    transition: background-color 0.5s, color 0.25s;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .friends-card-link:hover {
+        color: var(--at-color);
+        background-color: var(--main-color);
+    }
 }
 
 @media (hover: hover), (pointer: fine) {
@@ -414,6 +618,8 @@ main {
     text-decoration: none;
     display: block;
     font-size: 1rem;
+    color: var(--card-color);
+    background-color: var(--main-color);
 }
 
 .page-center {
@@ -496,6 +702,7 @@ main {
         transform: translateY(-45%);
         width: 0.3rem;
         height: 75%;
+        background-color: var(--main-color);
     }
 
     .post-left-menu-b-space {
@@ -564,6 +771,7 @@ main {
         transform: translateY(-45%);
         width: 0.3rem;
         height: 75%;
+        background-color: var(--main-color);
     }
 
     .main-header-left-b-space {
@@ -645,6 +853,11 @@ main {
         -webkit-backdrop-filter: blur(10px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
         z-index: 3;
+        background-color: var(--menu-at-color);
+    }
+
+    .menu-b-drawer-container hr {
+        border: 1px dashed var(--hr-line-color);
     }
 
     /* 打开抽屉菜单时调整左边距 */
