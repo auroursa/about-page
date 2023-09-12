@@ -58,6 +58,7 @@ a {
 img {
     max-height: 35rem;
     max-width: 80%; 
+    aspect-ratio: attr(width) / attr(height);
 }
 
 /* 引用标签 */
@@ -116,6 +117,7 @@ header {
 /* 页首网站头像 */
 .header-avatar {
     width: 6rem;
+    height: 6rem;
     border-radius: 50%;
 }
 
@@ -290,6 +292,7 @@ main {
 /* 个人头像 */
 .personal-avatar {
     width: 6rem;
+    height: 6rem;
     border-radius: 50%;
 }
 
@@ -754,6 +757,7 @@ main {
     /* 缩小个人头像 */
     .personal-avatar {
         width: 5rem;
+        height: 5rem;
         border-radius: 1rem;
     }
 
@@ -877,6 +881,7 @@ main {
 
     .menu-b-personal-avatar {
         width: 6rem;
+        height: 6rem;
         border-radius: 50%;
     }
 
