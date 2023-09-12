@@ -5,11 +5,11 @@
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
-    --main-color: #1177B0;
+    --main-color: #11659A;
     --hl-color: #2B2B2B;
     --menu-color: #D8E3E7;
     --menu-at-color: rgba(235, 244, 244, 0.85);
-    --menu-hv-color: #C3D7DF;
+    --menu-hv-color: #D0DFE6;
     --menu-button-color: #322C28;
     --main-header-right-content-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
     --hr-line-color: #566C73;
@@ -23,7 +23,7 @@
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
-        --main-color: #11659A;
+        --main-color: #81C7D4;
         --hl-color: #2B2B2B;
         --menu-color: #2C2C2C;
         --menu-at-color: rgba(18, 18, 18, 0.85);
@@ -169,9 +169,9 @@ main {
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-45%);
-    width: 0.3rem;
-    height: 75%;
+    transform: translateY(-42%);
+    width: 0.25rem;
+    height: 72%;
     z-index: 1;
     transition: 0.1s width ease-out;
     background-color: var(--main-color);
@@ -238,7 +238,7 @@ main {
     justify-content: center;
     cursor: pointer;
     border: none;
-    width: 6rem;
+    width: 5rem;
     height: 3rem;
     vertical-align: middle;
     font-size: 1rem;
@@ -257,14 +257,18 @@ main {
 }
 
 .menu-button-active {
-    color: var(--at-color);
-    background-color: var(--main-color);
+    font-weight: bold;
+    color: var(--main-color);
+    position: relative;
 }
 
-@media (hover: hover), (pointer: fine) {
-    .menu-button-active:hover {
-        background-color: var(--main-color);
-    }
+.menu-button-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: var(--main-color);
 }
 
 /* 菜单吸顶样式 */
@@ -274,19 +278,14 @@ main {
     }
 }
 
-@media (hover: hover), (pointer: fine) {
-    .menu.at-top .menu-button-active:hover {
-        background-color: var(--main-color);
-    }
-}
-
 .menu-icon {
-    width: 1.5rem;
+    width: 1.35rem;
+    padding-right: 0.2rem;
     fill: var(--menu-button-color);
 }
 
 .menu-button-active .menu-icon {
-    fill: var(--at-color);
+    fill: var(--main-color);
 }
 
 /* 个人头像 */
