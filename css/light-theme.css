@@ -1,0 +1,275 @@
+body {
+    color: #322C28;
+    background-color: #EBF4F4;
+}
+
+a {
+    color: #322C28;
+    background-color: #FFF;
+    text-decoration-color: #6C9BD2;
+    transition: 0.5s background-color, 0.25s color;
+}
+
+@media (hover: hover), (pointer: fine) {
+    a:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        text-decoration: none;
+    }
+}
+
+/* 引用标签 */
+blockquote {
+    border-left: 0.35rem solid #6C9BD2;
+    background-color: #EBF4F4;
+}
+
+.highlight {
+    background-color: #2B2B2B;
+}
+
+code {
+    color: #FFF;
+    background-color: #2B2B2B;
+}
+
+/* 页尾 */
+footer a {
+    background-color: #EBF4F4;
+}
+
+/* 主容器 */
+main {
+    background-color: #EBF4F4;
+}
+
+/* 卡片 */
+.card {
+    background-color: #FFF;
+}
+
+.card-title::before {
+    background-color: #6C9BD2;
+}
+
+.main-header-right-content {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
+}
+
+/* 菜单 */
+.menu {
+    background-color: #D8E3E7;
+    transition: 0.5s background-color;
+}
+
+.menu.at-top {
+    background-color: rgba(235, 244, 244, 0.85);
+}
+
+.menu-button {
+    color: #322C28;
+    background-color: transparent;
+    transition: 0.5s background-color;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button:hover {
+        background-color: #C3D7DF;
+    }
+}
+
+.menu-button-active {
+    color: #FFF;
+    background-color: #6C9BD2;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
+/* 菜单吸顶样式 */
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button:hover {
+        background-color: #C3D7DF;
+    }
+}
+
+@media (hover: hover), (pointer: fine) {
+    .menu.at-top .menu-button-active:hover {
+        background-color: #6C9BD2;
+    }
+}
+
+.menu-icon {
+    fill: #322C28;
+}
+
+.menu-button-active .menu-icon {
+    fill: #FFF;
+}
+
+/* 社交图标 */
+.social-button {
+    border: 0.1rem solid #322C28;
+    background-color: #FFF;
+    transition: 0.5s background-color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-button:hover {
+        background-color: #6C9BD2;
+        border: 0.1rem solid #6C9BD2;
+    }
+}
+
+.social-im-button {
+    color: #322C28;
+    background-color: #FFF;
+    border: 0.1rem solid #322C28;
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-im-button:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        border: 0.1rem solid #6C9BD2;
+    }
+}
+
+.social-icon {
+    fill: #322C28;
+    transition: 0.25s fill;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .social-button:hover .social-icon {
+        fill: #FFF;
+    }
+}
+
+/* 文章页 */
+.post-link {
+    color: #322C28;
+    background-color: #FFF;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-link:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+    }
+}
+
+.post-button {
+    border: 0.1rem solid #322C28;
+    background-color: #FFF;
+    transition: 0.5s background-color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover {
+        background-color: #6C9BD2;
+        border: 0.1rem solid #6C9BD2;
+    }
+}
+
+.post-icon {
+    fill: #322C28;
+    transition: 0.25s fill;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-button:hover .post-icon {
+        fill: #FFF;
+    }
+}
+
+.post-article-copyright-icon {
+    fill: #322C28;
+}
+
+.post-category {
+    color: #FFF;
+    background-color: #6C9BD2;
+}
+
+.post-left-menu-category {
+    color: #322C28;
+    background-color: #FFF;
+    border: 0.1rem solid #322C28;
+    transition: 0.5s background-color, 0.25s color, 0.5s border;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .post-left-menu-category:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+        border: 0.1rem solid #6C9BD2;
+    }
+}
+
+/* 技能与设备卡片 */
+.skill-list-content,
+.device-list-content {
+    background-color: #F6F7F8;
+    transition: 0.5s background-color;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .skill-list-content:hover,
+    .device-list-content:hover {
+        background-color: #E6E6E6;
+    }
+}
+
+.skill-icon,
+.device-icon {
+    fill: #322C28;
+}
+
+/* 卡片悬停点击效果 */
+.friends-card-link {
+    color: #322C28;
+    background-color: #FFF;
+    transition: background-color 0.5s, color 0.25s;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .friends-card-link:hover {
+        color: #FFF;
+        background-color: #6C9BD2;
+    }
+}
+
+/* 按钮 */
+.button {
+    color: #FFF;
+    background-color: #6C9BD2;
+}
+
+@media screen and (max-width: 1280px) {
+    .post-left-menu-b-title::before {
+        background-color: #6C9BD2;
+    }
+}
+
+/* for iPad */
+@media screen and (max-width: 1024px) {
+    .main-header-left-b-title::before {
+        background-color: #6C9BD2;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .menu-b-drawer-container {
+        background-color: rgba(235, 244, 244, 0.85);
+    }
+
+    .menu-b-drawer-container hr {
+        border: 1px dashed #566C73;
+    }
+}

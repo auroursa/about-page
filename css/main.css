@@ -1,23 +1,5 @@
 body {
     overflow-y: overlay;
-    background-color: #EBF4F4;
-    color: #322C28;
-}
-
-a {
-    color: #322C28;
-    background-color: #FFF;
-    text-decoration-color: #6C9BD2;
-    transition: 0.5s background-color, 0.25s color;
-}
-
-@media (hover: hover), (pointer: fine) {
-    a:hover {
-        color: #FFF;
-        background-color: #6C9BD2;
-        text-decoration: none;
-        transition: 0.5s background-color, 0.25s color;
-    }
 }
 
 img {
@@ -28,15 +10,12 @@ img {
 /* 引用标签 */
 blockquote {
     font-style: italic;
-    border-left: 0.35rem solid #6C9BD2;
-    background-color: #EBF4F4;
     padding: 0.5rem 1.2rem;
     margin: 1rem;
 }
 
 /* 代码块样式 */
 .highlight {
-    background-color: #2B2B2B;
     width:fit-content;
     width:-webkit-fit-content;
     width:-moz-fit-content;
@@ -53,8 +32,6 @@ code {
     font-family: 'Overpass Mono';
     font-weight: normal;
     font-style: normal;
-    color: #FFF;
-    background-color: #2B2B2B;
 }
 
 p code {
@@ -97,23 +74,16 @@ header {
     margin: 0;
 }
 
-/* 页尾 */
-footer a {
-    background-color: #EBF4F4;
-}
-
 /* 主容器 */
 main {
     display: grid;
     grid-template-columns: 1fr;
-    background-color: #EBF4F4;
     max-width: 80%;
     margin: 0 auto;
 }
 
 /* 卡片 */
 .card {
-    background-color: #FFF;
     padding: 1rem 1.5rem;
 }
 
@@ -135,7 +105,6 @@ main {
     transform: translateY(-45%);
     width: 0.3rem;
     height: 75%;
-    background-color: #6C9BD2;
     z-index: 1;
     transition: 0.1s width ease-out;
 }
@@ -156,7 +125,6 @@ main {
 
 .main-header-right-content {
     margin-top: 10.5rem;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
@@ -169,8 +137,6 @@ main {
     top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
     z-index: 2;
     margin-bottom: 0.5rem;
-    background-color: #D8E3E7;
-    transition: 0.5s background-color;
 }
 
 .menu-a {
@@ -189,7 +155,6 @@ main {
 }
 
 .menu.at-top {
-    background-color: rgba(235, 244, 244, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -203,52 +168,15 @@ main {
     border: none;
     width: 6rem;
     height: 3rem;
-    color: #322C28;
-    background-color: transparent;
     vertical-align: middle;
     font-size: 1rem;
     line-height: 2rem;
-    transition: 0.5s background-color;
     box-sizing: content-box;
     padding: 0;
 }
 
-.menu-button-active {
-    color: #FFF;
-    background-color: #6C9BD2;
-}
-
 .menu-icon {
     width: 1.5rem;
-}
-
-.menu-button-active .menu-icon {
-    fill: #FFF;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-button:hover {
-        background-color: #C3D7DF;
-    }
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu-button-active:hover {
-        background-color: #6C9BD2;
-    }
-}
-
-/* 菜单吸顶样式 */
-@media (hover: hover), (pointer: fine) {
-    .menu.at-top .menu-button:hover {
-        background-color: #C3D7DF;
-    }
-}
-
-@media (hover: hover), (pointer: fine) {
-    .menu.at-top .menu-button-active:hover {
-        background-color: #6C9BD2;
-    }
 }
 
 /* 个人头像 */
@@ -268,33 +196,16 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 0.1rem solid #322C28;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
     box-sizing: content-box;
     padding: 0;
-    background-color: #FFF;
-    transition: 0.5s background-color, 0.5s border;
 }
 
 .social-icon {
     width: 1.5rem;
     height: 1.5rem;
-    fill: #322C28;
-    transition: 0.25s fill;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .social-button:hover {
-        background-color: #6C9BD2;
-        border: 0.1rem solid #6C9BD2;
-    }
-    
-    .social-button:hover .social-icon {
-        fill: #FFF;
-        transition: 0.25s fill;
-    }
 }
 
 /* 文章页 */
@@ -320,17 +231,6 @@ main {
 .post-link {
     display: block;
     padding: 1.2rem 2rem;
-    color: #322C28;
-    background-color: #FFF;
-    transition: background-color 0.5s, color 0.25s;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-link:hover {
-        color: #FCFAF2;
-        background-color: #6C9BD2;
-        transition: background-color 0.5s, color 0.25s;
-    }
 }
 
 .post-left-menu {
@@ -359,7 +259,6 @@ main {
 
 .post-article-copyright-icon {
     width: 2rem;
-    fill: #322C28;
 }
 
 .post-button {
@@ -367,39 +266,21 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 0.1rem solid #322C28;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
     box-sizing: content-box;
     padding: 0;
-    background-color: #FFF;
-    transition: 0.5s background-color, 0.5s border;
 }
 
 .post-icon {
     width: 1.5rem;
     height: 1.5rem;
-    fill: #322C28;
-    transition: 0.25s fill;
 }
 
 .post-category {
-    color: #FCFAF2;
-    background-color: #6C9BD2;
     padding: 0 0.5rem;
     border-radius: 0.25rem;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-button:hover {
-        background-color: #6C9BD2;
-        border: 0.1rem solid #6C9BD2;
-    }
-    
-    .post-button:hover .post-icon {
-        fill: #FFF;
-    }
 }
 
 .post-left-menu-category {
@@ -407,20 +288,8 @@ main {
     line-height: 2rem;
     height: 2rem;
     width: 3.75rem;
-    color: #322C28;
-    background-color: #FFF;
-    border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
-    transition: 0.5s background-color, 0.25s color, 0.5s border;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .post-left-menu-category:hover {
-        color: #FFF;
-        background-color: #6C9BD2;
-        border: 0.1rem solid #6C9BD2;
-    }
 }
 
 .p-link {
@@ -432,21 +301,8 @@ main {
     line-height: 2rem;
     height: 2rem;
     width: 5.8rem;
-    color: #322C28;
-    background-color: #FFF;
-    border: 0.1rem solid #322C28;
     border-radius: 0.5rem;
     text-align: center;
-    transition: 0.5s background-color, 0.25s color, 0.5s border;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .social-im-button:hover {
-        color: #FFF;
-        background-color: #6C9BD2;
-        border: 0.1rem solid #6C9BD2;
-        transition: 0.5s background-color, 0.25s color, 0.5s border;
-    }
 }
 
 .main-content {
@@ -466,14 +322,11 @@ main {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
-    background-color: #F6F7F8;
-    transition: 0.5s background-color;
 }
 
 .skill-icon {
     width: 3.5rem;
     pointer-events: none;
-    fill: #322C28;
 }
 
 /* 设备列表 */
@@ -487,22 +340,11 @@ main {
     border-radius: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
-    background-color: #F6F7F8;
-    transition: 0.5s background-color;
 }
 
 .device-icon {
     width: 3.5rem;
     pointer-events: none;
-    fill: #322C28;
-}
-
-@media (hover: hover), (pointer: fine) {
-    .skill-list-content:hover,
-    .device-list-content:hover {
-        background-color: #E6E6E6;
-        transition: 0.5s background-color;
-    }
 }
 
 /* 友链列表 */
@@ -550,18 +392,9 @@ main {
 .friends-card-link {
     padding: 1.2rem;
     text-decoration: none;
-    color: #322C28;
-    background-color: #FFF;
-    transition: background-color 0.5s, color 0.25s;
 }
 
 @media (hover: hover), (pointer: fine) {
-    .friends-card-link:hover {
-        color: #FFF;
-        background-color: #6C9BD2;
-        transition: background-color 0.5s, color 0.25s;
-    }
-    
     .friends-card-link:hover .card-title {
         padding-left: 0;
         transition: 0.25s padding ease-out;
@@ -575,8 +408,6 @@ main {
 
 /* 按钮 */
 .button {
-    color: #FFF;
-    background-color: #6C9BD2;
     border: none;
     padding: 0.5rem 1.5rem;
     text-align: center;
@@ -665,7 +496,6 @@ main {
         transform: translateY(-45%);
         width: 0.3rem;
         height: 75%;
-        background-color: #6C9BD2;
     }
 
     .post-left-menu-b-space {
@@ -734,7 +564,6 @@ main {
         transform: translateY(-45%);
         width: 0.3rem;
         height: 75%;
-        background-color: #6C9BD2;
     }
 
     .main-header-left-b-space {
@@ -812,7 +641,6 @@ main {
         right: -100%; /* 初始时隐藏在屏幕右侧 */
         width: 100%;
         height: 100%;
-        background-color: rgba(235, 244, 244, 0.85);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
@@ -832,10 +660,6 @@ main {
 
     .menu-b-description {
         margin-top: 0;
-    }
-
-    .menu-b-drawer-container hr {
-        border: 1px dashed #566C73;
     }
 
     .menu-b-personal-avatar {
@@ -954,200 +778,5 @@ main {
 
     .device-list-card {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        color: #FCFAF2;
-        background-color: #121212;
-    }
-
-    a {
-        color: #FCFAF2;
-        background-color: #1B1B1B;
-        text-decoration-color: #00558F;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        a:hover {
-            background-color: #00558F;
-        }
-    }
-
-    footer a {
-        background-color: #121212;
-    }
-
-    /* 引用标签 */
-    blockquote {
-        border-left: 0.35rem solid #00558F;
-        background-color: #434343;
-    }
-
-    main {
-        background-color: #121212;
-    }
-
-    .main-header-right-content {
-        background: linear-gradient(to bottom, rgba(27, 27, 27, 0.9) 25%, #1B1B1B 75%);
-    }
-
-    .card {
-        background-color: #1B1B1B;
-    }
-
-    .card-title::before {
-        background-color: #00558F;
-    }
-
-    /* 技能与设备卡片 */
-    .skill-list-content,
-    .device-list-content {
-        background-color: #212121;
-    }
-
-    .skill-icon,
-    .device-icon {
-        fill: #FCFAF2;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .skill-list-content:hover,
-        .device-list-content:hover {
-            background-color: #3C3C3C;
-            transition: 0.5s background-color;
-        }
-    }
-
-    .social-button,
-    .post-button {
-        border: 0.1rem solid #FCFAF2;
-        background-color: #1B1B1B;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .social-button:hover,
-        .post-button:hover {
-            background-color: #00558F;
-            border: 0.1rem solid #00558F;
-        }
-    }
-
-    .social-icon,
-    .post-icon {
-        fill: #FCFAF2;
-    }
-
-    .social-im-button,
-    .post-left-menu-category {
-        color: #FCFAF2;
-        border: 0.1rem solid #FCFAF2;
-        background-color: #1B1B1B;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .social-im-button:hover,
-        .post-left-menu-category:hover {
-            background-color: #00558F;
-            border: 0.1rem solid #00558F;
-        }
-    }
-
-    /* 友链列表 */
-    .friends-card a {
-        color: #FCFAF2;
-    }
-    
-    .friends-card-link {
-        background-color: #1B1B1B;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .friends-card-link:hover {
-            background-color: #00558F;
-        }
-    }
-
-    /* 文章 */
-    .post-link {
-        color: #FCFAF2;
-        background-color: #1B1B1B;
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .post-link:hover {
-            background-color: #00558F;
-        }
-    }
-
-    .post-category {
-        background: #00558F;
-    }
-
-    .post-article-copyright-icon {
-        fill: #FCFAF2;
-    }
-
-    /* 菜单 */
-    .menu {
-        background-color: #2C2C2C;
-    }
-
-    .menu-b-drawer-container {
-        background-color: rgba(18, 18, 18, 0.85);
-    }
-
-    .menu-b-button {
-        background-color: transparent;
-    }
-
-    .menu-button {
-        color: #FCFAF2;
-    }
-
-    .menu-button-active {
-        background-color: #00558F;
-    }
-
-    .menu.at-top {
-        background-color: rgba(18, 18, 18, 0.85);
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu-button:hover {
-            background-color: #3C3C3C;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu-button-active:hover {
-            background-color: #00558F;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu.at-top .menu-button:hover {
-            background-color: #3C3C3C;
-        }
-    }
-
-    @media (hover: hover), (pointer: fine) {
-        .menu.at-top .menu-button-active:hover {
-            background-color: #00558F;
-        }
-    }
-
-    .menu-icon {
-        fill: #FCFAF2;
-    }
-
-    .menu-button-active .menu-icon {
-        fill: #FCFAF2;
-    }
-
-    /* 按钮 */
-    .button {
-        background-color: #00558F;
     }
 }
