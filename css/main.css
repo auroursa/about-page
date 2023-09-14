@@ -6,6 +6,7 @@
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
     --main-color: #11659A;
+    --main-intext-color: #FFFFFF;
     --hl-color: #2B2B2B;
     --menu-color: #D8E3E7;
     --menu-at-color: rgba(235, 244, 244, 0.85);
@@ -24,6 +25,7 @@
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
         --main-color: #51A8DD;
+        --main-intext-color: #FCFAF2;
         --hl-color: #2B2B2B;
         --menu-color: #2C2C2C;
         --menu-at-color: rgba(18, 18, 18, 0.85);
@@ -611,7 +613,7 @@ main {
     text-decoration: none;
     display: block;
     font-size: 1rem;
-    color: var(--text-color);
+    color: var(--main-intext-color);
     background-color: var(--main-color);
 }
 
