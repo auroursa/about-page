@@ -2,13 +2,13 @@
 const menu = document.querySelector('.menu');
 const observer = new IntersectionObserver(
   ([entry]) => {
-    if (entry.intersectionRatio < 1) {
+    if (entry.intersectionRatio < 0.99) {
       menu.classList.add('at-top');
     } else {
       menu.classList.remove('at-top');
     }
   },
-  { threshold: [1] }
+  { threshold: [0.99] } // 修复 Edge 浏览器中的判断问题
 );
 
 observer.observe(menu);
