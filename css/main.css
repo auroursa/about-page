@@ -188,7 +188,7 @@ main {
 
 .main-header-right {
     padding: 0;
-    background: url(../img/background.webp) center center no-repeat;
+    background: url(../img/background.webp?v=1.1) center center no-repeat;
     background-size: cover;
     position: relative;
 }
