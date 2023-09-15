@@ -31,7 +31,7 @@
         --menu-at-color: rgba(18, 18, 18, 0.85);
         --menu-hv-color: #3C3C3C;
         --menu-button-color: #FCFAF2;
-        --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.9) 25%, #1B1B1B 75%);
+        --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.8) 25%, #1B1B1B 75%);
         --hr-line-color: #566C73;
     }
 }
