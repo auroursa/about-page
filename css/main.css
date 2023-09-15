@@ -47,7 +47,7 @@ a {
     transition: 0.5s background-color, 0.25s color;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     a:hover {
         color: var(--card-color);
         background-color: var(--main-color);
@@ -197,7 +197,7 @@ main {
     height: 10rem;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .main-header-right-window:hover {
         height: 100%;
     }
@@ -301,7 +301,7 @@ main {
     position: relative;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .menu-button:hover {
         background-color: var(--menu-hv-color);
     }
@@ -313,7 +313,7 @@ main {
 }
 
 /* 菜单吸顶样式 */
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .menu.at-top .menu-button:hover {
         background-color: var(--menu-hv-color);
     }
@@ -357,7 +357,7 @@ main {
     transition: 0.5s background-color, 0.5s border;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .social-button:hover {
         background-color: var(--main-color);
         border: 0.1rem solid var(--main-color);
@@ -377,7 +377,7 @@ main {
     transition: 0.5s background-color, 0.25s color, 0.5s border;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .social-im-button:hover {
         color: var(--card-color);
         background-color: var(--main-color);
@@ -392,7 +392,7 @@ main {
     transition: 0.25s fill;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .social-button:hover .social-icon {
         fill: var(--card-color);
     }
@@ -426,7 +426,7 @@ main {
     transition: background-color 0.5s, color 0.25s;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .post-link:hover {
         color: var(--card-color);
         background-color: var(--main-color);
@@ -477,7 +477,7 @@ main {
     transition: 0.5s background-color, 0.5s border;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .post-button:hover {
         background-color: var(--main-color);
         border: 0.1rem solid var(--main-color);
@@ -491,7 +491,7 @@ main {
     transition: 0.25s fill;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .post-button:hover .post-icon {
         fill: var(--card-color);
     }
@@ -522,7 +522,7 @@ main {
     transition: 0.5s background-color, 0.25s color, 0.5s border;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .post-left-menu-category:hover {
         color: var(--card-color);
         background-color: var(--main-color);
@@ -582,7 +582,7 @@ main {
     fill: var(--text-color);
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .skill-list-content:hover,
     .device-list-content:hover {
         background-color: var(--card-content-hv-color);
@@ -639,14 +639,14 @@ main {
     transition: background-color 0.5s, color 0.25s;
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .friends-card-link:hover {
         color: var(--card-color);
         background-color: var(--main-color);
     }
 }
 
-@media (hover: hover), (pointer: fine) {
+@media (hover: hover) and (pointer: fine) {
     .friends-card-link:hover .card-title {
         padding-left: 0;
         transition: 0.25s padding ease-out;
