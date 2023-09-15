@@ -1,7 +1,6 @@
 :root {
     --text-color: #322C28;
     --bg-color: #EBF4F4;
-    --at-color: #FFFFFF;
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
@@ -20,7 +19,6 @@
     :root {
         --text-color: #FCFAF2;
         --bg-color: #121212;
-        --at-color: #FCFAF2;
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
@@ -58,8 +56,6 @@ a {
 }
 
 img {
-    max-height: 35rem;
-    max-width: 80%; 
     aspect-ratio: attr(width) / attr(height);
 }
 
@@ -219,6 +215,38 @@ main {
     background: var(--main-header-right-content-color);
     transform: translateY(0);
     transition: transform 0.5s;
+    z-index: 1;
+}
+
+.main-header-right-info {
+    display: flex;
+    align-items: center;
+    color: var(--main-intext-color);
+    background-color: rgba(27, 27, 27, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.main-header-right-info-avatar {
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+
+.main-header-right-info-avatar img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.main-header-right-info-content-title,
+.main-header-right-info-content-description {
+    font-size: 1rem;
+    margin: 0;
 }
 
 /* 菜单 */
@@ -420,6 +448,11 @@ main {
 
 .post-article {
     margin-bottom: 0.5rem;
+}
+
+.post-article img {
+    max-height: 35rem;
+    max-width: 80%; 
 }
 
 .post-article-footer {
@@ -831,10 +864,6 @@ main {
         max-width: 100%;
     }
 
-    img {
-        max-width: 100%; 
-    }
-
     /* 卡片 */
     .card {
         padding: 1.2rem;
@@ -985,6 +1014,10 @@ main {
 
     .device-list-card {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .post-article img {
+        max-width: 100%; 
     }
 
     .post-article-footer {
