@@ -187,18 +187,38 @@ main {
 }
 
 .main-header-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 0;
     background: url(../img/background.webp?v=1.1) center center no-repeat;
     background-size: cover;
+    overflow: hidden;
     position: relative;
 }
 
+.main-header-right-window {
+    height: 10rem;
+}
+
+@media (hover: hover), (pointer: fine) {
+    .main-header-right-window:hover {
+        height: 100%;
+    }
+    
+    .main-header-right-window:hover + .main-header-right-content {
+        transform: translateY(100%);
+    }
+}
+
 .main-header-right-content {
-    margin-top: 10.5rem;
+    flex: 1;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
     background: var(--main-header-right-content-color);
+    transform: translateY(0);
+    transition: transform 0.5s;
 }
 
 /* 菜单 */
