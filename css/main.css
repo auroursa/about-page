@@ -426,6 +426,8 @@ main {
     border-radius: 0.5rem;
     color: var(--main-intext-color);
     background-color: var(--image-tag-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .index-gallery-photo-info-icon {
