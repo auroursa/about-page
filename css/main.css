@@ -102,6 +102,7 @@ blockquote {
     width:-webkit-fit-content;
     width:-moz-fit-content;
     padding: 0.5rem;
+    color: var(--code-text-color);
     background-color: var(--hl-color);
 }
 
@@ -115,8 +116,6 @@ code {
     font-family: 'Overpass Mono';
     font-weight: normal;
     font-style: normal;
-    color: var(--code-text-color);
-    background-color: var(--hl-color);
 }
 
 /* 页首、页尾通用设定 */
