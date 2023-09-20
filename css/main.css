@@ -1,12 +1,13 @@
 :root {
     --text-color: #322C28;
+    --code-text-color: #FCFAF2;
     --bg-color: #EBF4F4;
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
     --main-color: #11659A;
     --main-intext-color: #FFFFFF;
-    --hl-color: #2B2B2B;
+    --hl-color: #373C38;
     --menu-color: #D8E3E7;
     --menu-at-color: rgba(235, 244, 244, 0.85);
     --menu-hv-color: #D0DFE6;
@@ -19,13 +20,14 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #FCFAF2;
+        --code-text-color: #FCFAF2;
         --bg-color: #121212;
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
         --main-color: #51A8DD;
         --main-intext-color: #FCFAF2;
-        --hl-color: #2B2B2B;
+        --hl-color: #373C38;
         --menu-color: #2C2C2C;
         --menu-at-color: rgba(18, 18, 18, 0.85);
         --menu-hv-color: #3C3C3C;
@@ -113,13 +115,8 @@ code {
     font-family: 'Overpass Mono';
     font-weight: normal;
     font-style: normal;
-    color: var(--card-color);
+    color: var(--code-text-color);
     background-color: var(--hl-color);
-}
-
-p code {
-    padding: 0.2rem;
-    vertical-align: middle;
 }
 
 /* 页首、页尾通用设定 */
