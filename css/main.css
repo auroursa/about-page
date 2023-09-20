@@ -38,7 +38,7 @@
 
 @font-face {
     font-family: 'Overpass';
-    src: url('Overpass-Regular.woff2') format('woff2');
+    src: url('../font/Overpass-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -46,7 +46,7 @@
 
 @font-face {
     font-family: 'Overpass';
-    src: url('Overpass-Bold.woff2') format('woff2');
+    src: url('../font/Overpass-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -54,7 +54,7 @@
 
 @font-face {
     font-family: 'Overpass Mono';
-    src: url('OverpassMono-Regular.woff2') format('woff2');
+    src: url('../font/OverpassMono-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
