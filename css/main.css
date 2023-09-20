@@ -36,6 +36,30 @@
     }
 }
 
+@font-face {
+    font-family: 'Overpass';
+    src: url('Overpass-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('Overpass-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Overpass Mono';
+    src: url('OverpassMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     overflow-y: overlay;
     color: var(--text-color);
@@ -86,7 +110,7 @@ pre {
 }
 
 code {
-    font-family: 'Overpass Mono';
+    font-family: 'OverpassMono';
     font-weight: normal;
     font-style: normal;
     color: var(--card-color);
