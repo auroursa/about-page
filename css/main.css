@@ -2,14 +2,14 @@
     --text-color: #322C28;
     --code-text-color: #FCFAF2;
     --bg-color: #EBF4F4;
+    --bg-blur-color: rgba(235, 244, 244, 0.85);
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
     --main-color: #11659A;
     --main-intext-color: #FFFFFF;
     --hl-color: #373C38;
-    --menu-color: #D8E3E7;
-    --menu-at-color: rgba(235, 244, 244, 0.85);
+    --menu-color: rgba(216, 227, 231, 0.85);
     --menu-hv-color: #D0DFE6;
     --menu-button-color: #322C28;
     --main-header-right-content-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
@@ -22,14 +22,14 @@
         --text-color: #FCFAF2;
         --code-text-color: #FCFAF2;
         --bg-color: #121212;
+        --bg-blur-color: rgba(18, 18, 18, 0.85);
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
         --main-color: #51A8DD;
         --main-intext-color: #FCFAF2;
         --hl-color: #373C38;
-        --menu-color: #2C2C2C;
-        --menu-at-color: rgba(18, 18, 18, 0.85);
+        --menu-color: rgba(44, 44, 44, 0.85);
         --menu-hv-color: #3C3C3C;
         --menu-button-color: #FCFAF2;
         --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.8) 25%, #1B1B1B 75%);
@@ -63,6 +63,8 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     overflow-y: overlay;
     color: var(--text-color);
     background-color: var(--bg-color);
@@ -283,11 +285,12 @@ main {
 .menu {
     display: flex;
     position: sticky;
-    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
+    top: 0;
     z-index: 2;
     margin-bottom: 0.5rem;
     background-color: var(--menu-color);
-    transition: 0.5s background-color;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .menu-a {
@@ -303,12 +306,6 @@ main {
 
 .menu-b-drawer-container {
     display: none;
-}
-
-.menu.at-top {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: var(--menu-at-color);
 }
 
 /* 菜单按钮 */
@@ -340,13 +337,6 @@ main {
 .menu-button-active {
     font-weight: bold;
     color: var(--main-color);
-}
-
-/* 菜单吸顶样式 */
-@media (hover: hover) and (pointer: fine) {
-    .menu.at-top .menu-button:hover {
-        background-color: var(--menu-hv-color);
-    }
 }
 
 .menu-icon {
@@ -519,7 +509,7 @@ main {
 
 .post-left-menu {
     position: sticky;
-    top: calc(3rem - 1px); /* 和 -1px 的菜单栏对齐 */
+    top: 3rem;
 }
 
 .post-article-main {
@@ -998,7 +988,7 @@ main {
         -webkit-backdrop-filter: blur(10px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
         z-index: 3;
-        background-color: var(--menu-at-color);
+        background-color: var(--bg-blur-color);
     }
 
     .menu-b-drawer-container hr {
@@ -1033,7 +1023,7 @@ main {
     .menu-b-close-div {
         position: absolute;
         top: 0;
-        right: 0.5rem;
+        right: 0;
     }
 
     .menu-b-close-div button {
