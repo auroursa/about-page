@@ -223,7 +223,8 @@ main {
     flex-direction: column;
     height: 100%;
     padding: 0;
-    background: url(../img/background.webp?v=1.1) center center no-repeat;
+    background: url(../img/background.webp?v=1.1) center center no-repeat
+    var(--card-content-color);
     background-size: cover;
     overflow: hidden;
     position: relative;
@@ -430,11 +431,13 @@ main {
     object-fit: cover; /* 使用 cover 填满整个 grid 单元格 */
     width: 100%;
     height: 100%;
-    border-radius: 0.5rem;
 }
 
 .index-gallery-photo {
     position: relative;
+    border-radius: 0.5rem;
+    background-color: var(--card-content-color);
+    overflow: hidden;
 }
 
 .index-gallery-photo-info {
