@@ -994,13 +994,13 @@ main {
         background-color: var(--bg-blur-color);
     }
 
-    .menu-b-drawer-container hr {
-        border: 1px dashed var(--hr-line-color);
+    /* 使用 :target 来实现菜单打开效果 */
+    .menu-b-drawer-container:target {
+        right: 0;
     }
 
-    /* 打开抽屉菜单时调整左边距 */
-    .menu-b-drawer-container.open {
-        right: 0;
+    .menu-b-drawer-container hr {
+        border: 1px dashed var(--hr-line-color);
     }
 
     .menu-b-drawer-content {
