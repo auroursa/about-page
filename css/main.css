@@ -73,15 +73,12 @@ body {
 a {
     text-decoration: none;
     color: var(--main-color);
-    background-color: var(--card-color);
-    transition: 0.5s background-color, 0.25s color;
 }
 
 @media (hover: hover) and (pointer: fine) {
     a:hover {
-        color: var(--card-color);
-        background-color: var(--main-color);
-        text-decoration: none;
+        text-decoration: underline;
+        text-decoration-color: var(--main-color);
     }
 }
 
