@@ -726,6 +726,7 @@ main {
 
 @media (hover: hover) and (pointer: fine) {
     .friends-card-link:hover {
+        text-decoration: none;
         color: var(--card-color);
         background-color: var(--main-color);
     }
