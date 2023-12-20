@@ -71,9 +71,9 @@ body {
 }
 
 a {
-    color: var(--text-color);
+    text-decoration: none;
+    color: var(--main-color);
     background-color: var(--card-color);
-    text-decoration-color: var(--main-color);
     transition: 0.5s background-color, 0.25s color;
 }
 
@@ -211,11 +211,21 @@ main {
     background-color: var(--main-color);
 }
 
+.text-icon {
+    fill: var(--text-color);
+    height: 1.35rem;
+    vertical-align: top;
+}
+
 .main-header {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.main-header-left-a-description {
+    margin: 0.8rem 0;
 }
 
 .main-header-right {
@@ -352,8 +362,8 @@ main {
 
 /* 个人头像 */
 .personal-avatar {
-    width: 6rem;
-    height: 6rem;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
 }
 
@@ -875,13 +885,11 @@ main {
     }
 
     .main-header-left-a-description {
-        margin: 0.5rem 0;
+        margin: 0.15rem 0;
     }
 
-    /* 缩小个人头像 */
+    /* 将个人头像转换为圆角矩形样式 */
     .personal-avatar {
-        width: 5rem;
-        height: 5rem;
         border-radius: 1rem;
     }
 
@@ -1001,6 +1009,11 @@ main {
 
     .menu-b-drawer-container hr {
         border: 1px dashed var(--hr-line-color);
+    }
+
+    .menu-b-drawer-container a {
+        color: var(--text-color);
+        background-color: transparent;
     }
 
     .menu-b-drawer-content {
