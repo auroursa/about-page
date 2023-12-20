@@ -8,6 +8,7 @@
     --card-content-hv-color: #E6E6E6;
     --main-color: #11659A;
     --main-intext-color: #FFFFFF;
+    --accent-color: #51A8DD;
     --hl-color: #373C38;
     --menu-color: rgba(216, 227, 231, 0.9);
     --menu-hv-color: #D0DFE6;
@@ -28,6 +29,7 @@
         --card-content-hv-color: #3C3C3C;
         --main-color: #51A8DD;
         --main-intext-color: #FCFAF2;
+        --accent-color: #11659A;
         --hl-color: #373C38;
         --menu-color: rgba(44, 44, 44, 0.9);
         --menu-hv-color: #3C3C3C;
@@ -60,6 +62,22 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+}
+
+::-webkit-scrollbar {
+    width: 0.8rem; /* 滚动条宽度 */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--card-color) /* 滚动条背景颜色 */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color) /* 滚动条滑块颜色 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color); /* 滚动条滑块悬停颜色 */
 }
 
 body {
