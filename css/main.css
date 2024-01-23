@@ -906,6 +906,8 @@ main {
 
     /* 将个人头像转换为圆角矩形样式 */
     .personal-avatar {
+        width: 5rem;
+        height: 5rem;
         border-radius: 1rem;
     }
 
