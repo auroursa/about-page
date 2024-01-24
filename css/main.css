@@ -533,6 +533,11 @@ main {
         color: var(--card-color);
         background-color: var(--main-color);
     }
+
+    .post-link:hover .post-category {
+        color: var(--main-color);
+        background-color: var(--card-color);
+    }
 }
 
 .post-left-menu {
@@ -609,6 +614,7 @@ main {
     border-radius: 0.25rem;
     color: var(--card-color);
     background-color: var(--main-color);
+    transition: background-color 0.5s, color 0.25s;
 }
 
 .post-left-menu-category {
