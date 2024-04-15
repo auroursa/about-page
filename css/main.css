@@ -317,12 +317,13 @@ main {
     margin-bottom: 0.5rem;
     background-color: var(--menu-color);
     transition: 0.5s background-color;
+    height: calc(3rem + 1px); /* 菜单吸顶预留 1px */
 }
 
 .menu-a {
     display: inline-flex;
+    align-items: flex-end;
     justify-content: center;
-    height: calc(3rem + 1px); /* 菜单吸顶预留 1px */
     width: 100%;
 }
 
@@ -373,7 +374,8 @@ main {
 }
 
 .menu-icon {
-    width: 1.35rem;
+    width: 1.5rem;
+    height: 1.5rem;
     padding-right: 0.2rem;
     fill: var(--menu-button-color);
 }
@@ -1016,6 +1018,7 @@ main {
 
     .menu-b {
         display: inline-flex;
+        align-items: flex-end;
         justify-content: right;
     }
 
