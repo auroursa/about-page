@@ -673,7 +673,7 @@ main {
 /* 设备列表 */
 .device-list-card {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 0.5rem;
 }
 
@@ -966,7 +966,7 @@ main {
     }
 
     .device-list-card {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
