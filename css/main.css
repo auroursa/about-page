@@ -322,6 +322,7 @@ main {
 .menu-a {
     display: inline-flex;
     justify-content: center;
+    height: calc(3rem + 1px); /* 菜单吸顶预留 1px */
     width: 100%;
 }
 
