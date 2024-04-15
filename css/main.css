@@ -10,11 +10,11 @@
     --main-intext-color: #FFFFFF;
     --accent-color: #51A8DD;
     --hl-color: #373C38;
-    --menu-color: rgba(216, 227, 231, 0.9);
+    --menu-color: #D8E3E7;
+    --menu-at-top-color: rgba(216, 227, 231, 0.9);
     --menu-hv-color: #D0DFE6;
     --menu-button-color: #322C28;
     --main-header-right-content-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
-    --hr-line-color: #566C73;
     --image-tag-color: rgba(27, 27, 27, 0.4);
 }
 
@@ -31,11 +31,11 @@
         --main-intext-color: #FCFAF2;
         --accent-color: #11659A;
         --hl-color: #373C38;
-        --menu-color: rgba(44, 44, 44, 0.9);
+        --menu-color: #242424;
+        --menu-at-top-color: rgba(18, 18, 18, 0.9);
         --menu-hv-color: #3C3C3C;
         --menu-button-color: #FCFAF2;
         --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.8) 25%, #1B1B1B 75%);
-        --hr-line-color: #566C73;
         --image-tag-color: rgba(27, 27, 27, 0.4);
     }
 }
@@ -312,12 +312,11 @@ main {
 .menu {
     display: flex;
     position: sticky;
-    top: 0;
+    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
     z-index: 2;
     margin-bottom: 0.5rem;
     background-color: var(--menu-color);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    transition: 0.5s background-color;
 }
 
 .menu-a {
@@ -333,6 +332,12 @@ main {
 
 .menu-b-drawer-container {
     display: none;
+}
+
+.menu.at-top {
+    background-color: var(--menu-at-top-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* 菜单按钮 */
@@ -1027,18 +1032,9 @@ main {
         background-color: var(--bg-blur-color);
     }
 
-    /* 使用 :target 来实现菜单打开效果 */
-    .menu-b-drawer-container:target {
+    /* 打开抽屉菜单时调整左边距 */
+    .menu-b-drawer-container.open {
         right: 0;
-    }
-
-    .menu-b-drawer-container hr {
-        border: 1px dashed var(--hr-line-color);
-    }
-
-    .menu-b-drawer-container a {
-        color: var(--text-color);
-        background-color: transparent;
     }
 
     .menu-b-drawer-content {
@@ -1049,6 +1045,10 @@ main {
 
     .menu-b-description {
         margin-top: 0;
+    }
+
+    .menu-b-drawer-container hr {
+        border: 1px dashed #566C73;
     }
 
     .menu-b-personal-avatar {
