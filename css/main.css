@@ -2,7 +2,7 @@
     --text-color: #322C28;
     --code-text-color: #FCFAF2;
     --bg-color: #EBF4F4;
-    --bg-blur-color: rgba(235, 244, 244, 0.9);
+    --bg-blur-color: rgba(235, 244, 244, 0.95);
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
@@ -11,7 +11,7 @@
     --accent-color: #51A8DD;
     --hl-color: #373C38;
     --menu-color: #D8E3E7;
-    --menu-at-top-color: rgba(216, 227, 231, 0.9);
+    --menu-at-top-color: rgba(235, 244, 244, 0.95);
     --menu-hv-color: #D0DFE6;
     --menu-button-color: #322C28;
     --main-header-right-content-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 25%, #ffffff 75%);
@@ -23,7 +23,7 @@
         --text-color: #FCFAF2;
         --code-text-color: #FCFAF2;
         --bg-color: #121212;
-        --bg-blur-color: rgba(18, 18, 18, 0.9);
+        --bg-blur-color: rgba(18, 18, 18, 0.95);
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
@@ -32,7 +32,7 @@
         --accent-color: #11659A;
         --hl-color: #373C38;
         --menu-color: #242424;
-        --menu-at-top-color: rgba(18, 18, 18, 0.9);
+        --menu-at-top-color: rgba(18, 18, 18, 0.95);
         --menu-hv-color: #3C3C3C;
         --menu-button-color: #FCFAF2;
         --main-header-right-content-color: linear-gradient(to bottom, rgba(27, 27, 27, 0.8) 25%, #1B1B1B 75%);
