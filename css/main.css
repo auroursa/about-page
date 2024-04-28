@@ -172,11 +172,6 @@ header {
     margin: 0;
 }
 
-/* 页尾 */
-footer a {
-    background-color: var(--bg-color);
-}
-
 /* 主容器 */
 main {
     display: grid;
