@@ -308,6 +308,12 @@ main {
     margin: 0;
 }
 
+.main-middle {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 0.5rem;
+}
+
 /* 菜单 */
 .menu {
     display: flex;
@@ -699,10 +705,37 @@ main {
     fill: var(--text-color);
 }
 
+/* 音乐列表 */
+.music-list-card {
+    display: grid;
+    grid-gap: 0.5rem;
+}
+
+.music-list-content {
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    background-color: var(--card-content-color);
+    transition: 0.5s background-color;
+}
+
+.music-icon {
+    width: 2.75rem;
+    pointer-events: none;
+    fill: var(--text-color);
+}
+
 @media (hover: hover) and (pointer: fine) {
     .skill-list-content:hover,
-    .device-list-content:hover {
+    .device-list-content:hover,
+    .music-list-content:hover {
         background-color: var(--card-content-hv-color);
+    }
+    
+    .music-list-content:hover {
+        text-decoration: none;
+        text-decoration-color: var(--text-color);
     }
 }
 
@@ -815,6 +848,10 @@ main {
     .main-header {
         grid-template-columns: 1fr 2fr;
     }
+    
+    .main-middle {
+        grid-template-columns: 3fr 1fr;
+    }
 
     .friends-list {
         grid-template-columns: repeat(2, 1fr);
@@ -917,6 +954,10 @@ main {
 
     .main-header-left-a-description {
         margin: 0.15rem 0;
+    }
+    
+    .main-middle {
+        grid-template-columns: 1fr;
     }
 
     /* 将个人头像转换为圆角矩形样式 */
