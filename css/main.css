@@ -674,7 +674,7 @@ main {
 }
 
 .skill-icon {
-    width: 3.5rem;
+    width: 3rem;
     pointer-events: none;
     fill: var(--text-color);
 }
@@ -695,7 +695,7 @@ main {
 }
 
 .device-icon {
-    width: 3.5rem;
+    width: 3rem;
     pointer-events: none;
     fill: var(--text-color);
 }
@@ -716,7 +716,7 @@ main {
 }
 
 .music-icon {
-    width: 2.75rem;
+    width: 3rem;
     pointer-events: none;
     fill: var(--text-color);
 }
