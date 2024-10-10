@@ -526,7 +526,6 @@ main {
 
 .post-link {
     display: block;
-    padding: 1rem 1.5rem;
     color: var(--text-color);
     background-color: var(--card-color);
     transition: background-color 0.5s, color 0.25s;
