@@ -516,10 +516,6 @@ main {
     align-items: start;
 }
 
-.post-index .main-content .card {
-    padding: 0;
-}
-
 .post-index-content a {
     text-decoration: none;
 }
