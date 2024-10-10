@@ -270,7 +270,7 @@ main {
     flex: 1;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     background: var(--main-header-right-content-color);
     transform: translateY(0);
     transition: transform 0.5s;
@@ -517,6 +517,10 @@ main {
     align-items: start;
 }
 
+.post-index .main-content .card {
+    padding: 0;
+}
+
 .post-index-content a {
     text-decoration: none;
 }
@@ -527,6 +531,7 @@ main {
 
 .post-link {
     display: block;
+    padding: 1.5rem;
     color: var(--text-color);
     background-color: var(--card-color);
     transition: background-color 0.5s, color 0.25s;
