@@ -183,7 +183,7 @@ main {
 
 /* 卡片 */
 .card {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     background-color: var(--card-color);
 }
 
@@ -640,6 +640,10 @@ main {
         background-color: var(--main-color);
         border: 0.1rem solid var(--main-color);
     }
+}
+
+.post-left-menu-a-description {
+    margin: 0.8rem 0;
 }
 
 .p-link {
