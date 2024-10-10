@@ -222,6 +222,10 @@ main {
     background-color: var(--main-color);
 }
 
+.list-text {
+    margin: 1rem 0;
+}
+
 .text-icon {
     fill: var(--text-color);
     height: 1.35rem;
