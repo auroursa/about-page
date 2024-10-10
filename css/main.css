@@ -2,7 +2,7 @@
     --text-color: #322C28;
     --code-text-color: #FCFAF2;
     --bg-color: #EBF4F4;
-    --bg-blur-color: rgba(235, 244, 244, 0.95);
+    --bg-blur-color: rgba(235, 244, 244, 0.8);
     --card-color: #FFFFFF;
     --card-content-color: #F6F7F8;
     --card-content-hv-color: #E6E6E6;
@@ -23,7 +23,7 @@
         --text-color: #FCFAF2;
         --code-text-color: #FCFAF2;
         --bg-color: #121212;
-        --bg-blur-color: rgba(18, 18, 18, 0.95);
+        --bg-blur-color: rgba(18, 18, 18, 0.8);
         --card-color: #1B1B1B;
         --card-content-color: #212121;
         --card-content-hv-color: #3C3C3C;
