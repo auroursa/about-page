@@ -1084,11 +1084,9 @@ main {
         height: 3rem;
     }
 
-    .menu-button-active {
-        width: 5rem;
-    }
-
-    .menu-button-text {
+    /* 不显示菜单文字 */
+    .menu-button-text,
+    .menu-button-text-active {
         display: none;
     }
 
@@ -1179,15 +1177,6 @@ main {
 
 /* 超小屏幕 */
 @media screen and (max-width:320px) {
-    /* 不显示菜单文字 */
-    .menu-button-text-active {
-        display: none;
-    }
-
-    .menu-button-active {
-        width: 3rem;
-    }
-
     .skill-list-card {
         grid-template-columns: 1fr;
     }
