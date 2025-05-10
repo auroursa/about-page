@@ -2,8 +2,8 @@
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
-    <title>记一次 zabbix 数据库编码排错 - Cynosura</title>
-    <meta name="description" content="简单记录在 zabbix 5.0 上遇到数据库乱码的解决过程">
+    <title>被困在生活里 - Cynosura</title>
+    <meta name="description" content="在路过而不进城的人眼里，城市是一种模样；在困守于城里而不出来的人眼里，她又是另一种模样。人们初次抵达的时候，城市是一种模样；而永远离别的时候，她又是另一种模样。">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Pelican">
     <!--主题色-->
@@ -11,15 +11,15 @@
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121212">
     <!--Open Graph protocol-->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="记一次 zabbix 数据库编码排错 - Cynosura">
-    <meta property="og:description" content="简单记录在 zabbix 5.0 上遇到数据库乱码的解决过程">
-    <meta property="og:url" content="https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html">
+    <meta property="og:title" content="被困在生活里 - Cynosura">
+    <meta property="og:description" content="在路过而不进城的人眼里，城市是一种模样；在困守于城里而不出来的人眼里，她又是另一种模样。人们初次抵达的时候，城市是一种模样；而永远离别的时候，她又是另一种模样。">
+    <meta property="og:url" content="https://cynosura.one/posts/trapped-in-life.html">
     <meta property="og:image" content="https://cynosura.one/img/banner.webp">
     <!--Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@astraorsa">
-    <meta name="twitter:title" content="记一次 zabbix 数据库编码排错 - Cynosura">
-    <meta name="twitter:description" content="简单记录在 zabbix 5.0 上遇到数据库乱码的解决过程">
+    <meta name="twitter:title" content="被困在生活里 - Cynosura">
+    <meta name="twitter:description" content="在路过而不进城的人眼里，城市是一种模样；在困守于城里而不出来的人眼里，她又是另一种模样。人们初次抵达的时候，城市是一种模样；而永远离别的时候，她又是另一种模样。">
     <meta name="twitter:image" content="https://cynosura.one/img/banner.webp">
     <!--链接样式-->
     <link rel="stylesheet" type="text/css" href="https://cynosura.one/css/main.css">
@@ -91,16 +91,14 @@
     </div>
     <article class="post-article card">
         <div>
-            <h1 class="post-article-title">记一次 zabbix 数据库编码排错</h1>
+            <h1 class="post-article-title">被困在生活里</h1>
             
         </div>
         <div class="post-article-content">
-            <p>这几天在折腾 zabbix 5.x 上奇怪的编码问题，原型规则写的是中文，页面上也正常显示了中文，但 Discover 到具体监控项，以及告警推送就全部变 "???" 了。</p>
-<p>查日志报错 cannot set MySQL character set to "utf8"，如图：</p>
-<p><img alt="issue-1" src="images/zabbix-cannot-set-mysql-character-to-utf8/issue-1.png"></p>
-<p>搜了一圈推测是 zabbix 和 MariaDB 的兼容问题，MariaDB 10.6 不支持直接 'utf8'，只支持具体到 'utf8mb3' 或 'utf8mb4'，而 zabbix 的检测逻辑没考虑到数据库不支持 'utf8' 的情况，而官方问题追踪里说已经在 zabbix 5.0.26 里 <a href="https://support.zabbix.com/browse/ZBX-21301">修了</a>。</p>
-<p><img alt="issue-2" src="images/zabbix-cannot-set-mysql-character-to-utf8/issue-2.jpg"></p>
-<p>在 zabbix 推出 5.0.26 正式版本之前，建议改用其他数据库，或使用 zabbix 6.x 版本并改用 'utf8mb4' 编码。</p>
+            <p>距离上次更新博客已经过去了一年有余，甚至去年的年末总结也没来得及写。我想主要还是抱着对写博客这件事始终抱有严肃感，觉得没憋出点内容就不如不更新的想法，一直没坐下来写点什么的兴致。于是趁着这次将博客用 Pelican 4.11.0 重新生成一遍，顺便也来写一篇日常/杂谈好了。</p>
+<p>2024 年对我而言是痛苦的，我经历了换工作、搬家、努力适应新环境等等琐事。虽然这年也解锁了不少成就，比如人生第一次坐上飞机去旅行，换了台电脑，以及瞎买了不少电子产品。当然事后计算账单的时候，总会后悔怎么过了大半年也没存下多少钱，但至少那个瞬间很开心，大概还是值得的。</p>
+<p>今年当然也没有善待我，先是被迫失业，然后又遇上了黑心公司...突然就想到一句话：在路过而不进城的人眼里，城市是一种模样；在困守于城里而不出来的人眼里，她又是另一种模样。人们初次抵达的时候，城市是一种模样；而永远离别的时候，她又是另一种模样。</p>
+<p>我想我暂时被困在生活里了，不知道何时是个头。</p>
         </div>
     </article>
     <div class="post-article-footer">
@@ -108,12 +106,12 @@
             <h2 class="card-title">本文信息</h2>
                 <p><strong>作者: </strong>Frudrax Cheng</p>
             <p><strong>发布时间:</strong>
-                <time class="published" datetime="2022-07-22T14:36:10+08:00">
-                2022-07-22 (五)
+                <time class="published" datetime="2025-05-10T22:03:00+08:00">
+                2025-05-10 (六)
                 </time>
             </p>
-            <p><strong>文章分类: </strong>技术</p>
-            <p><strong>链接: </strong><a href="https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html" title="记一次 zabbix 数据库编码排错" class="p-link">https://cynosura.one/posts/zabbix-cannot-set-mysql-character-to-utf8.html</a></p>
+            <p><strong>文章分类: </strong>日常</p>
+            <p><strong>链接: </strong><a href="https://cynosura.one/posts/trapped-in-life.html" title="被困在生活里" class="p-link">https://cynosura.one/posts/trapped-in-life.html</a></p>
         </div>
         <div class="post-article-copyright card">
             <h2 class="card-title">版权许可</h2>
