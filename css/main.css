@@ -1032,7 +1032,8 @@ main {
         top: 0;
         right: -100%; /* 初始时隐藏在屏幕右侧 */
         width: 100%;
-        height: 100vh; /* 尝试兼容 iOS 26 */
+        height: 100vh;
+        height: 100dvh;  /* 尝试兼容 iOS 26 */
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         transition: right 0.3s ease; /* 在right属性上应用过渡，动画时长为0.3秒，采用ease缓动函数 */
