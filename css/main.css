@@ -312,12 +312,12 @@ main {
 .menu {
     display: flex;
     position: sticky;
-    top: -1px; /* 损失一点高度，来避免采用 JS scroll 方式判断 .menu 是否到顶，感谢垃圾 Safari 独特的滚动判断机制 */
+    top: 0;
     z-index: 2;
     margin-bottom: 0.5rem;
     background-color: var(--menu-color);
     transition: 0.5s background-color;
-    height: calc(3rem + 1px); /* 菜单吸顶预留 1px */
+    height: 3rem;
 }
 
 .menu-a {

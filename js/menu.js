@@ -1,18 +1,19 @@
 // 菜单吸顶逻辑
 const menu = document.querySelector('.menu');
+const sentinel = document.querySelector('.menu-sentinel');
+
 const observer = new IntersectionObserver(
   ([entry]) => {
-    if (entry.intersectionRatio < 1) {
-      menu.classList.add('at-top');
+    if (entry.isIntersecting === false) {
+      menu.classList.add('at-top'); 
     } else {
       menu.classList.remove('at-top');
     }
   },
-  { threshold: [1] }
+  { threshold: [0] } 
 );
 
-observer.observe(menu);
-
+observer.observe(sentinel);
 // 移动端抽屉菜单
 const openMenuButton = document.getElementById("open-menu");
 const closeMenuButton = document.getElementById("close-menu");
