@@ -6,8 +6,17 @@ const allPosts = await getCollection('blog');
 const sortedPosts = allPosts
   .filter(post => post.data.pubDate || post.data.date)
   .sort((a, b) => {
-    const dateA = (a.data.pubDate || a.data.date) as Date;
-    const dateB = (b.data.pubDate || b.data.date) as Date;
+    // 将字符串日期转换为 Date 对象进行比较
+    const dateStrA = (a.data.pubDate || a.data.date) as string;
+    const dateStrB = (b.data.pubDate || b.data.date) as string;
+    // 解析 YYYY-MM-DD HH:MM:SS 格式
+    const parseDate = (str: string) => {
+      const match = str.match(/(\d{4})-(\d{2})-(\d{2})/);
+      if (!match) return new Date(0);
+      return new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00+08:00`);
+    };
+    const dateA = parseDate(dateStrA);
+    const dateB = parseDate(dateStrB);
     return dateB.valueOf() - dateA.valueOf();
   });
 
