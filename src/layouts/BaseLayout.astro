@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 interface Props {
   title: string;
   description?: string;
@@ -15,6 +17,7 @@ const siteURL = "https://cynosura.one";
   <head>
     <meta charset="utf-8" />
     <title>{title} - Cynosura</title>
+    <ClientRouter />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -39,7 +42,7 @@ const siteURL = "https://cynosura.one";
     <script src="/js/menu.js" defer></script>
     
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
     
     <link rel="me" href="https://mastodon.social/@cynosura" />
     <link rel="me" href="https://octans.app/@cynosura" />

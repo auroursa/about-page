@@ -1,6 +1,5 @@
 :root {
     --text-color: #322C28;
-    --code-text-color: #FCFAF2;
     --bg-color: #EBF4F4;
     --bg-blur-color: rgba(235, 244, 244, 0.8);
     --card-color: #FFFFFF;
@@ -21,7 +20,6 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --text-color: #FCFAF2;
-        --code-text-color: #FCFAF2;
         --bg-color: #121212;
         --bg-blur-color: rgba(18, 18, 18, 0.8);
         --card-color: #1B1B1B;
@@ -112,28 +110,6 @@ blockquote {
     margin: 1rem;
     border-left: 0.35rem solid var(--main-color);
     background-color: var(--bg-color);
-}
-
-/* 代码块样式 */
-.highlight {
-    width:fit-content;
-    width:-webkit-fit-content;
-    width:-moz-fit-content;
-    padding: 0.5rem;
-    color: var(--code-text-color);
-    background-color: var(--hl-color);
-}
-
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin: 0;
-}
-
-code {
-    font-family: 'Overpass Mono';
-    font-weight: normal;
-    font-style: normal;
 }
 
 /* 页首、页尾通用设定 */
