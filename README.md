@@ -72,7 +72,7 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 ### Prerequisites
 
 - Node.js 18.x or higher
-- npm or yarn
+- pnpm (recommended) or npm
 
 ### Setup
 
@@ -84,21 +84,21 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Start the development server:
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 4. Open your browser and navigate to `http://localhost:4321`
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build the site for production
-- `npm run preview` - Preview the production build locally
+- `pnpm dev` - Start development server
+- `pnpm build` - Build the site for production
+- `pnpm preview` - Preview the production build locally
 
 ## Content Management
 
@@ -142,7 +142,7 @@ This project is designed to be deployed on static hosting platforms like:
 - Netlify
 - GitHub Pages
 
-Build command: `npm run build`
+Build command: `pnpm build`
 Output directory: `dist`
 
 ## License
