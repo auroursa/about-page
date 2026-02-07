@@ -1,60 +1,156 @@
-# About Page
+# Cynosura
 
-This is a personal project, showcasing my personal info, blog, and some information about the website. The website is built using HTML & CSS, and it's designed to introduce myself, share my projects, and write blog posts on various topics.
+Personal website built with Astro, featuring a blog, friends page, and about page. Previously built with Pelican and pure HTML/CSS, now migrated to Astro for better performance and maintainability.
 
 ## Table of Contents
-- [About Page](#about-page)
+- [Cynosura](#cynosura)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
   - [Technologies](#technologies)
-  - [Setup](#setup)
-  - [Usage](#usage)
-  - [Contributing](#contributing)
+  - [Project Structure](#project-structure)
+  - [Development](#development)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Available Scripts](#available-scripts)
+  - [Content Management](#content-management)
+    - [Writing Posts](#writing-posts)
+    - [Adding Friends](#adding-friends)
+  - [Deployment](#deployment)
   - [License](#license)
   - [Fonts License](#fonts-license)
 
 ## Introduction
 
-Welcome to my personal website! Here, you'll find information about me and my blog posts. This website serves as a way for me to showcase my life, share my thoughts and experiences, and connect with others in the community.
+Welcome to my personal website! This site serves as a platform to share my thoughts, experiences, and technical insights. It features a blog, a curated list of friend websites, and information about the site itself.
 
 ## Features
 
-- Home (index.html): Provides a personal introduction, contact information, and a brief overview of the website's sections.
-- Blog (posts): Contains a collection of long-form articles where I share my knowledge and insights on various topics, including technology and personal experiences. The blog is generated using Pelican.
-- Friends (friends.html): A page dedicated to displaying links to websites of friends and other community members. It's a way to support and connect with fellow content creators.
-- About (about.html): This page includes relevant information about the website's design and style.
+- **Home** (`/`): Personal introduction, contact information, and social links
+- **Blog** (`/posts`): Collection of articles covering technology, daily life, and personal reflections
+  - Dual-column layout with sidebar (categories, RSS feed)
+  - Full-width article pages with metadata, copyright info, and Disqus comments
+  - RSS feed support
+- **Friends** (`/friends`): Links to friends' websites and a "void portal" section
+- **About** (`/about`): Information about the website's design, technology stack, and color scheme
 
 ## Technologies
 
-The website is built using the following technologies:
+- [Astro](https://astro.build/) - Static site generator
+- HTML5 & CSS3
+- Vanilla JavaScript
+- Markdown for blog posts
 
-- HTML
-- CSS
-- Pelican (for generating the posts)
+## Project Structure
 
-## Setup
+```
+.
+├── src/
+│   ├── content/
+│   │   └── blog/           # Markdown blog posts
+│   ├── layouts/
+│   │   └── BaseLayout.astro    # Base layout component
+│   └── pages/
+│       ├── index.astro     # Home page
+│       ├── about.astro     # About page
+│       ├── friends.astro   # Friends page
+│       └── posts/
+│           ├── index.astro # Blog listing page
+│           └── [slug].astro # Blog post detail page
+├── public/
+│   ├── css/               # Static CSS files
+│   ├── img/               # Images and avatars
+│   ├── font/              # Custom fonts
+│   └── js/                # Static JavaScript files
+├── dist/                  # Build output
+├── astro.config.mjs       # Astro configuration
+└── package.json
+```
 
-To run the website locally, follow these steps:
+## Development
 
-1. Clone the repository: `git clone git@github.com:auroursa/about-page.git`
-2. Navigate to the project folder: `cd about-page`
-3. Open `index.html` in your preferred web browser.
+### Prerequisites
 
-## Usage
+- Node.js 18.x or higher
+- npm or yarn
 
-Feel free to explore the website and navigate through the different sections. You can click on the navigation links to access the respective pages. If you have any feedback or suggestions, I'd love to hear them. You can reach out to me using the contact information provided on the homepage.
+### Setup
 
-## Contributing
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:auroursa/about-page.git
+   cd about-page
+   ```
 
-I appreciate any contributions to improve the website. If you find any issues or have new ideas, please open an issue or submit a pull request. Let's make this project better together!
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:4321`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build the site for production
+- `npm run preview` - Preview the production build locally
+
+## Content Management
+
+### Writing Posts
+
+Blog posts are written in Markdown and stored in `src/content/blog/`. Each post should include frontmatter:
+
+```markdown
+---
+title: Post Title
+pubDate: 2024-01-22 09:41:00
+description: Brief description of the post
+category: Category Name
+slug: post-slug
+---
+
+Your content here...
+```
+
+Categories currently used: 日常 (Daily), 杂谈 (Misc), 技术 (Tech)
+
+### Adding Friends
+
+To add a new friend to the friends page, edit `src/pages/friends.astro` and add an entry to the `friends` array:
+
+```javascript
+{
+  name: "Friend Name",
+  desc: "Description of their website",
+  url: "https://example.com",
+  img: "/img/friends/avatar.webp"
+}
+```
+
+## Deployment
+
+This project is designed to be deployed on static hosting platforms like:
+
+- Cloudflare Pages
+- Vercel
+- Netlify
+- GitHub Pages
+
+Build command: `npm run build`
+Output directory: `dist`
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use the code and modify it for your own personal use. However, please do not use this project for any commercial purposes without my permission.
+This project is licensed under the [MIT License](LICENSE). Feel free to use the code for personal use. Commercial use requires permission.
 
 ## Fonts License
 
-The "Overpass" font used in this project is licensed under the [SIL Open Font License](https://github.com/auroursa/about-page/blob/main/font/OFL.txt). Please refer to the license for more details. 
+The "Overpass" font used in this project is licensed under the [SIL Open Font License](https://github.com/auroursa/about-page/blob/main/font/OFL.txt).
 
 The "Overpass" font is used for titles on the website and as the font for code blocks in the article pages.

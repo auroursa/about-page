@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formatDate = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = { 
+    year: 'numeric', 
+    month: '2-digit', 
+    day: '2-digit',
+    weekday: 'short' 
+  };
+  return date.toLocaleDateString('zh-CN', options).replace(/\//g, '-');
+};
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary} currentPath="/posts/[slug]">
+  <article class="article-content card">
+    <h1 class="article-title">{entry.data.title}</h1>
+    <div class="article-meta">
+      <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+      {entry.data.category && <span class="article-category">{entry.data.category}</span>}
+    </div>
+    <div class="article-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const friends = [
+  { name: "250king", desc: "耀の小站", url: "https://250king.top", img: "/img/friends/250king.top.webp" },
+  { name: "Aaki's Notes", desc: "蜜柑，一种柑橘属植物", url: "https://mikan.anontokyo.com", img: "/img/friends/mikan.anontokyo.com.webp" },
+  { name: "艾登的个人网站", desc: "Tell me anywhere I go you will follow", url: "https://aidenpers.xyz", img: "/img/friends/aidenpers.xyz.webp" },
+  { name: "Ayakaの部屋", desc: "是可可爱爱 Ayaka！", url: "https://ayk.moe", img: "/img/friends/ayk.moe.webp" },
+  { name: "八神鬼嗣の文庫", desc: "ダンタリアンの書架", url: "https://onioni.net", img: "/img/friends/onioni.net.webp" },
+  { name: "Bayesian Conspiracy", desc: "Jack Works", url: "https://blog.jackworks.dev", img: "/img/friends/blog.jackworks.dev.webp" },
+  { name: "Bingxin Home", desc: "好久不见", url: "https://byteloid.one", img: "/img/friends/byteloid.one.webp" },
+  { name: "Blog of Wr", desc: "Web dev, Linux, and other tech or casual stuff.", url: "https://wrye.dev", img: "/img/friends/wrye.dev.webp" },
+  { name: "ChrAlpha", desc: "@ChrAlpha's porfolio", url: "https://ichr.me", img: "/img/friends/ichr.me.webp" },
+  { name: "cloramiStation", desc: "雨になって何分か後に行く", url: "https://www.clorami.cc", img: "/img/friends/clorami.cc.webp" },
+  { name: "Clover Yan 的小屋", desc: "生命是灰色的，理论之树常青。", url: "https://www.khyan.top", img: "/img/friends/www.khyan.top.webp" },
+  { name: "Cicada000", desc: "18歲，是學生", url: "https://cicada000.work", img: "/img/friends/cicada000.work.webp" },
+  { name: "Desvl's Blog", desc: "A blog mainly on graduate mathematics.", url: "https://desvl.xyz", img: "/img/friends/desvl.xyz.webp" },
+  { name: "Digital Evergarden", desc: "Konnyaku's Blog", url: "https://hee.ink", img: "/img/friends/hee.ink.webp" },
+  { name: "Dort 的博客", desc: "说不定其实是 AI", url: "https://blog.dort.me", img: "/img/friends/blog.dort.me.webp" },
+  { name: "DreamCity", desc: "愿你有一天，能与你最重要的人重逢", url: "https://www.littleqiu.net", img: "/img/friends/www.littleqiu.net.webp" },
+  { name: "炖鱼的碎碎念", desc: "A salt fish.", url: "https://blog.salt-fish.moe", img: "/img/friends/blog.salt-fish.moe.webp" },
+  { name: "废柴乙乙的Blog！", desc: "这里是乙酸乙酯酱的个人Blog！", url: "https://echiru.top", img: "/img/friends/echiru.top.webp" },
+  { name: "Fika", desc: "Debug the World", url: "https://fika.ink", img: "/img/friends/fika.ink.webp" },
+  { name: "高科技的指挥中心", desc: "blog.hightechbrain.net", url: "https://blog.hightechbrain.net", img: "/img/friends/blog.hightechbrain.net.webp" },
+  { name: "Hakadao", desc: "Now I am become a loser, the destroyer of myself.", url: "https://hakadao.cc", img: "/img/friends/hakadao.cc.webp" },
+  { name: "Henrietta", desc: "魂兮归来，哀江南。", url: "https://xlog.henri.moe", img: "/img/friends/xlog.henri.moe.webp" },
+  { name: "Hi! 上天不?", desc: "新一的个人博客", url: "https://a-wing.top", img: "/img/friends/a-wing.top.webp" },
+  { name: "Homura's Blog", desc: "可爱的 Homura 酱！", url: "https://homura.live", img: "/img/friends/homura.live.webp" },
+  { name: "红色森林", desc: "Blog of RedForest", url: "https://redforest.org.cn", img: "/img/friends/redforest.org.cn.webp" },
+  { name: "huige233's blog", desc: "Everyone can be the light in the darkness.", url: "https://huige233.com", img: "/img/friends/huige233.com.webp" },
+  { name: "後藤研究所", desc: "一只在网络中游荡的伞蜥蜴。", url: "https://suzu.dev", img: "/img/friends/suzu.dev.webp" },
+  { name: "iKirby's Blog", desc: "ikirby.me", url: "https://ikirby.me", img: "/img/friends/ikirby.me.webp" },
+  { name: "Jayden's site", desc: "为天地立心,为生民立命, 为往圣继绝学,为万世开太平。", url: "https://xxu.do", img: "/img/friends/xxu.do.webp" },
+  { name: "静かな森", desc: "致虚极，守静笃。", url: "https://innei.in", img: "/img/friends/innei.in.webp" },
+  { name: "Joey's Blog", desc: "夙夜匪懈 主義是從", url: "https://joelee11210.github.io", img: "/img/friends/joelee11210.github.io.webp" },
+  { name: "橘纸柚的博客", desc: "一颗烂橘子", url: "https://lovemen.cc", img: "/img/friends/lovemen.cc.webp" },
+  { name: "凯露的魔法书", desc: "荒诞系 Blog", url: "https://kyaru.xyz", img: "/img/friends/kyaru.xyz.webp" },
+  { name: "KirimaSharo's Blog", desc: "ご注文はうさぎですか？", url: "https://kirimasharo.com", img: "/img/friends/kirimasharo.com.webp" },
+  { name: "酷丁的主页", desc: "一个羞涩的小朋友的自我介绍页面", url: "https://cold04.com", img: "/img/friends/cold04.com.webp" },
+  { name: "老陈の咸鱼日常", desc: "一条鸽子鲑鱼", url: "https://www.fantanstic.top", img: "/img/friends/www.fantanstic.top.webp" },
+  { name: "legends-killer", desc: "What is broken can be reforged.", url: "https://www.legends-killer.cq.cn", img: "/img/friends/www.legends-killer.cq.cn.webp" },
+  { name: "冷曦的喵喵小屋", desc: "愿每个人都被温柔以待", url: "https://hiyase.github.io", img: "/img/friends/hiyase.github.io.webp" },
+  { name: "LeZi的猫窝", desc: "世上本没有博客，直到有了程序员", url: "https://leziblog.com", img: "/img/friends/leziblog.com.webp" },
+  { name: "lingxh的窝窝", desc: "跨越长城，走向世界", url: "https://blog.lingxh.com", img: "/img/friends/blog.lingxh.com.webp" },
+  { name: "林槐的杂货铺", desc: "要来点什么吗 QWQ", url: "https://blog.stapxs.cn", img: "/img/friends/stapxs.cn.webp" },
+  { name: "澪字节", desc: "Rincy aka 试泉", url: "https://miobyte.net", img: "/img/friends/miobyte.net.webp" },
+  { name: "MlgmXyysd's Cat Nest", desc: "欢迎来猫窝，喵。", url: "https://www.neko.ink", img: "/img/friends/neko.ink.webp" },
+  { name: "Moe23333's Blog", desc: "这里是笨蛋 Moe 的 Blog 喵~", url: "https://moe23333.vercel.app", img: "/img/friends/moe23333.vercel.app.webp" },
+  { name: "停雲", desc: "木木的部落格", url: "https://tommylibra.site", img: "/img/friends/tommylibra.site.webp" },
+  { name: "neko0xff", desc: "喵。", url: "https://neko0xff.github.io", img: "/img/friends/neko0xff.github.io.webp" },
+  { name: "Nyaasu 研究所", desc: "ニャース研究所", url: "https://blog.nyaasu.top", img: "/img/friends/blog.nyaasu.top.webp" },
+  { name: "ObservatoryX", desc: "天文觀測站", url: "https://observatoryx.vercel.app", img: "/img/friends/observatoryx.vercel.app.webp" },
+  { name: "派兹的小站", desc: "Aka Blw", url: "https://blw.moe", img: "/img/friends/blw.moe.webp" },
+  { name: "Phrinky's Blog", desc: "Ricky 的各种日常捏", url: "https://blog.phrk.nl", img: "/img/friends/blog.phrk.nl.webp" },
+  { name: "Py's blog", desc: "可爱笨笨 Py 酱", url: "https://py233.net", img: "/img/friends/py233.net.webp" },
+  { name: "且听书吟", desc: "诗与梦想的远方", url: "https://yufan.me", img: "/img/friends/yufan.me.webp" },
+  { name: "Rikumi", desc: "好耶，是 rkm！", url: "https://rkm.mx", img: "/img/friends/rkm.mx.webp" },
+  { name: "Rin's Blog", desc: "我太菜了，對不起", url: "https://blog.rin.moe", img: "/img/friends/blog.rin.moe.webp" },
+  { name: "日向花和", desc: "乐者以文明志，悲者以诗励行。", url: "https://www.hanawahinata.me", img: "/img/friends/www.hanawahinata.me.webp" },
+  { name: "绒绒洛", desc: "俯いたまま大人になって", url: "https://qwq.dog", img: "/img/friends/qwq.dog.webp" },
+  { name: "桜さくらの自留地", desc: "一只萌新的自留地", url: "https://icm.moe", img: "/img/friends/icm.moe.webp" },
+  { name: "SatouのBlog", desc: "彼女の愛は、甘くて痛い", url: "https://www.matsusatou.top", img: "/img/friends/www.matsusatou.top.webp" },
+  { name: "Shiro", desc: "夙兴夜，勤不怠", url: "https://shiro.love", img: "/img/friends/shiro.love.webp" },
+  { name: "双霖 - LineSoft", desc: "linesoft.dev", url: "https://linesoft.dev", img: "/img/friends/linesoft.dev.webp" },
+  { name: "SkyWT 天空随想", desc: "热爱与激情永不止息。", url: "https://skywt.cn", img: "/img/friends/skywt.cn.webp" },
+  { name: "Soda", desc: "Kagurazaka Tsuki", url: "https://yue.moe", img: "/img/friends/yue.moe.webp" },
+  { name: "Sotr's blog", desc: "是可爱 Sotr 酱！", url: "https://kira.moe", img: "/img/friends/kira.moe.webp" },
+  { name: "Steven's Blog", desc: "悟已往之不諫，知來者之可追", url: "https://blog.hly0928.com", img: "/img/friends/blog.hly0928.com.webp" },
+  { name: "Sunset Mikoto", desc: "Lead Programmer of Sunset Edu. & Tech. Group.", url: "https://sunmkt.uk", img: "/img/friends/sunmkt.uk.webp" },
+  { name: "探索子博客", desc: "Just for fun!", url: "https://idx.best", img: "/img/friends/idx.best.webp" },
+  { name: "Tony Ding's Blog", desc: "World Peace.", url: "https://blog.tonyding.net", img: "/img/friends/blog.tonyding.net.webp" },
+  { name: "U.M.R Powered Blog", desc: "this bio is intentionally left blank.", url: "https://umrpowered.codeberg.page", img: "/img/friends/umrpowered.codeberg.page.webp" },
+  { name: "咸鱼的小鱼塘", desc: "Professional programmer & Amateur foodie", url: "https://www.zjyl1994.com", img: "/img/friends/www.zjyl1994.com.webp" },
+  { name: "新世界的大门", desc: "猫猫的博客", url: "https://blog.xinshijiededa.men", img: "/img/friends/blog.xinshijiededa.men.webp" },
+  { name: "玹狸的摸鱼基地", desc: "“不挂科就大成功”", url: "https://blog.xuanli.cc", img: "/img/friends/blog.xuanli.cc.webp" },
+  { name: "一个垃圾桶", desc: "其实这里没有什么好看的", url: "https://kaf.moe", img: "/img/friends/kaf.moe.webp" },
+  { name: "伊蕾娜的旅行日记", desc: "keiko233 / A CV Engineer.", url: "https://elaina.moe", img: "/img/friends/elaina.moe.webp" },
+  { name: "映雪青帖", desc: "一位常在游客旁若无人的自言自语", url: "https://www.aoisnow.net", img: "/img/friends/www.aoisnow.net.webp" },
+  { name: "鱼类观测研究所", desc: "lz差不多是条咸鱼了", url: "https://with.fish", img: "/img/friends/with.fish.webp" },
+  { name: "Yunyi's Blog", desc: "Little squirrel Hopping around", url: "https://www.yunyitang.me/zh/", img: "/img/friends/www.yunyitang.me.webp" },
+  { name: "湛蓝的调色板", desc: "A cat lying on the keyboard.", url: "https://nekoq.eu.org", img: "/img/friends/nekoq.eu.org.webp" },
+  { name: "正汰的学习笔记", desc: "憧憬是距离理解最遥远的感情。", url: "https://blog.hz2016.com", img: "/img/friends/blog.hz2016.com.webp" },
+  { name: "钟神秀 (@ZSXCoder)", desc: "克喵的小站", url: "https://home.zsxcoder.top", img: "/img/friends/home.zsxcoder.top.webp" },
+  { name: "Zikin 的独立博客", desc: "青春大概如你所说", url: "https://zikin.org", img: "/img/friends/zikin.org.webp" },
+];
+---
+
+<BaseLayout title="友人" description="友链列表，按 A-Z 顺序排列" currentPath="/friends">
+  <div class="friends-list">
+    <article class="friends-card-info card">
+      <h2 class="card-title">Yahalo!</h2>
+      <h3>这里是一本名片册，记载在网络上结识的各种朋友</h3>
+      <p>无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"。</p>
+      <p>熟悉后将会把你加入到下方名片册里，按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆。</p>
+    </article>
+    
+    {friends.map((friend) => (
+      <div class="friends-card">
+        <a href={friend.url} class="friends-card-link">
+          <img src={friend.img} alt={friend.name} class="friends-img" width="400" height="400" loading="lazy" />
+          <div class="friends-card-content">
+            <h3 class="card-title friends-card-title">{friend.name}</h3>
+            <p class="friends-card-description">{friend.desc}</p>
+          </div>
+        </a>
+      </div>
+    ))}
+
+    <!-- 虚空传送门 -->
+    <article class="friends-card-info card">
+      <h2 class="card-title">虚空传送门</h2>
+      <h3>这里存放暂时无法正常访问到站点的朋友们</h3>
+      <div class="friends-card">
+        <a href="https://blog.stv.lol" class="friends-card-link">
+          <div class="friends-card-content">
+            <h3 class="card-title friends-card-title">Steven Lynn's Blog</h3>
+            <p class="friends-card-description">你所热爱的，就是你的生活</p>
+          </div>
+        </a>
+      </div>
+      <div class="friends-card">
+        <a href="https://blog.reallysnow.moe" class="friends-card-link">
+          <div class="friends-card-content">
+            <h3 class="card-title friends-card-title">雪の小窝</h3>
+            <p class="friends-card-description">永远不向命运低头</p>
+          </div>
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
