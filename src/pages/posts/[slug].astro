@@ -106,7 +106,8 @@ const formatDate = (dateStr: string | undefined) => {
 
   <script is:inline>
     // Disqus 加载（使用事件委托支持 ClientRouter）
-    document.addEventListener('click', function(e) {
+    // 定义命名函数以便移除
+    window.__disqusClickHandler = function(e) {
       if (e.target.closest('#load_disqus')) {
         var disqusScript = document.createElement('script');
         disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
@@ -119,6 +120,10 @@ const formatDate = (dateStr: string | undefined) => {
         }
         document.getElementById('load_disqus').style.display = 'none';
       }
-    });
+    };
+    // 移除旧监听器（如果存在）
+    document.removeEventListener('click', window.__disqusClickHandler);
+    // 添加新监听器
+    document.addEventListener('click', window.__disqusClickHandler);
   </script>
 </BaseLayout>
