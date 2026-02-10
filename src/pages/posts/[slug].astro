@@ -108,6 +108,9 @@ const formatDate = (dateStr: string | undefined) => {
     // Disqus 加载按钮处理
     // ClientRouter 时，此脚本会在每次页面导航后重新执行
     // 但事件监听器使用事件委托绑定在 document 上，只需要绑定一次
+    // 用 data-cfasync 告诉 Cloudflare 不要乱动我的脚本
+    // data-astro-rerun 告诉 Astro 每次进入文章详情页重新加载脚本，而不是一次加载完
+    // 这些坏坏服务怎么老爱动我的脚本😤
     
     (function() {
       // 只在第一次执行时绑定事件监听器
