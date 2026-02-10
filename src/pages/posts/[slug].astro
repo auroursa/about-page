@@ -105,18 +105,20 @@ const formatDate = (dateStr: string | undefined) => {
   </main>
 
   <script>
-    // Disqus 加载
-    document.getElementById('load_disqus')?.addEventListener('click', function() {
-      var disqusScript = document.createElement('script');
-      disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-      disqusScript.setAttribute('data-timestamp', String(+new Date()));
-      document.head.appendChild(disqusScript);
-      var disqusContainer = document.getElementById('disqus_thread_container');
-      var disqusThread = document.getElementById('disqus_thread');
-      if (disqusContainer && disqusThread) {
-        disqusContainer.appendChild(disqusThread);
+    // Disqus 加载（使用事件委托支持 ClientRouter）
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('#load_disqus')) {
+        var disqusScript = document.createElement('script');
+        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+        disqusScript.setAttribute('data-timestamp', String(+new Date()));
+        document.head.appendChild(disqusScript);
+        var disqusContainer = document.getElementById('disqus_thread_container');
+        var disqusThread = document.getElementById('disqus_thread');
+        if (disqusContainer && disqusThread) {
+          disqusContainer.appendChild(disqusThread);
+        }
+        document.getElementById('load_disqus').style.display = 'none';
       }
-      this.style.display = 'none';
     });
   </script>
 </BaseLayout>
