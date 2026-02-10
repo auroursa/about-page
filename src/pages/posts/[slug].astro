@@ -105,25 +105,43 @@ const formatDate = (dateStr: string | undefined) => {
   </main>
 
   <script is:inline>
-    // Disqus 加载（使用事件委托支持 ClientRouter）
-    // 定义命名函数以便移除
-    window.__disqusClickHandler = function(e) {
-      if (e.target.closest('#load_disqus')) {
+    // Disqus 加载按钮处理
+    // ClientRouter 时，此脚本会在每次页面导航后重新执行
+    // 但事件监听器使用事件委托绑定在 document 上，只需要绑定一次
+    
+    (function() {
+      // 只在第一次执行时绑定事件监听器
+      if (window.__disqusClickHandlerInstalled) {
+        return;
+      }
+      window.__disqusClickHandlerInstalled = true;
+      
+      // 使用事件委托处理点击
+      document.addEventListener('click', function(e) {
+        // 检查是否点击了加载评论按钮
+        var btn = e.target.closest('#load_disqus');
+        if (!btn) return;
+        
+        // 检查按钮是否已被处理
+        if (btn.dataset.loaded === 'true') return;
+        btn.dataset.loaded = 'true';
+        
+        // 加载 Disqus
         var disqusScript = document.createElement('script');
         disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
         disqusScript.setAttribute('data-timestamp', String(+new Date()));
         document.head.appendChild(disqusScript);
+        
+        // 移动 disqus_thread 到容器
         var disqusContainer = document.getElementById('disqus_thread_container');
         var disqusThread = document.getElementById('disqus_thread');
         if (disqusContainer && disqusThread) {
           disqusContainer.appendChild(disqusThread);
         }
-        document.getElementById('load_disqus').style.display = 'none';
-      }
-    };
-    // 移除旧监听器（如果存在）
-    document.removeEventListener('click', window.__disqusClickHandler);
-    // 添加新监听器
-    document.addEventListener('click', window.__disqusClickHandler);
+        
+        // 隐藏按钮
+        btn.style.display = 'none';
+      });
+    })();
   </script>
 </BaseLayout>
