@@ -792,10 +792,6 @@ main {
         max-width: 85%;
     }
 
-    .post-article-main {
-        max-width: 75%;
-    }
-
     .main-header {
         grid-template-columns: 1fr 2fr;
     }
@@ -872,10 +868,6 @@ main {
 
 /* for iPad */
 @media screen and (max-width: 1024px) {
-    .post-article-main {
-        max-width: 85%;
-    }
-
     .menu {
         margin-bottom: 0;
     }
