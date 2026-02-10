@@ -17,7 +17,7 @@ Pelican 上手还是挺简单的，基本上参照 [官方文档](https://docs.g
 ## 增加 RSS 支持
 斟酌再三，还是决定为文章页增加 RSS (实际是 Atom) 支持，仅需在配置文件里指定生成路径即可。
 
-```conf
+```ini
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 FEED_DOMAIN = SITEURL
 FEED_MAX_ITEMS  =  15
@@ -48,7 +48,7 @@ AUTHOR_FEED_RSS = None
 
 安装完成后，将如下信息放入配置文件，并重新生成站点。
 
-```conf
+```ini
 SITEMAP = {
     "format": "xml",
     "priorities": {
