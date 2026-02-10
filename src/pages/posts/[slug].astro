@@ -104,7 +104,7 @@ const formatDate = (dateStr: string | undefined) => {
     </div>
   </main>
 
-  <script>
+  <script is:inline>
     // Disqus 加载（使用事件委托支持 ClientRouter）
     document.addEventListener('click', function(e) {
       if (e.target.closest('#load_disqus')) {
