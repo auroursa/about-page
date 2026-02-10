@@ -104,7 +104,7 @@ const formatDate = (dateStr: string | undefined) => {
     </div>
   </main>
 
-  <script is:inline data-astro-rerun>
+  <script is:inline data-astro-rerun data-cfasync="false">
     // Disqus 加载按钮处理
     // ClientRouter 时，此脚本会在每次页面导航后重新执行
     // 但事件监听器使用事件委托绑定在 document 上，只需要绑定一次
