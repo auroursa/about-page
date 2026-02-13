@@ -504,7 +504,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     background: var(--hl-color);
-    color: var(--bg-color);
+    color: var(--text-color);
     padding: 0.3rem 0.6rem;
     border-radius: 0.3rem;
     font-size: 0.8rem;
