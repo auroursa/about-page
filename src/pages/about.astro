@@ -42,13 +42,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </h3>
     <p>全站使用"水蓝"作为主题色，期望能营造夏日清爽的观感(或许会根据四季切换不同主题色)。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
     <p>同时在尽量不破坏整体设计的情况下，选用高对比度色彩以符合 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG</a> 标准。</p>
-    <div>
-      <span class="about-color-span" style="background-color: #EBF4F4"></span>
-      <span class="about-color-span" style="background-color: #D0DFE6"></span>
-      <span class="about-color-span" style="background-color: #51A8DD"></span>
-      <span class="about-color-span" style="background-color: #1177B0"></span>
-      <span class="about-color-span" style="background-color: #566C73"></span>
+    <div class="about-color-wrapper">
+      <span class="about-color-span" style="background-color: #EBF4F4">
+        <span class="about-color-tooltip" onclick="copyColor('#EBF4F4')">#EBF4F4</span>
+      </span>
+      <span class="about-color-span" style="background-color: #D0DFE6">
+        <span class="about-color-tooltip" onclick="copyColor('#D0DFE6')">#D0DFE6</span>
+      </span>
+      <span class="about-color-span" style="background-color: #51A8DD">
+        <span class="about-color-tooltip" onclick="copyColor('#51A8DD')">#51A8DD</span>
+      </span>
+      <span class="about-color-span" style="background-color: #1177B0">
+        <span class="about-color-tooltip" onclick="copyColor('#1177B0')">#1177B0</span>
+      </span>
+      <span class="about-color-span" style="background-color: #566C73">
+        <span class="about-color-tooltip" onclick="copyColor('#566C73')">#566C73</span>
+      </span>
     </div>
+  </article>
+</BaseLayout>
+
+<script>
+  function copyColor(color) {
+    navigator.clipboard.writeText(color);
+  }
+
+  document.querySelectorAll('.about-color-span').forEach(span => {
+    span.addEventListener('mouseenter', () => {
+      const tooltip = span.querySelector('.about-color-tooltip');
+      if (tooltip) tooltip.classList.add('show');
+    });
+    span.addEventListener('mouseleave', () => {
+      const tooltip = span.querySelector('.about-color-tooltip');
+      if (tooltip) tooltip.classList.remove('show');
+    });
+    span.addEventListener('touchstart', () => {
+      const tooltip = span.querySelector('.about-color-tooltip');
+      if (tooltip) tooltip.classList.add('show');
+    });
+  });
+</script>
   </article>
 </BaseLayout>
 

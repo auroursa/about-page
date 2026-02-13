@@ -78,11 +78,14 @@
     background-color: var(--accent-color); /* 滚动条滑块悬停颜色 */
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, Helvetica Neue, sans-serif;
     margin: 0;
     padding: 0;
-    overflow-y: overlay;
     color: var(--text-color);
     background-color: var(--bg-color);
 }
@@ -479,10 +482,60 @@ main {
 
 /* 关于页 */
 .about-color-span {
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 1.2rem;
     width: 3.5rem;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.about-color-wrapper {
+    display: flex;
+    gap: 0;
+}
+
+.about-color-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--hl-color);
+    color: var(--bg-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: auto;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.about-color-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.4rem solid transparent;
+    border-top-color: var(--hl-color);
+}
+
+.about-color-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.about-color-tooltip .copy-hint {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    margin-left: 0.3rem;
 }
 
 /* 文章页 */
