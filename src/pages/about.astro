@@ -61,27 +61,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </article>
 </BaseLayout>
-
-<script>
-  function copyColor(color) {
-    navigator.clipboard.writeText(color);
-  }
-
-  document.querySelectorAll('.about-color-span').forEach(span => {
-    span.addEventListener('mouseenter', () => {
-      const tooltip = span.querySelector('.about-color-tooltip');
-      if (tooltip) tooltip.classList.add('show');
-    });
-    span.addEventListener('mouseleave', () => {
-      const tooltip = span.querySelector('.about-color-tooltip');
-      if (tooltip) tooltip.classList.remove('show');
-    });
-    span.addEventListener('touchstart', () => {
-      const tooltip = span.querySelector('.about-color-tooltip');
-      if (tooltip) tooltip.classList.add('show');
-    });
-  });
-</script>
   </article>
 </BaseLayout>
 
