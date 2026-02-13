@@ -6,7 +6,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://cynosura.one',
   integrations: [
-    expressiveCode(),
+    expressiveCode({
+      styleOverrides: {
+        codeFontFamily: '"Overpass Mono", monospace',
+      },
+    }),
     sitemap()
   ]
 });
