@@ -7,7 +7,7 @@ This guide helps agentic coding tools work effectively in this Astro-based perso
 - **Framework**: Astro 5.17.1 (TypeScript)
 - **Package Manager**: pnpm
 - **Site Language**: Chinese (zh-cn)
-- **Content**: Personal blog with content collections, RSS feed, and sitemap
+- **Content**: Personal blog with content collections, category filtering, RSS feed, and sitemap
 
 ## Build Commands
 
@@ -68,6 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Required fields: `title`
 - Optional fields: `description`, `date`, `pubDate`, `category`, `tags`, `slug`
 - Use `z.preprocess` for date handling to convert Date objects to strings
+- Categories are auto-generated from blog posts and used for filtering
 
 ### Naming Conventions
 
@@ -90,19 +91,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ```
 src/
 ├── content/
-│   └── blog/          # Markdown blog posts
+│   └── blog/              # Markdown blog posts
 ├── layouts/
-│   ├── BaseLayout.astro
-│   └── BlogLayout.astro
+│   └── BaseLayout.astro
 ├── pages/
-│   ├── index.astro
-│   ├── about.astro
-│   ├── friends.astro
+│   ├── index.astro        # Home page
+│   ├── about.astro        # About page
+│   ├── friends.astro      # Friends page
 │   ├── posts/
-│   │   ├── index.astro
-│   │   └── [slug].astro
-│   └── rss.xml.ts
-└── content.config.ts
+│   │   ├── index.astro    # Blog listing page with category sidebar
+│   │   ├── [slug].astro   # Individual blog post page
+│   │   ├── category/
+│   │   │   └── [category].astro  # Category filtering page
+│   │   └── rss.xml.ts    # RSS feed endpoint
+└── content.config.ts       # Content collections configuration
 ```
 
 ### Error Handling
@@ -132,6 +134,14 @@ src/
 - Uses `@astrojs/rss` package
 - Filters posts that have `pubDate` or `date` field
 - Sorts posts by publication date (newest first)
+
+### Category Pages
+
+- Category pages are dynamically generated at `/posts/category/[category]`
+- Use Astro's `getStaticPaths()` to pre-build pages for each category
+- Categories are extracted from blog post frontmatter
+- Category pages use the same sidebar layout as the main blog listing
+- Filter posts by `category` field in the collection
 
 ### Accessibility
 

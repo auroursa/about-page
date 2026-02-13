@@ -29,6 +29,7 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 - **Home** (`/`): Personal introduction, contact information, and social links
 - **Blog** (`/posts`): Collection of articles covering technology, daily life, and personal reflections
   - Dual-column layout with sidebar (categories, RSS feed)
+  - Category filtering via dedicated category pages (`/posts/category/[category]`)
   - Full-width article pages with metadata, copyright info, and Disqus comments
   - RSS feed support
 - **Friends** (`/friends`): Links to friends' websites and a "void portal" section
@@ -55,8 +56,10 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 │       ├── about.astro     # About page
 │       ├── friends.astro   # Friends page
 │       └── posts/
-│           ├── index.astro # Blog listing page
-│           └── [slug].astro # Blog post detail page
+│           ├── index.astro             # Blog listing page
+│           ├── [slug].astro            # Blog post detail page
+│           └── category/
+│               └── [category].astro    # Category page for filtering posts
 ├── public/
 │   ├── css/               # Static CSS files
 │   ├── img/               # Images and avatars
