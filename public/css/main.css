@@ -655,6 +655,61 @@ main {
     transition: background-color 0.5s, color 0.25s;
 }
 
+.post-category-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.post-category-count-wrapper {
+    padding: 0.75rem 1.5rem 1.5rem 1.5rem;
+}
+
+.post-category-header {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-category-title {
+    font-weight: 700;
+}
+
+.post-category-count {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.post-category-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--main-color);
+}
+
+.post-category-count-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--main-color);
+}
+
+.post-left-menu-categories a {
+    text-decoration: none;
+}
+
+
+
+.post-left-menu-categories a {
+    text-decoration: none;
+}
+
 .post-left-menu-category {
     display: inline-block;
     line-height: 2rem;
