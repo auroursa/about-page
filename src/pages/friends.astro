@@ -68,21 +68,25 @@ const friends = [
   { name: "Sotr's blog", desc: "是可爱 Sotr 酱！", url: "https://kira.moe", img: "/img/friends/kira.moe.webp" },
   { name: "Steven's Blog", desc: "悟已往之不諫，知來者之可追", url: "https://blog.hly0928.com", img: "/img/friends/blog.hly0928.com.webp" },
   { name: "Sunset Mikoto", desc: "Lead Programmer of Sunset Edu. & Tech. Group.", url: "https://sunmkt.uk", img: "/img/friends/sunmkt.uk.webp" },
-  { name: "探索子博客", desc: "Just for fun!", url: "https://idx.best", img: "/img/friends/idx.best.webp" },
   { name: "Tony Ding's Blog", desc: "World Peace.", url: "https://blog.tonyding.net", img: "/img/friends/blog.tonyding.net.webp" },
   { name: "U.M.R Powered Blog", desc: "this bio is intentionally left blank.", url: "https://umrpowered.codeberg.page", img: "/img/friends/umrpowered.codeberg.page.webp" },
   { name: "咸鱼的小鱼塘", desc: "Professional programmer & Amateur foodie", url: "https://www.zjyl1994.com", img: "/img/friends/www.zjyl1994.com.webp" },
   { name: "新世界的大门", desc: "猫猫的博客", url: "https://blog.xinshijiededa.men", img: "/img/friends/blog.xinshijiededa.men.webp" },
   { name: "玹狸的摸鱼基地", desc: "“不挂科就大成功”", url: "https://blog.xuanli.cc", img: "/img/friends/blog.xuanli.cc.webp" },
   { name: "一个垃圾桶", desc: "其实这里没有什么好看的", url: "https://kaf.moe", img: "/img/friends/kaf.moe.webp" },
-  { name: "伊蕾娜的旅行日记", desc: "keiko233 / A CV Engineer.", url: "https://elaina.moe", img: "/img/friends/elaina.moe.webp" },
   { name: "映雪青帖", desc: "一位常在游客旁若无人的自言自语", url: "https://www.aoisnow.net", img: "/img/friends/www.aoisnow.net.webp" },
   { name: "鱼类观测研究所", desc: "lz差不多是条咸鱼了", url: "https://with.fish", img: "/img/friends/with.fish.webp" },
   { name: "Yunyi's Blog", desc: "Little squirrel Hopping around", url: "https://www.yunyitang.me/zh/", img: "/img/friends/www.yunyitang.me.webp" },
   { name: "湛蓝的调色板", desc: "A cat lying on the keyboard.", url: "https://nekoq.eu.org", img: "/img/friends/nekoq.eu.org.webp" },
   { name: "正汰的学习笔记", desc: "憧憬是距离理解最遥远的感情。", url: "https://blog.hz2016.com", img: "/img/friends/blog.hz2016.com.webp" },
   { name: "钟神秀 (@ZSXCoder)", desc: "克喵的小站", url: "https://home.zsxcoder.top", img: "/img/friends/home.zsxcoder.top.webp" },
-  { name: "Zikin 的独立博客", desc: "青春大概如你所说", url: "https://zikin.org", img: "/img/friends/zikin.org.webp" },
+];
+
+const voidFriends = [
+  { name: "Steven Lynn's Blog", desc: "你所热爱的，就是你的生活", url: "https://blog.stv.lol" },
+  { name: "探索子博客", desc: "Just for fun!", url: "https://idx.best" },
+  { name: "雪の小窝", desc: "永远不向命运低头", url: "https://blog.reallysnow.moe" },
+  { name: "Zikin 的独立博客", desc: "青春大概如你所说", url: "https://zikin.org" },
 ];
 ---
 
@@ -108,25 +112,19 @@ const friends = [
     ))}
 
     <!-- 虚空传送门 -->
-    <article class="friends-card-info card">
+    <div class="friends-card-info card">
       <h2 class="card-title">虚空传送门</h2>
       <h3>这里存放暂时无法正常访问到站点的朋友们</h3>
-      <div class="friends-card">
-        <a href="https://blog.stv.lol" class="friends-card-link">
-          <div class="friends-card-content">
-            <h3 class="card-title friends-card-title">Steven Lynn's Blog</h3>
-            <p class="friends-card-description">你所热爱的，就是你的生活</p>
-          </div>
-        </a>
-      </div>
-      <div class="friends-card">
-        <a href="https://blog.reallysnow.moe" class="friends-card-link">
-          <div class="friends-card-content">
-            <h3 class="card-title friends-card-title">雪の小窝</h3>
-            <p class="friends-card-description">永远不向命运低头</p>
-          </div>
-        </a>
-      </div>
-    </article>
+      {voidFriends.map((friend) => (
+        <div class="friends-card">
+          <a href={friend.url} class="friends-card-link">
+            <div class="friends-card-content">
+              <h3 class="card-title friends-card-title">{friend.name}</h3>
+              <p class="friends-card-description">{friend.desc}</p>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
   </div>
 </BaseLayout>
