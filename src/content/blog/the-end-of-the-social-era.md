@@ -18,7 +18,7 @@ slug: the-end-of-the-social-era
 
 早在 Elon 玩坏 Twitter 之前，就有主打去中心化的社群互联协议 [Fediverse](https://en.wikipedia.org/wiki/Fediverse) 正逐渐壮大，其中又以基于此协议实现的 [Mastodon](https://en.wikipedia.org/wiki/Mastodon_(social_network))最为流行。在看到一些朋友改用 Mastodon 后，我也跟随脚步在 [don 站](https://mstdn.maud.io/@frseiun) 注册了自己的第一个 Mastodon 实例账号。
 
-![mastodon-don-screenshot](/images/the-end-of-the-social-era/mastodon-don.png)
+![mastodon-don-screenshot](/img/posts/the-end-of-the-social-era/mastodon-don.png)
 
 尽管早在 2019 年就开始玩 Mastodon，但在使用过程中我也逐渐发现 Mastodon 并不能很好满足我滑社群的需求，例如跨站互动体验不佳，简陋难用的客户端等等。加上当时使用 Mastodon 的人还不多，我就逐渐对 Mastodon 失去了兴趣，并沉寂了一段时间。
 

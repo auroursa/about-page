@@ -30,7 +30,7 @@ slug: rewrite-with-css-grid
 
 Grid 的最大问题其实是兼容性。现代浏览器都需要迟至 2017 年才开始逐渐支持显示 Grid 样式，IE11 就更不可能支持了。在一些需要考虑兼容性的场合，可能还需要依赖 Flex 或是更老的 Float 进行网页排版。
 
-![can-i-use-css-grid](/images/rewrite-with-css-grid/can-i-use-css-grid.png)
+![can-i-use-css-grid](/img/posts/rewrite-with-css-grid/can-i-use-css-grid.png)
 
 像我这种没人看的个人页用用还好，毕竟原先图方便就有用各种 CSS3 的简化标签，已经无所谓再多个 Grid 排版了。实际运用还可参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) 的相关文档，个人也是参考了 MDN 文档和 ChatGPT 的问答，才逐渐将个人页改写完毕的。
 

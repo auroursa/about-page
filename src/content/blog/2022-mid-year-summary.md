@@ -12,7 +12,7 @@ slug: 2022-mid-year-summary
 
 Year Progress: 嗯？
 
-![year-progress-screenshot](/images/2022-mid-year-summary/year-progress-screenshot.png)
+![year-progress-screenshot](/img/posts/2022-mid-year-summary/year-progress-screenshot.png)
 
 ## 驾照
 
@@ -32,7 +32,7 @@ Year Progress: 嗯？
 
 沿着国道开不到两小时就到了，路况一般，急弯也多，毕竟山区嘛。下车第一件事当然是乱跑了，在地图上选了几个点就开始步行。怎么说呢...和自己印象中的落差还是挺大的，尤其在城建方面。自小自己生活的城市就经常与将乐作对比，将乐似乎永远是更发达的那个。不过在河边漫步还是挺舒服的，生活节奏慢也比较惬意。
 
-![jiangle](/images/2022-mid-year-summary/jiangle.jpg)
+![jiangle](/img/posts/2022-mid-year-summary/jiangle.jpg)
 
 城区面积比较小，约一下午就能逛完核心区，买了些本地特产卤鸭锁骨就匆匆开车回家了，毕竟路况一般的公路开夜路对新手来说还比较危险。
 
@@ -42,11 +42,11 @@ Year Progress: 嗯？
 
 自己对这座城市不算陌生，还试过用共享单车通过闽江的每一座桥（虽然纪念拍的照片全丢了...），这次来也就随便走走，还是一见如故的感觉（~~福州地铁还是一如既往只有两条线呢~~）。
 
-![fuzhou-minjiang-river](/images/2022-mid-year-summary/fuzhou-1.jpg)
+![fuzhou-minjiang-river](/img/posts/2022-mid-year-summary/fuzhou-1.jpg)
 
 值得纪念的事，除了首次夜游闽江，走了福道和烟台山以外，还面了几位推友，都挺可爱的（
 
-![fuzhou-yantai-park](/images/2022-mid-year-summary/fuzhou-2.jpg)
+![fuzhou-yantai-park](/img/posts/2022-mid-year-summary/fuzhou-2.jpg)
 
 ### 延平
 
@@ -56,7 +56,7 @@ Year Progress: 嗯？
 
 城市的精华就集中在夜里的江滨路，这里就是全城最漂亮的地方。往内虽仍足够市井繁华，也显得过于老旧了。对我而言，除了转车和串门外也没什么兴趣再来延平了，十年如一日没啥变化。
 
-![yanping](/images/2022-mid-year-summary/yanping.jpg)
+![yanping](/img/posts/2022-mid-year-summary/yanping.jpg)
 
 ## 返校 & 朋友们
 
@@ -70,7 +70,7 @@ Year Progress: 嗯？
 
 返校后不久就是三月，也是各种花集中开放的时间。发现我确实喜欢花，翻阅去年同期的 Google 相册也全是各种花的特写。其中最喜欢的，也是宿舍周边栽种最多的染井吉野樱，满树银白色的花瓣特别好看。
 
-![somei-yoshino](/images/2022-mid-year-summary/somei-yoshino.jpg)
+![somei-yoshino](/img/posts/2022-mid-year-summary/somei-yoshino.jpg)
 
 可惜下半学期由于没有课程安排，今年错过了学校染井吉野樱的花期，不知道明年同期还有没时间来学校赏花。现在接近五月下旬，各种花期也逐渐过了，想看别的也只能等明年了。
 

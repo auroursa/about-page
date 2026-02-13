@@ -10,7 +10,7 @@ Google 在 2022 年 11 月的 [Android 安全公告](https://source.android.com/
 
 得益于 Android 的开源特性，我们可以查到有关修补 CVE-2022-20465 的历史提交记录，并分析出 AOSP 团队采用了哪些手段来强化安全性。
 
-![CVE-2022-20465](/images/android-lock-screen-bypass-bug-analysis/CVE-2022-20465-1.webp)
+![CVE-2022-20465](/img/posts/android-lock-screen-bypass-bug-analysis/CVE-2022-20465-1.webp)
 
 首先，在 Android 上有个被称作“安全屏幕” (security screen) 的概念，指纹输入界面、密码输入界面，以及此次造成问题的 PIN 码输入界面和 PUK 输入界面都包含在“安全屏幕”之内。
 

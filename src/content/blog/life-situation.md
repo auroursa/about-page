@@ -18,11 +18,11 @@ slug: life-situation
 
 在六月下旬，替换了自己使用两年多的 iPhone 11，一方面是 13 mini 的价格合适（~~还能免息分期，简直跟不要钱一样~~），另一方面 iPhone 11 确实逐渐无法满足我对主力机的需求了。需要经常充电，反应也越来越慢。我对 iPhone 11 的最大不满来自它的体积和重量，既然如此不如选择 iPhone 小屏末代机皇吧。
 
-![iphone-13-mini](/images/life-situation/iphone-13-mini-1.jpg)
+![iphone-13-mini](/img/posts/life-situation/iphone-13-mini-1.jpg)
 
 上手的感觉确实不错，尺寸对我来说正合适，很久没有这种一手掌握的感觉了。方方正正的机身也挺符合我的审美，电池够用，屏幕效果也比 iPhone 11 好到不知道哪里去了（
 
-![iphone-13-mini](/images/life-situation/iphone-13-mini-2.jpg)
+![iphone-13-mini](/img/posts/life-situation/iphone-13-mini-2.jpg)
 
 总而言之，iPhone 13 mini 将成为我未来数年内新的 daily driver，虽然仍对新手机心痒痒，但短期内应该不会再换主力机了。
 

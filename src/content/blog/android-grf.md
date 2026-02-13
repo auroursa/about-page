@@ -10,11 +10,11 @@ slug: android-grf
 
 这导致上游 SoC 不得不维护多种 Vendor 版本，同时若新版本 Android 提升了底层功能要求（例如必须支持多摄像头切换 API），一些想要升级通过新版本兼容性测试 (Compatibility Definition Document, CCD) 就会遇到困难，而不得不等待上游 SoC 供应商更新 Vendor 版本。这也是过去中低端机及联发科机型即使拥有 Project Treble，更新 Android 也不积极的首要，无论是上游 SoC 供应商还是 OEM 厂商都不愿意在中低端机上投入过多心力去维护。
 
-![treble-plus-one-equals-four-4](/images/android-grf/treble-plus-one-equals-four-4.webp)
+![treble-plus-one-equals-four-4](/img/posts/android-grf/treble-plus-one-equals-four-4.webp)
 
 而在 Google Requirements Freeze 引入之后，Vendor 版本将被冻结，而 Google 将承诺为各 Vendor 版本提供 N+3 的特性向后兼容保证。例如首次利用 GRF 特性的骁龙 888，Vendor 版本适配当年的 Android 11，那么即便后续升级 Android 版本，Vendor 版本也不再变动，而 Google 将保证 Android 14 能够支持 11 的 Vendor 版本启动，并通过新版本的兼容性测试。这也是 Nothing Phone 作为 2022 年发布并出厂搭载 Android 12 的手机，但其 Vendor 版本仍然基于 Android 11 的原因。其搭载的骁龙 778G+ 同骁龙 888 一样，也是首批支持 GRF 特性的 SoC。
 
-![treble-plus-one-equals-four-6](/images/android-grf/treble-plus-one-equals-four-6.webp)
+![treble-plus-one-equals-four-6](/img/posts/android-grf/treble-plus-one-equals-four-6.webp)
 
 GRF 无疑减轻了上游 SoC 供应商的维护压力，在 GRF 之前，高通承诺为 Vendor 提供 N+2 及 3 年的安全更新支持，而 GRF 至少能为 OEM 厂商提供绕开上游 SoC 供应商的机会，独立提供 N+3 的大版本更新（这也是站在 Android 维护的角度，我不推荐任何骁龙 870 新机的原因，由于反复鞭尸炒冷饭，可预见今年发布的 870 新机即便定价没怎么降，各种维护支持都将显著比同期中高端 SoC 来得更差）
 

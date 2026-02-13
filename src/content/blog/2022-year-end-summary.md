@@ -20,7 +20,7 @@ slug: 2022-year-end-summary
 
 但从 11 月末开始，本已麻木的日子竟发生了巨大的改变。首先是取消常态化核酸，之后直接放开出行限制。于是在 12 月的一天终于决定跑去上海玩，这也是我 2 年以来的第一次出游。总感觉上海有一股独特的「气质」，是其他城市所没有的。虽然我对这座城市并不陌生，但每次去总能发现新的惊喜。
 
-![2022-year-end-summary-shanghai](/images/2022-year-end-summary/2022-year-end-summary-shanghai.jpg)
+![2022-year-end-summary-shanghai](/img/posts/2022-year-end-summary/2022-year-end-summary-shanghai.jpg)
 
 总之赶在 2022 年的最后一天，我终于真正意义上做了次短期出游。尽管时间短暂，甚至没在当地过夜，但还是很开心。这里也要感谢每次都义无反顾陪我到处乱跑的 [鱼鱼](https://lz233.ac.cn)。每位愿意抽出时间陪伴你的人，都值得你温柔以待。
 
@@ -35,7 +35,7 @@ slug: 2022-year-end-summary
 
 对，我说的大坑就是相机（
 
-![2022-year-end-summary-camera](/images/2022-year-end-summary/2022-year-end-summary-camera.jpg)
+![2022-year-end-summary-camera](/img/posts/2022-year-end-summary/2022-year-end-summary-camera.jpg)
 
 上面短期出游的照片就是用 Lumix GX9 拍的，用 Lightroom 稍微拉了点曲线，期待明年能够看到自己的摄影水平有所成长。
 
@@ -43,7 +43,7 @@ slug: 2022-year-end-summary
 
 今年能够明显感觉到全球气候变暖所导致的一系列气候异常。例如夏天破纪录的高温，无论是温度还是持续时间都前所未见。甚至迎来了记忆以来的首个无台风年。而到了冬天又比往常更冷，也是在这一年我终于知道了雪长啥样，而这甚至还没到 12 月呢。不知道未来是否会持续这种不寻常的天气变化，还是逐渐见怪不怪呢...
 
-![2022-year-end-summary-winter](/images/2022-year-end-summary/2022-year-end-summary-winter.jpg)
+![2022-year-end-summary-winter](/img/posts/2022-year-end-summary/2022-year-end-summary-winter.jpg)
 
 ## COVID-19
 
