@@ -30,7 +30,7 @@ const formatDate = (dateStr: string | undefined) => {
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
-  <main class="post-article-main">
+  <div class="post-article-main">
     <div class="menu-sentinel"></div>
     
     <!-- 文章区域 -->
@@ -102,7 +102,7 @@ const formatDate = (dateStr: string | undefined) => {
       </button>
       <div id="disqus_thread_container"></div>
     </div>
-  </main>
+  </div>
 
   <script is:inline data-astro-rerun data-cfasync="false">
     // Disqus 加载按钮处理
