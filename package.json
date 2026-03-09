@@ -13,7 +13,9 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.18.0",
-    "astro-expressive-code": "^0.41.7"
+    "astro-expressive-code": "^0.41.7",
+    "markdown-it": "^14.1.1",
+    "sanitize-html": "^2.17.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
