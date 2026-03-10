@@ -105,11 +105,8 @@ const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
     </section>
   </div>
 
-  <script is:inline data-astro-rerun data-cfasync="false">
+  <script is:inline define:vars={{ pageUrl: canonicalPostUrl, pageIdentifier: entry.slug }} data-astro-rerun data-cfasync="false">
     (function() {
-      var pageUrl = {JSON.stringify(canonicalPostUrl)};
-      var pageIdentifier = {JSON.stringify(entry.slug)};
-
       window.disqus_config = function () {
         this.page.url = pageUrl;
         this.page.identifier = pageIdentifier;
