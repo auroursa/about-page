@@ -92,7 +92,7 @@ const voidFriends = [
 ];
 
 const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
-const linkCardClass = 'block h-full bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
+const linkCardClass = 'group block h-full bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
 const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute before:left-0 before:top-1/2 before:h-6 before:w-[0.3rem] before:-translate-y-[45%] before:bg-[var(--main-color)]';
 ---
 
@@ -112,7 +112,7 @@ const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute bef
         <a href={friend.url} class={linkCardClass}>
           <img src={friend.img} alt={friend.name} class="mb-4 h-20 w-20 rounded-xl object-cover" width="400" height="400" loading="lazy" />
           <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
-            <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out hover:pl-0 hover:before:w-0`}>{friend.name}</h3>
+            <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out before:transition-[width] before:duration-200 before:ease-out group-hover:pl-0 group-hover:before:w-0`}>{friend.name}</h3>
             <p class="m-0 inline">{friend.desc}</p>
           </div>
         </a>
@@ -127,7 +127,7 @@ const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute bef
           <article class="overflow-hidden text-left">
             <a href={friend.url} class={linkCardClass}>
               <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
-                <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out hover:pl-0 hover:before:w-0`}>{friend.name}</h3>
+                <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out before:transition-[width] before:duration-200 before:ease-out group-hover:pl-0 group-hover:before:w-0`}>{friend.name}</h3>
                 <p class="m-0 inline">{friend.desc}</p>
               </div>
             </a>
