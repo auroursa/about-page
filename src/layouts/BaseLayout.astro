@@ -56,6 +56,9 @@ const drawerRowLinkClass = 'flex min-h-12 items-center justify-between rounded-[
 const drawerCategoryLinkClass = 'flex min-h-10 items-center justify-between rounded-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[var(--card-content-color)] px-4 py-2 text-[0.95rem] text-[var(--text-color)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_14%,var(--card-color))] hover:text-[var(--main-color)]';
 const drawerSectionClass = 'rounded-[1.5rem] border border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] bg-[var(--card-color)] p-4 shadow-[0_14px_32px_rgba(17,101,154,0.08)]';
 const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold tracking-[0.18em] text-[var(--main-color)]';
+const drawerSectionHeaderClass = 'mb-3 flex items-start justify-between gap-3';
+const drawerActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-center justify-center text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]';
+const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start justify-center pt-0.5 text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]';
 ---
 
 <html lang="zh-cn">
@@ -164,7 +167,7 @@ const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold trackin
 
                 <div class="relative mt-5 flex items-center justify-between gap-3">
                   <span class={drawerCurrentPillClass}>当前浏览 · {currentSectionLabel}</span>
-                  <a href="https://www.travellings.cn/go.html" class="inline-flex h-9 w-9 shrink-0 items-center justify-center text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]" aria-label="开往" title="开往">
+                  <a href="https://www.travellings.cn/go.html" class={drawerActionIconClass} aria-label="开往" title="开往">
                     <svg class="h-[1.25rem] w-[1.25rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8.5" cy="14.5" r="1.5"></circle><circle cx="15.5" cy="14.5" r="1.5"></circle><path d="M18.87 3.34A3.55 3.55 0 0 0 16.38 2H7.62a3.47 3.47 0 0 0-2.5 1.35A4.32 4.32 0 0 0 4 6v12a1 1 0 0 0 1 1h2l-2 3h2.32L8 21h8l.68 1H19l-2-3h2a1 1 0 0 0 1-1V6a4.15 4.15 0 0 0-1.13-2.66zM7.62 4h8.72a1.77 1.77 0 0 1 1 .66 3.25 3.25 0 0 1 .25.34H6.39a2.3 2.3 0 0 1 .25-.35A1.65 1.65 0 0 1 7.62 4zM6 8V7h12v3H6zm12 9H6v-5h12z"></path></svg>
                   </a>
                 </div>
@@ -172,7 +175,10 @@ const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold trackin
 
               <div class="relative space-y-4">
                 <section class={drawerSectionClass}>
-                  <h3 class={drawerSectionTitleClass}>导航</h3>
+                  <div class={drawerSectionHeaderClass}>
+                    <h3 class={`${drawerSectionTitleClass} mb-0`}>导航</h3>
+                    <span class="inline-flex h-9 w-9 shrink-0" aria-hidden="true"></span>
+                  </div>
                   <div class="grid grid-cols-2 gap-3">
                     <a href="/" class:list={[drawerNavLinkBase, isActive('/') && drawerNavLinkActive]}>
                       <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)]">HOME</span>
@@ -206,10 +212,10 @@ const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold trackin
                 </section>
 
                 <section class={drawerSectionClass}>
-                  <div class="mb-3 flex items-start justify-between gap-3">
+                  <div class={drawerSectionHeaderClass}>
                     <h3 class={`${drawerSectionTitleClass} mb-0`}>文章分类</h3>
-                    <a href="/rss.xml" class="text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]" aria-label="RSS 订阅" title="RSS 订阅">
-                      <svg class="h-[1rem] w-[1rem] fill-current" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="12.36" cy="35.64" r="4.36"></circle><path d="M8 8.89v5.66c14.06 0 25.46 11.4 25.46 25.46h5.66C39.11 22.82 25.18 8.89 8 8.89zM8 20.2v5.66c7.81 0 14.14 6.34 14.14 14.14h5.66c0-10.93-8.87-19.8-19.8-19.8z"></path></svg>
+                    <a href="/rss.xml" class={drawerHeaderActionIconClass} aria-label="RSS 订阅" title="RSS 订阅">
+                      <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="12.36" cy="35.64" r="4.36"></circle><path d="M8 8.89v5.66c14.06 0 25.46 11.4 25.46 25.46h5.66C39.11 22.82 25.18 8.89 8 8.89zM8 20.2v5.66c7.81 0 14.14 6.34 14.14 14.14h5.66c0-10.93-8.87-19.8-19.8-19.8z"></path></svg>
                     </a>
                   </div>
                   <div class="space-y-3">
@@ -227,10 +233,10 @@ const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold trackin
                 </section>
 
                 <section class={drawerSectionClass}>
-                  <div class="mb-3 flex items-start justify-between gap-3">
+                  <div class={drawerSectionHeaderClass}>
                     <h3 class={`${drawerSectionTitleClass} mb-0`}>联系方式</h3>
-                    <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/F6006874CC50A6C854B9763C3728385536F22DEA" class="text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]" aria-label="OpenPGP" title="OpenPGP">
-                      <svg class="h-[1rem] w-[1rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M10.758 11.828l7.849-7.849 1.414 1.414-1.414 1.415 2.474 2.474-1.414 1.415-2.475-2.475-1.414 1.414 2.121 2.121-1.414 1.415-2.121-2.122-2.192 2.192a5.002 5.002 0 0 1-7.708 6.294 5 5 0 0 1 6.294-7.708zm-.637 6.293A3 3 0 1 0 5.88 13.88a3 3 0 0 0 4.242 4.242z"></path></g></svg>
+                    <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/F6006874CC50A6C854B9763C3728385536F22DEA" class={drawerHeaderActionIconClass} aria-label="OpenPGP" title="OpenPGP">
+                      <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M10.758 11.828l7.849-7.849 1.414 1.414-1.414 1.415 2.474 2.474-1.414 1.415-2.475-2.475-1.414 1.414 2.121 2.121-1.414 1.415-2.121-2.122-2.192 2.192a5.002 5.002 0 0 1-7.708 6.294 5 5 0 0 1 6.294-7.708zm-.637 6.293A3 3 0 1 0 5.88 13.88a3 3 0 0 0 4.242 4.242z"></path></g></svg>
                     </a>
                   </div>
                   <div class="space-y-3">
