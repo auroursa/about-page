@@ -89,14 +89,31 @@ const palette = [
       </div>
       <div class:list={[paletteStripClass, 'flex h-7 w-full max-w-[28rem]']}>
         {palette.map((color) => (
-          <div class={swatchClass} role="button" tabindex="0" onclick={`copyColor('${color.hex}')`} onkeydown={`if(event.key==='Enter'||event.key===' '){event.preventDefault();copyColor('${color.hex}');}`} aria-label={`复制色值 ${color.hex}`}>
+          <div class={swatchClass} role="button" tabindex="0" data-color={color.hex} aria-label={`复制色值 ${color.hex}`}>
             <span class={swatchPreviewClass} style={`background-color: ${color.hex}`}></span>
             <span class={swatchOverlayClass}></span>
             <span class={swatchLabelClass}>{color.name}</span>
-            <input class={tooltipClass} type="text" readonly value={color.hex} aria-label={`颜色代码 ${color.hex}`} onclick="event.stopPropagation(); this.select();" onfocus="this.select()" />
+            <input class={tooltipClass} type="text" readonly value={color.hex} aria-label={`颜色代码 ${color.hex}`} />
           </div>
         ))}
       </div>
     </article>
   </div>
+  <script>
+    document.querySelectorAll('.about-color-span[data-color]').forEach((swatch) => {
+      const color = (swatch as HTMLElement).dataset.color!;
+      swatch.addEventListener('click', () => navigator.clipboard.writeText(color));
+      swatch.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+          e.preventDefault();
+          navigator.clipboard.writeText(color);
+        }
+      });
+      const input = swatch.querySelector('input');
+      if (input) {
+        input.addEventListener('click', (e) => { e.stopPropagation(); input.select(); });
+        input.addEventListener('focus', () => input.select());
+      }
+    });
+  </script>
 </BaseLayout>
