@@ -111,3 +111,54 @@
     background-color: var(--accent-color);
   }
 }
+
+@media (max-width: 576px) {
+  .menu .mobile-nav-brand-shell {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-0.6rem);
+    transition:
+      max-width 320ms ease,
+      opacity 220ms ease,
+      transform 320ms ease;
+  }
+
+  .menu .mobile-nav-brand-avatar {
+    opacity: 0;
+    transform: scale(0.82);
+    transition:
+      opacity 220ms ease,
+      transform 320ms ease;
+  }
+
+  .menu .mobile-nav-title {
+    color: var(--main-color);
+    transition: transform 320ms ease, color 320ms ease;
+  }
+
+  .menu .mobile-nav-current {
+    max-width: 12rem;
+    transition:
+      max-width 320ms ease,
+      opacity 220ms ease,
+      transform 320ms ease;
+  }
+
+  .menu.at-top .mobile-nav-brand-shell {
+    max-width: 3rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .menu.at-top .mobile-nav-brand-avatar {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  .menu.at-top .mobile-nav-current {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(0.45rem);
+  }
+}

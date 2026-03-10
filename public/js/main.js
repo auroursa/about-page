@@ -1,78 +1,134 @@
-// 菜单吸顶逻辑
-const menu = document.querySelector('.menu');
-const sentinel = document.querySelector('.menu-sentinel');
+let menuObserverCleanup = null;
+let drawerCleanup = null;
 
-const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting === false) {
-      menu.classList.add('at-top'); 
-    } else {
-      menu.classList.remove('at-top');
+function initStickyMenu() {
+    menuObserverCleanup?.();
+
+    const menu = document.querySelector('.menu');
+    const sentinel = document.querySelector('.menu-sentinel');
+
+    if (!menu || !sentinel) {
+        menuObserverCleanup = null;
+        return;
     }
-  },
-  { threshold: [0] } 
-);
 
-observer.observe(sentinel);
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting === false) {
+                menu.classList.add('at-top');
+            } else {
+                menu.classList.remove('at-top');
+            }
+        },
+        { threshold: [0] }
+    );
 
-// 移动端抽屉菜单
-const openMenuButton = document.getElementById("open-menu");
-const closeMenuButton = document.getElementById("close-menu");
-const drawer = document.getElementById("drawer");
-const drawerPanel = document.getElementById("drawer-panel");
+    observer.observe(sentinel);
+    menuObserverCleanup = () => observer.disconnect();
+}
 
-const openDrawer = () => {
-    if (!drawer || !drawerPanel) return;
-    drawer.classList.add("open");
-    drawerPanel.classList.add("open");
-    document.body.style.overflow = "hidden";
-};
+function initDrawer() {
+    drawerCleanup?.();
 
-const closeDrawer = () => {
-    if (!drawer || !drawerPanel) return;
-    drawer.classList.remove("open");
-    drawerPanel.classList.remove("open");
-    document.body.style.overflow = "";
-};
+    const openMenuButton = document.getElementById('open-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+    const drawer = document.getElementById('drawer');
+    const drawerPanel = document.getElementById('drawer-panel');
 
-if (openMenuButton && closeMenuButton && drawer && drawerPanel) {
-    openMenuButton.addEventListener("click", openDrawer);
-    closeMenuButton.addEventListener("click", closeDrawer);
+    if (!openMenuButton || !closeMenuButton || !drawer || !drawerPanel) {
+        drawerCleanup = null;
+        return;
+    }
 
-    drawer.addEventListener("click", function(event) {
+    const openDrawer = () => {
+        drawer.classList.add('open');
+        drawerPanel.classList.add('open');
+        openMenuButton.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeDrawer = () => {
+        drawer.classList.remove('open');
+        drawerPanel.classList.remove('open');
+        openMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
+    const onBackdropClick = (event) => {
         if (event.target === drawer) {
             closeDrawer();
         }
-    });
+    };
 
-    drawer.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeDrawer);
-    });
-
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape" && drawer.classList.contains("open")) {
+    const onKeydown = (event) => {
+        if (event.key === 'Escape' && drawer.classList.contains('open')) {
             closeDrawer();
         }
+    };
+
+    const links = drawer.querySelectorAll('a');
+
+    openMenuButton.addEventListener('click', openDrawer);
+    closeMenuButton.addEventListener('click', closeDrawer);
+    drawer.addEventListener('click', onBackdropClick);
+    document.addEventListener('keydown', onKeydown);
+    links.forEach((link) => link.addEventListener('click', closeDrawer));
+
+    drawerCleanup = () => {
+        openMenuButton.removeEventListener('click', openDrawer);
+        closeMenuButton.removeEventListener('click', closeDrawer);
+        drawer.removeEventListener('click', onBackdropClick);
+        document.removeEventListener('keydown', onKeydown);
+        links.forEach((link) => link.removeEventListener('click', closeDrawer));
+        document.body.style.overflow = '';
+    };
+}
+
+function initColorTooltips() {
+    const colorSpans = document.querySelectorAll('.about-color-span');
+
+    colorSpans.forEach((span) => {
+        if (span.dataset.tooltipBound === 'true') {
+            return;
+        }
+
+        const showTooltip = () => {
+            const tooltip = span.querySelector('.about-color-tooltip');
+            if (tooltip) {
+                tooltip.classList.add('show');
+            }
+        };
+
+        const hideTooltip = () => {
+            const tooltip = span.querySelector('.about-color-tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('show');
+            }
+        };
+
+        span.addEventListener('mouseenter', showTooltip);
+        span.addEventListener('mouseleave', hideTooltip);
+        span.addEventListener('touchstart', showTooltip, { passive: true });
+        span.dataset.tooltipBound = 'true';
     });
 }
 
-// 关于页颜色复制提示
+function initPage() {
+    initStickyMenu();
+    initDrawer();
+    initColorTooltips();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage, { once: true });
+} else {
+    initPage();
+}
+
+document.addEventListener('astro:page-load', initPage);
+
 function copyColor(color) {
     navigator.clipboard.writeText(color);
 }
 
-const colorSpans = document.querySelectorAll('.about-color-span');
-colorSpans.forEach(span => {
-    span.addEventListener('mouseenter', () => {
-        const tooltip = span.querySelector('.about-color-tooltip');
-        if (tooltip) tooltip.classList.add('show');
-    });
-    span.addEventListener('mouseleave', () => {
-        const tooltip = span.querySelector('.about-color-tooltip');
-        if (tooltip) tooltip.classList.remove('show');
-    });
-    span.addEventListener('touchstart', () => {
-        const tooltip = span.querySelector('.about-color-tooltip');
-        if (tooltip) tooltip.classList.add('show');
-    });
-});
+window.copyColor = copyColor;
