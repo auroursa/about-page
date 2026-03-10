@@ -18,6 +18,10 @@ const sortedPosts = allPosts
   });
 
 const categories = [...new Set(sortedPosts.map((post) => post.data.category).filter(Boolean))];
+const categoryItems = categories.map((category) => ({
+  name: category,
+  count: sortedPosts.filter((post) => post.data.category === category).length,
+}));
 
 const formatDate = (dateStr: string | undefined) => {
   if (!dateStr) return '';
@@ -29,25 +33,28 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
-const postLinkClass = 'block bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
-const postCategoryClass = 'inline-flex rounded px-2 py-0.5 text-sm text-[var(--card-color)] bg-[var(--main-color)] transition-colors duration-500';
+const postCardClass = 'glass-panel p-5 text-[var(--text-color)] transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
+const postCategoryClass = 'inline-flex items-center border border-[color:color-mix(in_srgb,var(--main-color)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] px-2.5 py-1 text-[0.8rem] font-bold tracking-[0.08em] text-[var(--main-color)]';
+const metaPillClass = 'inline-flex items-center gap-2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_68%,transparent)] px-3 py-1 text-[0.86rem] text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]';
 ---
 
 <BaseLayout title="文章" description="博客文章列表" currentPath="/posts">
   <div class="grid grid-cols-[1fr_3fr] items-start gap-3 max-[1280px]:grid-cols-1">
-    <PostSidebar categories={categories} />
+    <PostSidebar categories={categoryItems} />
 
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-3">
       {sortedPosts.map((post) => (
-        <article class="bg-[var(--card-color)] p-0">
-          <a href={`/posts/${post.slug}`} class={`${postLinkClass} group`}>
+        <article>
+          <a href={`/posts/${post.slug}`} class:list={[postCardClass, 'group block']}>
             <div class="flex flex-col gap-4">
-              <h2 class="m-0 text-[1.5em] font-bold">{post.data.title}</h2>
-              {post.data.description && <p class="m-0">{post.data.description}</p>}
-              <div class="flex flex-wrap items-center gap-2 text-sm">
-                {post.data.category && <span class={`${postCategoryClass} group-hover:bg-[var(--card-color)] group-hover:text-[var(--main-color)]`}>{post.data.category}</span>}
-                <span class="flex flex-wrap items-center gap-2">
-                  <strong>时间:</strong>
+              <div class="space-y-3">
+                <h2 class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{post.data.title}</h2>
+                {post.data.description && <p class="m-0 leading-7 text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]">{post.data.description}</p>}
+              </div>
+              <div class="flex flex-wrap items-center gap-2.5">
+                {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
+                <span class={metaPillClass}>
+                  <strong class="font-semibold text-[var(--text-color)]">时间</strong>
                   <time datetime={(post.data.pubDate || post.data.date) ? `${(post.data.pubDate || post.data.date).replace(' ', 'T')}+08:00` : ''}>
                     {formatDate(post.data.pubDate || post.data.date)}
                   </time>

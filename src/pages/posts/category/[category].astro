@@ -41,6 +41,10 @@ const sortedPosts = allPosts
 
 const filteredPosts = sortedPosts.filter((post) => post.data.category === category);
 const categories = [...new Set(sortedPosts.map((post) => post.data.category).filter(Boolean))];
+const categoryItems = categories.map((name) => ({
+  name,
+  count: sortedPosts.filter((post) => post.data.category === name).length,
+}));
 
 const formatDate = (dateStr: string | undefined) => {
   if (!dateStr) return '';
@@ -52,39 +56,29 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
-const postLinkClass = 'block bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
-const postCategoryClass = 'inline-flex rounded px-2 py-0.5 text-sm text-[var(--card-color)] bg-[var(--main-color)] transition-colors duration-500';
-const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
+const postCardClass = 'glass-panel p-5 text-[var(--text-color)] transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
+const postCategoryClass = 'inline-flex items-center border border-[color:color-mix(in_srgb,var(--main-color)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] px-2.5 py-1 text-[0.8rem] font-bold tracking-[0.08em] text-[var(--main-color)]';
+const metaPillClass = 'inline-flex items-center gap-2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_68%,transparent)] px-3 py-1 text-[0.86rem] text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]';
+const panelClass = 'glass-panel';
 ---
 
 <BaseLayout title={`${category} - 文章`} description={`分类：${category} 的文章列表`} currentPath="/posts">
   <div class="grid grid-cols-[1fr_3fr] items-start gap-3 max-[1280px]:grid-cols-1">
-    <PostSidebar categories={categories} />
+    <PostSidebar categories={categoryItems} currentCategory={category} />
 
-    <div class="grid grid-cols-1 gap-2">
-      <section class={cardClass}>
-        <div class="flex items-center justify-between gap-5 max-[576px]:flex-col max-[576px]:items-start">
-          <div class="flex items-center gap-2 text-2xl">
-            <svg class="h-6 w-6 fill-[var(--main-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"></path></svg>
-            <span class="font-bold">{category}</span>
-          </div>
-          <div class="flex items-center gap-1 text-sm">
-            <svg class="h-4 w-4 fill-[var(--main-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"></path></svg>
-            <span>共 {filteredPosts.length} 篇文章</span>
-          </div>
-        </div>
-      </section>
-
+    <div class="grid grid-cols-1 gap-3">
       {filteredPosts.map((post) => (
-        <article class="bg-[var(--card-color)] p-0">
-          <a href={`/posts/${post.slug}`} class={`${postLinkClass} group`}>
+        <article>
+          <a href={`/posts/${post.slug}`} class:list={[postCardClass, 'group block']}>
             <div class="flex flex-col gap-4">
-              <h2 class="m-0 text-[1.5em] font-bold">{post.data.title}</h2>
-              {post.data.description && <p class="m-0">{post.data.description}</p>}
-              <div class="flex flex-wrap items-center gap-2 text-sm">
-                {post.data.category && <span class={`${postCategoryClass} group-hover:bg-[var(--card-color)] group-hover:text-[var(--main-color)]`}>{post.data.category}</span>}
-                <span class="flex flex-wrap items-center gap-2">
-                  <strong>时间:</strong>
+              <div class="space-y-3">
+                <h2 class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{post.data.title}</h2>
+                {post.data.description && <p class="m-0 leading-7 text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]">{post.data.description}</p>}
+              </div>
+              <div class="flex flex-wrap items-center gap-2.5">
+                {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
+                <span class={metaPillClass}>
+                  <strong class="font-semibold text-[var(--text-color)]">时间</strong>
                   <time datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
                     {formatDate(post.data.pubDate || post.data.date)}
                   </time>
@@ -96,7 +90,7 @@ const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
       ))}
 
       {filteredPosts.length === 0 && (
-        <section class={cardClass}>
+        <section class={panelClass}>
           <DecoratedTitle>暂无文章</DecoratedTitle>
           <p class="m-0 text-center">该分类下暂无文章</p>
         </section>

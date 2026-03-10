@@ -1,59 +1,75 @@
 ---
 interface Props {
-  categories: string[];
+  categories: Array<{
+    name: string;
+    count: number;
+  }>;
+  currentCategory?: string;
 }
 
-const { categories } = Astro.props;
+const { categories, currentCategory } = Astro.props;
 
-const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
-const subtitleClass = 'm-0';
-const chipClass = 'inline-flex h-9 items-center justify-center rounded-lg border-2 border-[var(--text-color)] bg-[var(--card-color)] px-[1.125rem] text-center text-[var(--text-color)] transition-colors duration-500 hover:border-[var(--main-color)] hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
-const circleButtonClass = 'inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-[var(--text-color)] bg-[var(--card-color)] text-[var(--text-color)] transition-colors duration-500 hover:border-[var(--main-color)] hover:bg-[var(--main-color)] hover:text-[var(--card-color)] max-[1280px]:rounded-lg';
+const cardClass = 'glass-panel';
+const categoryListClass = 'space-y-2';
+const categoryLinkClass = 'flex min-h-10 items-center justify-between border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_68%,transparent)] px-4 py-2 text-[0.95rem] text-[var(--text-color)] transition-[border-color,background-color,color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:text-[var(--main-color)] hover:shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
+const categoryLinkActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] text-[var(--main-color)] shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
+const categoryPillWrapClass = 'hidden flex-wrap items-center gap-2 max-[1280px]:flex';
+const categoryPillClass = 'glass-pill-button min-h-9 px-3 py-1.5 text-[0.9rem]';
+const categoryPillActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] text-[var(--main-color)] shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
 ---
 
 <aside class:list={[
   cardClass,
-  'sticky top-12 space-y-4 text-center max-[1280px]:static max-[1280px]:grid max-[1280px]:grid-cols-2 max-[1280px]:gap-7 max-[1280px]:space-y-0 max-[1280px]:text-left max-[576px]:hidden',
+  'sticky top-12 space-y-5 text-center max-[1280px]:hidden',
 ]}>
-  <div class="space-y-4 max-[576px]:hidden">
-    <img
-      class="mx-auto h-[5.5rem] w-[5.5rem] rounded-full max-[1280px]:mx-0 max-[1280px]:h-20 max-[1280px]:w-20 max-[1280px]:rounded-2xl"
-      src="/img/profile-avatar.webp"
-      width="1024"
-      height="1024"
-      alt="personal-avatar"
-    />
-    <h2 class={`m-0 py-1 text-[1.5em] font-bold leading-none`}>赤茶</h2>
-    <p class="m-0">Per aspera, ad astra.</p>
+  <div class="space-y-4">
+    <div class="space-y-4">
+      <img
+        class="mx-auto h-[5.5rem] w-[5.5rem] rounded-full"
+        src="/img/profile-avatar.webp"
+        width="1024"
+        height="1024"
+        alt="personal-avatar"
+      />
+      <div class="space-y-2">
+        <h2 class="m-0 text-[1.5rem] font-bold leading-none">赤茶</h2>
+        <p class="m-0 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">Per aspera, ad astra.</p>
+      </div>
+    </div>
   </div>
 
   <div class="space-y-4 max-[1280px]:text-left max-[576px]:text-center">
-    <div>
-      <h3 class={`${subtitleClass} mb-2 text-[1.17em] font-bold max-[1280px]:relative max-[1280px]:pl-[0.65rem] max-[1280px]:before:absolute max-[1280px]:before:left-0 max-[1280px]:before:top-1/2 max-[1280px]:before:h-3/4 max-[1280px]:before:w-[0.3rem] max-[1280px]:before:-translate-y-[45%] max-[1280px]:before:bg-[var(--main-color)] max-[576px]:m-0 max-[576px]:mb-2 max-[576px]:pl-0 max-[576px]:before:w-0`}>订阅文章</h3>
-      <div class="flex justify-center max-[1280px]:justify-start">
-        <button class={circleButtonClass} onclick="window.location.href='/rss.xml'" type="button" title="RSS Feed">
-          <svg class="h-6 w-6 fill-current" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0h48v48H0z" fill="none"></path>
-            <circle cx="12.36" cy="35.64" r="4.36"></circle>
-            <path d="M8 8.89v5.66c14.06 0 25.46 11.4 25.46 25.46h5.66C39.11 22.82 25.18 8.89 8 8.89zM8 20.2v5.66c7.81 0 14.14 6.34 14.14 14.14h5.66c0-10.93-8.87-19.8-19.8-19.8z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
     {categories.length > 0 && (
       <>
         <div>
-          <h3 class={`${subtitleClass} mb-2 text-[1.17em] font-bold max-[1280px]:relative max-[1280px]:pl-[0.65rem] max-[1280px]:before:absolute max-[1280px]:before:left-0 max-[1280px]:before:top-1/2 max-[1280px]:before:h-3/4 max-[1280px]:before:w-[0.3rem] max-[1280px]:before:-translate-y-[45%] max-[1280px]:before:bg-[var(--main-color)] max-[576px]:m-0 max-[576px]:mb-2 max-[576px]:pl-0 max-[576px]:before:w-0`}>文章分类</h3>
-          <div class="flex flex-wrap justify-center gap-1.5 max-[1280px]:justify-start">
+          <div class:list={[categoryListClass, 'max-[1280px]:hidden']}>
             {categories.map((cat) => (
-              <a href={`/posts/category/${encodeURIComponent(cat)}`} class={chipClass}>
-                {cat}
+              <a href={`/posts/category/${encodeURIComponent(cat.name)}`} class:list={[categoryLinkClass, currentCategory === cat.name && categoryLinkActiveClass]}>
+                <span>{cat.name}</span>
+                <span class="text-[0.82rem] text-[color:color-mix(in_srgb,currentColor_70%,transparent)]">{cat.count}</span>
+              </a>
+            ))}
+          </div>
+          <div class={categoryPillWrapClass}>
+            {categories.map((cat) => (
+              <a href={`/posts/category/${encodeURIComponent(cat.name)}`} class:list={[categoryPillClass, currentCategory === cat.name && categoryPillActiveClass]}>
+                {cat.name}
+                <span class="ml-1 text-[0.8rem] text-[color:color-mix(in_srgb,currentColor_72%,transparent)]">{cat.count}</span>
               </a>
             ))}
           </div>
         </div>
       </>
     )}
+
+    <div class="flex justify-center pt-1 max-[1280px]:justify-start max-[1280px]:pt-0">
+      <button class="glass-icon-button" onclick="window.location.href='/rss.xml'" type="button" title="RSS Feed" aria-label="RSS Feed">
+        <svg class="h-5 w-5 fill-current" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h48v48H0z" fill="none"></path>
+          <circle cx="12.36" cy="35.64" r="4.36"></circle>
+          <path d="M8 8.89v5.66c14.06 0 25.46 11.4 25.46 25.46h5.66C39.11 22.82 25.18 8.89 8 8.89zM8 20.2v5.66c7.81 0 14.14 6.34 14.14 14.14h5.66c0-10.93-8.87-19.8-19.8-19.8z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </aside>

@@ -1,8 +1,14 @@
 ---
-import DecoratedTitle from '../components/DecoratedTitle.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const friends = [
+interface FriendEntry {
+  name: string;
+  desc: string;
+  url: string;
+  img?: string;
+}
+
+const friends: FriendEntry[] = [
   { name: "250king", desc: "耀の小站", url: "https://250king.top", img: "/img/friends/250king.top.webp" },
   { name: "Aaki's Notes", desc: "蜜柑，一种柑橘属植物", url: "https://mikan.anontokyo.com", img: "/img/friends/mikan.anontokyo.com.webp" },
   { name: "艾登的个人网站", desc: "Tell me anywhere I go you will follow", url: "https://aidenpers.xyz", img: "/img/friends/aidenpers.xyz.webp" },
@@ -83,7 +89,7 @@ const friends = [
   { name: "钟神秀 (@ZSXCoder)", desc: "克喵的小站", url: "https://home.zsxcoder.top", img: "/img/friends/home.zsxcoder.top.webp" },
 ];
 
-const voidFriends = [
+const voidFriends: FriendEntry[] = [
   { name: "八神鬼嗣の文庫", desc: "ダンタリアンの書架", url: "https://onioni.net" },
   { name: "Steven Lynn's Blog", desc: "你所热爱的，就是你的生活", url: "https://blog.stv.lol" },
   { name: "探索子博客", desc: "Just for fun!", url: "https://idx.best" },
@@ -91,17 +97,22 @@ const voidFriends = [
   { name: "Zikin 的独立博客", desc: "青春大概如你所说", url: "https://zikin.org" },
 ];
 
-const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
-const linkCardClass = 'group block h-full bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
-const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute before:left-0 before:top-1/2 before:h-6 before:w-[0.3rem] before:-translate-y-[45%] before:bg-[var(--main-color)]';
+const panelClass = 'glass-panel relative overflow-hidden';
+const linkCardClass = 'group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_18px_38px_rgba(17,101,154,0.14)]';
+const voidLinkCardClass = 'group block h-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-4 text-[var(--text-color)] shadow-[0_8px_24px_rgba(17,101,154,0.06)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_14px_28px_rgba(17,101,154,0.1)]';
+const sectionHeaderClass = 'section-stack';
+const sectionHeadingClass = 'm-0 text-[1.08rem] font-bold leading-[1.5]';
+const introTextClass = 'soft-copy space-y-4';
 ---
 
 <BaseLayout title="友人" description="友链列表，按 A-Z 顺序排列" currentPath="/friends">
-  <div class="grid grid-cols-3 gap-2 max-[1280px]:grid-cols-2 max-[576px]:grid-cols-1">
-    <article class:list={[cardClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
-      <DecoratedTitle>Yahalo!</DecoratedTitle>
-      <h3 class="m-0 text-[1.17em] font-bold">这里是一本名片册，记载在网络上结识的各种朋友</h3>
-      <div class="space-y-4 [&>p]:m-0">
+  <div class="grid grid-cols-3 gap-3 max-[1280px]:grid-cols-2 max-[576px]:grid-cols-1">
+    <article class:list={[panelClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
+      <div class:list={['relative', sectionHeaderClass]}>
+        <p class="section-kicker">Yahalo!</p>
+        <h3 class={sectionHeadingClass}>这里是一本名片册，记载在网络上结识的各种朋友</h3>
+      </div>
+      <div class={introTextClass}>
         <p>无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"。</p>
         <p>熟悉后将会把你加入到下方名片册里，按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆。</p>
       </div>
@@ -110,26 +121,28 @@ const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute bef
     {friends.map((friend) => (
       <article class="overflow-hidden text-left">
         <a href={friend.url} class={linkCardClass}>
-          <img src={friend.img} alt={friend.name} class="mb-4 h-20 w-20 rounded-xl object-cover" width="400" height="400" loading="lazy" />
-          <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
-            <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out before:transition-[width] before:duration-200 before:ease-out group-hover:pl-0 group-hover:before:w-0`}>{friend.name}</h3>
-            <p class="m-0 inline">{friend.desc}</p>
+          <div class="relative flex h-full items-start gap-4">
+            <img src={friend.img} alt={friend.name} class="h-18 w-18 shrink-0 rounded-[0.95rem] object-cover transition-transform duration-300 group-hover:scale-[1.04]" width="400" height="400" loading="lazy" />
+            <div class="min-w-0 flex-1 self-start pt-0.5">
+              <h3 class="mb-2 min-w-0 truncate text-[1.08rem] font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
+              <p class="m-0 line-clamp-2 text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
+            </div>
           </div>
         </a>
       </article>
     ))}
 
-    <section class:list={[cardClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
-      <DecoratedTitle>虚空传送门</DecoratedTitle>
-      <h3 class="m-0 text-[1.17em] font-bold">这里存放暂时无法正常访问到站点的朋友们</h3>
-      <div class="grid grid-cols-1 gap-2">
+    <section class:list={[panelClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
+      <div class:list={['relative', sectionHeaderClass]}>
+        <p class="section-kicker">虚空传送门</p>
+        <h3 class="m-0 text-[1.36rem] font-bold leading-[1.35] max-[576px]:text-[1.2rem]">这里存放暂时无法正常访问到站点的朋友们</h3>
+      </div>
+      <div class="relative grid grid-cols-4 gap-3 max-[1280px]:grid-cols-3 max-[900px]:grid-cols-2 max-[576px]:grid-cols-1">
         {voidFriends.map((friend) => (
           <article class="overflow-hidden text-left">
-            <a href={friend.url} class={linkCardClass}>
-              <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
-                <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out before:transition-[width] before:duration-200 before:ease-out group-hover:pl-0 group-hover:before:w-0`}>{friend.name}</h3>
-                <p class="m-0 inline">{friend.desc}</p>
-              </div>
+            <a href={friend.url} class={voidLinkCardClass}>
+              <h3 class="truncate text-base font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
+              <p class="mt-2 m-0 line-clamp-2 text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
             </a>
           </article>
         ))}

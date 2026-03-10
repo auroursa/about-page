@@ -3,40 +3,30 @@
 :root {
   --text-color: #322c28;
   --bg-color: #ebf4f4;
-  --bg-blur-color: rgb(235 244 244 / 80%);
   --card-color: #ffffff;
   --card-content-color: #f6f7f8;
-  --card-content-hv-color: #e6e6e6;
   --main-color: #11659a;
   --main-intext-color: #ffffff;
   --accent-color: #51a8dd;
-  --hl-color: #373c38;
   --menu-color: #d8e3e7;
   --menu-at-top-color: rgb(235 244 244 / 95%);
   --menu-hv-color: #d0dfe6;
   --menu-button-color: #322c28;
-  --main-header-right-content-color: linear-gradient(to bottom, rgb(255 255 255 / 80%) 25%, #ffffff 75%);
-  --image-tag-color: rgb(27 27 27 / 40%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: #fcfaf2;
     --bg-color: #121212;
-    --bg-blur-color: rgb(18 18 18 / 80%);
     --card-color: #1b1b1b;
     --card-content-color: #212121;
-    --card-content-hv-color: #3c3c3c;
     --main-color: #51a8dd;
     --main-intext-color: #fcfaf2;
     --accent-color: #11659a;
-    --hl-color: #373c38;
     --menu-color: #242424;
     --menu-at-top-color: rgb(18 18 18 / 95%);
     --menu-hv-color: #3c3c3c;
     --menu-button-color: #fcfaf2;
-    --main-header-right-content-color: linear-gradient(to bottom, rgb(27 27 27 / 80%) 25%, #1b1b1b 75%);
-    --image-tag-color: rgb(27 27 27 / 40%);
   }
 }
 
@@ -112,7 +102,131 @@
   }
 }
 
-@media (max-width: 576px) {
+@layer components {
+  .glass-panel {
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    background: color-mix(in srgb, var(--card-color) 78%, transparent);
+    padding: 1.5rem;
+    box-shadow: 0 14px 32px rgb(17 101 154 / 8%);
+    backdrop-filter: blur(12px);
+  }
+
+  .section-kicker {
+    margin: 0;
+    color: var(--main-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  .section-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .soft-copy {
+    color: color-mix(in srgb, var(--text-color) 78%, transparent);
+    font-size: 0.98rem;
+    line-height: 1.75rem;
+  }
+
+  .soft-copy p {
+    margin: 0;
+  }
+
+  .glass-icon-button {
+    display: inline-flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--main-color) 16%, transparent);
+    background: color-mix(in srgb, var(--card-color) 76%, transparent);
+    color: color-mix(in srgb, var(--text-color) 88%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 32%),
+      0 8px 18px rgb(17 101 154 / 8%);
+    transition:
+      border-color 300ms,
+      background-color 300ms,
+      color 300ms,
+      box-shadow 300ms,
+      transform 300ms;
+  }
+
+  .glass-icon-button:hover {
+    border-color: color-mix(in srgb, var(--main-color) 34%, transparent);
+    background: color-mix(in srgb, var(--main-color) 12%, var(--card-color));
+    color: var(--main-color);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 40%),
+      0 12px 24px rgb(17 101 154 / 12%);
+  }
+
+  .glass-pill-button {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    background: color-mix(in srgb, var(--card-color) 68%, transparent);
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    transition:
+      border-color 300ms,
+      background-color 300ms,
+      color 300ms,
+      box-shadow 300ms;
+  }
+
+  .glass-pill-button:hover {
+    border-color: var(--main-color);
+    background: color-mix(in srgb, var(--main-color) 8%, var(--card-color));
+    color: var(--main-color);
+    box-shadow: 0 10px 24px rgb(17 101 154 / 8%);
+  }
+
+  .glass-info-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--main-color) 12%, transparent);
+    background: color-mix(in srgb, var(--main-color) 4%, var(--card-color));
+    padding: 0.375rem 0.75rem;
+    color: color-mix(in srgb, var(--text-color) 82%, transparent);
+    font-size: 0.82rem;
+  }
+
+  .glass-photo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgb(255 255 255 / 20%);
+    background: rgb(255 255 255 / 14%);
+    padding: 0.75rem;
+    color: #fff;
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-hero-note {
+    width: fit-content;
+    max-width: 34rem;
+    border: 1px solid rgb(255 255 255 / 20%);
+    background: rgb(255 255 255 / 14%);
+    padding: 1rem;
+    color: #fff;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@media (max-width: 1280px) {
+  .glass-panel {
+    padding: 1.25rem;
+  }
+
   .menu .mobile-nav-brand-shell {
     max-width: 0;
     opacity: 0;

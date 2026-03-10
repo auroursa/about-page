@@ -92,7 +92,13 @@ function initColorTooltips() {
             return;
         }
 
+        let hideTimer;
+
         const showTooltip = () => {
+            if (hideTimer) {
+                window.clearTimeout(hideTimer);
+            }
+
             const tooltip = span.querySelector('.about-color-tooltip');
             if (tooltip) {
                 tooltip.classList.add('show');
@@ -100,15 +106,27 @@ function initColorTooltips() {
         };
 
         const hideTooltip = () => {
+            if (hideTimer) {
+                window.clearTimeout(hideTimer);
+            }
+
             const tooltip = span.querySelector('.about-color-tooltip');
             if (tooltip) {
                 tooltip.classList.remove('show');
             }
         };
 
+        const showTooltipTemporarily = () => {
+            showTooltip();
+            hideTimer = window.setTimeout(hideTooltip, 900);
+        };
+
         span.addEventListener('mouseenter', showTooltip);
         span.addEventListener('mouseleave', hideTooltip);
         span.addEventListener('touchstart', showTooltip, { passive: true });
+        span.addEventListener('click', showTooltipTemporarily);
+        span.addEventListener('focus', showTooltip);
+        span.addEventListener('blur', hideTooltip);
         span.dataset.tooltipBound = 'true';
     });
 }
