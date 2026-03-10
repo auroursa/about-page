@@ -23,10 +23,18 @@ function setStickyMenuState(menu, atTop, { animate = true } = {}) {
     const isDesktop = window.matchMedia('(min-width: 769px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const currentState = menu.classList.contains('at-top');
-    const animatedElements = [
+
+    const desktopElements = [
         menu.querySelector('.desktop-nav-core'),
         menu.querySelector('.desktop-nav-inline-travel'),
     ].filter((element) => element instanceof HTMLElement);
+
+    const mobileElements = [
+        menu.querySelector('#open-menu'),
+        menu.querySelector('.mobile-nav-current'),
+    ].filter((element) => element instanceof HTMLElement);
+
+    const animatedElements = isDesktop ? desktopElements : mobileElements;
 
     if (currentState === atTop) {
         syncMenuA11y(menu, atTop);
@@ -37,16 +45,23 @@ function setStickyMenuState(menu, atTop, { animate = true } = {}) {
         element.getAnimations().forEach((animation) => animation.cancel());
     });
 
-    if (!animate || !isDesktop || prefersReducedMotion || animatedElements.length === 0) {
+    if (!animate || prefersReducedMotion || animatedElements.length === 0) {
         menu.classList.toggle('at-top', atTop);
         syncMenuA11y(menu, atTop);
+        initNavIndicator(false);
         return;
+    }
+
+    const indicator = menu.querySelector('.nav-indicator');
+    if (indicator) {
+        indicator.style.transition = 'none';
     }
 
     const beforeRects = new Map(animatedElements.map((element) => [element, element.getBoundingClientRect()]));
 
     menu.classList.toggle('at-top', atTop);
     syncMenuA11y(menu, atTop);
+    initNavIndicator(false);
 
     animatedElements.forEach((element) => {
         const before = beforeRects.get(element);
@@ -60,16 +75,23 @@ function setStickyMenuState(menu, atTop, { animate = true } = {}) {
             return;
         }
 
-        element.animate(
+        const anim = element.animate(
             [
                 { transform: `${finalTransformValue}translate(${deltaX}px, ${deltaY}px)` },
                 { transform: finalTransform === 'none' ? 'none' : finalTransform },
             ],
             {
-                duration: 420,
+                duration: 480,
                 easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
             }
         );
+        anim.addEventListener('finish', () => {
+            const ind = menu.querySelector('.nav-indicator');
+            if (ind) {
+                ind.style.transition = '';
+            }
+            initNavIndicator(false);
+        }, { once: true });
     });
 }
 
@@ -85,13 +107,23 @@ function initStickyMenu() {
     }
 
     let isFirstObservation = true;
+    let pendingFrame = null;
 
     const observer = new IntersectionObserver(
         ([entry]) => {
             const shouldStick = entry.isIntersecting === false;
 
-            setStickyMenuState(menu, shouldStick, { animate: !isFirstObservation });
-            isFirstObservation = false;
+            if (pendingFrame) {
+                cancelAnimationFrame(pendingFrame);
+            }
+
+            pendingFrame = requestAnimationFrame(() => {
+                pendingFrame = null;
+                setStickyMenuState(menu, shouldStick, { animate: !isFirstObservation });
+
+
+                isFirstObservation = false;
+            });
         },
         { threshold: [0] }
     );
@@ -113,14 +145,30 @@ function initDrawer() {
         return;
     }
 
+    const staggerItems = drawerPanel.querySelectorAll('.drawer-stagger');
+
     const openDrawer = () => {
         drawer.classList.add('open');
         drawerPanel.classList.add('open');
         openMenuButton.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
+
+        staggerItems.forEach((item, index) => {
+            item.style.transitionDelay = `${80 + index * 60}ms`;
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        });
     };
 
     const closeDrawer = () => {
+        const lastIndex = staggerItems.length - 1;
+
+        staggerItems.forEach((item, index) => {
+            item.style.transitionDelay = `${(lastIndex - index) * 40}ms`;
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(8px)';
+        });
+
         drawer.classList.remove('open');
         drawerPanel.classList.remove('open');
         openMenuButton.setAttribute('aria-expanded', 'false');
@@ -204,19 +252,89 @@ function initColorTooltips() {
     });
 }
 
-function initPage() {
+let savedIndicatorLeft = null;
+let savedIndicatorWidth = null;
+
+function positionNavIndicator(indicator, core, activeBtn) {
+    const coreRect = core.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+
+    indicator.style.top = (btnRect.top - coreRect.top) + 'px';
+    indicator.style.left = (btnRect.left - coreRect.left) + 'px';
+    indicator.style.width = btnRect.width + 'px';
+    indicator.style.height = btnRect.height + 'px';
+    indicator.style.opacity = '1';
+}
+
+function initNavIndicator(animate) {
+    const core = document.querySelector('.desktop-nav-core');
+    const indicator = core?.querySelector('.nav-indicator');
+    const activeBtn = core?.querySelector('.nav-active-btn');
+
+    if (!core || !indicator || !activeBtn) {
+        if (indicator) {
+            indicator.style.opacity = '0';
+        }
+        savedIndicatorLeft = null;
+        savedIndicatorWidth = null;
+        return;
+    }
+
+    const coreRect = core.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    const newLeft = btnRect.left - coreRect.left;
+    const newWidth = btnRect.width;
+
+    if (animate && savedIndicatorLeft !== null) {
+        indicator.style.transition = 'none';
+        indicator.style.top = (btnRect.top - coreRect.top) + 'px';
+        indicator.style.left = savedIndicatorLeft + 'px';
+        indicator.style.width = savedIndicatorWidth + 'px';
+        indicator.style.height = btnRect.height + 'px';
+        indicator.style.opacity = '1';
+
+        requestAnimationFrame(() => {
+            indicator.style.transition = '';
+            indicator.style.left = newLeft + 'px';
+            indicator.style.width = newWidth + 'px';
+        });
+    } else {
+        indicator.style.transition = 'none';
+        positionNavIndicator(indicator, core, activeBtn);
+        requestAnimationFrame(() => {
+            indicator.style.transition = '';
+        });
+    }
+
+    savedIndicatorLeft = null;
+    savedIndicatorWidth = null;
+}
+
+function saveNavIndicatorPosition() {
+    const core = document.querySelector('.desktop-nav-core');
+    const indicator = core?.querySelector('.nav-indicator');
+
+    if (indicator && indicator.style.opacity === '1') {
+        savedIndicatorLeft = parseFloat(indicator.style.left);
+        savedIndicatorWidth = parseFloat(indicator.style.width);
+    }
+}
+
+function initPage(animate) {
     initStickyMenu();
     initDrawer();
     initColorTooltips();
+    initNavIndicator(animate);
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPage, { once: true });
+    document.addEventListener('DOMContentLoaded', () => initPage(false), { once: true });
 } else {
-    initPage();
+    initPage(false);
 }
 
-document.addEventListener('astro:page-load', initPage);
+document.addEventListener('astro:before-swap', saveNavIndicatorPosition);
+document.addEventListener('astro:page-load', () => initPage(true));
 
 function copyColor(color) {
     navigator.clipboard.writeText(color);

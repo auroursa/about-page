@@ -3,15 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const panelClass = 'glass-panel relative overflow-hidden';
 const cardClass = 'space-y-4';
-const sectionHeaderClass = 'section-stack';
-const bodyClass = 'soft-copy space-y-4';
-const iconHeadingClass = 'm-0 flex items-center gap-2.5 text-[1.08rem] font-bold leading-[1.5]';
-const iconClass = 'h-[1.1rem] w-[1.1rem] fill-current';
+const bodyClass = 'soft-copy space-y-3';
+const iconShellClass = 'flex h-10 w-10 items-center justify-center text-[var(--main-color)]';
+const sectionHeadingClass = 'm-0 text-[1.08rem] font-bold leading-[1.5]';
 const paletteStripClass = 'overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] shadow-[0_8px_24px_rgba(17,101,154,0.06)]';
-const swatchClass = 'about-color-span group relative h-6 min-w-0 flex-1 cursor-pointer overflow-hidden transition-[filter] duration-300 hover:brightness-[1.03]';
+const swatchClass = 'about-color-span group relative min-w-0 flex-1 cursor-pointer overflow-hidden transition-[filter,flex] duration-300 hover:brightness-[1.03] hover:flex-[1.8]';
 const swatchPreviewClass = 'absolute inset-0';
-const swatchOverlayClass = 'pointer-events-none absolute inset-x-0 top-0 h-7 bg-[linear-gradient(180deg,rgba(255,255,255,0.32),rgba(255,255,255,0))]';
+const swatchOverlayClass = 'pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,rgba(255,255,255,0.32),rgba(255,255,255,0))]';
 const tooltipClass = 'about-color-tooltip invisible absolute left-1/2 top-1/2 w-[6.8rem] -translate-x-1/2 -translate-y-1/2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_92%,transparent)] px-2.5 py-1.5 font-["Overpass_Mono",monospace] text-center text-[0.86rem] text-[var(--text-color)] opacity-0 shadow-[0_8px_18px_rgba(17,101,154,0.12)] backdrop-blur-sm transition-[opacity,visibility] duration-200 select-text [&.show]:visible [&.show]:opacity-100';
+const swatchLabelClass = 'absolute bottom-2 left-1/2 -translate-x-1/2 text-center text-[0.7rem] font-bold text-white opacity-0 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap';
 
 const palette = [
   { name: '背景', hex: '#EBF4F4' },
@@ -23,14 +23,23 @@ const palette = [
 ---
 
 <BaseLayout title="关于" description="有关本站的一些建站信息" currentPath="/about">
-  <div class="grid grid-cols-1 gap-3">
-    <article class:list={[panelClass, cardClass]} id="domain">
-      <div class={sectionHeaderClass}>
+  <div class="grid grid-cols-1 gap-2">
+    <article class="hero-panel">
+      <div class="hero-blur -right-8 -top-8"></div>
+      <div class="relative space-y-3">
+        <p class="section-kicker">About</p>
+        <h2 class="m-0 text-[1.36rem] font-bold leading-[1.35] max-[576px]:text-[1.2rem]">关于本站</h2>
+        <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]">随笔记录一些站点相关的技术细节及设计理念</p>
+      </div>
+    </article>
+
+    <article class:list={[panelClass, cardClass, 'hover-lift']} id="domain">
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"></rect><path d="M240.6,128a15.8,15.8,0,0,1-10.5,15l-63.9,23.2L143,230.1a16,16,0,0,1-30,0L89.8,166.2,25.9,143a16,16,0,0,1,0-30L89.8,89.8,113,25.9a16,16,0,0,1,30,0l23.2,63.9L230.1,113A15.8,15.8,0,0,1,240.6,128Z"></path></svg>
+      </div>
+      <div class="space-y-1">
         <p class="section-kicker">站名含义</p>
-        <h3 class={iconHeadingClass}>
-          <svg class={`${iconClass} text-[var(--main-color)]`} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"></rect><path d="M240.6,128a15.8,15.8,0,0,1-10.5,15l-63.9,23.2L143,230.1a16,16,0,0,1-30,0L89.8,166.2,25.9,143a16,16,0,0,1,0-30L89.8,89.8,113,25.9a16,16,0,0,1,30,0l23.2,63.9L230.1,113A15.8,15.8,0,0,1,240.6,128Z"></path></svg>
-          <span>Cynosura / 小熊座</span>
-        </h3>
+        <h3 class={sectionHeadingClass}>Cynosura / 小熊座</h3>
       </div>
       <div class={bodyClass}>
         <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称"熊"</p>
@@ -38,51 +47,52 @@ const palette = [
       </div>
     </article>
 
-    <article class:list={[panelClass, cardClass]}>
-      <div class={sectionHeaderClass}>
+    <article class:list={[panelClass, cardClass, 'hover-lift']}>
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+      </div>
+      <div class="space-y-1">
         <p class="section-kicker">搭建环境</p>
-        <h3 class={iconHeadingClass}>
-          <svg class={`${iconClass} text-[var(--main-color)]`} viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-          <span>GitHub + Cloudflare Pages</span>
-        </h3>
+        <h3 class={sectionHeadingClass}>GitHub + Cloudflare Pages</h3>
       </div>
       <div class={bodyClass}>
         <p>全站现已迁移到 Astro 框架，是由静态页面升级而来。目前基于 GitHub 仓库与 Cloudflare Pages 自动部署。</p>
       </div>
     </article>
 
-    <article class:list={[panelClass, cardClass]}>
-      <div class={sectionHeaderClass}>
+    <article class:list={[panelClass, cardClass, 'hover-lift']}>
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M573.19 402.67l-139.79-320C428.43 71.29 417.6 64 405.68 64h-97.59l2.45 23.16c.5 4.72-3.21 8.84-7.96 8.84h-29.16c-4.75 0-8.46-4.12-7.96-8.84L267.91 64h-97.59c-11.93 0-22.76 7.29-27.73 18.67L2.8 402.67C-6.45 423.86 8.31 448 30.54 448h196.84l10.31-97.68c.86-8.14 7.72-14.32 15.91-14.32h68.8c8.19 0 15.05 6.18 15.91 14.32L348.62 448h196.84c22.23 0 36.99-24.14 27.73-45.33zM260.4 135.16a8 8 0 0 1 7.96-7.16h39.29c4.09 0 7.53 3.09 7.96 7.16l4.6 43.58c.75 7.09-4.81 13.26-11.93 13.26h-40.54c-7.13 0-12.68-6.17-11.93-13.26l4.59-43.58zM315.64 304h-55.29c-9.5 0-16.91-8.23-15.91-17.68l5.07-48c.86-8.14 7.72-14.32 15.91-14.32h45.15c8.19 0 15.05 6.18 15.91 14.32l5.07 48c1 9.45-6.41 17.68-15.91 17.68z"></path></svg>
+      </div>
+      <div class="space-y-1">
         <p class="section-kicker">字体选用</p>
-        <h3 class={iconHeadingClass}>
-          <svg class={`${iconClass} text-[var(--main-color)]`} viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M573.19 402.67l-139.79-320C428.43 71.29 417.6 64 405.68 64h-97.59l2.45 23.16c.5 4.72-3.21 8.84-7.96 8.84h-29.16c-4.75 0-8.46-4.12-7.96-8.84L267.91 64h-97.59c-11.93 0-22.76 7.29-27.73 18.67L2.8 402.67C-6.45 423.86 8.31 448 30.54 448h196.84l10.31-97.68c.86-8.14 7.72-14.32 15.91-14.32h68.8c8.19 0 15.05 6.18 15.91 14.32L348.62 448h196.84c22.23 0 36.99-24.14 27.73-45.33zM260.4 135.16a8 8 0 0 1 7.96-7.16h39.29c4.09 0 7.53 3.09 7.96 7.16l4.6 43.58c.75 7.09-4.81 13.26-11.93 13.26h-40.54c-7.13 0-12.68-6.17-11.93-13.26l4.59-43.58zM315.64 304h-55.29c-9.5 0-16.91-8.23-15.91-17.68l5.07-48c.86-8.14 7.72-14.32 15.91-14.32h45.15c8.19 0 15.05 6.18 15.91 14.32l5.07 48c1 9.45-6.41 17.68-15.91 17.68z"></path></svg>
-          <span><span style="font-family: 'Overpass', sans-serif;">Overpass</span> / 高速公路</span>
-        </h3>
+        <h3 class={sectionHeadingClass}><span style="font-family: 'Overpass', sans-serif;">Overpass</span> / 高速公路</h3>
       </div>
       <div class={bodyClass}>
-        <p>标题使用 <a href="https://overpassfont.org">Overpass</a> 的 Regular 字号，是美国联邦高速公路字体 Highway Gothic 的开源实现版本，非常简洁易读，同时文章页的代码块部分采用 Overpass Mono，以达到更好的易读性。许可协议：<a href="/font/OFL.txt">OFL</a></p>
-        <p>而正文部分直接使用系统默认字体，因为包含中文字形后，会增加页面加载负担，把字体选择权交给用户。</p>
-        <p>示例：<span style="font-family: 'Overpass', sans-serif;">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</span></p>
+        <p>标题使用 <a href="https://overpassfont.org">Overpass</a> Regular，美国联邦高速公路字体 Highway Gothic 的开源实现。代码块采用 Overpass Mono。许可协议：<a href="/font/OFL.txt">OFL</a></p>
+        <p>正文使用系统默认字体，避免中文字形增加加载负担。</p>
+        <p class="text-[0.88rem]! text-[color:color-mix(in_srgb,var(--text-color)_56%,transparent)]!" style="font-family: 'Overpass', sans-serif;">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
       </div>
     </article>
 
-    <article class:list={[panelClass, cardClass]} id="color">
-      <div class={sectionHeaderClass}>
+    <article class:list={[panelClass, cardClass, 'hover-lift']} id="color">
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M9 4h5.446a1 1 0 0 1 .848.47L18.75 10h4.408a.5.5 0 0 1 .439.74l-3.937 7.217A4.992 4.992 0 0 1 15 16 4.992 4.992 0 0 1 11 18a4.992 4.992 0 0 1-4-2 4.992 4.992 0 0 1-4.55 1.97l-1.236-6.791A1 1 0 0 1 2.198 10H3V5a1 1 0 0 1 1-1h1V1h4v3zm-4 6h11.392l-2.5-4H5v4zM3 20a5.978 5.978 0 0 0 4-1.528A5.978 5.978 0 0 0 11 20a5.978 5.978 0 0 0 4-1.528A5.978 5.978 0 0 0 19 20h2v2h-2a7.963 7.963 0 0 1-4-1.07A7.963 7.963 0 0 1 11 22a7.963 7.963 0 0 1-4-1.07A7.963 7.963 0 0 1 3 22H1v-2h2z"></path></g></svg>
+      </div>
+      <div class="space-y-1">
         <p class="section-kicker">色彩搭配</p>
-        <h3 class={iconHeadingClass}>
-          <svg class={`${iconClass} text-[var(--main-color)]`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M9 4h5.446a1 1 0 0 1 .848.47L18.75 10h4.408a.5.5 0 0 1 .439.74l-3.937 7.217A4.992 4.992 0 0 1 15 16 4.992 4.992 0 0 1 11 18a4.992 4.992 0 0 1-4-2 4.992 4.992 0 0 1-4.55 1.97l-1.236-6.791A1 1 0 0 1 2.198 10H3V5a1 1 0 0 1 1-1h1V1h4v3zm-4 6h11.392l-2.5-4H5v4zM3 20a5.978 5.978 0 0 0 4-1.528A5.978 5.978 0 0 0 11 20a5.978 5.978 0 0 0 4-1.528A5.978 5.978 0 0 0 19 20h2v2h-2a7.963 7.963 0 0 1-4-1.07A7.963 7.963 0 0 1 11 22a7.963 7.963 0 0 1-4-1.07A7.963 7.963 0 0 1 3 22H1v-2h2z"></path></g></svg>
-          <span>水蓝 / 夏空和大海的颜色</span>
-        </h3>
+        <h3 class={sectionHeadingClass}>水蓝 / 夏空和大海的颜色</h3>
       </div>
       <div class={bodyClass}>
-        <p>全站使用"水蓝"作为主题色，期望能营造夏日清爽的观感（或许会根据四季切换不同主题色）。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
+        <p>全站使用"水蓝"作为主题色，期望能营造夏日清爽的观感。深色模式不使用纯黑，提亮背景缓解强对比度造成的眼睛疲劳，及防止 OLED 显示拖影。</p>
         <p>同时在尽量不破坏整体设计的情况下，选用高对比度色彩以符合 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG</a> 标准。</p>
       </div>
-      <div class:list={[paletteStripClass, 'flex w-full max-w-[24rem]']}>
+      <div class:list={[paletteStripClass, 'flex h-7 w-full max-w-[28rem]']}>
         {palette.map((color) => (
           <div class={swatchClass} role="button" tabindex="0" onclick={`copyColor('${color.hex}')`} onkeydown={`if(event.key==='Enter'||event.key===' '){event.preventDefault();copyColor('${color.hex}');}`} aria-label={`复制色值 ${color.hex}`}>
             <span class={swatchPreviewClass} style={`background-color: ${color.hex}`}></span>
             <span class={swatchOverlayClass}></span>
+            <span class={swatchLabelClass}>{color.name}</span>
             <input class={tooltipClass} type="text" readonly value={color.hex} aria-label={`颜色代码 ${color.hex}`} onclick="event.stopPropagation(); this.select();" onfocus="this.select()" />
           </div>
         ))}

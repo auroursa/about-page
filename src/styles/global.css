@@ -200,26 +200,68 @@
     font-size: 0.82rem;
   }
 
-  .glass-photo-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid rgb(255 255 255 / 20%);
-    background: rgb(255 255 255 / 14%);
-    padding: 0.75rem;
-    color: #fff;
-    backdrop-filter: blur(12px);
+  .hero-panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--main-color) 8%, var(--card-color)) 0%, var(--card-color) 50%, color-mix(in srgb, var(--accent-color) 6%, var(--card-color)) 100%);
+    padding: 1.5rem;
+    box-shadow: 0 14px 32px rgb(17 101 154 / 8%);
   }
 
-  .glass-hero-note {
-    width: fit-content;
-    max-width: 34rem;
-    border: 1px solid rgb(255 255 255 / 20%);
-    background: rgb(255 255 255 / 14%);
-    padding: 1rem;
-    color: #fff;
-    backdrop-filter: blur(12px);
+  .hero-blur {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    background: color-mix(in srgb, var(--accent-color) 20%, transparent);
+    filter: blur(24px);
+    pointer-events: none;
   }
+
+  .hover-lift {
+    transition:
+      border-color 300ms,
+      background-color 300ms,
+      box-shadow 300ms,
+      transform 300ms;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--main-color) 24%, transparent);
+    box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
+  }
+
+  .category-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--main-color) 20%, transparent);
+    background: color-mix(in srgb, var(--main-color) 8%, var(--card-color));
+    padding: 0.25rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--main-color);
+  }
+
+  .post-card {
+    padding: 1.5rem;
+    color: var(--text-color);
+    transition:
+      border-color 300ms,
+      background-color 300ms,
+      box-shadow 300ms,
+      transform 300ms;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--main-color);
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
+    box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
+  }
+
 }
 
 @media (max-width: 1280px) {
@@ -247,23 +289,18 @@
   }
 
   .menu .mobile-nav-title {
-    color: var(--main-color);
+    color: var(--text-color);
     transition: color 320ms ease;
   }
 
   .menu .mobile-nav-current {
-    max-width: 14rem;
-    opacity: 1;
-    transform: translateX(0);
-    transition:
-      max-width 320ms ease,
-      opacity 220ms ease,
-      transform 320ms ease;
+    position: relative;
+    margin-right: auto;
   }
 
   .menu.at-top .mobile-nav-brand-shell {
-    max-width: 2rem;
-    margin-right: 0.625rem;
+    max-width: 2.5rem;
+    margin-right: 0.75rem;
     opacity: 1;
     pointer-events: auto;
     transform: translateX(0) scale(1);
@@ -274,10 +311,31 @@
   }
 
   .menu.at-top .mobile-nav-current {
-    max-width: 0;
-    opacity: 0;
-    transform: translateX(0.35rem);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-right: 0;
   }
+}
+
+/* Nav indicator */
+.nav-indicator {
+  transition:
+    top 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    left 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+/* Drawer stagger animation */
+.drawer-stagger {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 360ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 1281px) {
@@ -291,25 +349,22 @@
 
   .menu .desktop-nav-brand-shell {
     overflow: hidden;
-  }
-
-  .menu .desktop-nav-brand-shell {
     gap: 0.5rem;
     max-width: 0;
     opacity: 0;
-    transform: translateX(-0.2rem);
+    transform: translateX(-0.3rem) scale(0.92);
     transition:
-      max-width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 280ms ease,
-      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      max-width 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 320ms ease,
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .menu .desktop-nav-brand-avatar {
     opacity: 0;
-    transform: scale(0.88);
+    transform: scale(0.8);
     transition:
-      opacity 260ms ease,
-      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 320ms ease,
+      transform 480ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .menu .desktop-nav-links {
@@ -318,8 +373,7 @@
     min-height: 2.5rem;
     justify-content: center;
     transition:
-      width 360ms ease,
-      transform 360ms ease;
+      width 480ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .menu .desktop-nav-core {
@@ -330,7 +384,7 @@
     position: relative;
     transform: translateX(0);
     transition:
-      opacity 220ms ease,
+      opacity 280ms ease,
       background-color 300ms ease,
       color 300ms ease;
   }
@@ -343,20 +397,23 @@
     opacity: 1;
     transform: translateX(0);
     transition:
-      max-width 320ms ease,
-      opacity 180ms ease,
-      transform 320ms ease;
+      max-width 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 200ms ease,
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  /* Entering at-top: bar morphs → avatar appears (delayed) → label hides */
   .menu.at-top .desktop-nav-brand-shell {
-    max-width: 3rem;
+    max-width: 3.5rem;
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
+    transition-delay: 80ms;
   }
 
   .menu.at-top .desktop-nav-brand-avatar {
     opacity: 1;
     transform: scale(1);
+    transition-delay: 140ms;
   }
 
   .menu.at-top .desktop-nav-links {
@@ -381,5 +438,21 @@
     max-width: 0;
     opacity: 0;
     transform: translateX(0.35rem);
+    transition-delay: 0ms;
+  }
+
+  /* Leaving at-top: avatar hides first → bar expands */
+  .menu:not(.at-top) .desktop-nav-brand-shell {
+    transition-delay: 0ms;
+  }
+
+  .menu:not(.at-top) .desktop-nav-brand-avatar {
+    transition-delay: 0ms;
+    transition-timing-function: ease-in;
+    transition-duration: 200ms;
+  }
+
+  .menu:not(.at-top) .desktop-nav-inline-travel-label {
+    transition-delay: 120ms;
   }
 }

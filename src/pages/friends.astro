@@ -99,22 +99,22 @@ const voidFriends: FriendEntry[] = [
 
 const panelClass = 'glass-panel relative overflow-hidden';
 const linkCardClass = 'group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_18px_38px_rgba(17,101,154,0.14)]';
+const extractDomain = (url: string) => {
+  try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
+};
 const voidLinkCardClass = 'group block h-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-4 text-[var(--text-color)] shadow-[0_8px_24px_rgba(17,101,154,0.06)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_14px_28px_rgba(17,101,154,0.1)]';
 const sectionHeaderClass = 'section-stack';
-const sectionHeadingClass = 'm-0 text-[1.08rem] font-bold leading-[1.5]';
-const introTextClass = 'soft-copy space-y-4';
 ---
 
 <BaseLayout title="友人" description="友链列表，按 A-Z 顺序排列" currentPath="/friends">
-  <div class="grid grid-cols-3 gap-3 max-[1280px]:grid-cols-2 max-[576px]:grid-cols-1">
-    <article class:list={[panelClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
-      <div class:list={['relative', sectionHeaderClass]}>
+  <div class="grid grid-cols-3 gap-2 max-[1280px]:grid-cols-2 max-[576px]:grid-cols-1">
+    <article class="hero-panel col-span-3 max-[1280px]:col-span-2 max-[576px]:col-span-1">
+      <div class="hero-blur -right-8 -top-8"></div>
+      <div class="relative space-y-3">
         <p class="section-kicker">Yahalo!</p>
-        <h3 class={sectionHeadingClass}>这里是一本名片册，记载在网络上结识的各种朋友</h3>
-      </div>
-      <div class={introTextClass}>
-        <p>无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"。</p>
-        <p>熟悉后将会把你加入到下方名片册里，按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆。</p>
+        <h2 class="m-0 text-[1.36rem] font-bold leading-[1.35] max-[576px]:text-[1.2rem]">这里是一本名片册，记载在网络上结识的各种朋友</h2>
+        <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]">无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"</p>
+        <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]">按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆</p>
       </div>
     </article>
 
@@ -122,10 +122,11 @@ const introTextClass = 'soft-copy space-y-4';
       <article class="overflow-hidden text-left">
         <a href={friend.url} class={linkCardClass}>
           <div class="relative flex h-full items-start gap-4">
-            <img src={friend.img} alt={friend.name} class="h-18 w-18 shrink-0 rounded-[0.95rem] object-cover transition-transform duration-300 group-hover:scale-[1.04]" width="400" height="400" loading="lazy" />
+            <img src={friend.img} alt={friend.name} class="h-20 w-20 shrink-0 rounded-[1.35rem] object-cover transition-transform duration-300 group-hover:scale-[1.04]" width="400" height="400" loading="lazy" />
             <div class="min-w-0 flex-1 self-start pt-0.5">
-              <h3 class="mb-2 min-w-0 truncate text-[1.08rem] font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
-              <p class="m-0 line-clamp-2 text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
+              <h3 class="m-0 min-w-0 truncate text-[1.08rem] font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
+              <p class="m-0 mt-1 truncate text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
+              <span class="mt-1.5 inline-block max-w-full truncate border border-[color:color-mix(in_srgb,var(--main-color)_16%,transparent)] bg-[color:color-mix(in_srgb,var(--main-color)_6%,transparent)] px-2 py-0.5 text-[0.75rem] text-[color:color-mix(in_srgb,var(--text-color)_62%,transparent)]" style="font-family: 'Overpass', sans-serif;">{extractDomain(friend.url)}</span>
             </div>
           </div>
         </a>
@@ -141,7 +142,7 @@ const introTextClass = 'soft-copy space-y-4';
         {voidFriends.map((friend) => (
           <article class="overflow-hidden text-left">
             <a href={friend.url} class={voidLinkCardClass}>
-              <h3 class="truncate text-base font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
+              <h3 class="m-0 truncate text-base font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
               <p class="mt-2 m-0 line-clamp-2 text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
             </a>
           </article>
