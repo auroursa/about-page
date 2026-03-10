@@ -1,6 +1,78 @@
 let menuObserverCleanup = null;
 let drawerCleanup = null;
 
+function syncMenuA11y(menu, atTop) {
+    const brandLinks = menu.querySelectorAll('.desktop-nav-brand-shell, .mobile-nav-brand-shell');
+
+    brandLinks.forEach((link) => {
+        if (!(link instanceof HTMLElement)) {
+            return;
+        }
+
+        if (atTop) {
+            link.removeAttribute('aria-hidden');
+            link.removeAttribute('tabindex');
+        } else {
+            link.setAttribute('aria-hidden', 'true');
+            link.setAttribute('tabindex', '-1');
+        }
+    });
+}
+
+function setStickyMenuState(menu, atTop, { animate = true } = {}) {
+    const isDesktop = window.matchMedia('(min-width: 1281px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const currentState = menu.classList.contains('at-top');
+    const animatedElements = [
+        menu.querySelector('.desktop-nav-core'),
+        menu.querySelector('.desktop-nav-inline-travel'),
+    ].filter((element) => element instanceof HTMLElement);
+
+    if (currentState === atTop) {
+        syncMenuA11y(menu, atTop);
+        return;
+    }
+
+    animatedElements.forEach((element) => {
+        element.getAnimations().forEach((animation) => animation.cancel());
+    });
+
+    if (!animate || !isDesktop || prefersReducedMotion || animatedElements.length === 0) {
+        menu.classList.toggle('at-top', atTop);
+        syncMenuA11y(menu, atTop);
+        return;
+    }
+
+    const beforeRects = new Map(animatedElements.map((element) => [element, element.getBoundingClientRect()]));
+
+    menu.classList.toggle('at-top', atTop);
+    syncMenuA11y(menu, atTop);
+
+    animatedElements.forEach((element) => {
+        const before = beforeRects.get(element);
+        const after = element.getBoundingClientRect();
+        const deltaX = before.left - after.left;
+        const deltaY = before.top - after.top;
+        const finalTransform = window.getComputedStyle(element).transform;
+        const finalTransformValue = finalTransform === 'none' ? '' : `${finalTransform} `;
+
+        if (Math.abs(deltaX) < 0.5 && Math.abs(deltaY) < 0.5) {
+            return;
+        }
+
+        element.animate(
+            [
+                { transform: `${finalTransformValue}translate(${deltaX}px, ${deltaY}px)` },
+                { transform: finalTransform === 'none' ? 'none' : finalTransform },
+            ],
+            {
+                duration: 420,
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            }
+        );
+    });
+}
+
 function initStickyMenu() {
     menuObserverCleanup?.();
 
@@ -12,13 +84,14 @@ function initStickyMenu() {
         return;
     }
 
+    let isFirstObservation = true;
+
     const observer = new IntersectionObserver(
         ([entry]) => {
-            if (entry.isIntersecting === false) {
-                menu.classList.add('at-top');
-            } else {
-                menu.classList.remove('at-top');
-            }
+            const shouldStick = entry.isIntersecting === false;
+
+            setStickyMenuState(menu, shouldStick, { animate: !isFirstObservation });
+            isFirstObservation = false;
         },
         { threshold: [0] }
     );

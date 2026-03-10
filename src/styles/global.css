@@ -229,29 +229,32 @@
 
   .menu .mobile-nav-brand-shell {
     max-width: 0;
+    margin-right: 0;
     opacity: 0;
-    transform: translateX(-0.6rem);
+    pointer-events: none;
+    transform: translateX(-0.35rem) scale(0.92);
     transition:
       max-width 320ms ease,
+      margin-right 320ms ease,
       opacity 220ms ease,
-      transform 320ms ease;
+      transform 320ms ease,
+      box-shadow 320ms ease;
   }
 
   .menu .mobile-nav-brand-avatar {
-    opacity: 0;
-    transform: scale(0.82);
     transition:
-      opacity 220ms ease,
       transform 320ms ease;
   }
 
   .menu .mobile-nav-title {
     color: var(--main-color);
-    transition: transform 320ms ease, color 320ms ease;
+    transition: color 320ms ease;
   }
 
   .menu .mobile-nav-current {
-    max-width: 12rem;
+    max-width: 14rem;
+    opacity: 1;
+    transform: translateX(0);
     transition:
       max-width 320ms ease,
       opacity 220ms ease,
@@ -259,20 +262,124 @@
   }
 
   .menu.at-top .mobile-nav-brand-shell {
-    max-width: 3rem;
+    max-width: 2rem;
+    margin-right: 0.625rem;
     opacity: 1;
-    transform: translateX(0);
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
   }
 
   .menu.at-top .mobile-nav-brand-avatar {
-    opacity: 1;
-    transform: translateX(0) scale(1);
+    transform: scale(1);
   }
 
   .menu.at-top .mobile-nav-current {
     max-width: 0;
     opacity: 0;
+    transform: translateX(0.35rem);
+  }
+}
+
+@media (min-width: 1281px) {
+  .menu .desktop-nav-brand-shell,
+  .menu .desktop-nav-links,
+  .menu .desktop-nav-core {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .menu .desktop-nav-brand-shell {
     overflow: hidden;
-    transform: translateX(0.45rem);
+  }
+
+  .menu .desktop-nav-brand-shell {
+    gap: 0.5rem;
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(-0.2rem);
+    transition:
+      max-width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 280ms ease,
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .menu .desktop-nav-brand-avatar {
+    opacity: 0;
+    transform: scale(0.88);
+    transition:
+      opacity 260ms ease,
+      transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .menu .desktop-nav-links {
+    position: relative;
+    width: max-content;
+    min-height: 2.5rem;
+    justify-content: center;
+    transition:
+      width 360ms ease,
+      transform 360ms ease;
+  }
+
+  .menu .desktop-nav-core {
+    position: relative;
+  }
+
+  .menu .desktop-nav-inline-travel {
+    position: relative;
+    transform: translateX(0);
+    transition:
+      opacity 220ms ease,
+      background-color 300ms ease,
+      color 300ms ease;
+  }
+
+  .menu .desktop-nav-inline-travel-label {
+    display: inline-block;
+    max-width: 2.8rem;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      max-width 320ms ease,
+      opacity 180ms ease,
+      transform 320ms ease;
+  }
+
+  .menu.at-top .desktop-nav-brand-shell {
+    max-width: 3rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .menu.at-top .desktop-nav-brand-avatar {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .menu.at-top .desktop-nav-links {
+    width: 100%;
+  }
+
+  .menu.at-top .desktop-nav-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .menu.at-top .desktop-nav-inline-travel {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu.at-top .desktop-nav-inline-travel-label {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(0.35rem);
   }
 }
