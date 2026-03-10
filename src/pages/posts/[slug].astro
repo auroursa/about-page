@@ -27,13 +27,14 @@ const formatDate = (dateStr: string | undefined) => {
 const panelClass = 'glass-panel';
 const articlePanelClass = 'space-y-6';
 const sectionTitleClass = 'm-0 text-[1.02rem] font-bold';
+const panelTitleClass = 'mb-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] pb-2 !pl-0 text-[0.98rem] font-bold tracking-[0.08em] text-[var(--main-color)] before:hidden';
 const detailRowClass = 'grid grid-cols-[5.5rem_minmax(0,1fr)] gap-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] py-3 last:border-b-0 last:pb-0 first:pt-0 max-[576px]:grid-cols-1 max-[576px]:gap-1';
 const detailLabelClass = 'text-[0.78rem] font-bold tracking-[0.16em] text-[var(--main-color)]';
 const detailValueClass = 'text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]';
 const contentClass = 'text-[1rem] leading-8 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_h1]:text-[2em] [&_h1]:font-bold [&_h2]:mt-12 [&_h2]:border-t [&_h2]:border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] [&_h2]:pt-8 [&_h2]:text-[1.5em] [&_h2]:font-bold [&_h3]:mt-9 [&_h3]:text-[1.17em] [&_h3]:font-bold [&_h4]:mt-8 [&_h4]:text-[1em] [&_h4]:font-bold [&_p]:my-5 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-10 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-10 [&_pre]:my-6 [&_figure]:my-6 [&_blockquote]:my-6 [&_blockquote]:border-l-[0.28rem] [&_blockquote]:border-[var(--main-color)] [&_blockquote]:bg-[color:color-mix(in_srgb,var(--card-color)_70%,transparent)] [&_blockquote]:px-5 [&_blockquote]:py-3 [&_blockquote]:italic [&_img]:mx-auto [&_img]:max-h-[35rem] [&_img]:max-w-[80%] max-[576px]:[&_img]:max-w-full [&_a]:text-[var(--main-color)] [&_a]:underline [&_a]:underline-offset-[0.18em] [&_hr]:my-8 [&_hr]:border-0 [&_hr]:border-t [&_hr]:border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)]';
 const licenseIconsClass = 'flex items-center gap-3 pt-1 text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]';
-const commentShellClass = 'bg-[color:color-mix(in_srgb,var(--card-color)_68%,transparent)] p-4';
-const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
+const commentShellClass = 'bg-[var(--card-color)] p-4 text-[var(--text-color)]';
+const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
@@ -52,7 +53,7 @@ const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
 
     <div class="mb-3 grid grid-cols-2 gap-3 max-[576px]:grid-cols-1">
       <section class:list={[panelClass, 'h-full space-y-4']}>
-        <DecoratedTitle>本文信息</DecoratedTitle>
+        <DecoratedTitle as="h3" class={panelTitleClass}>本文信息</DecoratedTitle>
         <div>
           <div class={detailRowClass}>
             <span class={detailLabelClass}>作者</span>
@@ -80,7 +81,7 @@ const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
       </section>
 
       <section class:list={[panelClass, 'h-full space-y-4']}>
-        <DecoratedTitle>版权许可</DecoratedTitle>
+        <DecoratedTitle as="h3" class={panelTitleClass}>版权许可</DecoratedTitle>
         <div class="space-y-6 text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)] [&>p]:m-0 [&>p]:leading-8">
           <p class={sectionTitleClass}>本文所有内容（包括图片）均采用 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International License">CC BY-SA 4.0</a> 协议授权。</p>
           <p>你可以在保留署名与相同方式共享的前提下转载、引用或再创作。</p>
@@ -97,8 +98,8 @@ const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
     </div>
 
     <section class:list={[panelClass, 'space-y-4']}>
-      <DecoratedTitle>评论</DecoratedTitle>
-      <p class="m-0 leading-7 text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]">注：留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
+      <DecoratedTitle as="h3" class={panelTitleClass}>评论</DecoratedTitle>
+      <p class="mb-3 mt-0 leading-7 text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]">注：留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
       <div class={commentShellClass}>
         <div id="disqus_thread"></div>
       </div>
@@ -106,30 +107,50 @@ const canonicalPostUrl = `https://cynosura.one/posts/${entry.slug}`;
   </div>
 
   <script is:inline define:vars={{ pageUrl: canonicalPostUrl, pageIdentifier: entry.slug }} data-astro-rerun data-cfasync="false">
-    (function() {
-      window.disqus_config = function () {
-        this.page.url = pageUrl;
-        this.page.identifier = pageIdentifier;
-      };
-
-      if (window.DISQUS) {
-        window.DISQUS.reset({
-          reload: true,
-          config: function () {
-            this.page.url = pageUrl;
-            this.page.identifier = pageIdentifier;
-          }
-        });
-      } else {
-        var existingScript = document.querySelector('script[data-disqus-script="true"]');
-        if (!existingScript) {
-          var disqusScript = document.createElement('script');
-          disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-          disqusScript.setAttribute('data-timestamp', String(+new Date()));
-          disqusScript.setAttribute('data-disqus-script', 'true');
-          document.head.appendChild(disqusScript);
-        }
+    (function () {
+      function configureDisqus() {
+        window.disqus_config = function () {
+          this.page.url = pageUrl;
+          this.page.identifier = pageIdentifier;
+        };
       }
+
+      function mountDisqus() {
+        var thread = document.getElementById('disqus_thread');
+        if (!thread) {
+          return;
+        }
+
+        configureDisqus();
+
+        if (window.DISQUS) {
+          window.DISQUS.reset({
+            reload: true,
+            config: function () {
+              this.page.url = pageUrl;
+              this.page.identifier = pageIdentifier;
+            }
+          });
+          return;
+        }
+
+        var existingScript = document.querySelector('script[data-disqus-script="true"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+
+        thread.innerHTML = '';
+
+        var disqusScript = document.createElement('script');
+        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
+        disqusScript.async = true;
+        disqusScript.setAttribute('data-timestamp', String(+new Date()));
+        disqusScript.setAttribute('data-disqus-script', 'true');
+        disqusScript.setAttribute('data-cfasync', 'false');
+        document.head.appendChild(disqusScript);
+      }
+
+      mountDisqus();
     })();
   </script>
 </BaseLayout>
