@@ -68,7 +68,7 @@ const panelClass = 'glass-panel';
     <div class="grid grid-cols-1 gap-2">
       {filteredPosts.map((post) => (
         <article>
-          <a href={`/posts/${post.slug}`} class:list={[postCardClass, 'group block']}>
+          <a href={`/posts/${post.id}`} class:list={[postCardClass, 'group block']}>
             <div class="flex flex-col gap-4">
               <div class="flex items-start justify-between gap-4">
                 <div class="min-w-0 space-y-2.5">
@@ -79,7 +79,7 @@ const panelClass = 'glass-panel';
               </div>
               <div class="flex flex-wrap items-center gap-2">
                 {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
-                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)]" style="font-family: 'Overpass', sans-serif;" datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
+                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)]" style="font-family: var(--font-overpass), sans-serif;" datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
                   {formatDate(post.data.pubDate || post.data.date)}
                 </time>
               </div>

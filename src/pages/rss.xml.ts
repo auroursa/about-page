@@ -52,7 +52,7 @@ export async function GET(context: APIContext) {
       return {
         title: post.data.title,
         description: post.data.description || '',
-        link: `/posts/${post.slug}/`,
+        link: `/posts/${post.id}/`,
         pubDate: postDate,
         content: renderRssContent(post.body, site),
       };

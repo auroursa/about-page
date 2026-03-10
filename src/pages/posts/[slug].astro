@@ -1,18 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import DecoratedTitle from '../../components/DecoratedTitle.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { entry: post },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const formatDate = (dateStr: string | undefined) => {
   if (!dateStr) return '';
@@ -47,7 +47,7 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
         </div>
         <div class="flex flex-wrap items-center justify-center gap-3">
           {entry.data.category && <a href={`/posts/category/${entry.data.category}`} class={categoryPillClass}>{entry.data.category}</a>}
-          <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)]" style="font-family: 'Overpass', sans-serif;" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
+          <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)]" style="font-family: var(--font-overpass), sans-serif;" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
             {formatDate(entry.data.pubDate || entry.data.date)}
           </time>
         </div>
@@ -79,7 +79,7 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
           )}
           <div class={detailRowClass}>
             <span class={detailLabelClass}>链接</span>
-            <a href={`/posts/${entry.slug}`} title={entry.data.title} class:list={[detailValueClass, 'break-all text-[var(--main-color)] underline underline-offset-[0.18em]']}>
+            <a href={`/posts/${entry.id}`} title={entry.data.title} class:list={[detailValueClass, 'break-all text-[var(--main-color)] underline underline-offset-[0.18em]']}>
               {canonicalPostUrl}
             </a>
           </div>
@@ -111,7 +111,7 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
     </section>
   </div>
 
-  <script is:inline define:vars={{ pageUrl: canonicalPostUrl, pageIdentifier: entry.slug }} data-astro-rerun data-cfasync="false">
+  <script is:inline define:vars={{ pageUrl: canonicalPostUrl, pageIdentifier: entry.id }} data-astro-rerun data-cfasync="false">
     (function () {
       function configureDisqus() {
         window.disqus_config = function () {
