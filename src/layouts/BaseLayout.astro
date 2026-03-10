@@ -94,9 +94,9 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
     <Font cssVariable="--font-overpass-mono" preload />
   </head>
   <body>
-    <header class="sticky top-8 z-[-1] mx-8 my-8 text-center" style="font-family: var(--font-overpass), sans-serif;">
+    <header class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
       <img class="mx-auto h-24 w-24 rounded-full" src="/img/avatar.webp" width="600" height="600" alt="site-avatar" />
-      <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold" style="font-family: var(--font-overpass), sans-serif;">Cynosura</h1>
+      <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold font-overpass">Cynosura</h1>
       <p class="m-0">Trying to light up the dark.</p>
     </header>
 
@@ -165,7 +165,7 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
                     <img class="h-16 w-16 rounded-[1.35rem] object-cover" src="/img/profile-avatar.webp" width="600" height="600" alt="site-avatar" />
                     <div class="min-w-0">
                       <h2 class="m-0 truncate text-[1.6rem] font-bold leading-none">赤茶</h2>
-                      <p class="m-0 mt-1.5 text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_56%,transparent)]" style="font-family: var(--font-overpass), sans-serif;">cynosura.one</p>
+                      <p class="m-0 mt-1.5 text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_56%,transparent)] font-overpass">cynosura.one</p>
                     </div>
                   </div>
                   <button class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] text-[var(--text-color)] transition-all duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_12%,transparent)] hover:text-[var(--main-color)] hover:scale-105 active:scale-90 active:bg-[color:color-mix(in_srgb,var(--main-color)_18%,transparent)]" id="close-menu" aria-label="关闭菜单">
@@ -273,7 +273,7 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
       <slot />
     </main>
 
-    <footer class="mx-8 my-8 text-center" style="font-family: var(--font-overpass), sans-serif;">
+    <footer class="mx-8 my-8 text-center font-overpass">
       <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy;&nbsp;2026</p>
     </footer>
   </body>

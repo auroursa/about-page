@@ -47,6 +47,14 @@
     font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', 'Helvetica Neue', sans-serif;
   }
 
+  .font-overpass {
+    font-family: var(--font-overpass), sans-serif;
+  }
+
+  .font-overpass-mono {
+    font-family: var(--font-overpass-mono), monospace;
+  }
+
   a {
     color: var(--main-color);
     text-decoration: none;

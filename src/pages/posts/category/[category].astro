@@ -79,7 +79,7 @@ const panelClass = 'glass-panel';
               </div>
               <div class="flex flex-wrap items-center gap-2">
                 {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
-                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)]" style="font-family: var(--font-overpass), sans-serif;" datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
+                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
                   {formatDate(post.data.pubDate || post.data.date)}
                 </time>
               </div>
