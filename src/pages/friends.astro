@@ -1,4 +1,5 @@
 ---
+import DecoratedTitle from '../components/DecoratedTitle.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const friends = [
@@ -89,43 +90,50 @@ const voidFriends = [
   { name: "雪の小窝", desc: "永远不向命运低头", url: "https://blog.reallysnow.moe" },
   { name: "Zikin 的独立博客", desc: "青春大概如你所说", url: "https://zikin.org" },
 ];
+
+const cardClass = 'bg-[var(--card-color)] p-6 max-[576px]:p-5';
+const linkCardClass = 'block h-full bg-[var(--card-color)] p-5 text-[var(--text-color)] transition-colors duration-500 hover:bg-[var(--main-color)] hover:text-[var(--card-color)]';
+const titleClass = 'relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute before:left-0 before:top-1/2 before:h-6 before:w-[0.3rem] before:-translate-y-[45%] before:bg-[var(--main-color)]';
 ---
 
 <BaseLayout title="友人" description="友链列表，按 A-Z 顺序排列" currentPath="/friends">
-  <div class="friends-list">
-    <article class="friends-card-info card">
-      <h2 class="card-title">Yahalo!</h2>
-      <h3>这里是一本名片册，记载在网络上结识的各种朋友</h3>
-      <p>无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"。</p>
-      <p>熟悉后将会把你加入到下方名片册里，按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆。</p>
+  <div class="grid grid-cols-3 gap-2 max-[1280px]:grid-cols-2 max-[576px]:grid-cols-1">
+    <article class:list={[cardClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
+      <DecoratedTitle>Yahalo!</DecoratedTitle>
+      <h3 class="m-0 text-[1.17em] font-bold">这里是一本名片册，记载在网络上结识的各种朋友</h3>
+      <div class="space-y-4 [&>p]:m-0">
+        <p>无论你是来自湛蓝晴空 (Bluesky) ，还是来自紫色小象 (Mastodon)，都可以 "Feel free to contact me"。</p>
+        <p>熟悉后将会把你加入到下方名片册里，按 A-Z 的顺序排列，期待能在茫茫人海中与你共同创造回忆。</p>
+      </div>
     </article>
-    
+
     {friends.map((friend) => (
-      <div class="friends-card">
-        <a href={friend.url} class="friends-card-link">
-          <img src={friend.img} alt={friend.name} class="friends-img" width="400" height="400" loading="lazy" />
-          <div class="friends-card-content">
-            <h3 class="card-title friends-card-title">{friend.name}</h3>
-            <p class="friends-card-description">{friend.desc}</p>
+      <article class="overflow-hidden text-left">
+        <a href={friend.url} class={linkCardClass}>
+          <img src={friend.img} alt={friend.name} class="mb-4 h-20 w-20 rounded-xl object-cover" width="400" height="400" loading="lazy" />
+          <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
+            <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out hover:pl-0 hover:before:w-0`}>{friend.name}</h3>
+            <p class="m-0 inline">{friend.desc}</p>
           </div>
         </a>
-      </div>
+      </article>
     ))}
 
-    <!-- 虚空传送门 -->
-    <div class="friends-card-info card">
-      <h2 class="card-title">虚空传送门</h2>
-      <h3>这里存放暂时无法正常访问到站点的朋友们</h3>
-      {voidFriends.map((friend) => (
-        <div class="friends-card">
-          <a href={friend.url} class="friends-card-link">
-            <div class="friends-card-content">
-              <h3 class="card-title friends-card-title">{friend.name}</h3>
-              <p class="friends-card-description">{friend.desc}</p>
-            </div>
-          </a>
-        </div>
-      ))}
-    </div>
+    <section class:list={[cardClass, 'col-span-3 space-y-4 max-[1280px]:col-span-2 max-[576px]:col-span-1']}>
+      <DecoratedTitle>虚空传送门</DecoratedTitle>
+      <h3 class="m-0 text-[1.17em] font-bold">这里存放暂时无法正常访问到站点的朋友们</h3>
+      <div class="grid grid-cols-1 gap-2">
+        {voidFriends.map((friend) => (
+          <article class="overflow-hidden text-left">
+            <a href={friend.url} class={linkCardClass}>
+              <div class="min-w-0 space-y-2 overflow-hidden text-ellipsis whitespace-nowrap">
+                <h3 class={`${titleClass} mb-2 text-[1.17em] font-bold transition-[padding] duration-200 ease-out hover:pl-0 hover:before:w-0`}>{friend.name}</h3>
+                <p class="m-0 inline">{friend.desc}</p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
   </div>
 </BaseLayout>

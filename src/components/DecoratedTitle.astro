@@ -1,0 +1,22 @@
+---
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4';
+  class?: string;
+  id?: string;
+}
+
+const { as: Tag = 'h2', class: className = '', ...rest } = Astro.props;
+const sizeClassMap = {
+  h1: 'mb-[0.67em] text-[2em] font-bold',
+  h2: 'mb-[0.83em] text-[1.5em] font-bold',
+  h3: 'mb-[1em] text-[1.17em] font-bold',
+  h4: 'mb-[1.33em] text-[1em] font-bold',
+};
+---
+
+<Tag
+  class={`relative mt-0 pl-[0.65rem] leading-[1.5] before:absolute before:left-0 before:top-1/2 before:h-6 before:w-[0.3rem] before:-translate-y-[45%] before:bg-[var(--main-color)] ${sizeClassMap[Tag]} ${className}`}
+  {...rest}
+>
+  <slot />
+</Tag>
