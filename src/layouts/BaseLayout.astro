@@ -100,14 +100,14 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
     <main class="mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min-[1800px]:max-w-[65%] max-[1280px]:max-w-[85%] max-[576px]:max-w-full">
       <div class="menu-sentinel h-px"></div>
 
-      <nav class="menu sticky top-0 z-20 relative mb-2 flex h-14 w-full max-w-full items-center justify-center rounded-none border-x-0 border-t-0 border-b border-[color:color-mix(in_srgb,var(--text-color)_5%,transparent)] bg-[var(--menu-color)] px-4 shadow-[0_1px_0_rgba(15,23,42,0.03)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] min-[1281px]:mx-auto min-[1281px]:[&.at-top]:top-3 min-[1281px]:[&.at-top]:mb-3 min-[1281px]:[&.at-top]:max-w-[58rem] min-[1281px]:[&.at-top]:rounded-2xl min-[1281px]:[&.at-top]:border min-[1281px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] min-[1281px]:[&.at-top]:bg-[color:color-mix(in_srgb,var(--card-color)_75%,transparent)] min-[1281px]:[&.at-top]:shadow-[0_8px_32px_rgba(17,101,154,0.08)] min-[1281px]:[&.at-top]:backdrop-blur-xl max-[1280px]:mb-0 max-[1280px]:h-12 max-[1280px]:bg-[var(--menu-color)] max-[1280px]:shadow-[0_1px_0_rgba(15,23,42,0.03)] max-[1280px]:[&.at-top]:top-0 max-[1280px]:[&.at-top]:mx-0 max-[1280px]:[&.at-top]:mb-0 max-[1280px]:[&.at-top]:w-full max-[1280px]:[&.at-top]:max-w-full max-[1280px]:[&.at-top]:rounded-none max-[1280px]:[&.at-top]:border-x-0 max-[1280px]:[&.at-top]:border-t-0 max-[1280px]:[&.at-top]:border-b max-[1280px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_7%,transparent)] max-[1280px]:[&.at-top]:bg-[var(--menu-at-top-color)] max-[1280px]:[&.at-top]:shadow-[0_10px_28px_rgba(17,101,154,0.08)] max-[1280px]:[&.at-top]:backdrop-blur-xl">
-        <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[1280px]:hidden min-[1281px]:flex">
+      <nav class="menu sticky top-0 z-20 relative mb-2 flex h-14 w-full max-w-full items-center justify-center rounded-none border-x-0 border-t-0 border-b border-[color:color-mix(in_srgb,var(--text-color)_5%,transparent)] bg-[var(--menu-color)] px-4 shadow-[0_1px_0_rgba(15,23,42,0.03)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] min-[769px]:mx-auto min-[769px]:[&.at-top]:top-3 min-[769px]:[&.at-top]:mb-3 min-[769px]:[&.at-top]:max-w-[58rem] min-[769px]:[&.at-top]:rounded-2xl min-[769px]:[&.at-top]:border min-[769px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] min-[769px]:[&.at-top]:bg-[color:color-mix(in_srgb,var(--card-color)_75%,transparent)] min-[769px]:[&.at-top]:shadow-[0_8px_32px_rgba(17,101,154,0.08)] min-[769px]:[&.at-top]:backdrop-blur-xl max-[768px]:mb-0 max-[768px]:h-12 max-[768px]:bg-[var(--menu-color)] max-[768px]:shadow-[0_1px_0_rgba(15,23,42,0.03)] max-[768px]:[&.at-top]:top-0 max-[768px]:[&.at-top]:mx-0 max-[768px]:[&.at-top]:mb-0 max-[768px]:[&.at-top]:w-full max-[768px]:[&.at-top]:max-w-full max-[768px]:[&.at-top]:rounded-none max-[768px]:[&.at-top]:border-x-0 max-[768px]:[&.at-top]:border-t-0 max-[768px]:[&.at-top]:border-b max-[768px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_7%,transparent)] max-[768px]:[&.at-top]:bg-[var(--menu-at-top-color)] max-[768px]:[&.at-top]:shadow-[0_10px_28px_rgba(17,101,154,0.08)] max-[768px]:[&.at-top]:backdrop-blur-xl">
+        <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[768px]:hidden min-[769px]:flex">
           <a href="/" class="desktop-nav-brand-shell rounded-xl px-3 py-2 transition-colors duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]">
             <img class="desktop-nav-brand-avatar h-7 w-7 rounded-lg" src="/img/avatar.webp" width="600" height="600" alt="site-avatar" />
           </a>
         </div>
 
-        <div class="desktop-nav-links flex items-center gap-0.5 max-[1280px]:hidden">
+        <div class="desktop-nav-links flex items-center gap-0.5 max-[768px]:hidden">
           <div class="desktop-nav-core flex items-center gap-0.5">
             <button class:list={[menuButtonBase, isActive('/') && menuButtonActive]} onclick="window.location.href='/'" aria-labelledby="menu-a-index">
               <svg class:list={[menuIconClass, isActive('/') && menuIconActiveClass]} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.8913288,10 L11.8900003,3.99867157 L5.88867192,10 L5.89001465,10 L5.89001465,20 L17.8900146,20 L17.8900146,10 L17.8913288,10 Z M19.8900146,11.9986859 L19.8900146,20 C19.8900146,21.1045695 18.9945841,22 17.8900146,22 L5.89001465,22 C4.78544515,22 3.89001465,21.1045695 3.89001465,20 L3.89001465,11.9986573 L2.41319817,13.4754737 L1,12.0622756 L10.4769858,2.5852898 C11.2573722,1.8049034 12.5226285,1.8049034 13.3030149,2.5852898 L22.7800007,12.0622756 L21.3668025,13.4754737 L19.8900146,11.9986859 Z" fill-rule="evenodd"></path></svg>
@@ -132,7 +132,7 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
           </button>
         </div>
 
-        <div class="hidden w-full items-center justify-between gap-3 pl-2 pr-1 max-[1280px]:flex">
+        <div class="hidden w-full items-center justify-between gap-3 pl-2 pr-1 max-[768px]:flex">
           <div class="flex min-w-0 flex-1 items-center">
             <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
               <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="site-avatar" />
@@ -150,7 +150,7 @@ const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start ju
         </div>
       </nav>
 
-      <div id="drawer" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[var(--bg-color)] transition-[opacity,visibility] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:opacity-0 max-[1280px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto">
+      <div id="drawer" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[var(--bg-color)] transition-[opacity,visibility] duration-300 ease-out max-[768px]:block max-[768px]:invisible max-[768px]:opacity-0 max-[768px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto">
         <div class="flex h-full justify-end">
           <div id="drawer-panel" class="relative flex h-full w-full translate-x-full flex-col overflow-hidden bg-[var(--bg-color)] transition-transform duration-300 ease-out [&.open]:translate-x-0">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgb(81_168_221_/_0.2),_transparent_42%)]"></div>

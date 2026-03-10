@@ -20,7 +20,7 @@ function syncMenuA11y(menu, atTop) {
 }
 
 function setStickyMenuState(menu, atTop, { animate = true } = {}) {
-    const isDesktop = window.matchMedia('(min-width: 1281px)').matches;
+    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const currentState = menu.classList.contains('at-top');
     const animatedElements = [
