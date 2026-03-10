@@ -44,22 +44,6 @@ export default defineConfig({
       },
     },
   ],
-  security: {
-    csp: {
-      directives: [
-        "default-src 'self'",
-        "img-src 'self' data: https:",
-        "connect-src 'self' https://*.disqus.com https://*.disquscdn.com",
-        "frame-src https://disqus.com",
-      ],
-      scriptDirective: {
-        resources: ["'self'", "https://*.disqus.com", "https://*.disquscdn.com"],
-      },
-      styleDirective: {
-        resources: ["'self'", "https://*.disquscdn.com"],
-      },
-    },
-  },
   integrations: [
     expressiveCode({
       styleOverrides: {
