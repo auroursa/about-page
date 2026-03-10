@@ -176,7 +176,7 @@ function initDrawer() {
     };
 
     const onBackdropClick = (event) => {
-        if (event.target === drawer) {
+        if (!drawerPanel.contains(event.target)) {
             closeDrawer();
         }
     };
