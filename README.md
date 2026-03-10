@@ -1,6 +1,6 @@
 # Cynosura
 
-Personal website built with Astro, featuring a blog, friends page, and about page. Previously built with Pelican and pure HTML/CSS, now migrated to Astro for better performance and maintainability.
+Personal website built with Astro, featuring a blog, friends page, and about page. Previously built with Pelican and pure HTML/CSS, now migrated to Astro and Tailwind CSS v4 for better performance, maintainability, and more consistent UI spacing.
 
 ## Table of Contents
 - [Cynosura](#cynosura)
@@ -31,14 +31,15 @@ Welcome to my personal website! This site serves as a platform to share my thoug
   - Dual-column layout with sidebar (categories, RSS feed)
   - Category filtering via dedicated category pages (`/posts/category/[category]`)
   - Full-width article pages with metadata, copyright info, and Disqus comments
-  - RSS feed support
+  - RSS feed with full post content output
 - **Friends** (`/friends`): Links to friends' websites and a "void portal" section
 - **About** (`/about`): Information about the website's design, technology stack, and color scheme
 
 ## Technologies
 
 - [Astro](https://astro.build/) - Static site generator
-- HTML5 & CSS3
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first styling
+- CSS custom properties for theme tokens and dark mode
 - Vanilla JavaScript
 - Markdown for blog posts
 
@@ -47,10 +48,15 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 ```
 .
 ├── src/
+│   ├── components/
+│   │   ├── DecoratedTitle.astro   # Shared section title component
+│   │   └── PostSidebar.astro      # Shared blog sidebar component
 │   ├── content/
 │   │   └── blog/           # Markdown blog posts
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Base layout component
+│   ├── styles/
+│   │   └── global.css      # Tailwind entrypoint and global theme tokens
 │   └── pages/
 │       ├── index.astro     # Home page
 │       ├── about.astro     # About page
@@ -61,7 +67,6 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 │           └── category/
 │               └── [category].astro    # Category page for filtering posts
 ├── public/
-│   ├── css/               # Static CSS files
 │   ├── img/               # Images and avatars
 │   ├── font/              # Custom fonts
 │   └── js/                # Static JavaScript files
@@ -123,6 +128,12 @@ Your content here...
 
 Categories currently used: 日常 (Daily), 杂谈 (Misc), 技术 (Tech)
 
+### Styling Notes
+
+- Main page and component layout is now implemented directly in Astro templates with Tailwind utility classes
+- Shared theme variables, fonts, and base global styles live in `src/styles/global.css`
+- When adjusting UI, prefer updating template markup and utility classes first so related layouts stay visually aligned
+
 ### Adding Friends
 
 To add a new friend to the friends page, edit `src/pages/friends.astro` and add an entry to the `friends` array:
@@ -147,6 +158,8 @@ This project is designed to be deployed on static hosting platforms like:
 
 Build command: `pnpm build`
 Output directory: `dist`
+
+For Cloudflare Pages compatibility, the legacy feed path `/posts/feeds/all.atom.xml` is redirected to `/rss.xml` via `public/_redirects`.
 
 ## License
 

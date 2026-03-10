@@ -5,6 +5,7 @@ This guide helps agentic coding tools work effectively in this Astro-based perso
 ## Project Overview
 
 - **Framework**: Astro 5.17.1 (TypeScript)
+- **Styling**: Tailwind CSS v4 + CSS variables in `src/styles/global.css`
 - **Package Manager**: pnpm
 - **Site Language**: Chinese (zh-cn)
 - **Content**: Personal blog with content collections, category filtering, RSS feed, and sitemap
@@ -80,16 +81,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 ### CSS & Styling
 
+- Use Tailwind CSS v4 utility classes in `.astro` templates for layout and component styling
+- Keep shared tokens, fonts, and low-level globals in `src/styles/global.css`
 - Use CSS custom properties (variables) for theming
 - Implement dark mode using `@media (prefers-color-scheme: dark)`
 - Store custom fonts in `public/font/` directory
-- Keep main styles in `public/css/main.css`
-- Use semantic class names that reflect purpose, not appearance
+- Prefer editing Astro markup over re-introducing large global component stylesheets
+- Keep spacing, alignment, and responsive behavior consistent across matching cards and sidebars
 
 ### File Organization
 
 ```
 src/
+├── components/
+│   ├── DecoratedTitle.astro
+│   └── PostSidebar.astro
 ├── content/
 │   └── blog/              # Markdown blog posts
 ├── layouts/
@@ -104,6 +110,8 @@ src/
 │   │   ├── category/
 │   │   │   └── [category].astro  # Category filtering page
 │   │   └── rss.xml.ts    # RSS feed endpoint
+├── styles/
+│   └── global.css         # Tailwind entrypoint, tokens, fonts, globals
 └── content.config.ts       # Content collections configuration
 ```
 
@@ -132,6 +140,8 @@ src/
 
 - RSS endpoint is at `/rss.xml`
 - Uses `@astrojs/rss` package
+- Feed items include full rendered article content, not title-only entries
+- Root-relative links in RSS content are converted to absolute URLs during feed generation
 - Filters posts that have `pubDate` or `date` field
 - Sorts posts by publication date (newest first)
 
