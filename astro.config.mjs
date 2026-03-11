@@ -44,22 +44,6 @@ export default defineConfig({
       },
     },
   ],
-  security: {
-    csp: {
-      directives: [
-        "default-src 'self'",
-        "img-src 'self' data: https:",
-        "connect-src 'self' https://*.disqus.com https://*.disquscdn.com https://cloudflareinsights.com https://*.cloudflareinsights.com",
-        "frame-src https://disqus.com https://*.disqus.com",
-      ],
-      scriptDirective: {
-        resources: ["'self'", "https://*.disqus.com", "https://*.disquscdn.com", "https://static.cloudflareinsights.com"],
-      },
-      styleDirective: {
-        resources: ["'self'", "'unsafe-inline'", "https://*.disquscdn.com"],
-      },
-    },
-  },
   integrations: [
     expressiveCode({
       styleOverrides: {
