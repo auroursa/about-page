@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { fade } from 'astro:transitions';
 import DecoratedTitle from '../../components/DecoratedTitle.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -24,6 +25,8 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
+const getPostTransitionName = (postId: string, field: 'title' | 'description' | 'category' | 'date') => `post-${postId}-${field}`;
+
 const panelClass = 'glass-panel';
 const articlePanelClass = 'space-y-6';
 const panelTitleClass = 'mb-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] pb-2 !pl-0 text-[0.98rem] font-bold tracking-[0.08em] text-[var(--main-color)] before:hidden';
@@ -35,6 +38,7 @@ const contentClass = 'text-[1rem] leading-8 [&>*:first-child]:mt-0 [&>*:last-chi
 const licenseIconsClass = 'flex items-center gap-2.5 text-[color:color-mix(in_srgb,var(--text-color)_60%,transparent)]';
 const commentShellClass = 'bg-[var(--card-color)] p-4 text-[var(--text-color)]';
 const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
@@ -42,17 +46,17 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
       <header class="space-y-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] pb-6">
         <div class="space-y-4 text-center">
-          <h1 class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
-          {entry.data.description && <p class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
+          <h1 transition:name={getPostTransitionName(entry.id, 'title')} class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
+          {entry.data.description && <p transition:name={getPostTransitionName(entry.id, 'description')} class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
         </div>
         <div class="flex flex-wrap items-center justify-center gap-3">
-          {entry.data.category && <a href={`/posts/category/${entry.data.category}`} class={categoryPillClass}>{entry.data.category}</a>}
-          <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
+          {entry.data.category && <span transition:name={getPostTransitionName(entry.id, 'category')} class={categoryPillClass}>{entry.data.category}</span>}
+          <time transition:name={getPostTransitionName(entry.id, 'date')} class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
             {formatDate(entry.data.pubDate || entry.data.date)}
           </time>
         </div>
       </header>
-      <div class={contentClass}>
+      <div transition:animate={contentFade} class={contentClass}>
         <Content />
       </div>
     </article>
@@ -74,7 +78,9 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
           {entry.data.category && (
             <div class={detailRowClass}>
               <span class={detailLabelClass}>文章分类</span>
-              <span class={detailValueClass}>{entry.data.category}</span>
+              <a href={`/posts/category/${entry.data.category}`} class:list={[detailValueClass, 'text-[var(--main-color)] underline underline-offset-[0.18em]']}>
+                {entry.data.category}
+              </a>
             </div>
           )}
           <div class={detailRowClass}>
