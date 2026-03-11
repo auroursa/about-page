@@ -1,0 +1,57 @@
+---
+import { homeGallerySeasonItems } from '../data/home-gallery';
+---
+
+<div class="home-gallery-seasons-panel">
+  <div class="home-gallery-seasons-head">
+    <div class="space-y-2">
+      <p class="home-gallery-seasons-kicker">2025 / FOUR SEASONS</p>
+      <h4 class="home-gallery-seasons-title">把一年里最值得记住的光景，单独留在这里</h4>
+    </div>
+  </div>
+
+  <div class="home-gallery-seasons-layout">
+    <div class="home-gallery-seasons-grid">
+      {homeGallerySeasonItems.map((item) => (
+        <article class="home-gallery-season-card group">
+          <div class="home-gallery-season-image-shell">
+            <img
+              class="home-gallery-season-image"
+              src={item.src}
+              width={item.width}
+              height={item.height}
+              alt={item.alt}
+              loading="lazy"
+            />
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <article class="home-gallery-post-card" aria-label="2025 四季总结">
+      <div class="home-gallery-post-header">
+        <img class="home-gallery-post-avatar" src="/img/profile-avatar.webp" width="1024" height="1024" alt="赤茶头像" />
+
+        <div class="home-gallery-post-author">
+          <strong class="home-gallery-post-name">赤茶</strong>
+          <div class="home-gallery-post-author-line">
+            <span class="home-gallery-post-handle">@astraorsa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-gallery-post-body">
+        <p class="home-gallery-post-text"><span class="home-gallery-post-hashtag">#2025四季总结</span></p>
+        <p class="home-gallery-post-text">从春天江岸边的樱花，到夏天走过陌生的古街</p>
+        <p class="home-gallery-post-text">在漫长的深秋，抬头遇见一片金黄</p>
+        <p class="home-gallery-post-text">直到初冬，城市被圣诞树尖点亮</p>
+        <p class="home-gallery-post-text">愿你遇见更美的景色，期待明年更好</p>
+      </div>
+
+      <div class="home-gallery-post-meta">
+        <span class="home-gallery-post-timestamp">9:41 PM · Dec 31, 2025</span>
+        <span class="home-gallery-post-source">杭州 · 上海 · 武汉</span>
+      </div>
+    </article>
+  </div>
+</div>

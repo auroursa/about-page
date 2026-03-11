@@ -1,6 +1,6 @@
 # Cynosura
 
-Personal website built with Astro, featuring a blog, friends page, and about page. Previously built with Pelican and pure HTML/CSS, now migrated to Astro and Tailwind CSS v4 for better performance, maintainability, and more consistent UI spacing.
+Personal website built with Astro, featuring a blog, friends page, about page, and a component-driven home page. Previously built with Pelican and pure HTML/CSS, now migrated to Astro and Tailwind CSS v4 for better performance, maintainability, and more consistent UI spacing.
 
 ## Table of Contents
 - [Cynosura](#cynosura)
@@ -26,7 +26,7 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 
 ## Features
 
-- **Home** (`/`): Personal introduction, contact information, and social links
+- **Home** (`/`): Personal introduction, social/contact links, a horizontal article timeline, dual-column skill and device panels, a four-season recap, and a masonry photo wall
 - **Blog** (`/posts`): Collection of articles covering technology, daily life, and personal reflections
   - Dual-column layout with sidebar (categories, RSS feed)
   - Category filtering via dedicated category pages (`/posts/category/[category]`)
@@ -49,10 +49,20 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 .
 ├── src/
 │   ├── components/
-│   │   ├── DecoratedTitle.astro   # Shared section title component
-│   │   └── PostSidebar.astro      # Shared blog sidebar component
+│   │   ├── ArticleTimeline.astro        # Home page article timeline
+│   │   ├── DecoratedTitle.astro         # Shared section title component
+│   │   ├── HomeGalleryShuffleScript.astro
+│   │   ├── HomeHeroFeature.astro
+│   │   ├── HomeHeroPanel.astro
+│   │   ├── HomeInfoGrid.astro
+│   │   ├── HomeInfoIcon.astro
+│   │   ├── HomeSeasonRecap.astro
+│   │   └── PostSidebar.astro           # Shared blog sidebar component
 │   ├── content/
 │   │   └── blog/           # Markdown blog posts
+│   ├── data/
+│   │   ├── home-gallery.ts # Home gallery/four-season data
+│   │   └── home-info.ts    # Home skill/device card data
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Base layout component
 │   ├── styles/
@@ -132,7 +142,15 @@ Categories currently used: 日常 (Daily), 杂谈 (Misc), 技术 (Tech)
 
 - Main page and component layout is now implemented directly in Astro templates with Tailwind utility classes
 - Shared theme variables, fonts, and base global styles live in `src/styles/global.css`
+- Repeated home page layout patterns are consolidated into reusable component classes in `src/styles/global.css`
 - When adjusting UI, prefer updating template markup and utility classes first so related layouts stay visually aligned
+
+### Updating the Home Gallery
+
+- Masonry gallery image data lives in `src/data/home-gallery.ts`
+- The gallery shuffles on each browser refresh via `src/components/HomeGalleryShuffleScript.astro`
+- Add or replace gallery images in `public/img/gallery/` and then update the corresponding width/height metadata in `src/data/home-gallery.ts`
+- The featured `2025 / FOUR SEASONS` block is maintained separately from the masonry wall, but uses the same gallery asset directory
 
 ### Adding Friends
 

@@ -1,0 +1,28 @@
+---
+import type { HomeInfoItem } from '../data/home-info';
+import HomeInfoIcon from './HomeInfoIcon.astro';
+
+interface Props {
+  kicker: string;
+  title: string;
+  items: HomeInfoItem[];
+}
+
+const { kicker, title, items } = Astro.props;
+---
+
+<section class="glass-panel section-panel">
+  <div class="section-stack">
+    <p class="section-kicker">{kicker}</p>
+    <h3 class="section-title">{title}</h3>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 max-[360px]:grid-cols-1">
+    {items.map((item) => (
+      <div class="group info-grid-card">
+        <span class="info-grid-icon"><HomeInfoIcon icon={item.icon} /></span>
+        <div class="info-grid-label"><p class="info-grid-name">{item.label}</p></div>
+      </div>
+    ))}
+  </div>
+</section>

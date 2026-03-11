@@ -8,7 +8,7 @@ This guide helps agentic coding tools work effectively in this Astro-based perso
 - **Styling**: Tailwind CSS v4 + CSS variables in `src/styles/global.css`
 - **Package Manager**: pnpm
 - **Site Language**: Chinese (zh-cn)
-- **Content**: Personal blog with content collections, category filtering, RSS feed, and sitemap
+- **Content**: Personal blog with content collections, category filtering, RSS feed, sitemap, and a component-driven home page
 
 ## Build Commands
 
@@ -83,21 +83,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 - Use Tailwind CSS v4 utility classes in `.astro` templates for layout and component styling
 - Keep shared tokens, fonts, and low-level globals in `src/styles/global.css`
+- Prefer promoting repeated layout/UI patterns into `src/styles/global.css` component classes once the same utility stack appears in multiple places
 - Use CSS custom properties (variables) for theming
 - Implement dark mode using `@media (prefers-color-scheme: dark)`
 - Store custom fonts in `public/font/` directory
 - Prefer editing Astro markup over re-introducing large global component stylesheets
 - Keep spacing, alignment, and responsive behavior consistent across matching cards and sidebars
 
+### Home Page Structure
+
+- The home page is assembled from dedicated Astro components rather than one large template
+- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeInfoGrid.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
+- Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
+- The masonry gallery intentionally shuffles on each refresh via a small client-side script component
+- When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
+
 ### File Organization
 
 ```
 src/
 ├── components/
+│   ├── ArticleTimeline.astro
 │   ├── DecoratedTitle.astro
+│   ├── HomeGalleryShuffleScript.astro
+│   ├── HomeHeroFeature.astro
+│   ├── HomeHeroPanel.astro
+│   ├── HomeInfoGrid.astro
+│   ├── HomeInfoIcon.astro
+│   ├── HomeSeasonRecap.astro
 │   └── PostSidebar.astro
 ├── content/
 │   └── blog/              # Markdown blog posts
+├── data/
+│   ├── home-gallery.ts    # Home gallery and four-season image data
+│   └── home-info.ts       # Home skill/device card data
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
@@ -128,6 +147,7 @@ src/
 - Store images in `public/img/` directory
 - Always provide `width`, `height`, and `alt` attributes for accessibility
 - Use `loading="lazy"` for below-the-fold images
+- Home gallery images live in `public/img/gallery/`; keep `src/data/home-gallery.ts` in sync when adding or replacing files
 
 ### Internationalization
 

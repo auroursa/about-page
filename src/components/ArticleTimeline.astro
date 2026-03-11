@@ -1,9 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 
-const sectionClass = 'glass-panel space-y-5';
-const sectionHeadingClass = 'm-0 text-[1.36rem] font-bold leading-tight';
-
 const allPosts = await getCollection('blog');
 
 const extractDateParts = (dateStr: string) => {
@@ -56,12 +53,12 @@ const totalPosts = timelinePosts.length;
 const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
 ---
 
-<section class={sectionClass}>
+<section class="glass-panel section-panel">
   <div class="flex items-end justify-between gap-4 max-[900px]:flex-col max-[900px]:items-start">
     <div class="space-y-5">
       <p class="section-kicker">时间轨迹</p>
-      <h3 class={sectionHeadingClass}>
-        {totalPosts > 0 ? '每一段记忆碎片，组成了生活轨迹' : '写下的东西，会慢慢落在这里'}
+      <h3 class="section-title">
+        {totalPosts > 0 ? '每一段记忆碎片，组成了我的生活轨迹' : '写下的东西，会慢慢落在这里'}
       </h3>
     </div>
 
@@ -87,7 +84,7 @@ const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
 
                 <div class="home-article-meta">
                   {post.category ? <span class="category-pill">{post.category}</span> : <span class="home-article-meta-spacer"></span>}
-                  <time class="home-article-date font-overpass" datetime={`${post.year}-${post.month}-${post.day}`}>
+                  <time class="home-article-date" datetime={`${post.year}-${post.month}-${post.day}`}>
                     {post.dateLabel}
                   </time>
                 </div>
