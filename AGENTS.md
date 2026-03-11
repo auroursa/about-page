@@ -97,6 +97,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
+- Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
 
 ### File Organization
 
@@ -191,3 +192,4 @@ This project does not currently have a testing framework configured. If you need
 - No linting tools configured - focus on writing clean, readable code
 - The project uses pnpm workspaces and has specific onlyBuiltDependencies
 - Avoid modifying `pnpm-lock.yaml` directly; let pnpm manage it
+- Astro may warn about Shiki inline styles under stricter CSP; for custom home page interactions, prefer same-origin external scripts instead of inline script blocks

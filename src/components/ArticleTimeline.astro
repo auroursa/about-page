@@ -99,22 +99,4 @@ const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
   )}
 </section>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const scrollToLatestPost = () => {
-      const timeline = document.querySelector('.home-article-scroll');
-
-      if (!(timeline instanceof HTMLElement)) {
-        return;
-      }
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          timeline.scrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
-        });
-      });
-    };
-
-    scrollToLatestPost();
-  })();
-</script>
+<script src="/js/article-timeline.js" data-astro-rerun></script>
