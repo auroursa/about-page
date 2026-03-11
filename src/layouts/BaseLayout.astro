@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { ClientRouter, fade } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 
@@ -58,8 +58,6 @@ const drawerSectionTitleClass = 'mb-3 text-left text-[0.78rem] font-bold trackin
 const drawerSectionHeaderClass = 'mb-3 flex items-start justify-between gap-3';
 const drawerActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-center justify-center text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]';
 const drawerHeaderActionIconClass = 'inline-flex h-9 w-9 shrink-0 items-start justify-center pt-0.5 text-[var(--main-color)] transition-colors duration-300 hover:text-[var(--accent-color)]';
-const pageFade = fade({ duration: '0.16s', easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
-const mainTransition = currentPath === '/posts' ? 'none' : pageFade;
 ---
 
 <html lang="zh-cn">
@@ -102,7 +100,7 @@ const mainTransition = currentPath === '/posts' ? 'none' : pageFade;
       <p class="m-0">Trying to light up the dark.</p>
     </header>
 
-    <main transition:animate={mainTransition} class="mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min-[1800px]:max-w-[65%] max-[1280px]:max-w-[85%] max-[576px]:max-w-full">
+    <main class="mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min-[1800px]:max-w-[65%] max-[1280px]:max-w-[85%] max-[576px]:max-w-full">
       <div class="menu-sentinel h-px"></div>
 
       <nav transition:animate="none" class="menu sticky top-0 z-20 relative mb-2 flex h-14 w-full max-w-full items-center justify-center rounded-none border-x-0 border-t-0 border-b border-[color:color-mix(in_srgb,var(--text-color)_5%,transparent)] bg-[var(--menu-color)] px-4 shadow-[0_1px_0_rgba(15,23,42,0.03)] transition-[max-width,border-radius,background-color,box-shadow,border-color,top,margin,padding] duration-480 ease-[cubic-bezier(0.22,1,0.36,1)] min-[769px]:mx-auto min-[769px]:[&.at-top]:top-3 min-[769px]:[&.at-top]:mb-3 min-[769px]:[&.at-top]:max-w-[58rem] min-[769px]:[&.at-top]:rounded-2xl min-[769px]:[&.at-top]:border min-[769px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] min-[769px]:[&.at-top]:bg-[color:color-mix(in_srgb,var(--card-color)_75%,transparent)] min-[769px]:[&.at-top]:shadow-[0_8px_32px_rgba(17,101,154,0.08)] min-[769px]:[&.at-top]:backdrop-blur-xl max-[768px]:mb-0 max-[768px]:h-12 max-[768px]:border-b-0 max-[768px]:bg-[var(--menu-color)] max-[768px]:shadow-[0_1px_8px_rgba(17,101,154,0.06)] max-[768px]:[&.at-top]:top-1 max-[768px]:[&.at-top]:mx-2.5 max-[768px]:[&.at-top]:mb-1 max-[768px]:[&.at-top]:w-[calc(100%-1.25rem)] max-[768px]:[&.at-top]:max-w-full max-[768px]:[&.at-top]:rounded-2xl max-[768px]:[&.at-top]:border max-[768px]:[&.at-top]:border-[color:color-mix(in_srgb,var(--text-color)_7%,transparent)] max-[768px]:[&.at-top]:bg-[color:color-mix(in_srgb,var(--card-color)_75%,transparent)] max-[768px]:[&.at-top]:shadow-[0_10px_28px_rgba(17,101,154,0.08)] max-[768px]:[&.at-top]:backdrop-blur-xl">

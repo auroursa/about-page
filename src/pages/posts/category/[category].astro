@@ -56,8 +56,6 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
-const getPostTitleTransitionName = (postId: string) => `post-${postId}-title`;
-
 const postCardClass = 'glass-panel post-card';
 const postCategoryClass = 'category-pill';
 const panelClass = 'glass-panel';
@@ -74,7 +72,7 @@ const panelClass = 'glass-panel';
             <div class="flex flex-col gap-4">
               <div class="flex items-start justify-between gap-4">
                 <div class="min-w-0 space-y-2.5">
-                  <h2 transition:name={getPostTitleTransitionName(post.id)} class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{post.data.title}</h2>
+                  <h2 class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{post.data.title}</h2>
                   {post.data.description && <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{post.data.description}</p>}
                 </div>
                 <svg class="mt-1.5 h-5 w-5 shrink-0 fill-[color:color-mix(in_srgb,var(--text-color)_24%,transparent)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:fill-[var(--main-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"></path></svg>

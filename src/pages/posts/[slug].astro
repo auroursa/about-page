@@ -1,6 +1,5 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { fade } from 'astro:transitions';
 import DecoratedTitle from '../../components/DecoratedTitle.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -25,8 +24,6 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
-const getPostTitleTransitionName = (postId: string) => `post-${postId}-title`;
-
 const panelClass = 'glass-panel';
 const articlePanelClass = 'space-y-6';
 const panelTitleClass = 'mb-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] pb-2 !pl-0 text-[0.98rem] font-bold tracking-[0.08em] text-[var(--main-color)] before:hidden';
@@ -38,7 +35,6 @@ const contentClass = 'text-[1rem] leading-8 [&>*:first-child]:mt-0 [&>*:last-chi
 const licenseIconsClass = 'flex items-center gap-2.5 text-[color:color-mix(in_srgb,var(--text-color)_60%,transparent)]';
 const commentShellClass = 'bg-[var(--card-color)] p-4 text-[var(--text-color)]';
 const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
@@ -46,7 +42,7 @@ const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.3
     <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
       <header class="space-y-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] pb-6">
         <div class="space-y-4 text-center">
-          <h1 transition:name={getPostTitleTransitionName(entry.id)} class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
+          <h1 class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
           {entry.data.description && <p class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
         </div>
         <div class="flex flex-wrap items-center justify-center gap-3">
@@ -56,7 +52,7 @@ const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.3
           </time>
         </div>
       </header>
-      <div transition:animate={contentFade} class={contentClass}>
+      <div class={contentClass}>
         <Content />
       </div>
     </article>
@@ -78,9 +74,7 @@ const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.3
           {entry.data.category && (
             <div class={detailRowClass}>
               <span class={detailLabelClass}>文章分类</span>
-              <a href={`/posts/category/${entry.data.category}`} class:list={[detailValueClass, 'text-[var(--main-color)] underline underline-offset-[0.18em]']}>
-                {entry.data.category}
-              </a>
+              <span class={detailValueClass}>{entry.data.category}</span>
             </div>
           )}
           <div class={detailRowClass}>
