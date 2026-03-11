@@ -5,7 +5,7 @@ This guide helps agentic coding tools work effectively in this Astro-based perso
 ## Project Overview
 
 - **Framework**: Astro 5.17.1 (TypeScript)
-- **Styling**: Tailwind CSS v4 + CSS variables in `src/styles/global.css`
+- **Styling**: Tailwind CSS v4 + modular stylesheet entry at `src/styles/global.css`
 - **Package Manager**: pnpm
 - **Site Language**: Chinese (zh-cn)
 - **Content**: Personal blog with content collections, category filtering, RSS feed, sitemap, and a component-driven home page
@@ -82,8 +82,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ### CSS & Styling
 
 - Use Tailwind CSS v4 utility classes in `.astro` templates for layout and component styling
-- Keep shared tokens, fonts, and low-level globals in `src/styles/global.css`
-- Prefer promoting repeated layout/UI patterns into `src/styles/global.css` component classes once the same utility stack appears in multiple places
+- `src/styles/global.css` is now an entrypoint that imports modular stylesheets (`base.css`, `components.css`, `home.css`, `navigation.css`)
+- Keep tokens/reset/font/base element rules in `src/styles/base.css`
+- Keep reusable UI component patterns in `src/styles/components.css`
+- Keep home-page-specific visual rules in `src/styles/home.css`
+- Keep nav/drawer/indicator behavior styles in `src/styles/navigation.css`
+- Prefer promoting repeated layout/UI patterns into component-level classes instead of repeating long utility stacks
 - Use CSS custom properties (variables) for theming
 - Implement dark mode using `@media (prefers-color-scheme: dark)`
 - Store custom fonts in `public/font/` directory
@@ -94,11 +98,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 - The home page is assembled from dedicated Astro components rather than one large template
 - Treat `src/pages/index.astro` as a composition entry file: keep it focused on importing and ordering sections, not embedding large section markup or data loops
-- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeInfoGrid.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
+- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeProjectPanel.astro`, `HomeInfoGrid.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
 - Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
 - Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
+- For styles that must remain stable across Astro client-side route transitions, prefer same-origin external CSS via `<link>` in layout (example: `public/css/project-card.css`)
 
 ### Client-Side Script Organization
 
@@ -121,6 +126,7 @@ src/
 │   ├── HomeHeroPanel.astro
 │   ├── HomeInfoGrid.astro
 │   ├── HomeInfoIcon.astro
+│   ├── HomeProjectPanel.astro
 │   ├── HomeSeasonRecap.astro
 │   └── PostSidebar.astro
 ├── content/
@@ -141,10 +147,16 @@ src/
 │   │   │   └── [category].astro  # Category filtering page
 │   │   └── rss.xml.ts    # RSS feed endpoint
 ├── styles/
-│   └── global.css         # Tailwind entrypoint, tokens, fonts, globals
+│   ├── global.css         # Tailwind entrypoint + style imports
+│   ├── base.css           # Tokens, reset, base typography/elements
+│   ├── components.css     # Shared component-level classes
+│   ├── home.css           # Home-page-specific styles
+│   └── navigation.css     # Navigation and drawer transition styles
 └── content.config.ts       # Content collections configuration
 
 public/
+├── css/
+│   └── project-card.css
 └── js/
     ├── nav-indicator.js
     ├── nav-sticky-menu.js

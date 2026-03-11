@@ -13,6 +13,15 @@ const swatchOverlayClass = 'pointer-events-none absolute inset-x-0 top-0 h-full 
 const tooltipClass = 'about-color-tooltip invisible absolute left-1/2 top-1/2 w-[6.8rem] -translate-x-1/2 -translate-y-1/2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_92%,transparent)] px-2.5 py-1.5 font-["Overpass_Mono",monospace] text-center text-[0.86rem] text-[var(--text-color)] opacity-0 shadow-[0_8px_18px_rgba(17,101,154,0.12)] backdrop-blur-sm transition-[opacity,visibility] duration-200 select-text [&.show]:visible [&.show]:opacity-100';
 const swatchLabelClass = 'absolute bottom-2 left-1/2 -translate-x-1/2 text-center text-[0.7rem] font-bold text-white opacity-0 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap';
 
+const milestones = [
+  { date: '2022/05/19', event: '本站建立，博客部分由 Hexo 独立构建' },
+  { date: '2022/11/18', event: '开始使用域名 cynosura.one' },
+  { date: '2023/07/17', event: '博客部分由 Hexo 迁移至 Pelican，与主站共用设计风格' },
+  { date: '2023/08/01', event: '个人介绍页使用 CSS Grid 大幅重构' },
+  { date: '2026/02/07', event: '博客从 Pelican 迁移至 Astro，并完全整合博客与个人页' },
+  { date: '2026/03/10', event: '全站使用 Tailwind CSS 进行重构，风格翻新' },
+];
+
 const palette = [
   { name: '背景', hex: '#EBF4F4' },
   { name: '菜单', hex: '#D0DFE6' },
@@ -97,6 +106,25 @@ const palette = [
           </div>
         ))}
       </div>
+    </article>
+
+    <article class:list={[panelClass, cardClass, 'hover-lift']}>
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 15H5V10h14v9zm0-11H5V6h14v2z"></path></svg>
+      </div>
+      <div class="space-y-1">
+        <p class="section-kicker">时间轴</p>
+        <h3 class={sectionHeadingClass}>记录本站发展历程</h3>
+      </div>
+      <ol class="relative m-0 list-none space-y-3 p-0 before:absolute before:bottom-2 before:left-[6.7rem] before:top-2 before:w-px before:bg-[color:color-mix(in_srgb,var(--text-color)_16%,transparent)] max-[576px]:before:left-[0.35rem]">
+        {milestones.map((item) => (
+          <li class="relative grid grid-cols-[6.2rem_1fr] items-start gap-x-4 gap-y-1 py-1 text-[0.92rem] leading-7 max-[576px]:grid-cols-1 max-[576px]:gap-y-0 max-[576px]:pl-4">
+            <span class="pointer-events-none absolute left-[6.7rem] top-[0.86rem] h-2.5 w-2.5 -translate-x-1/2 rounded-full border border-[color:color-mix(in_srgb,var(--main-color)_42%,transparent)] bg-[var(--card-color)] shadow-[0_0_0_2px_color-mix(in_srgb,var(--card-color)_92%,transparent)] max-[576px]:left-[0.35rem]"></span>
+            <time class="font-overpass text-[0.86rem] font-bold tracking-[0.04em] text-[color:color-mix(in_srgb,var(--text-color)_62%,transparent)]">{item.date}</time>
+            <p class="m-0 px-3 py-1.5">{item.event}</p>
+          </li>
+        ))}
+      </ol>
     </article>
   </div>
 </BaseLayout>

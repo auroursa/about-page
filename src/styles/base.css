@@ -1,0 +1,85 @@
+:root {
+  --text-color: #322c28;
+  --bg-color: #ebf4f4;
+  --card-color: #ffffff;
+  --card-content-color: #f6f7f8;
+  --main-color: #11659a;
+  --main-intext-color: #ffffff;
+  --accent-color: #51a8dd;
+  --menu-color: #d8e3e7;
+  --menu-at-top-color: rgb(235 244 244 / 95%);
+  --menu-hv-color: #d0dfe6;
+  --menu-button-color: #322c28;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #fcfaf2;
+    --bg-color: #121212;
+    --card-color: #1b1b1b;
+    --card-content-color: #212121;
+    --main-color: #51a8dd;
+    --main-intext-color: #fcfaf2;
+    --accent-color: #11659a;
+    --menu-color: #242424;
+    --menu-at-top-color: rgb(18 18 18 / 95%);
+    --menu-hv-color: #3c3c3c;
+    --menu-button-color: #fcfaf2;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', 'Helvetica Neue', sans-serif;
+  }
+
+  .font-overpass {
+    font-family: var(--font-overpass), sans-serif;
+  }
+
+  .font-overpass-mono {
+    font-family: var(--font-overpass-mono), monospace;
+  }
+
+  a {
+    color: var(--main-color);
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #566c73;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--card-color);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color);
+  }
+}

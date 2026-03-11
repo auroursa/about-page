@@ -5,6 +5,7 @@ import HomeHeroPanel from '../components/HomeHeroPanel.astro';
 import HomeHeroFeature from '../components/HomeHeroFeature.astro';
 import HomeGalleryPanel from '../components/HomeGalleryPanel.astro';
 import HomeInfoGrid from '../components/HomeInfoGrid.astro';
+import HomeProjectPanel from '../components/HomeProjectPanel.astro';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
 ---
 
@@ -16,6 +17,8 @@ import { homeDeviceItems, homeSkillItems } from '../data/home-info';
 
   <div class="grid grid-cols-1 gap-2">
     <ArticleTimeline />
+
+    <HomeProjectPanel />
 
     <div class="grid grid-cols-2 gap-2 max-[1280px]:grid-cols-1">
       <HomeInfoGrid kicker="技能" title="以 SRE 技能树为主，也许还入门前端" items={homeSkillItems} />
