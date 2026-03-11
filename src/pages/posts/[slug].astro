@@ -106,56 +106,10 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
       <DecoratedTitle as="h3" class={panelTitleClass}>评论</DecoratedTitle>
       <p class="mb-3 mt-0 text-[0.92rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">留言系统基于 <a href="https://disqus.com">Disqus</a>，部分网络环境可能无法正常加载。</p>
       <div class={commentShellClass}>
-        <div id="disqus_thread"></div>
+        <div id="disqus_thread" data-page-url={canonicalPostUrl} data-page-identifier={entry.id}></div>
       </div>
     </section>
   </div>
 
-  <script is:inline define:vars={{ pageUrl: canonicalPostUrl, pageIdentifier: entry.id }} data-astro-rerun data-cfasync="false">
-    (function () {
-      function configureDisqus() {
-        window.disqus_config = function () {
-          this.page.url = pageUrl;
-          this.page.identifier = pageIdentifier;
-        };
-      }
-
-      function mountDisqus() {
-        var thread = document.getElementById('disqus_thread');
-        if (!thread) {
-          return;
-        }
-
-        configureDisqus();
-
-        if (window.DISQUS) {
-          window.DISQUS.reset({
-            reload: true,
-            config: function () {
-              this.page.url = pageUrl;
-              this.page.identifier = pageIdentifier;
-            }
-          });
-          return;
-        }
-
-        var existingScript = document.querySelector('script[data-disqus-script="true"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-
-        thread.innerHTML = '';
-
-        var disqusScript = document.createElement('script');
-        disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
-        disqusScript.async = true;
-        disqusScript.setAttribute('data-timestamp', String(+new Date()));
-        disqusScript.setAttribute('data-disqus-script', 'true');
-        disqusScript.setAttribute('data-cfasync', 'false');
-        document.head.appendChild(disqusScript);
-      }
-
-      mountDisqus();
-    })();
-  </script>
+  <script src="/js/post-disqus.js" data-astro-rerun data-cfasync="false"></script>
 </BaseLayout>
