@@ -722,8 +722,9 @@
   .home-article-scroll {
     position: relative;
     padding-bottom: 0.75rem;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scroll-padding-inline: 0.5rem;
+    -webkit-overflow-scrolling: touch;
   }
 
   .home-article-scroll::before {
@@ -746,7 +747,6 @@
   .home-article-item {
     min-height: 10.9rem;
     gap: 0.32rem;
-    scroll-snap-stop: always;
   }
 
   .home-article-rail::before {

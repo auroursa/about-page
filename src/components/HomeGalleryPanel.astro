@@ -1,0 +1,34 @@
+---
+import HomeGalleryShuffleScript from './HomeGalleryShuffleScript.astro';
+import HomeSeasonRecap from './HomeSeasonRecap.astro';
+import { homeGalleryBackdropItems } from '../data/home-gallery';
+---
+
+<section class="glass-panel section-panel">
+  <div class="section-stack">
+    <p class="section-kicker">相册</p>
+  </div>
+
+  <HomeSeasonRecap />
+
+  <div class="home-gallery-masonry-viewport">
+    <div class="home-gallery-masonry" aria-label="摄影瀑布流" data-shuffle-state="pending">
+      {homeGalleryBackdropItems.map((item) => (
+        <figure class="home-gallery-masonry-card group">
+          <div class="home-gallery-masonry-image-shell">
+            <img
+              class="home-gallery-masonry-image"
+              src={item.src}
+              width={item.width}
+              height={item.height}
+              alt={item.alt}
+              loading="lazy"
+            />
+          </div>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<HomeGalleryShuffleScript />

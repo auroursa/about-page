@@ -93,11 +93,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ### Home Page Structure
 
 - The home page is assembled from dedicated Astro components rather than one large template
-- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeInfoGrid.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
+- Treat `src/pages/index.astro` as a composition entry file: keep it focused on importing and ordering sections, not embedding large section markup or data loops
+- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeInfoGrid.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
 - Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
 - Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
+
+### Client-Side Script Organization
+
+- Avoid monolithic `public/js/main.js`; split scripts by feature/domain and keep each file scoped to one responsibility
+- Use kebab-case file names, and prefer clear prefixes for grouped features (for example `nav-*` for navigation behavior)
+- Current navigation behavior is split across `public/js/nav-indicator.js`, `public/js/nav-sticky-menu.js`, and `public/js/nav-drawer-menu.js`
+- Keep page-specific interactions in dedicated files (for example `public/js/about-color-swatches.js`, `public/js/article-timeline.js`, `public/js/home-gallery-shuffle.js`)
+- For Astro transitions, initialize scripts on both `DOMContentLoaded` and `astro:page-load` to ensure behavior survives client-side navigation
 
 ### File Organization
 
@@ -106,6 +115,7 @@ src/
 ├── components/
 │   ├── ArticleTimeline.astro
 │   ├── DecoratedTitle.astro
+│   ├── HomeGalleryPanel.astro
 │   ├── HomeGalleryShuffleScript.astro
 │   ├── HomeHeroFeature.astro
 │   ├── HomeHeroPanel.astro
@@ -133,6 +143,17 @@ src/
 ├── styles/
 │   └── global.css         # Tailwind entrypoint, tokens, fonts, globals
 └── content.config.ts       # Content collections configuration
+
+public/
+└── js/
+    ├── nav-indicator.js
+    ├── nav-sticky-menu.js
+    ├── nav-drawer-menu.js
+    ├── article-timeline.js
+    ├── about-color-swatches.js
+    ├── home-gallery-shuffle.js
+    ├── post-title-transition.js
+    └── post-disqus.js
 ```
 
 ### Error Handling

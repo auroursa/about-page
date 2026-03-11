@@ -3,10 +3,8 @@ import ArticleTimeline from '../components/ArticleTimeline.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeHeroPanel from '../components/HomeHeroPanel.astro';
 import HomeHeroFeature from '../components/HomeHeroFeature.astro';
-import HomeGalleryShuffleScript from '../components/HomeGalleryShuffleScript.astro';
+import HomeGalleryPanel from '../components/HomeGalleryPanel.astro';
 import HomeInfoGrid from '../components/HomeInfoGrid.astro';
-import HomeSeasonRecap from '../components/HomeSeasonRecap.astro';
-import { homeGalleryBackdropItems } from '../data/home-gallery';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
 ---
 
@@ -24,33 +22,6 @@ import { homeDeviceItems, homeSkillItems } from '../data/home-info';
       <HomeInfoGrid kicker="设备" title="陪我度过了每个抉择的十字路口" items={homeDeviceItems} />
     </div>
 
-    <section class="glass-panel section-panel">
-      <div class="section-stack">
-        <p class="section-kicker">相册</p>
-      </div>
-
-      <HomeSeasonRecap />
-
-      <div class="home-gallery-masonry-viewport">
-        <div class="home-gallery-masonry" aria-label="摄影瀑布流" data-shuffle-state="pending">
-          {homeGalleryBackdropItems.map((item) => (
-            <figure class="home-gallery-masonry-card group">
-              <div class="home-gallery-masonry-image-shell">
-                <img
-                  class="home-gallery-masonry-image"
-                  src={item.src}
-                  width={item.width}
-                  height={item.height}
-                  alt={item.alt}
-                  loading="lazy"
-                />
-              </div>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
+    <HomeGalleryPanel />
   </div>
 </BaseLayout>
-
-<HomeGalleryShuffleScript />
