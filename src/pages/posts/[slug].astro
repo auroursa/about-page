@@ -25,7 +25,7 @@ const formatDate = (dateStr: string | undefined) => {
   return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
 };
 
-const getPostTransitionName = (postId: string, field: 'title' | 'description' | 'category' | 'date') => `post-${postId}-${field}`;
+const getPostTitleTransitionName = (postId: string) => `post-${postId}-title`;
 
 const panelClass = 'glass-panel';
 const articlePanelClass = 'space-y-6';
@@ -46,12 +46,12 @@ const contentFade = fade({ duration: '0.22s', easing: 'cubic-bezier(0.22, 1, 0.3
     <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
       <header class="space-y-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] pb-6">
         <div class="space-y-4 text-center">
-          <h1 transition:name={getPostTransitionName(entry.id, 'title')} class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
-          {entry.data.description && <p transition:name={getPostTransitionName(entry.id, 'description')} class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
+          <h1 transition:name={getPostTitleTransitionName(entry.id)} class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
+          {entry.data.description && <p class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
         </div>
         <div class="flex flex-wrap items-center justify-center gap-3">
-          {entry.data.category && <span transition:name={getPostTransitionName(entry.id, 'category')} class={categoryPillClass}>{entry.data.category}</span>}
-          <time transition:name={getPostTransitionName(entry.id, 'date')} class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
+          {entry.data.category && <a href={`/posts/category/${entry.data.category}`} class={categoryPillClass}>{entry.data.category}</a>}
+          <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
             {formatDate(entry.data.pubDate || entry.data.date)}
           </time>
         </div>
