@@ -1,4 +1,5 @@
 ---
+import ArticleTimeline from '../components/ArticleTimeline.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const sectionClass = 'glass-panel space-y-5';
@@ -77,6 +78,8 @@ const galleryTagClass = 'absolute bottom-3 left-3 flex items-center gap-2 text-w
   </div>
 
   <div class="grid grid-cols-1 gap-2">
+    <ArticleTimeline />
+
     <section class={sectionClass}>
       <div class={sectionHeaderClass}>
         <p class="section-kicker">技能</p>

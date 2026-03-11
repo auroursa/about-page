@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+
+const sectionClass = 'glass-panel space-y-5';
+const sectionHeadingClass = 'm-0 text-[1.36rem] font-bold leading-tight';
+
+const allPosts = await getCollection('blog');
+
+const extractDateParts = (dateStr: string) => {
+  const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+
+  if (!match) {
+    return {
+      year: '0000',
+      month: '01',
+      day: '01',
+      parsedDate: new Date(0),
+    };
+  }
+
+  const [, year, month, day] = match;
+
+  return {
+    year,
+    month,
+    day,
+    parsedDate: new Date(`${year}-${month}-${day}T12:00:00+08:00`),
+  };
+};
+
+const timelinePosts = allPosts
+  .filter((post) => post.data.pubDate || post.data.date)
+  .map((post) => {
+    const rawDate = (post.data.pubDate || post.data.date) as string;
+    const { year, month, day, parsedDate } = extractDateParts(rawDate);
+
+    return {
+      id: post.id,
+      title: post.data.title,
+      description: post.data.description || '在那一刻写下的一点记录。',
+      category: post.data.category,
+      year,
+      month,
+      day,
+      parsedDate,
+      dateLabel: `${year}.${month}.${day}`,
+    };
+  })
+  .sort((a, b) => a.parsedDate.valueOf() - b.parsedDate.valueOf())
+  .map((post, index, posts) => ({
+    ...post,
+    isLatest: index === posts.length - 1,
+  }));
+
+const totalPosts = timelinePosts.length;
+const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
+---
+
+<section class={sectionClass}>
+  <div class="flex items-end justify-between gap-4 max-[900px]:flex-col max-[900px]:items-start">
+    <div class="space-y-5">
+      <p class="section-kicker">时间轨迹</p>
+      <h3 class={sectionHeadingClass}>
+        {totalPosts > 0 ? '每一段记忆碎片，组成了生活轨迹' : '写下的东西，会慢慢落在这里'}
+      </h3>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2.5">
+      <span class="glass-info-tag">共 {totalPosts} 篇</span>
+      {latestPost && <span class="glass-info-tag">最近更新 · {latestPost.dateLabel}</span>}
+    </div>
+  </div>
+
+  {timelinePosts.length > 0 ? (
+    <div class="home-article-timeline" aria-label="文章时间轨迹">
+      <div class="home-article-scroll">
+        <div class="home-article-track">
+          {timelinePosts.map((post) => (
+            <article class:list={['home-article-item', post.isLatest && 'is-latest']}>
+              <div class="home-article-rail" aria-hidden="true">
+                <span class="home-article-dot"></span>
+              </div>
+
+              <a href={`/posts/${post.id}`} class="home-article-card group">
+                <h4 class="home-article-title">{post.title}</h4>
+                <p class="home-article-description">{post.description}</p>
+
+                <div class="home-article-meta">
+                  {post.category ? <span class="category-pill">{post.category}</span> : <span class="home-article-meta-spacer"></span>}
+                  <time class="home-article-date font-overpass" datetime={`${post.year}-${post.month}-${post.day}`}>
+                    {post.dateLabel}
+                  </time>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <p class="m-0 text-[0.96rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_70%,transparent)]">还没有可以铺开的文章轨迹。</p>
+  )}
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const scrollToLatestPost = () => {
+      const timeline = document.querySelector('.home-article-scroll');
+
+      if (!(timeline instanceof HTMLElement)) {
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          timeline.scrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
+        });
+      });
+    };
+
+    scrollToLatestPost();
+  })();
+</script>
