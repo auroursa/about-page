@@ -670,7 +670,7 @@
     align-items: end;
     justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .home-gallery-panel.section-panel {
@@ -688,9 +688,9 @@
   .home-gallery-seasons-title {
     margin: 0;
     max-width: 24rem;
-    font-size: 1.14rem;
+    font-size: 1.36rem;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.25;
   }
 
   .home-gallery-seasons-layout {
