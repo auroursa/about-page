@@ -217,6 +217,304 @@
     border-radius: 0.68rem;
   }
 
+  .home-music-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-music-head {
+    margin-bottom: 0.2rem;
+  }
+
+  .home-music-subtitle {
+    margin: 0;
+    color: color-mix(in srgb, var(--text-color) 64%, transparent);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .home-music-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .home-music-feature {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    border: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+    background: color-mix(in srgb, var(--card-color) 96%, transparent);
+    padding: 0.8rem;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, white 42%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--main-color) 12%, transparent),
+      0 8px 16px rgb(17 101 154 / 7%);
+    transition:
+      border-color 300ms,
+      box-shadow 300ms,
+      transform 300ms;
+    justify-self: start;
+    width: 100%;
+  }
+
+  .home-music-feature:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--main-color) 40%, transparent);
+    background: color-mix(in srgb, var(--card-color) 96%, transparent);
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, white 52%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--main-color) 18%, transparent),
+      0 0 20px color-mix(in srgb, var(--main-color) 16%, transparent),
+      0 10px 20px rgb(17 101 154 / 9%);
+  }
+
+  .home-music-feature:hover .home-music-feature-cover-shell::before {
+    transform: translate(0.52rem, 0.52rem);
+  }
+
+  .home-music-feature:hover .home-music-feature-cover-shell::after {
+    transform: translate(0.24rem, 0.24rem);
+  }
+
+  .home-music-feature-cover-shell {
+    position: relative;
+    width: min(100%, 21rem);
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+  }
+
+  .home-music-feature-cover-shell::before,
+  .home-music-feature-cover-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    background: color-mix(in srgb, var(--card-color) 90%, transparent);
+    pointer-events: none;
+  }
+
+  .home-music-feature-cover-shell::before {
+    transform: translate(0.45rem, 0.45rem);
+    opacity: 0.6;
+  }
+
+  .home-music-feature-cover-shell::after {
+    transform: translate(0.2rem, 0.2rem);
+    opacity: 0.82;
+  }
+
+  .home-music-feature-cover-frame {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    background: color-mix(in srgb, var(--card-color) 84%, transparent);
+    box-shadow: 0 10px 22px rgb(17 101 154 / 14%);
+  }
+
+  .home-music-feature-cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .home-music-feature-badge {
+    position: absolute;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.18rem;
+    border: 1px solid color-mix(in srgb, white 28%, transparent);
+    background: color-mix(in srgb, rgb(6 8 13) 82%, transparent);
+    border-radius: 0.42rem;
+    padding: 0.22rem 0.52rem;
+    color: color-mix(in srgb, white 86%, transparent);
+    font-family: var(--font-overpass), sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .home-music-feature-badge-icon {
+    width: 0.62rem;
+    height: 0.62rem;
+    flex-shrink: 0;
+    transform: translateY(-0.01em);
+  }
+
+  .home-music-feature-badge-text {
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(0.01em);
+  }
+
+  .home-music-cover-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: color-mix(in srgb, var(--text-color) 48%, transparent);
+    font-family: var(--font-overpass), sans-serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .home-music-feature-meta {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.72rem;
+    border-top: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    padding-top: 0.62rem;
+  }
+
+  .home-music-feature-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .home-music-feature-artist {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: color-mix(in srgb, var(--text-color) 66%, transparent);
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .home-music-list {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-music-list > li {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .home-music-list-item {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    align-items: center;
+    gap: 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+    padding: 0.72rem 0.8rem;
+    text-align: left;
+    color: var(--text-color);
+    cursor: pointer;
+    transition:
+      border-color 300ms,
+      background-color 300ms,
+      box-shadow 300ms,
+      transform 300ms;
+  }
+
+  .home-music-list-thumb {
+    width: 2.45rem;
+    height: 2.45rem;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    background: color-mix(in srgb, var(--card-color) 84%, transparent);
+  }
+
+  .home-music-list-thumb-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: color-mix(in srgb, var(--text-color) 52%, transparent);
+    font-family: var(--font-overpass), sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .home-music-list-text {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.18rem;
+  }
+
+  .home-music-list-item:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--main-color) 36%, transparent);
+    background: linear-gradient(165deg, color-mix(in srgb, var(--main-color) 7%, var(--card-color)) 0%, color-mix(in srgb, var(--main-color) 12%, var(--card-color)) 100%);
+    box-shadow: 0 16px 32px rgb(17 101 154 / 12%);
+  }
+
+  .home-music-list-item:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--main-color) 50%, transparent);
+    outline-offset: 2px;
+  }
+
+  .home-music-list-item.is-active {
+    border-color: color-mix(in srgb, var(--main-color) 42%, transparent);
+    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--main-color) 22%, transparent),
+      0 0 18px color-mix(in srgb, var(--main-color) 20%, transparent);
+  }
+
+  .home-music-list-item.is-active:hover {
+    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+  }
+
+  .home-music-list-title {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.93rem;
+    font-weight: 700;
+    line-height: 1.28;
+  }
+
+  .home-music-list-artist {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: color-mix(in srgb, var(--text-color) 66%, transparent);
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .home-music-empty {
+    margin: 0;
+    color: color-mix(in srgb, var(--text-color) 66%, transparent);
+    font-size: 0.92rem;
+    line-height: 1.72;
+  }
+
   .home-gallery-seasons-head {
     display: flex;
     align-items: end;
@@ -415,6 +713,10 @@
     grid-template-columns: 1fr;
   }
 
+  .home-music-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
   .home-gallery-seasons-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-bottom: 0.9rem;
@@ -538,5 +840,56 @@
 
   .project-card {
     padding: 1rem;
+  }
+
+  .home-music-layout {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .home-music-feature {
+    padding: 0.62rem;
+  }
+
+  .home-music-feature-cover-shell::before {
+    transform: translate(0.3rem, 0.3rem);
+  }
+
+  .home-music-feature-cover-shell::after {
+    transform: translate(0.14rem, 0.14rem);
+  }
+
+  .home-music-feature-badge {
+    right: 0.44rem;
+    bottom: 0.44rem;
+    font-size: 0.64rem;
+    border-radius: 0.38rem;
+    padding: 0.2rem 0.46rem;
+  }
+
+  .home-music-feature-badge-icon {
+    width: 0.56rem;
+    height: 0.56rem;
+  }
+
+  .home-music-list {
+    gap: 0.45rem;
+  }
+
+  .home-music-list-item {
+    padding: 0.62rem 0.7rem;
+  }
+
+  .home-music-subtitle {
+    font-size: 0.83rem;
+  }
+
+  .home-music-feature-title {
+    font-size: 0.92rem;
+  }
+
+  .home-music-feature-artist,
+  .home-music-list-artist {
+    font-size: 0.78rem;
   }
 }

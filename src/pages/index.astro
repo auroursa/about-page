@@ -5,6 +5,7 @@ import HomeHeroPanel from '../components/HomeHeroPanel.astro';
 import HomeHeroFeature from '../components/HomeHeroFeature.astro';
 import HomeGalleryPanel from '../components/HomeGalleryPanel.astro';
 import HomeInfoGrid from '../components/HomeInfoGrid.astro';
+import HomeMusicPanel from '../components/HomeMusicPanel.astro';
 import HomeProjectPanel from '../components/HomeProjectPanel.astro';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
 ---
@@ -24,6 +25,8 @@ import { homeDeviceItems, homeSkillItems } from '../data/home-info';
       <HomeInfoGrid kicker="技能" title="以 SRE 技能树为主，也许是前端萌新" items={homeSkillItems} />
       <HomeInfoGrid kicker="设备" title="陪我度过了每个抉择的十字路口" items={homeDeviceItems} />
     </div>
+
+    <HomeMusicPanel />
 
     <HomeGalleryPanel />
   </div>
