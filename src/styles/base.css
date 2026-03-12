@@ -11,8 +11,6 @@
   --menu-hv-color: #d0dfe6;
   --menu-button-color: #322c28;
   --prose-max-width: 82ch;
-  --layout-max-width: 118ch;
-  --layout-nav-compact-width: 102ch;
 }
 
 @media (prefers-color-scheme: dark) {
