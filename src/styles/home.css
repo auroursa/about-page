@@ -8,14 +8,35 @@
     padding: 0.25rem 0 1rem;
     scroll-snap-type: x proximity;
     scroll-padding-inline: 0.15rem;
-    scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--main-color) 52%, transparent) transparent;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent 0%, black 2.5rem, black calc(100% - 2.5rem), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2.5rem, black calc(100% - 2.5rem), transparent 100%);
+  }
+
+  .home-article-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .home-article-scroll.is-at-start {
+    mask-image: linear-gradient(to right, black 0%, black calc(100% - 2.5rem), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 0%, black calc(100% - 2.5rem), transparent 100%);
+  }
+
+  .home-article-scroll.is-at-end {
+    mask-image: linear-gradient(to right, transparent 0%, black 2.5rem, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2.5rem, black 100%);
+  }
+
+  .home-article-scroll.is-no-overflow {
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   .home-article-track {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(14.5rem, 16.25rem);
+    grid-auto-columns: minmax(15.5rem, 17.5rem);
     gap: 0.85rem;
     align-items: stretch;
     min-width: max-content;
@@ -51,15 +72,12 @@
 
   .home-article-dot {
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: 0.95rem;
-    height: 0.95rem;
-    border: 2px solid color-mix(in srgb, var(--main-color) 76%, var(--card-color));
-    border-radius: 9999px;
-    background: var(--card-color);
-    box-shadow: 0 0 0 0.38rem color-mix(in srgb, var(--main-color) 10%, transparent);
-    transform: translateY(-50%);
+    left: 50%;
+    top: 25%;
+    bottom: 25%;
+    width: 2px;
+    background: color-mix(in srgb, var(--main-color) 56%, transparent);
+    transform: translateX(-50%);
   }
 
   .home-article-card {
@@ -67,39 +85,39 @@
     min-height: 100%;
     flex-direction: column;
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-    background: linear-gradient(165deg, color-mix(in srgb, var(--card-color) 90%, transparent) 0%, color-mix(in srgb, var(--main-color) 3%, var(--card-color)) 100%);
-    padding: 0.82rem 0.9rem 0.78rem;
+    background: color-mix(in srgb, var(--main-color) 2%, var(--card-color));
+    padding: 0.9rem 1rem 0.85rem;
     color: var(--text-color);
-    box-shadow: 0 10px 24px rgb(17 101 154 / 8%);
+    box-shadow: 0 4px 12px rgb(17 101 154 / 5%);
     transition:
       border-color 300ms,
-      background-color 300ms,
+      background 300ms,
       box-shadow 300ms,
       transform 300ms;
   }
 
   .home-article-card:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--main-color) 36%, transparent);
-    background: linear-gradient(165deg, color-mix(in srgb, var(--main-color) 7%, var(--card-color)) 0%, color-mix(in srgb, var(--main-color) 12%, var(--card-color)) 100%);
-    box-shadow: 0 16px 32px rgb(17 101 154 / 12%);
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--main-color) 28%, transparent);
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
+    box-shadow: 0 8px 20px rgb(17 101 154 / 8%);
   }
 
   .home-article-item.is-latest .home-article-dot {
+    width: 3px;
     background: var(--main-color);
-    box-shadow: 0 0 0 0.45rem color-mix(in srgb, var(--main-color) 16%, transparent);
   }
 
   .home-article-item.is-latest .home-article-card {
-    border-color: color-mix(in srgb, var(--main-color) 34%, transparent);
-    box-shadow: 0 16px 34px rgb(17 101 154 / 14%);
+    border-color: color-mix(in srgb, var(--main-color) 24%, transparent);
+    box-shadow: 0 6px 16px rgb(17 101 154 / 8%);
   }
 
   .home-article-title {
-    margin: 0;
+    margin: 0.4rem 0 0;
     font-size: 1rem;
     font-weight: 700;
-    line-height: 1.45rem;
+    line-height: 1.52rem;
     transition: color 300ms;
   }
 
@@ -111,9 +129,9 @@
     display: -webkit-box;
     margin: 0.45rem 0 0;
     overflow: hidden;
-    color: color-mix(in srgb, var(--text-color) 72%, transparent);
-    font-size: 0.9rem;
-    line-height: 1.56rem;
+    color: color-mix(in srgb, var(--text-color) 78%, transparent);
+    font-size: 0.92rem;
+    line-height: 1.62rem;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
@@ -121,26 +139,20 @@
   .home-article-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+    gap: 0.5rem;
     margin-top: auto;
     padding-top: 0.65rem;
-    border-top: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
   }
 
   .home-article-meta .category-pill {
     max-width: 100%;
     padding: 0.2rem 0.62rem;
-    font-size: 0.72rem;
-  }
-
-  .home-article-meta-spacer {
-    min-width: 1rem;
+    font-size: 0.75rem;
   }
 
   .home-article-date {
     font-family: var(--font-overpass), sans-serif;
-    color: color-mix(in srgb, var(--text-color) 50%, transparent);
+    color: color-mix(in srgb, var(--main-color) 72%, var(--text-color));
     font-size: 0.72rem;
     letter-spacing: 0.08em;
     font-variant-numeric: tabular-nums;
@@ -869,7 +881,7 @@
 
 @media (max-width: 1280px) {
   .home-article-track {
-    grid-auto-columns: minmax(14rem, 15.4rem);
+    grid-auto-columns: minmax(15rem, 16.5rem);
   }
 
   .home-gallery-seasons-layout {
@@ -920,7 +932,7 @@
   }
 
   .home-article-track {
-    grid-auto-columns: minmax(10.75rem, 62vw);
+    grid-auto-columns: minmax(12rem, 68vw);
     gap: 0.6rem;
     padding-inline: 0.5rem;
   }
@@ -936,15 +948,12 @@
   }
 
   .home-article-dot {
-    width: 0.78rem;
-    height: 0.78rem;
-    border-width: 1.5px;
-    box-shadow: 0 0 0 0.24rem color-mix(in srgb, var(--main-color) 12%, transparent);
+    width: 1.5px;
   }
 
   .home-article-card {
     padding: 0.68rem 0.72rem 0.66rem;
-    box-shadow: 0 8px 18px rgb(17 101 154 / 8%);
+    box-shadow: 0 3px 10px rgb(17 101 154 / 5%);
   }
 
   .home-article-title {

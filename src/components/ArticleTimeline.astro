@@ -78,15 +78,15 @@ const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
                 <span class="home-article-dot"></span>
               </div>
 
-              <a href={`/posts/${post.id}`} class="home-article-card group">
+              <a href={`/posts/${post.id}`} class="home-article-card">
+                <time class="home-article-date" datetime={`${post.year}-${post.month}-${post.day}`}>
+                  {post.dateLabel}
+                </time>
                 <h4 class="home-article-title">{post.title}</h4>
                 <p class="home-article-description">{post.description}</p>
 
                 <div class="home-article-meta">
-                  {post.category ? <span class="category-pill">{post.category}</span> : <span class="home-article-meta-spacer"></span>}
-                  <time class="home-article-date" datetime={`${post.year}-${post.month}-${post.day}`}>
-                    {post.dateLabel}
-                  </time>
+                  {post.category && <span class="category-pill">{post.category}</span>}
                 </div>
               </a>
             </article>
