@@ -121,18 +121,41 @@
     coverImage.addEventListener('load', applyDerivedAccent, { once: true });
   };
 
-  const formatTrackCount = (value) => {
-    if (!value) {
-      return '曲目信息待补充';
+  const formatTrackMeta = (releaseType, trackNumberValue, trackCountValue) => {
+    if (releaseType !== 'album') {
+      return '';
     }
 
-    const parsed = Number(value);
+    const trackCount = Number(trackCountValue);
+    const trackNumber = Number(trackNumberValue);
 
-    if (!Number.isFinite(parsed) || parsed <= 0) {
-      return '曲目信息待补充';
+    if (!Number.isFinite(trackCount) || trackCount <= 1) {
+      return '';
     }
 
-    return `${parsed} 首曲目`;
+    if (Number.isFinite(trackNumber) && trackNumber > 0) {
+      return `排序 ${trackNumber}/${trackCount}`;
+    }
+
+    return `排序 ${trackCount} 首`;
+  };
+
+  const updatePlayButton = (button, options) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const { hasPreview, isPlaying, title } = options;
+    button.disabled = !hasPreview;
+    button.classList.toggle('is-playing', hasPreview && isPlaying);
+    button.setAttribute('aria-pressed', hasPreview && isPlaying ? 'true' : 'false');
+
+    if (hasPreview) {
+      const actionLabel = isPlaying ? '暂停' : '播放';
+      button.setAttribute('aria-label', `${actionLabel} ${title} 的试听片段`);
+    } else {
+      button.setAttribute('aria-label', '当前曲目暂无试听');
+    }
   };
 
   const setMusicCover = (root, item) => {
@@ -171,7 +194,9 @@
     }
 
     if (coverTagCount instanceof HTMLElement) {
-      coverTagCount.textContent = formatTrackCount(item.trackCount);
+      const trackMeta = formatTrackMeta(item.releaseType, item.trackNumber, item.trackCount);
+      coverTagCount.hidden = !trackMeta;
+      coverTagCount.textContent = trackMeta;
     }
 
     if (coverImage instanceof HTMLImageElement) {
@@ -208,12 +233,106 @@
       root.dataset.musicBound = 'true';
 
       const items = Array.from(root.querySelectorAll('[data-music-item]')).filter((item) => item instanceof HTMLButtonElement);
+      const playToggle = root.querySelector('[data-music-play-toggle]');
+      const audio = new Audio();
+      audio.preload = 'none';
+      let activeItem = null;
+      let currentPreviewUrl = '';
 
       if (items.length === 0) {
         return;
       }
 
+      const stopPlayback = () => {
+        audio.pause();
+        audio.currentTime = 0;
+
+        if (activeItem instanceof HTMLButtonElement) {
+          updatePlayButton(playToggle, {
+            hasPreview: Boolean(activeItem.dataset.previewUrl),
+            isPlaying: false,
+            title: activeItem.dataset.title ?? 'Music',
+          });
+        }
+      };
+
+      const syncPreviewForSelection = (selected) => {
+        activeItem = selected;
+        const previewUrl = selected.dataset.previewUrl || '';
+
+        if (currentPreviewUrl !== previewUrl) {
+          currentPreviewUrl = previewUrl;
+
+          if (previewUrl) {
+            audio.src = previewUrl;
+          } else {
+            audio.removeAttribute('src');
+            audio.load();
+          }
+        }
+
+        updatePlayButton(playToggle, {
+          hasPreview: Boolean(previewUrl),
+          isPlaying: !audio.paused,
+          title: selected.dataset.title ?? 'Music',
+        });
+      };
+
+      audio.addEventListener('ended', () => {
+        if (activeItem instanceof HTMLButtonElement) {
+          updatePlayButton(playToggle, {
+            hasPreview: Boolean(activeItem.dataset.previewUrl),
+            isPlaying: false,
+            title: activeItem.dataset.title ?? 'Music',
+          });
+        }
+      });
+
+      if (playToggle instanceof HTMLButtonElement) {
+        playToggle.addEventListener('click', async () => {
+          if (!(activeItem instanceof HTMLButtonElement)) {
+            return;
+          }
+
+          const previewUrl = activeItem.dataset.previewUrl || '';
+
+          if (!previewUrl) {
+            return;
+          }
+
+          if (currentPreviewUrl !== previewUrl) {
+            currentPreviewUrl = previewUrl;
+            audio.src = previewUrl;
+          }
+
+          if (audio.paused) {
+            try {
+              await audio.play();
+              updatePlayButton(playToggle, {
+                hasPreview: true,
+                isPlaying: true,
+                title: activeItem.dataset.title ?? 'Music',
+              });
+            } catch {
+              updatePlayButton(playToggle, {
+                hasPreview: true,
+                isPlaying: false,
+                title: activeItem.dataset.title ?? 'Music',
+              });
+            }
+
+            return;
+          }
+
+          stopPlayback();
+        });
+      }
+
       const applyActiveItem = (selected) => {
+        if (activeItem instanceof HTMLButtonElement && activeItem !== selected) {
+          stopPlayback();
+        }
+
         items.forEach((item) => {
           const isSelected = item === selected;
           item.classList.toggle('is-active', isSelected);
@@ -228,9 +347,12 @@
           year: selected.dataset.year || '年份未知',
           genre: selected.dataset.genre || '流派未标注',
           releaseType: selected.dataset.releaseType || 'single',
+          trackNumber: selected.dataset.trackNumber || '',
           trackCount: selected.dataset.trackCount || '',
           accent: selected.dataset.accent || '194 88% 46%',
         });
+
+        syncPreviewForSelection(selected);
       };
 
       items.forEach((item) => {

@@ -230,7 +230,7 @@
     --music-accent: 194 88% 46%;
     display: grid;
     grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: stretch;
     min-width: 0;
   }
@@ -320,6 +320,11 @@
     transition: transform 360ms ease;
   }
 
+  .home-music-feature-cover-link {
+    display: block;
+    color: inherit;
+  }
+
   .home-music-cover-fallback {
     display: inline-flex;
     align-items: center;
@@ -343,6 +348,105 @@
     padding: 0.7rem var(--meta-edge) var(--meta-edge);
     background: color-mix(in srgb, hsl(var(--music-accent)) 8%, transparent);
     transition: transform 300ms ease, background 300ms ease;
+  }
+
+  .home-music-feature-meta-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .home-music-feature-main-text {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .home-music-feature-play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.14rem;
+    height: 2.14rem;
+    border: 0;
+    border-radius: 999px;
+    background: color-mix(in srgb, hsl(var(--music-accent)) 28%, var(--card-color));
+    color: color-mix(in srgb, var(--text-color) 84%, transparent);
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      background 220ms ease,
+      color 220ms ease,
+      transform 220ms ease,
+      box-shadow 220ms ease;
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 20%, transparent),
+      0 0 14px color-mix(in srgb, hsl(var(--music-accent)) 16%, transparent);
+  }
+
+  .home-music-feature-play:hover {
+    background: color-mix(in srgb, hsl(var(--music-accent)) 34%, var(--card-color));
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 30%, transparent),
+      0 0 18px color-mix(in srgb, hsl(var(--music-accent)) 24%, transparent);
+  }
+
+  .home-music-feature-play:disabled {
+    cursor: not-allowed;
+    background: color-mix(in srgb, var(--card-color) 86%, transparent);
+    color: color-mix(in srgb, var(--text-color) 44%, transparent);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .home-music-feature-play.is-playing {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 34%, transparent),
+      0 0 20px color-mix(in srgb, hsl(var(--music-accent)) 30%, transparent);
+  }
+
+  .home-music-feature-play-icon {
+    position: relative;
+    display: inline-flex;
+    width: 0.92rem;
+    height: 0.92rem;
+    flex-shrink: 0;
+  }
+
+  .home-music-feature-play-glyph {
+    position: absolute;
+    inset: 0;
+    transform-origin: center;
+    transition: transform 220ms ease, opacity 220ms ease;
+  }
+
+  .home-music-feature-play-glyph-play {
+    inset: 3% 6%;
+    background: currentColor;
+    clip-path: polygon(22% 11%, 85% 50%, 22% 89%);
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .home-music-feature-play-glyph-pause {
+    inset: 10% 16%;
+    opacity: 0;
+    transform: scale(0.9);
+    background:
+      linear-gradient(90deg, currentColor 0 34%, transparent 34% 60%, currentColor 60% 94%, transparent 94% 100%);
+  }
+
+  .home-music-feature-play.is-playing .home-music-feature-play-glyph-play {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .home-music-feature-play.is-playing .home-music-feature-play-glyph-pause {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .home-music-feature:hover .home-music-feature-meta {
@@ -435,9 +539,9 @@
     min-width: 0;
     min-height: 0;
     flex-direction: column;
-    gap: 0.55rem;
-    margin: -0.34rem 0 0;
-    padding: 0.34rem 0 0;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -512,6 +616,10 @@
     box-shadow: 0 14px 26px color-mix(in srgb, hsl(var(--music-accent)) 10%, transparent);
   }
 
+  .home-music-list > li:first-child .home-music-list-item:hover {
+    transform: translateY(0);
+  }
+
   .home-music-list-item:focus-visible {
     outline: 2px solid color-mix(in srgb, hsl(var(--music-accent)) 56%, transparent);
     outline-offset: 2px;
@@ -561,8 +669,12 @@
     display: flex;
     align-items: end;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .home-gallery-panel.section-panel {
+    gap: 0.5rem;
   }
 
   .home-gallery-seasons-kicker {
@@ -584,14 +696,14 @@
   .home-gallery-seasons-layout {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.88fr);
-    gap: 0.9rem;
+    gap: 0.5rem;
     align-items: stretch;
   }
 
   .home-gallery-seasons-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.7rem;
+    gap: 0.5rem;
   }
 
   .home-gallery-season-card {
@@ -704,7 +816,7 @@
 
   .home-gallery-masonry {
     column-count: 4;
-    column-gap: 0.75rem;
+    column-gap: 0.5rem;
     transition: opacity 220ms ease;
   }
 
@@ -718,7 +830,7 @@
 
   .home-gallery-masonry-card {
     break-inside: avoid;
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.5rem;
   }
 
   .home-gallery-masonry-image-shell {
@@ -765,7 +877,7 @@
 
   .home-gallery-seasons-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.5rem;
   }
 
   .home-gallery-masonry-viewport {
@@ -774,7 +886,7 @@
 
   .home-gallery-masonry {
     column-count: 3;
-    column-gap: 0.65rem;
+    column-gap: 0.5rem;
   }
 }
 
@@ -864,7 +976,7 @@
   .home-gallery-seasons-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .home-gallery-season-image {
@@ -877,11 +989,11 @@
 
   .home-gallery-masonry {
     column-count: 2;
-    column-gap: 0.55rem;
+    column-gap: 0.5rem;
   }
 
   .home-gallery-masonry-card {
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.5rem;
   }
 
   .project-card {
@@ -913,10 +1025,11 @@
   }
 
   .home-music-list {
-    gap: 0.45rem;
+    gap: 0.5rem;
     max-height: 20rem;
-    margin-top: -0.28rem;
-    padding-top: 0.28rem;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .home-music-list-item {
@@ -937,6 +1050,20 @@
     flex-direction: column;
     gap: 0.36rem;
     padding-top: 0.4rem;
+  }
+
+  .home-music-feature-meta-top {
+    gap: 0.48rem;
+  }
+
+  .home-music-feature-play {
+    width: 1.92rem;
+    height: 1.92rem;
+  }
+
+  .home-music-feature-play-icon {
+    width: 0.82rem;
+    height: 0.82rem;
   }
 
   .home-music-feature-detail {

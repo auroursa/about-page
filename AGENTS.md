@@ -93,17 +93,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Store custom fonts in `public/font/` directory
 - Prefer editing Astro markup over re-introducing large global component stylesheets
 - Keep spacing, alignment, and responsive behavior consistent across matching cards and sidebars
+- Home page card/grid rhythm uses `gap-2` (`0.5rem`) as the baseline spacing token for adjacent cards, dual-column panel gaps, and photo-grid/masonry gutters unless a component explicitly needs a different rhythm
 
 ### Home Page Structure
 
 - The home page is assembled from dedicated Astro components rather than one large template
 - Treat `src/pages/index.astro` as a composition entry file: keep it focused on importing and ordering sections, not embedding large section markup or data loops
-- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeProjectPanel.astro`, `HomeInfoGrid.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
+- Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeProjectPanel.astro`, `HomeInfoGrid.astro`, `HomeMusicPanel.astro`, `HomeMusicSwitcherScript.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
 - Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
 - Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
 - For styles that must remain stable across Astro client-side route transitions, prefer same-origin external CSS via `<link>` in layout (example: `public/css/project-card.css`)
+
+### Home Music Module
+
+- Music data source is `src/data/home-music.ts` (`homeMusicAppleLinks`), with Apple lookup and normalization in `src/components/HomeMusicPanel.astro`
+- Keep music metadata parsing centralized in `HomeMusicPanel.astro` helpers and interfaces (`releaseType`, `trackNumber`, `trackCount`, `year`, `genre`, `previewUrl`)
+- `releaseType` should prioritize `trackCount` when available (`<= 1` as single, `> 1` as album), then fallback to `collectionType`
+- Track-order tag should stay concise (`排序 x/y`) and remain hidden for singles
+- Accent color is shared at the music layout container level (`--music-accent`) so left feature card and right list stay in sync
+- Cover-derived accent extraction and interactive switching logic belong in `public/js/home-music-switcher.js` (avoid inline scripts)
+- Preview playback uses `previewUrl` with a single in-page `Audio` instance; keep button states synchronized when active track changes
+- Keep the right music list scrollable for long lists and avoid scroll-position drift when fixing hover clipping
+- Keep this section's spacing rhythm consistent with other home cards (currently aligned to `gap-2` / `0.5rem`)
+
+### Home Spacing Rhythm
+
+- Use `0.5rem` (`gap-2`) as the default spacing baseline across home modules
+- Keep paired panel gaps (for example left/right split cards) aligned to `0.5rem`
+- Keep gallery spacing consistent: four-season grid gaps, season-to-masonry spacing, and masonry column/card gutters should follow the same `0.5rem` baseline
+- When tweaking one module's spacing, check neighboring home modules and keep shared rhythm synchronized
 
 ### Client-Side Script Organization
 
@@ -111,6 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Use kebab-case file names, and prefer clear prefixes for grouped features (for example `nav-*` for navigation behavior)
 - Current navigation behavior is split across `public/js/nav-indicator.js`, `public/js/nav-sticky-menu.js`, and `public/js/nav-drawer-menu.js`
 - Keep page-specific interactions in dedicated files (for example `public/js/about-color-swatches.js`, `public/js/article-timeline.js`, `public/js/home-gallery-shuffle.js`)
+- Home music behavior is handled in `public/js/home-music-switcher.js` (accent sync, cover updates, preview playback)
 - For Astro transitions, initialize scripts on both `DOMContentLoaded` and `astro:page-load` to ensure behavior survives client-side navigation
 
 ### File Organization
@@ -126,6 +147,8 @@ src/
 │   ├── HomeHeroPanel.astro
 │   ├── HomeInfoGrid.astro
 │   ├── HomeInfoIcon.astro
+│   ├── HomeMusicPanel.astro
+│   ├── HomeMusicSwitcherScript.astro
 │   ├── HomeProjectPanel.astro
 │   ├── HomeSeasonRecap.astro
 │   └── PostSidebar.astro
@@ -133,7 +156,8 @@ src/
 │   └── blog/              # Markdown blog posts
 ├── data/
 │   ├── home-gallery.ts    # Home gallery and four-season image data
-│   └── home-info.ts       # Home skill/device card data
+│   ├── home-info.ts       # Home skill/device card data
+│   └── home-music.ts      # Home music Apple Music link data
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
@@ -164,6 +188,7 @@ public/
     ├── article-timeline.js
     ├── about-color-swatches.js
     ├── home-gallery-shuffle.js
+    ├── home-music-switcher.js
     ├── post-title-transition.js
     └── post-disqus.js
 ```

@@ -4,12 +4,14 @@ import HomeMusicSwitcherScript from './HomeMusicSwitcherScript.astro';
 
 interface AppleMusicCard {
   link: string;
+  previewUrl: string | null;
   title: string;
   artist: string;
   artwork: string | null;
   artworkThumb: string | null;
   year: string;
   genre: string;
+  trackNumber: number | null;
   trackCount: number | null;
   releaseType: 'single' | 'album';
   accent: string;
@@ -25,8 +27,10 @@ interface AppleLookupResult {
   collectionName?: string;
   copyright?: string;
   kind?: string;
+  previewUrl?: string;
   primaryGenreName?: string;
   releaseDate?: string;
+  trackNumber?: number;
   trackCount?: number;
   trackName?: string;
 }
@@ -71,23 +75,39 @@ const toReleaseYear = (source?: string, copyright?: string): string => {
 };
 
 const toReleaseType = (collectionType?: string, trackCount?: number): 'single' | 'album' => {
-  if (collectionType?.toLowerCase() === 'album') {
+  if (typeof trackCount === 'number') {
+    if (trackCount <= 1) {
+      return 'single';
+    }
+
     return 'album';
   }
 
-  if (typeof trackCount === 'number' && trackCount > 1) {
+  if (collectionType?.toLowerCase() === 'album') {
     return 'album';
   }
 
   return 'single';
 };
 
-const formatTrackCount = (trackCount: number | null): string => {
-  if (typeof trackCount === 'number' && trackCount > 0) {
-    return `${trackCount} 首曲目`;
+const formatTrackMeta = (
+  releaseType: 'single' | 'album',
+  trackNumber: number | null,
+  trackCount: number | null,
+): string | null => {
+  if (releaseType !== 'album') {
+    return null;
   }
 
-  return '曲目信息待补充';
+  if (typeof trackCount === 'number' && trackCount > 1) {
+    if (typeof trackNumber === 'number' && trackNumber > 0) {
+      return `排序 ${trackNumber}/${trackCount}`;
+    }
+
+    return `排序 ${trackCount} 首`;
+  }
+
+  return null;
 };
 
 const parseAppleIds = (link: string): ParsedAppleIds => {
@@ -125,10 +145,12 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
         link,
         title: 'Music',
         artist: '链接格式暂不支持',
+        previewUrl: null,
         artwork: null,
         artworkThumb: null,
         year: '年份未知',
         genre: '流派未标注',
+        trackNumber: null,
         trackCount: null,
         releaseType: 'single',
         accent: fallbackAccent,
@@ -180,6 +202,7 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
         : typeof matched.trackCount === 'number'
           ? matched.trackCount
           : null;
+    const trackNumber = typeof matched.trackNumber === 'number' ? matched.trackNumber : null;
     const releaseType = toReleaseType(matched.collectionType ?? collection?.collectionType, trackCount ?? undefined);
     const year = toReleaseYear(collection?.releaseDate ?? matched.releaseDate, collection?.copyright ?? matched.copyright);
     const genre = collection?.primaryGenreName ?? matched.primaryGenreName ?? '流派未标注';
@@ -190,10 +213,12 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       link,
       title,
       artist,
+      previewUrl: matched.previewUrl ?? null,
       artwork: artworkSource ? toSizedArtwork(artworkSource, 600) : null,
       artworkThumb: artworkSource ? toSizedArtwork(artworkSource, 120) : null,
       year,
       genre,
+      trackNumber,
       trackCount,
       releaseType,
       accent: hashToAccent(`${title}-${artist}`),
@@ -203,10 +228,12 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       link,
       title: 'Music',
       artist: '封面抓取失败，点击跳转查看',
+      previewUrl: null,
       artwork: null,
       artworkThumb: null,
       year: '年份未知',
       genre: '流派未标注',
+      trackNumber: null,
       trackCount: null,
       releaseType: 'single',
       accent: fallbackAccent,
@@ -218,6 +245,11 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
 
 const musicCards = await Promise.all(homeMusicAppleLinks.map((link) => resolveAppleMusicCard(link)));
 const featuredMusic = musicCards[0] ?? null;
+const featuredTrackMeta =
+  featuredMusic
+    ? formatTrackMeta(featuredMusic.releaseType, featuredMusic.trackNumber, featuredMusic.trackCount)
+    : null;
+const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
 ---
 
 <section class="glass-panel section-panel home-music-panel">
@@ -229,44 +261,63 @@ const featuredMusic = musicCards[0] ?? null;
   {
     featuredMusic ? (
       <div class="home-music-layout" data-home-music style={`--music-accent: ${featuredMusic.accent};`}>
-        <a
-          class="home-music-feature"
-          href={featuredMusic.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-music-cover-link
-          aria-label={`打开 ${featuredMusic.title} 的 Apple Music 页面（新窗口）`}
-        >
-          <div class="home-music-feature-cover-shell">
-            <div class="home-music-feature-cover-frame">
-              <img
-                class="home-music-feature-cover"
-                src={featuredMusic.artwork ?? ''}
-                width="600"
-                height="600"
-                alt={`${featuredMusic.title} 专辑封面`}
-                loading="lazy"
-                decoding="async"
-                crossorigin="anonymous"
-                referrerpolicy="no-referrer"
-                data-music-cover-img
-                hidden={!featuredMusic.artwork}
-              />
-              <div class="home-music-feature-cover home-music-cover-fallback" aria-hidden="true" data-music-cover-fallback hidden={Boolean(featuredMusic.artwork)}>AM</div>
+        <article class="home-music-feature">
+          <a
+            class="home-music-feature-cover-link"
+            href={featuredMusic.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-music-cover-link
+            aria-label={`打开 ${featuredMusic.title} 的 Apple Music 页面（新窗口）`}
+          >
+            <div class="home-music-feature-cover-shell">
+              <div class="home-music-feature-cover-frame">
+                <img
+                  class="home-music-feature-cover"
+                  src={featuredMusic.artwork ?? ''}
+                  width="600"
+                  height="600"
+                  alt={`${featuredMusic.title} 专辑封面`}
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  referrerpolicy="no-referrer"
+                  data-music-cover-img
+                  hidden={!featuredMusic.artwork}
+                />
+                <div class="home-music-feature-cover home-music-cover-fallback" aria-hidden="true" data-music-cover-fallback hidden={Boolean(featuredMusic.artwork)}>AM</div>
+              </div>
             </div>
-          </div>
+          </a>
           <div class="home-music-feature-meta">
-            <p class="home-music-feature-title" data-music-cover-title>{featuredMusic.title}</p>
-            <p class="home-music-feature-artist" data-music-cover-artist>{featuredMusic.artist}</p>
+            <div class="home-music-feature-meta-top">
+              <div class="home-music-feature-main-text">
+                <p class="home-music-feature-title" data-music-cover-title>{featuredMusic.title}</p>
+                <p class="home-music-feature-artist" data-music-cover-artist>{featuredMusic.artist}</p>
+              </div>
+              <button
+                type="button"
+                class="home-music-feature-play"
+                data-music-play-toggle
+                aria-label={featuredHasPreview ? `播放 ${featuredMusic.title} 的试听片段` : '当前曲目暂无试听'}
+                aria-pressed="false"
+                disabled={!featuredHasPreview}
+              >
+                <span class="home-music-feature-play-icon" aria-hidden="true">
+                  <span class="home-music-feature-play-glyph home-music-feature-play-glyph-play"></span>
+                  <span class="home-music-feature-play-glyph home-music-feature-play-glyph-pause"></span>
+                </span>
+              </button>
+            </div>
             <div class="home-music-feature-subline">
               <p class="home-music-feature-detail" data-music-cover-detail>{`${featuredMusic.year} · ${featuredMusic.genre}`}</p>
               <div class="home-music-feature-tags" aria-hidden="true">
                 <span class="home-music-feature-tag" data-music-cover-tag-type>{featuredMusic.releaseType === 'album' ? '专辑' : '单曲'}</span>
-                <span class="home-music-feature-tag" data-music-cover-tag-count>{formatTrackCount(featuredMusic.trackCount)}</span>
+                <span class="home-music-feature-tag" data-music-cover-tag-count hidden={!featuredTrackMeta}>{featuredTrackMeta}</span>
               </div>
             </div>
           </div>
-        </a>
+        </article>
 
         <ul class="home-music-list" aria-label="最近常听曲目">
           {musicCards.map((item, index) => (
@@ -283,6 +334,8 @@ const featuredMusic = musicCards[0] ?? null;
                 data-year={item.year}
                 data-genre={item.genre}
                 data-release-type={item.releaseType}
+                data-preview-url={item.previewUrl ?? ''}
+                data-track-number={item.trackNumber !== null ? String(item.trackNumber) : ''}
                 data-track-count={item.trackCount !== null ? String(item.trackCount) : ''}
                 data-accent={item.accent}
               >
