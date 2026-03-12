@@ -37,14 +37,69 @@
     };
   };
 
+  /* ── #1 Median-cut dominant color extraction ── */
+
+  const medianCut = (pixels, depth) => {
+    if (depth === 0 || pixels.length === 0) {
+      let rSum = 0;
+      let gSum = 0;
+      let bSum = 0;
+
+      for (let i = 0; i < pixels.length; i += 1) {
+        rSum += pixels[i][0];
+        gSum += pixels[i][1];
+        bSum += pixels[i][2];
+      }
+
+      const count = pixels.length || 1;
+      return [[rSum / count, gSum / count, bSum / count]];
+    }
+
+    let rMin = 255;
+    let rMax = 0;
+    let gMin = 255;
+    let gMax = 0;
+    let bMin = 255;
+    let bMax = 0;
+
+    for (let i = 0; i < pixels.length; i += 1) {
+      const [r, g, b] = pixels[i];
+
+      if (r < rMin) rMin = r;
+      if (r > rMax) rMax = r;
+      if (g < gMin) gMin = g;
+      if (g > gMax) gMax = g;
+      if (b < bMin) bMin = b;
+      if (b > bMax) bMax = b;
+    }
+
+    const rRange = rMax - rMin;
+    const gRange = gMax - gMin;
+    const bRange = bMax - bMin;
+    let channel = 0;
+
+    if (gRange >= rRange && gRange >= bRange) {
+      channel = 1;
+    } else if (bRange >= rRange && bRange >= gRange) {
+      channel = 2;
+    }
+
+    pixels.sort((a, b) => a[channel] - b[channel]);
+    const mid = Math.floor(pixels.length / 2);
+    return [
+      ...medianCut(pixels.slice(0, mid), depth - 1),
+      ...medianCut(pixels.slice(mid), depth - 1),
+    ];
+  };
+
   const deriveAccentFromImage = (image, fallbackAccent) => {
     if (!(image instanceof HTMLImageElement) || !image.naturalWidth || !image.naturalHeight) {
       return fallbackAccent;
     }
 
     const canvas = document.createElement('canvas');
-    canvas.width = 26;
-    canvas.height = 26;
+    canvas.width = 32;
+    canvas.height = 32;
     const context = canvas.getContext('2d', { willReadFrequently: true });
 
     if (!context) {
@@ -53,42 +108,49 @@
 
     try {
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-      let red = 0;
-      let green = 0;
-      let blue = 0;
-      let count = 0;
+      const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      const filtered = [];
 
-      for (let index = 0; index < pixels.length; index += 4) {
-        const alpha = pixels[index + 3] / 255;
+      for (let index = 0; index < data.length; index += 4) {
+        const alpha = data[index + 3] / 255;
 
         if (alpha < 0.2) {
           continue;
         }
 
-        const r = pixels[index];
-        const g = pixels[index + 1];
-        const b = pixels[index + 2];
+        const r = data[index];
+        const g = data[index + 1];
+        const b = data[index + 2];
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
         if (brightness < 18 || brightness > 238) {
           continue;
         }
 
-        red += r;
-        green += g;
-        blue += b;
-        count += 1;
+        filtered.push([r, g, b]);
       }
 
-      if (count === 0) {
+      if (filtered.length === 0) {
         return fallbackAccent;
       }
 
-      const averageRed = red / count;
-      const averageGreen = green / count;
-      const averageBlue = blue / count;
-      const hsl = rgbToHsl(averageRed, averageGreen, averageBlue);
+      const palette = medianCut(filtered, 3);
+
+      let bestColor = palette[0];
+      let bestScore = -1;
+
+      for (let i = 0; i < palette.length; i += 1) {
+        const [r, g, b] = palette[i];
+        const hsl = rgbToHsl(r, g, b);
+        const score = hsl.s * 1.6 + Math.abs(hsl.l - 50) * -0.5;
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestColor = palette[i];
+        }
+      }
+
+      const hsl = rgbToHsl(bestColor[0], bestColor[1], bestColor[2]);
       const saturation = clamp(Math.max(hsl.s, 48), 48, 86);
       const lightness = clamp(hsl.l, 33, 58);
       return `${hsl.h} ${saturation}% ${lightness}%`;
@@ -158,11 +220,14 @@
     }
   };
 
+  /* ── #2 Crossfade cover transition ── */
+
   const setMusicCover = (root, item) => {
     const coverLink = root.querySelector('[data-music-cover-link]');
     const coverTitle = root.querySelector('[data-music-cover-title]');
     const coverArtist = root.querySelector('[data-music-cover-artist]');
-    const coverDetail = root.querySelector('[data-music-cover-detail]');
+    const coverYear = root.querySelector('[data-music-cover-year]');
+    const coverGenre = root.querySelector('[data-music-cover-genre]');
     const coverTagType = root.querySelector('[data-music-cover-tag-type]');
     const coverTagCount = root.querySelector('[data-music-cover-tag-count]');
     const coverImage = root.querySelector('[data-music-cover-img]');
@@ -185,8 +250,12 @@
       coverArtist.textContent = item.artist;
     }
 
-    if (coverDetail instanceof HTMLElement) {
-      coverDetail.textContent = `${item.year} · ${item.genre}`;
+    if (coverYear instanceof HTMLElement) {
+      coverYear.textContent = item.year;
+    }
+
+    if (coverGenre instanceof HTMLElement) {
+      coverGenre.textContent = item.genre;
     }
 
     if (coverTagType instanceof HTMLElement) {
@@ -201,14 +270,45 @@
 
     if (coverImage instanceof HTMLImageElement) {
       if (item.artwork) {
-        coverImage.src = item.artwork;
-        coverImage.alt = `${item.title} 专辑封面`;
-        coverImage.hidden = false;
-        applyCoverAccent(root, coverImage, fallbackAccent);
+        const nextSrc = item.artwork;
 
-        if (fallback instanceof HTMLElement) {
-          fallback.hidden = true;
+        if (coverImage.src === nextSrc || coverImage.src.endsWith(new URL(nextSrc, location.href).pathname)) {
+          coverImage.hidden = false;
+
+          if (fallback instanceof HTMLElement) {
+            fallback.hidden = true;
+          }
+
+          applyCoverAccent(root, coverImage, fallbackAccent);
+          return;
         }
+
+        const preloader = new Image();
+        preloader.crossOrigin = 'anonymous';
+        preloader.referrerPolicy = 'no-referrer';
+
+        coverImage.style.transition = 'opacity 180ms ease';
+        coverImage.style.opacity = '0';
+
+        const reveal = () => {
+          coverImage.src = nextSrc;
+          coverImage.alt = `${item.title} 专辑封面`;
+          coverImage.hidden = false;
+
+          if (fallback instanceof HTMLElement) {
+            fallback.hidden = true;
+          }
+
+          requestAnimationFrame(() => {
+            coverImage.style.opacity = '1';
+          });
+
+          applyCoverAccent(root, coverImage, fallbackAccent);
+        };
+
+        preloader.onload = reveal;
+        preloader.onerror = reveal;
+        preloader.src = nextSrc;
       } else {
         coverImage.hidden = true;
         applyCoverAccent(root, coverImage, fallbackAccent);
@@ -220,6 +320,74 @@
     } else {
       applyCoverAccent(root, coverImage, fallbackAccent);
     }
+  };
+
+  /* ── #4 Audio fade helpers (volume ramp) ── */
+
+  const FADE_MS = 160;
+  const FADE_STEPS = 10;
+
+  const createAudioGraph = () => {
+    const audio = new Audio();
+    audio.preload = 'none';
+    let fadeTimer = null;
+
+    const clearFade = () => {
+      if (fadeTimer !== null) {
+        clearInterval(fadeTimer);
+        fadeTimer = null;
+      }
+    };
+
+    const fadeIn = async () => {
+      clearFade();
+      audio.volume = 0;
+      await audio.play();
+
+      let step = 0;
+      const interval = FADE_MS / FADE_STEPS;
+
+      fadeTimer = setInterval(() => {
+        step += 1;
+        audio.volume = Math.min(step / FADE_STEPS, 1);
+
+        if (step >= FADE_STEPS) {
+          clearFade();
+        }
+      }, interval);
+    };
+
+    const fadeOut = () => {
+      return new Promise((resolve) => {
+        clearFade();
+
+        if (audio.paused) {
+          audio.currentTime = 0;
+          audio.volume = 1;
+          resolve();
+          return;
+        }
+
+        const startVolume = audio.volume;
+        let step = 0;
+        const interval = FADE_MS / FADE_STEPS;
+
+        fadeTimer = setInterval(() => {
+          step += 1;
+          audio.volume = Math.max(startVolume * (1 - step / FADE_STEPS), 0);
+
+          if (step >= FADE_STEPS) {
+            clearFade();
+            audio.pause();
+            audio.currentTime = 0;
+            audio.volume = 1;
+            resolve();
+          }
+        }, interval);
+      });
+    };
+
+    return { audio, fadeIn, fadeOut };
   };
 
   const initMusicSwitcher = () => {
@@ -234,8 +402,8 @@
 
       const items = Array.from(root.querySelectorAll('[data-music-item]')).filter((item) => item instanceof HTMLButtonElement);
       const playToggle = root.querySelector('[data-music-play-toggle]');
-      const audio = new Audio();
-      audio.preload = 'none';
+      const musicList = root.querySelector('.home-music-list');
+      const { audio, fadeIn, fadeOut } = createAudioGraph();
       let activeItem = null;
       let currentPreviewUrl = '';
 
@@ -243,9 +411,19 @@
         return;
       }
 
-      const stopPlayback = () => {
-        audio.pause();
-        audio.currentTime = 0;
+      /* ── Scroll fade mask: hide when scrolled to bottom ── */
+      if (musicList instanceof HTMLElement) {
+        const checkScrollEnd = () => {
+          const atEnd = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight < 8;
+          musicList.classList.toggle('is-scrolled-end', atEnd);
+        };
+
+        musicList.addEventListener('scroll', checkScrollEnd, { passive: true });
+        checkScrollEnd();
+      }
+
+      const stopPlayback = async () => {
+        await fadeOut();
 
         if (activeItem instanceof HTMLButtonElement) {
           updatePlayButton(playToggle, {
@@ -307,7 +485,7 @@
 
           if (audio.paused) {
             try {
-              await audio.play();
+              await fadeIn();
               updatePlayButton(playToggle, {
                 hasPreview: true,
                 isPlaying: true,
@@ -324,13 +502,13 @@
             return;
           }
 
-          stopPlayback();
+          await stopPlayback();
         });
       }
 
-      const applyActiveItem = (selected) => {
+      const applyActiveItem = async (selected, { scroll = true } = {}) => {
         if (activeItem instanceof HTMLButtonElement && activeItem !== selected) {
-          stopPlayback();
+          await stopPlayback();
         }
 
         items.forEach((item) => {
@@ -353,6 +531,10 @@
         });
 
         syncPreviewForSelection(selected);
+
+        if (scroll) {
+          selected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
       };
 
       items.forEach((item) => {
@@ -389,7 +571,7 @@
       });
 
       const initialSelected = items.find((item) => item.classList.contains('is-active')) || items[0];
-      applyActiveItem(initialSelected);
+      applyActiveItem(initialSelected, { scroll: false });
     });
   };
 

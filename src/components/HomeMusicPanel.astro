@@ -1,6 +1,8 @@
 ---
 import { homeMusicAppleLinks } from '../data/home-music';
 import HomeMusicSwitcherScript from './HomeMusicSwitcherScript.astro';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 interface AppleMusicCard {
   link: string;
@@ -33,6 +35,7 @@ interface AppleLookupResult {
   trackNumber?: number;
   trackCount?: number;
   trackName?: string;
+  isStreamable?: boolean;
 }
 
 interface ParsedAppleIds {
@@ -209,11 +212,14 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
     const title = matched.trackName ?? matched.collectionName ?? 'Music';
     const artist = matched.artistName ?? '未知艺术家';
 
+    const streamable = matched.isStreamable !== false;
+    const previewUrl = streamable && matched.previewUrl ? matched.previewUrl : null;
+
     return {
       link,
       title,
       artist,
-      previewUrl: matched.previewUrl ?? null,
+      previewUrl,
       artwork: artworkSource ? toSizedArtwork(artworkSource, 600) : null,
       artworkThumb: artworkSource ? toSizedArtwork(artworkSource, 120) : null,
       year,
@@ -243,7 +249,67 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
   }
 };
 
-const musicCards = await Promise.all(homeMusicAppleLinks.map((link) => resolveAppleMusicCard(link)));
+/* ── Build-time file cache (24 h TTL) ── */
+
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const cacheDir = resolve('.cache');
+const cacheFile = resolve(cacheDir, 'music-metadata.json');
+
+interface MusicCache {
+  ts: number;
+  cards: Record<string, AppleMusicCard>;
+}
+
+const loadCache = (): MusicCache => {
+  try {
+    const raw = readFileSync(cacheFile, 'utf-8');
+    return JSON.parse(raw) as MusicCache;
+  } catch {
+    return { ts: 0, cards: {} };
+  }
+};
+
+const saveCache = (cache: MusicCache): void => {
+  try {
+    mkdirSync(cacheDir, { recursive: true });
+    writeFileSync(cacheFile, JSON.stringify(cache, null, 2), 'utf-8');
+  } catch {
+    // non-fatal — cache write failure is fine
+  }
+};
+
+const cachedResolve = async (links: string[]): Promise<AppleMusicCard[]> => {
+  const cache = loadCache();
+  const isStale = Date.now() - cache.ts > CACHE_TTL_MS;
+  const results: AppleMusicCard[] = [];
+  const toFetch: { index: number; link: string }[] = [];
+
+  for (let i = 0; i < links.length; i += 1) {
+    const hit = cache.cards[links[i]];
+
+    if (!isStale && hit) {
+      results[i] = hit;
+    } else {
+      toFetch.push({ index: i, link: links[i] });
+    }
+  }
+
+  if (toFetch.length > 0) {
+    const fresh = await Promise.all(toFetch.map(({ link }) => resolveAppleMusicCard(link)));
+
+    for (let j = 0; j < toFetch.length; j += 1) {
+      results[toFetch[j].index] = fresh[j];
+      cache.cards[toFetch[j].link] = fresh[j];
+    }
+
+    cache.ts = Date.now();
+    saveCache(cache);
+  }
+
+  return results;
+};
+
+const musicCards = await cachedResolve(homeMusicAppleLinks);
 const featuredMusic = musicCards[0] ?? null;
 const featuredTrackMeta =
   featuredMusic
@@ -278,7 +344,7 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
                   width="600"
                   height="600"
                   alt={`${featuredMusic.title} 专辑封面`}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   crossorigin="anonymous"
                   referrerpolicy="no-referrer"
@@ -303,14 +369,20 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
                 aria-pressed="false"
                 disabled={!featuredHasPreview}
               >
-                <span class="home-music-feature-play-icon" aria-hidden="true">
-                  <span class="home-music-feature-play-glyph home-music-feature-play-glyph-play"></span>
-                  <span class="home-music-feature-play-glyph home-music-feature-play-glyph-pause"></span>
-                </span>
+                <svg class="home-music-feature-play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path class="home-music-play-path" d="M8 5.5v13l10-6.5z" fill="currentColor" />
+                  <g class="home-music-pause-path">
+                    <rect x="6.5" y="5" width="3.5" height="14" rx="0.8" fill="currentColor" />
+                    <rect x="14" y="5" width="3.5" height="14" rx="0.8" fill="currentColor" />
+                  </g>
+                </svg>
               </button>
             </div>
             <div class="home-music-feature-subline">
-              <p class="home-music-feature-detail" data-music-cover-detail>{`${featuredMusic.year} · ${featuredMusic.genre}`}</p>
+              <div class="home-music-feature-detail-group">
+                <span class="home-music-feature-detail-chip" data-music-cover-year>{featuredMusic.year}</span>
+                <span class="home-music-feature-detail-chip" data-music-cover-genre>{featuredMusic.genre}</span>
+              </div>
               <div class="home-music-feature-tags" aria-hidden="true">
                 <span class="home-music-feature-tag" data-music-cover-tag-type>{featuredMusic.releaseType === 'album' ? '专辑' : '单曲'}</span>
                 <span class="home-music-feature-tag" data-music-cover-tag-count hidden={!featuredTrackMeta}>{featuredTrackMeta}</span>
