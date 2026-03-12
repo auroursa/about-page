@@ -436,8 +436,8 @@
 
   .home-music-list {
     display: flex;
-    height: 100%;
     /* 30rem height + 0.8rem padding */
+    height: 30.8rem;
     max-height: 30.8rem;
     min-width: 0;
     min-height: 0;
