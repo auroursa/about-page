@@ -8,30 +8,107 @@ interface AppleMusicCard {
   artist: string;
   artwork: string | null;
   artworkThumb: string | null;
+  year: string;
+  genre: string;
+  trackCount: number | null;
+  releaseType: 'single' | 'album';
+  accent: string;
 }
 
 interface AppleLookupResult {
+  wrapperType?: string;
   artistName?: string;
   artworkUrl100?: string;
   artworkUrl60?: string;
+  collectionId?: number;
+  collectionType?: string;
   collectionName?: string;
+  copyright?: string;
   kind?: string;
+  primaryGenreName?: string;
+  releaseDate?: string;
+  trackCount?: number;
   trackName?: string;
 }
 
-const parseTrackId = (link: string): string | null => {
+interface ParsedAppleIds {
+  trackId: string | null;
+  collectionId: string | null;
+}
+
+const musicAccentPalette = [
+  '194 88% 46%',
+  '164 76% 39%',
+  '204 83% 44%',
+  '28 90% 52%',
+  '352 78% 48%',
+  '14 82% 53%',
+] as const;
+
+const hashToAccent = (seed: string): string => {
+  let hash = 0;
+
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = (hash * 33 + seed.charCodeAt(index)) >>> 0;
+  }
+
+  return musicAccentPalette[hash % musicAccentPalette.length];
+};
+
+const toReleaseYear = (source?: string, copyright?: string): string => {
+  if (!source) {
+    const fromCopyright = copyright?.match(/(19|20)\d{2}/)?.[0];
+    return fromCopyright ?? '年份未知';
+  }
+
+  const parsed = new Date(source);
+
+  if (Number.isNaN(parsed.getTime())) {
+    return '年份未知';
+  }
+
+  return String(parsed.getUTCFullYear());
+};
+
+const toReleaseType = (collectionType?: string, trackCount?: number): 'single' | 'album' => {
+  if (collectionType?.toLowerCase() === 'album') {
+    return 'album';
+  }
+
+  if (typeof trackCount === 'number' && trackCount > 1) {
+    return 'album';
+  }
+
+  return 'single';
+};
+
+const formatTrackCount = (trackCount: number | null): string => {
+  if (typeof trackCount === 'number' && trackCount > 0) {
+    return `${trackCount} 首曲目`;
+  }
+
+  return '曲目信息待补充';
+};
+
+const parseAppleIds = (link: string): ParsedAppleIds => {
   try {
     const parsed = new URL(link);
     const idInQuery = parsed.searchParams.get('i');
-
-    if (idInQuery && /^\d+$/.test(idInQuery)) {
-      return idInQuery;
-    }
-
+    const pathSegments = parsed.pathname.split('/').filter(Boolean);
+    const numericSegments = pathSegments.filter((segment) => /^\d+$/.test(segment));
     const idInPath = parsed.pathname.match(/id(\d+)/)?.[1] ?? null;
-    return idInPath;
+    const plainNumericPathId = numericSegments.length > 0 ? numericSegments[numericSegments.length - 1] : null;
+
+    const collectionId =
+      (plainNumericPathId && /^\d+$/.test(plainNumericPathId) ? plainNumericPathId : null) ??
+      (idInPath && /^\d+$/.test(idInPath) ? idInPath : null);
+    const trackId = idInQuery && /^\d+$/.test(idInQuery)
+      ? idInQuery
+      : collectionId;
+
+    return { trackId, collectionId };
   } catch {
-    return null;
+    return { trackId: null, collectionId: null };
   }
 };
 
@@ -40,7 +117,8 @@ const toSizedArtwork = (url: string, size: number): string => {
 };
 
 const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
-  const trackId = parseTrackId(link);
+  const { trackId, collectionId } = parseAppleIds(link);
+  const fallbackAccent = hashToAccent(link);
 
   if (!trackId) {
       return {
@@ -49,6 +127,11 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
         artist: '链接格式暂不支持',
         artwork: null,
         artworkThumb: null,
+        year: '年份未知',
+        genre: '流派未标注',
+        trackCount: null,
+        releaseType: 'single',
+        accent: fallbackAccent,
       };
   }
 
@@ -56,30 +139,64 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
   const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
-    const response = await fetch(`https://itunes.apple.com/lookup?id=${trackId}&country=cn&entity=song`, {
+    const trackRequest = fetch(`https://itunes.apple.com/lookup?id=${trackId}&country=cn&entity=song`, {
       signal: controller.signal,
     });
+    const collectionRequest = collectionId && collectionId !== trackId
+      ? fetch(`https://itunes.apple.com/lookup?id=${collectionId}&country=cn&entity=album`, {
+          signal: controller.signal,
+        })
+      : null;
+    const [trackResponse, collectionResponse] = await Promise.all([
+      trackRequest,
+      collectionRequest,
+    ]);
 
-    if (!response.ok) {
+    if (!trackResponse.ok || (collectionResponse && !collectionResponse.ok)) {
       throw new Error('Lookup failed');
     }
 
-    const payload = await response.json();
-    const results = Array.isArray(payload?.results) ? (payload.results as AppleLookupResult[]) : [];
-    const matched = results.find((item) => item.kind === 'song') ?? results[0];
+    const trackPayload = await trackResponse.json();
+    const trackResults = Array.isArray(trackPayload?.results) ? (trackPayload.results as AppleLookupResult[]) : [];
+    const collectionPayload = collectionResponse ? await collectionResponse.json() : null;
+    const collectionResults = Array.isArray(collectionPayload?.results) ? (collectionPayload.results as AppleLookupResult[]) : [];
+    const matched =
+      trackResults.find((item) => item.kind === 'song') ??
+      trackResults.find((item) => item.wrapperType === 'track') ??
+      trackResults[0];
+    const collection =
+      collectionResults.find((item) => item.wrapperType === 'collection') ??
+      trackResults.find((item) => item.wrapperType === 'collection') ??
+      trackResults.find((item) => typeof item.trackCount === 'number');
 
     if (!matched) {
       throw new Error('No lookup result');
     }
 
     const artworkSource = matched.artworkUrl100 ?? matched.artworkUrl60;
+    const trackCount =
+      typeof collection?.trackCount === 'number'
+        ? collection.trackCount
+        : typeof matched.trackCount === 'number'
+          ? matched.trackCount
+          : null;
+    const releaseType = toReleaseType(matched.collectionType ?? collection?.collectionType, trackCount ?? undefined);
+    const year = toReleaseYear(collection?.releaseDate ?? matched.releaseDate, collection?.copyright ?? matched.copyright);
+    const genre = collection?.primaryGenreName ?? matched.primaryGenreName ?? '流派未标注';
+    const title = matched.trackName ?? matched.collectionName ?? 'Music';
+    const artist = matched.artistName ?? '未知艺术家';
 
     return {
       link,
-      title: matched.trackName ?? matched.collectionName ?? 'Music',
-      artist: matched.artistName ?? '未知艺术家',
+      title,
+      artist,
       artwork: artworkSource ? toSizedArtwork(artworkSource, 600) : null,
       artworkThumb: artworkSource ? toSizedArtwork(artworkSource, 120) : null,
+      year,
+      genre,
+      trackCount,
+      releaseType,
+      accent: hashToAccent(`${title}-${artist}`),
     };
   } catch {
     return {
@@ -88,6 +205,11 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       artist: '封面抓取失败，点击跳转查看',
       artwork: null,
       artworkThumb: null,
+      year: '年份未知',
+      genre: '流派未标注',
+      trackCount: null,
+      releaseType: 'single',
+      accent: fallbackAccent,
     };
   } finally {
     clearTimeout(timeout);
@@ -113,6 +235,8 @@ const featuredMusic = musicCards[0] ?? null;
           target="_blank"
           rel="noopener noreferrer"
           data-music-cover-link
+          data-music-cover-surface
+          style={`--music-accent: ${featuredMusic.accent};`}
           aria-label={`打开 ${featuredMusic.title} 的 Apple Music 页面（新窗口）`}
         >
           <div class="home-music-feature-cover-shell">
@@ -125,28 +249,24 @@ const featuredMusic = musicCards[0] ?? null;
                 alt={`${featuredMusic.title} 专辑封面`}
                 loading="lazy"
                 decoding="async"
+                crossorigin="anonymous"
                 referrerpolicy="no-referrer"
                 data-music-cover-img
                 hidden={!featuredMusic.artwork}
               />
               <div class="home-music-feature-cover home-music-cover-fallback" aria-hidden="true" data-music-cover-fallback hidden={Boolean(featuredMusic.artwork)}>AM</div>
-              <span class="home-music-feature-badge" aria-hidden="true">
-                <svg class="home-music-feature-badge-icon" viewBox="-1.5 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <g fill="currentColor" fill-rule="evenodd">
-                    <g transform="translate(-102 -7439)">
-                      <g transform="translate(56 160)">
-                        <path d="M57.5708873,7282.19296 C58.2999598,7281.34797 58.7914012,7280.17098 58.6569121,7279 C57.6062792,7279.04 56.3352055,7279.67099 55.5818643,7280.51498 C54.905374,7281.26397 54.3148354,7282.46095 54.4735932,7283.60894 C55.6455696,7283.69593 56.8418148,7283.03894 57.5708873,7282.19296 M60.1989864,7289.62485 C60.2283111,7292.65181 62.9696641,7293.65879 63,7293.67179 C62.9777537,7293.74279 62.562152,7295.10677 61.5560117,7296.51675 C60.6853718,7297.73474 59.7823735,7298.94772 58.3596204,7298.97372 C56.9621472,7298.99872 56.5121648,7298.17973 54.9134635,7298.17973 C53.3157735,7298.17973 52.8162425,7298.94772 51.4935978,7298.99872 C50.1203933,7299.04772 49.0738052,7297.68074 48.197098,7296.46676 C46.4032359,7293.98379 45.0330649,7289.44985 46.8734421,7286.3899 C47.7875635,7284.87092 49.4206455,7283.90793 51.1942837,7283.88393 C52.5422083,7283.85893 53.8153044,7284.75292 54.6394294,7284.75292 C55.4635543,7284.75292 57.0106846,7283.67793 58.6366882,7283.83593 C59.3172232,7283.86293 61.2283842,7284.09893 62.4549652,7285.8199 C62.355868,7285.8789 60.1747177,7287.09489 60.1989864,7289.62485"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-                <span class="home-music-feature-badge-text">Music</span>
-              </span>
             </div>
           </div>
           <div class="home-music-feature-meta">
             <p class="home-music-feature-title" data-music-cover-title>{featuredMusic.title}</p>
             <p class="home-music-feature-artist" data-music-cover-artist>{featuredMusic.artist}</p>
+            <div class="home-music-feature-subline">
+              <p class="home-music-feature-detail" data-music-cover-detail>{`${featuredMusic.year} · ${featuredMusic.genre}`}</p>
+              <div class="home-music-feature-tags" aria-hidden="true">
+                <span class="home-music-feature-tag" data-music-cover-tag-type>{featuredMusic.releaseType === 'album' ? '专辑' : '单曲'}</span>
+                <span class="home-music-feature-tag" data-music-cover-tag-count>{formatTrackCount(featuredMusic.trackCount)}</span>
+              </div>
+            </div>
           </div>
         </a>
 
@@ -162,6 +282,11 @@ const featuredMusic = musicCards[0] ?? null;
                 data-title={item.title}
                 data-artist={item.artist}
                 data-artwork={item.artwork ?? ''}
+                data-year={item.year}
+                data-genre={item.genre}
+                data-release-type={item.releaseType}
+                data-track-count={item.trackCount !== null ? String(item.trackCount) : ''}
+                data-accent={item.accent}
               >
                 {
                   item.artworkThumb ? (
