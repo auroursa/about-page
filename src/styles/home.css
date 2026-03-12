@@ -227,6 +227,7 @@
   }
 
   .home-music-layout {
+    --music-accent: 194 88% 46%;
     display: grid;
     grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
     gap: 1rem;
@@ -239,7 +240,6 @@
   }
 
   .home-music-feature {
-    --music-accent: 194 88% 46%;
     display: flex;
     min-width: 0;
     flex-direction: column;
@@ -247,10 +247,7 @@
     background:
       linear-gradient(170deg, color-mix(in srgb, hsl(var(--music-accent)) 7%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 3%, var(--card-color)) 100%);
     padding: 0.8rem;
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, white 42%, transparent),
-      0 0 0 1px color-mix(in srgb, var(--text-color) 10%, transparent),
-      0 8px 16px rgb(17 101 154 / 7%);
+    box-shadow: 0 8px 16px rgb(17 101 154 / 7%);
     transition:
       border-color 300ms,
       box-shadow 300ms,
@@ -265,10 +262,7 @@
     border-color: color-mix(in srgb, hsl(var(--music-accent)) 44%, transparent);
     background:
       linear-gradient(170deg, color-mix(in srgb, hsl(var(--music-accent)) 10%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 5%, var(--card-color)) 100%);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, white 52%, transparent),
-      0 0 0 1px color-mix(in srgb, var(--text-color) 14%, transparent),
-      0 10px 20px rgb(17 101 154 / 9%);
+    box-shadow: 0 10px 20px rgb(17 101 154 / 9%);
   }
 
   .home-music-feature-cover-shell {
@@ -277,7 +271,7 @@
     aspect-ratio: 1 / 1;
     margin: 0.42rem auto 0;
     padding: 0.45rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     background:
       linear-gradient(145deg, color-mix(in srgb, hsl(var(--music-accent)) 14%, var(--card-color)) 0%, color-mix(in srgb, var(--card-color) 94%, transparent) 100%);
     box-shadow:
@@ -294,8 +288,8 @@
 
   .home-music-feature-cover-shell::before {
     inset: 0.45rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
-    box-shadow: 0 0 0 1px color-mix(in srgb, white 32%, transparent) inset;
+    border: 1px solid color-mix(in srgb, var(--text-color) 6%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, white 18%, transparent) inset;
   }
 
   .home-music-feature-cover-shell::after {
@@ -311,10 +305,10 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--text-color) 11%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
     background: color-mix(in srgb, var(--card-color) 84%, transparent);
     box-shadow:
-      0 0 0 1px color-mix(in srgb, white 28%, transparent) inset,
+      0 0 0 1px color-mix(in srgb, white 14%, transparent) inset,
       0 14px 28px color-mix(in srgb, hsl(var(--music-accent)) 28%, transparent);
   }
 
@@ -436,9 +430,8 @@
 
   .home-music-list {
     display: flex;
-    /* 30rem height + 0.8rem padding */
-    height: 30.8rem;
-    max-height: 30.8rem;
+    height: 31.5rem;
+    max-height: 31.5rem;
     min-width: 0;
     min-height: 0;
     flex-direction: column;
@@ -471,15 +464,15 @@
     min-width: 0;
     align-items: center;
     gap: 0.65rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+    border: 1px solid color-mix(in srgb, hsl(var(--music-accent)) 8%, color-mix(in srgb, var(--text-color) 10%, transparent));
+    background: color-mix(in srgb, hsl(var(--music-accent)) 2.5%, var(--card-color));
     padding: 0.82rem 0.8rem;
     text-align: left;
     color: var(--text-color);
     cursor: pointer;
     transition:
       border-color 300ms,
-      background-color 300ms,
+      background 300ms,
       box-shadow 300ms,
       transform 300ms;
   }
@@ -514,24 +507,25 @@
 
   .home-music-list-item:hover {
     transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--main-color) 36%, transparent);
-    background: linear-gradient(165deg, color-mix(in srgb, var(--main-color) 7%, var(--card-color)) 0%, color-mix(in srgb, var(--main-color) 12%, var(--card-color)) 100%);
-    box-shadow: 0 16px 32px rgb(17 101 154 / 12%);
+    border-color: color-mix(in srgb, hsl(var(--music-accent)) 14%, transparent);
+    background: linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 4%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 8%, var(--card-color)) 100%);
+    box-shadow: 0 14px 26px color-mix(in srgb, hsl(var(--music-accent)) 10%, transparent);
   }
 
   .home-music-list-item:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--main-color) 50%, transparent);
+    outline: 2px solid color-mix(in srgb, hsl(var(--music-accent)) 56%, transparent);
     outline-offset: 2px;
   }
 
   .home-music-list-item.is-active {
     border-width: 1.5px;
-    border-color: color-mix(in srgb, var(--main-color) 42%, transparent);
-    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+    border-color: color-mix(in srgb, hsl(var(--music-accent)) 46%, transparent);
+    background: color-mix(in srgb, hsl(var(--music-accent)) 13%, var(--card-color));
   }
 
   .home-music-list-item.is-active:hover {
-    background: color-mix(in srgb, var(--card-color) 88%, transparent);
+    border-color: color-mix(in srgb, hsl(var(--music-accent)) 50%, transparent);
+    background: color-mix(in srgb, hsl(var(--music-accent)) 15%, var(--card-color));
   }
 
   .home-music-list-title {

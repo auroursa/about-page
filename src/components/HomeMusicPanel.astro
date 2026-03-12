@@ -228,15 +228,13 @@ const featuredMusic = musicCards[0] ?? null;
 
   {
     featuredMusic ? (
-      <div class="home-music-layout" data-home-music>
+      <div class="home-music-layout" data-home-music style={`--music-accent: ${featuredMusic.accent};`}>
         <a
           class="home-music-feature"
           href={featuredMusic.link}
           target="_blank"
           rel="noopener noreferrer"
           data-music-cover-link
-          data-music-cover-surface
-          style={`--music-accent: ${featuredMusic.accent};`}
           aria-label={`打开 ${featuredMusic.title} 的 Apple Music 页面（新窗口）`}
         >
           <div class="home-music-feature-cover-shell">

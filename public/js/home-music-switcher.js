@@ -137,7 +137,6 @@
 
   const setMusicCover = (root, item) => {
     const coverLink = root.querySelector('[data-music-cover-link]');
-    const coverSurface = root.querySelector('[data-music-cover-surface]');
     const coverTitle = root.querySelector('[data-music-cover-title]');
     const coverArtist = root.querySelector('[data-music-cover-artist]');
     const coverDetail = root.querySelector('[data-music-cover-detail]');
@@ -180,21 +179,21 @@
         coverImage.src = item.artwork;
         coverImage.alt = `${item.title} 专辑封面`;
         coverImage.hidden = false;
-        applyCoverAccent(coverSurface, coverImage, fallbackAccent);
+        applyCoverAccent(root, coverImage, fallbackAccent);
 
         if (fallback instanceof HTMLElement) {
           fallback.hidden = true;
         }
       } else {
         coverImage.hidden = true;
-        applyCoverAccent(coverSurface, coverImage, fallbackAccent);
+        applyCoverAccent(root, coverImage, fallbackAccent);
 
         if (fallback instanceof HTMLElement) {
           fallback.hidden = false;
         }
       }
     } else {
-      applyCoverAccent(coverSurface, coverImage, fallbackAccent);
+      applyCoverAccent(root, coverImage, fallbackAccent);
     }
   };
 
