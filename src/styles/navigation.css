@@ -1,3 +1,73 @@
+/* ── Menu bar base ── */
+.menu {
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  border: 1px solid transparent;
+  border-bottom-color: color-mix(in srgb, var(--text-color) 5%, transparent);
+  border-radius: 0;
+  background-color: var(--menu-color);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  transition-property: max-width, width, border-radius, background-color, box-shadow, border-color, top, margin, padding, height;
+  transition-duration: 480ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Desktop menu ── */
+@media (min-width: 769px) {
+  .menu {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .menu.at-top {
+    top: 0.75rem;
+    margin-bottom: 0.75rem;
+    max-width: 58rem;
+    border-radius: 1rem;
+    border-color: color-mix(in srgb, var(--text-color) 6%, transparent);
+    background-color: color-mix(in srgb, var(--card-color) 75%, transparent);
+    box-shadow: 0 8px 32px rgba(17, 101, 154, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
+/* ── Mobile menu ── */
+@media (max-width: 768px) {
+  .menu {
+    margin-bottom: 0;
+    height: 3.5rem;
+    border-color: transparent;
+    box-shadow: 0 1px 8px rgba(17, 101, 154, 0.06);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .menu.at-top {
+    top: calc(0.25rem + env(safe-area-inset-top, 0px));
+    padding-top: 0;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    margin-bottom: 0.25rem;
+    width: calc(100% - 1.25rem);
+    max-width: 100%;
+    border-radius: 1rem;
+    border-color: color-mix(in srgb, var(--text-color) 7%, transparent);
+    background-color: color-mix(in srgb, var(--card-color) 75%, transparent);
+    box-shadow: 0 10px 28px rgba(17, 101, 154, 0.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .drawer-scroll-content {
+    padding-top: calc(1.25rem + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 @media (max-width: 1280px) {
   .menu .mobile-nav-brand-shell {
     max-width: 0;
@@ -57,6 +127,40 @@
     width 380ms cubic-bezier(0.22, 1, 0.36, 1),
     height 380ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 200ms ease;
+}
+
+/* Drawer backdrop */
+.menu-b-drawer-container.open {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Drawer panel drag gesture */
+#drawer-panel.open {
+  touch-action: pan-y;
+}
+
+/* Drawer scroll */
+.drawer-scroll-content {
+  overscroll-behavior: contain;
+}
+
+.drawer-scroll-content::after {
+  content: '';
+  display: block;
+  position: sticky;
+  bottom: 0;
+  height: 2.5rem;
+  margin-top: -2.5rem;
+  background: linear-gradient(to bottom, transparent, var(--bg-color));
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+.drawer-scroll-content.at-bottom::after {
+  opacity: 0;
 }
 
 /* Drawer stagger animation */

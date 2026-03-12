@@ -1,5 +1,9 @@
 let drawerCleanup = null;
 
+const SECTION_LABELS = { '/': '首页', '/posts': '文章', '/friends': '友人', '/about': '关于' };
+const DRAG_DISMISS_THRESHOLD = 0.35;
+const PANEL_TRANSITION = 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)';
+
 function bindPageLifecycle(init) {
   document.addEventListener('astro:page-load', init);
 
@@ -9,6 +13,34 @@ function bindPageLifecycle(init) {
   }
 
   init();
+}
+
+function trapFocus(container) {
+  const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  const onKeydown = (e) => {
+    if (e.key !== 'Tab') return;
+
+    const focusable = [...container.querySelectorAll(selector)].filter(
+      (el) => el.offsetParent !== null
+    );
+
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
+  container.addEventListener('keydown', onKeydown);
+  return () => container.removeEventListener('keydown', onKeydown);
 }
 
 function initDrawerMenu() {
@@ -28,55 +60,295 @@ function initDrawerMenu() {
   }
 
   const staggerItems = drawerPanel.querySelectorAll('.drawer-stagger');
+  const scrollContent = drawerPanel.querySelector('.drawer-scroll-content');
+  let focusTrapCleanup = null;
 
-  const openDrawer = () => {
-    drawer.classList.add('open');
-    drawerPanel.classList.add('open');
-    openMenuButton.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+  // ── Scroll overflow indicator ──
+  const checkScrollOverflow = () => {
+    if (!scrollContent) return;
+
+    const atBottom = scrollContent.scrollHeight - scrollContent.scrollTop - scrollContent.clientHeight < 4;
+    const noOverflow = scrollContent.scrollHeight <= scrollContent.clientHeight;
+    scrollContent.classList.toggle('at-bottom', atBottom || noOverflow);
+  };
+
+  scrollContent?.addEventListener('scroll', checkScrollOverflow, { passive: true });
+
+  // ── Stagger helpers (fixes race condition on rapid open/close) ──
+  const resetStagger = () => {
+    staggerItems.forEach((item) => {
+      if (!(item instanceof HTMLElement)) return;
+
+      item.style.transition = 'none';
+      item.style.transitionDelay = '';
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(12px)';
+    });
+  };
+
+  const animateStaggerIn = () => {
+    void drawerPanel.offsetHeight;
 
     staggerItems.forEach((item, index) => {
-      if (!(item instanceof HTMLElement)) {
-        return;
-      }
+      if (!(item instanceof HTMLElement)) return;
 
+      item.style.transition = '';
       item.style.transitionDelay = `${80 + index * 60}ms`;
       item.style.opacity = '1';
       item.style.transform = 'translateY(0)';
     });
   };
 
-  const closeDrawer = () => {
+  const animateStaggerOut = () => {
     const lastIndex = staggerItems.length - 1;
 
     staggerItems.forEach((item, index) => {
-      if (!(item instanceof HTMLElement)) {
-        return;
-      }
+      if (!(item instanceof HTMLElement)) return;
 
+      item.style.transition = '';
       item.style.transitionDelay = `${(lastIndex - index) * 40}ms`;
       item.style.opacity = '0';
       item.style.transform = 'translateY(8px)';
     });
+  };
 
+  // ── Close state cleanup ──
+  const finishClose = () => {
     drawer.classList.remove('open');
     drawerPanel.classList.remove('open');
     openMenuButton.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+
+    focusTrapCleanup?.();
+    focusTrapCleanup = null;
+    openMenuButton.focus();
   };
 
+  // ── Open / Close ──
+  const openDrawer = () => {
+    resetStagger();
+
+    drawer.classList.add('open');
+    drawerPanel.classList.add('open');
+    openMenuButton.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+
+    animateStaggerIn();
+
+    focusTrapCleanup = trapFocus(drawerPanel);
+    closeMenuButton.focus();
+
+    requestAnimationFrame(() => requestAnimationFrame(checkScrollOverflow));
+  };
+
+  const closeDrawer = () => {
+    animateStaggerOut();
+    finishClose();
+  };
+
+  // ── Backdrop click ──
   const onBackdropClick = (event) => {
     if (!drawerPanel.contains(event.target)) {
       closeDrawer();
     }
   };
 
+  // ── Escape key ──
   const onKeydown = (event) => {
     if (event.key === 'Escape' && drawer.classList.contains('open')) {
       closeDrawer();
     }
   };
 
+  // ── Real-time drag to close ──
+  let dragState = null;
+
+  const clearDragStyles = () => {
+    drawerPanel.style.transition = '';
+    drawerPanel.style.transform = '';
+    drawer.style.transition = '';
+    drawer.style.backgroundColor = '';
+    drawer.style.backdropFilter = '';
+    drawer.style.webkitBackdropFilter = '';
+  };
+
+  const onPanelTouchStart = (e) => {
+    if (!drawer.classList.contains('open')) return;
+
+    dragState = {
+      startX: e.touches[0].clientX,
+      startY: e.touches[0].clientY,
+      direction: null,
+      active: false,
+    };
+  };
+
+  const onPanelTouchMove = (e) => {
+    if (!dragState) return;
+
+    const x = e.touches[0].clientX;
+    const y = e.touches[0].clientY;
+    const dx = x - dragState.startX;
+    const dy = y - dragState.startY;
+
+    if (!dragState.direction) {
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        dragState.direction = (Math.abs(dx) > Math.abs(dy) && dx > 0) ? 'h' : 'v';
+
+        if (dragState.direction === 'h') {
+          dragState.active = true;
+          drawerPanel.style.transition = 'none';
+        }
+      }
+
+      return;
+    }
+
+    if (!dragState.active) return;
+
+    e.preventDefault();
+
+    const translateX = Math.max(0, dx);
+    const panelWidth = drawerPanel.offsetWidth;
+    const progress = Math.min(translateX / panelWidth, 1);
+
+    drawerPanel.style.transform = `translateX(${translateX}px)`;
+    drawer.style.backgroundColor = `rgb(0 0 0 / ${0.25 * (1 - progress)})`;
+    drawer.style.backdropFilter = `blur(${6 * (1 - progress)}px)`;
+    drawer.style.webkitBackdropFilter = `blur(${6 * (1 - progress)}px)`;
+  };
+
+  const onPanelTouchEnd = (e) => {
+    if (!dragState?.active) {
+      dragState = null;
+      return;
+    }
+
+    const dx = e.changedTouches[0].clientX - dragState.startX;
+    const panelWidth = drawerPanel.offsetWidth;
+    const progress = dx / panelWidth;
+    dragState = null;
+
+    if (progress > DRAG_DISMISS_THRESHOLD) {
+      animateStaggerOut();
+
+      drawerPanel.style.transition = PANEL_TRANSITION;
+      drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+      void drawerPanel.offsetHeight;
+
+      drawerPanel.style.transform = 'translateX(100%)';
+      drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+      drawer.style.backdropFilter = 'blur(0px)';
+      drawer.style.webkitBackdropFilter = 'blur(0px)';
+
+      let cleaned = false;
+
+      const cleanup = () => {
+        if (cleaned) return;
+        cleaned = true;
+        finishClose();
+        clearDragStyles();
+      };
+
+      drawerPanel.addEventListener('transitionend', cleanup, { once: true });
+      setTimeout(cleanup, 400);
+    } else {
+      drawerPanel.style.transition = PANEL_TRANSITION;
+      drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+      void drawerPanel.offsetHeight;
+
+      drawerPanel.style.transform = '';
+      drawer.style.backgroundColor = '';
+      drawer.style.backdropFilter = '';
+      drawer.style.webkitBackdropFilter = '';
+
+      drawerPanel.addEventListener('transitionend', () => {
+        drawerPanel.style.transition = '';
+        drawer.style.transition = '';
+      }, { once: true });
+    }
+  };
+
+  drawerPanel.addEventListener('touchstart', onPanelTouchStart, { passive: true });
+  drawerPanel.addEventListener('touchmove', onPanelTouchMove, { passive: false });
+  drawerPanel.addEventListener('touchend', onPanelTouchEnd, { passive: true });
+
+  // ── Edge swipe to open (from right edge) ──
+  let edgeStartX = null;
+  let edgeStartY = null;
+
+  const onEdgeTouchStart = (e) => {
+    if (drawer.classList.contains('open')) return;
+
+    const x = e.touches[0].clientX;
+
+    if (x > window.innerWidth - 20) {
+      edgeStartX = x;
+      edgeStartY = e.touches[0].clientY;
+    }
+  };
+
+  const onEdgeTouchEnd = (e) => {
+    if (edgeStartX == null) return;
+
+    const deltaX = e.changedTouches[0].clientX - edgeStartX;
+    const deltaY = e.changedTouches[0].clientY - edgeStartY;
+    edgeStartX = null;
+
+    if (deltaX < -60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      openDrawer();
+    }
+  };
+
+  document.addEventListener('touchstart', onEdgeTouchStart, { passive: true });
+  document.addEventListener('touchend', onEdgeTouchEnd, { passive: true });
+
+  // ── Close drawer before View Transition swap ──
+  const onBeforeSwap = () => {
+    if (drawer.classList.contains('open')) {
+      resetStagger();
+      clearDragStyles();
+      finishClose();
+    }
+  };
+
+  document.addEventListener('astro:before-swap', onBeforeSwap);
+
+  // ── Sync mobile section title and link ──
+  const navCurrentLink = document.querySelector('a.mobile-nav-current');
+  const titleEl = navCurrentLink?.querySelector('.mobile-nav-title');
+
+  if (titleEl && navCurrentLink) {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    const sectionPath = Object.keys(SECTION_LABELS).find((p) => p !== '/' && path.startsWith(p)) || (path === '/' ? '/' : null);
+
+    if (sectionPath) {
+      const label = SECTION_LABELS[sectionPath];
+
+      if (label && titleEl.textContent !== label) {
+        titleEl.textContent = label;
+      }
+
+      navCurrentLink.setAttribute('href', sectionPath);
+    }
+  }
+
+  // ── Nav current link: scroll to top if already on that page ──
+  const onNavCurrentClick = (e) => {
+    if (!navCurrentLink) return;
+
+    const linkPath = navCurrentLink.getAttribute('href') || '/';
+    const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+
+    if (linkPath === currentPath) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  navCurrentLink?.addEventListener('click', onNavCurrentClick);
+
+  // ── Event listeners ──
   const links = drawer.querySelectorAll('a');
 
   openMenuButton.addEventListener('click', openDrawer);
@@ -91,6 +363,15 @@ function initDrawerMenu() {
     drawer.removeEventListener('click', onBackdropClick);
     document.removeEventListener('keydown', onKeydown);
     links.forEach((link) => link.removeEventListener('click', closeDrawer));
+    drawerPanel.removeEventListener('touchstart', onPanelTouchStart);
+    drawerPanel.removeEventListener('touchmove', onPanelTouchMove);
+    drawerPanel.removeEventListener('touchend', onPanelTouchEnd);
+    document.removeEventListener('touchstart', onEdgeTouchStart);
+    document.removeEventListener('touchend', onEdgeTouchEnd);
+    document.removeEventListener('astro:before-swap', onBeforeSwap);
+    navCurrentLink?.removeEventListener('click', onNavCurrentClick);
+    scrollContent?.removeEventListener('scroll', checkScrollOverflow);
+    focusTrapCleanup?.();
     document.body.style.overflow = '';
   };
 }

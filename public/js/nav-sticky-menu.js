@@ -124,28 +124,45 @@ function initStickyMenu() {
     return;
   }
 
-  let isFirstObservation = true;
-  let pendingFrame = null;
+  let isFirstUpdate = true;
+  let currentAtTop = false;
+  let scrollRAF = null;
+  const HYSTERESIS = 30;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      const shouldStick = entry.isIntersecting === false;
+  function update() {
+    const rect = sentinel.getBoundingClientRect();
 
-      if (pendingFrame) {
-        cancelAnimationFrame(pendingFrame);
-      }
+    if (!currentAtTop && rect.bottom < 0) {
+      currentAtTop = true;
+      setStickyMenuState(menu, true, { animate: !isFirstUpdate });
+      isFirstUpdate = false;
+    } else if (currentAtTop && rect.bottom > HYSTERESIS) {
+      currentAtTop = false;
+      setStickyMenuState(menu, false, { animate: !isFirstUpdate });
+      isFirstUpdate = false;
+    }
+  }
 
-      pendingFrame = requestAnimationFrame(() => {
-        pendingFrame = null;
-        setStickyMenuState(menu, shouldStick, { animate: !isFirstObservation });
-        isFirstObservation = false;
+  const onScroll = () => {
+    if (!scrollRAF) {
+      scrollRAF = requestAnimationFrame(() => {
+        scrollRAF = null;
+        update();
       });
-    },
-    { threshold: [0] }
-  );
+    }
+  };
 
-  observer.observe(sentinel);
-  menuObserverCleanup = () => observer.disconnect();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  update();
+
+  menuObserverCleanup = () => {
+    window.removeEventListener('scroll', onScroll);
+
+    if (scrollRAF) {
+      cancelAnimationFrame(scrollRAF);
+      scrollRAF = null;
+    }
+  };
 }
 
 bindPageLifecycle(initStickyMenu);
