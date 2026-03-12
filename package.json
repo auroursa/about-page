@@ -13,7 +13,7 @@
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "^6.0.1",
+    "astro": "^6.0.3",
     "astro-expressive-code": "^0.41.7",
     "markdown-it": "^14.1.1",
     "sanitize-html": "^2.17.1",
