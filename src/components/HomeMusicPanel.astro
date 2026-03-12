@@ -97,20 +97,19 @@ const formatTrackMeta = (
   releaseType: 'single' | 'album',
   trackNumber: number | null,
   trackCount: number | null,
-): string | null => {
+): { count: string | null; number: string | null } => {
   if (releaseType !== 'album') {
-    return null;
+    return { count: null, number: null };
   }
 
-  if (typeof trackCount === 'number' && trackCount > 1) {
-    if (typeof trackNumber === 'number' && trackNumber > 0) {
-      return `排序 ${trackNumber}/${trackCount}`;
-    }
+  const countLabel = typeof trackCount === 'number' && trackCount > 1
+    ? `共 ${trackCount} 首`
+    : null;
+  const numberLabel = typeof trackNumber === 'number' && trackNumber > 0
+    ? `#${String(trackNumber).padStart(2, '0')}`
+    : null;
 
-    return `排序 ${trackCount} 首`;
-  }
-
-  return null;
+  return { count: countLabel, number: numberLabel };
 };
 
 const parseAppleIds = (link: string): ParsedAppleIds => {
@@ -311,10 +310,9 @@ const cachedResolve = async (links: string[]): Promise<AppleMusicCard[]> => {
 
 const musicCards = await cachedResolve(homeMusicAppleLinks);
 const featuredMusic = musicCards[0] ?? null;
-const featuredTrackMeta =
-  featuredMusic
-    ? formatTrackMeta(featuredMusic.releaseType, featuredMusic.trackNumber, featuredMusic.trackCount)
-    : null;
+const featuredTrackMeta = featuredMusic
+  ? formatTrackMeta(featuredMusic.releaseType, featuredMusic.trackNumber, featuredMusic.trackCount)
+  : { count: null, number: null };
 const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
 ---
 
@@ -385,7 +383,8 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
               </div>
               <div class="home-music-feature-tags" aria-hidden="true">
                 <span class="home-music-feature-tag" data-music-cover-tag-type>{featuredMusic.releaseType === 'album' ? '专辑' : '单曲'}</span>
-                <span class="home-music-feature-tag" data-music-cover-tag-count hidden={!featuredTrackMeta}>{featuredTrackMeta}</span>
+                <span class="home-music-feature-tag" data-music-cover-tag-count hidden={!featuredTrackMeta.count}>{featuredTrackMeta.count}</span>
+                <span class="home-music-feature-tag home-music-feature-tag-number" data-music-cover-tag-number hidden={!featuredTrackMeta.number}>{featuredTrackMeta.number}</span>
               </div>
             </div>
           </div>

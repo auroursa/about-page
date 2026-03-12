@@ -185,21 +185,19 @@
 
   const formatTrackMeta = (releaseType, trackNumberValue, trackCountValue) => {
     if (releaseType !== 'album') {
-      return '';
+      return { count: '', number: '' };
     }
 
     const trackCount = Number(trackCountValue);
     const trackNumber = Number(trackNumberValue);
+    const countLabel = Number.isFinite(trackCount) && trackCount > 1
+      ? `共 ${trackCount} 首`
+      : '';
+    const numberLabel = Number.isFinite(trackNumber) && trackNumber > 0
+      ? `#${String(trackNumber).padStart(2, '0')}`
+      : '';
 
-    if (!Number.isFinite(trackCount) || trackCount <= 1) {
-      return '';
-    }
-
-    if (Number.isFinite(trackNumber) && trackNumber > 0) {
-      return `排序 ${trackNumber}/${trackCount}`;
-    }
-
-    return `排序 ${trackCount} 首`;
+    return { count: countLabel, number: numberLabel };
   };
 
   const updatePlayButton = (button, options) => {
@@ -230,6 +228,7 @@
     const coverGenre = root.querySelector('[data-music-cover-genre]');
     const coverTagType = root.querySelector('[data-music-cover-tag-type]');
     const coverTagCount = root.querySelector('[data-music-cover-tag-count]');
+    const coverTagNumber = root.querySelector('[data-music-cover-tag-number]');
     const coverImage = root.querySelector('[data-music-cover-img]');
     const fallback = root.querySelector('[data-music-cover-fallback]');
 
@@ -262,10 +261,18 @@
       coverTagType.textContent = item.releaseType === 'album' ? '专辑' : '单曲';
     }
 
-    if (coverTagCount instanceof HTMLElement) {
+    if (coverTagCount instanceof HTMLElement || coverTagNumber instanceof HTMLElement) {
       const trackMeta = formatTrackMeta(item.releaseType, item.trackNumber, item.trackCount);
-      coverTagCount.hidden = !trackMeta;
-      coverTagCount.textContent = trackMeta;
+
+      if (coverTagCount instanceof HTMLElement) {
+        coverTagCount.hidden = !trackMeta.count;
+        coverTagCount.textContent = trackMeta.count;
+      }
+
+      if (coverTagNumber instanceof HTMLElement) {
+        coverTagNumber.hidden = !trackMeta.number;
+        coverTagNumber.textContent = trackMeta.number;
+      }
     }
 
     if (coverImage instanceof HTMLImageElement) {
@@ -414,8 +421,10 @@
       /* ── Scroll fade mask: hide when scrolled to bottom ── */
       if (musicList instanceof HTMLElement) {
         const checkScrollEnd = () => {
+          const atTop = musicList.scrollTop < 8;
           const atEnd = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight < 8;
           musicList.classList.toggle('is-scrolled-end', atEnd);
+          musicList.style.overscrollBehavior = atTop || atEnd ? 'auto' : 'contain';
         };
 
         musicList.addEventListener('scroll', checkScrollEnd, { passive: true });
