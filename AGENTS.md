@@ -111,12 +111,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Music data source is `src/data/home-music.ts` (`homeMusicAppleLinks`), with Apple lookup and normalization in `src/components/HomeMusicPanel.astro`
 - Keep music metadata parsing centralized in `HomeMusicPanel.astro` helpers and interfaces (`releaseType`, `trackNumber`, `trackCount`, `year`, `genre`, `previewUrl`)
 - `releaseType` should prioritize `trackCount` when available (`<= 1` as single, `> 1` as album), then fallback to `collectionType`
-- Track-order tag should stay concise (`排序 x/y`) and remain hidden for singles
+- Track-count tag displays `共 x 首` and track-number tag displays `#xx` (zero-padded, Overpass Mono font) as separate adjacent tags with no gap between them; both remain hidden for singles
+- Year and genre are displayed as plain text separated by `·`, not as tag chips
+- The feature card link area covers only the album artwork (not the entire card); hover/active effects apply only to the cover shell
+- The music list uses dynamic `overscrollBehavior` — switches to `auto` when scrolled to top or bottom so page scroll passes through naturally
 - Accent color is shared at the music layout container level (`--music-accent`) so left feature card and right list stay in sync
 - Cover-derived accent extraction and interactive switching logic belong in `public/js/home-music-switcher.js` (avoid inline scripts)
 - Preview playback uses `previewUrl` with a single in-page `Audio` instance; keep button states synchronized when active track changes
 - Keep the right music list scrollable for long lists and avoid scroll-position drift when fixing hover clipping
 - Keep this section's spacing rhythm consistent with other home cards (currently aligned to `gap-2` / `0.5rem`)
+
+### Home Hero Module
+
+- `HomeHeroFeature.astro` uses an `<img>` tag (not CSS `background-image`) for the background photo, with `loading="eager"`, `decoding="async"`, and `fetchpriority="high"` for LCP optimization
+- Photo info tooltip uses `public/js/hero-photo-info.js` — desktop shows on hover, mobile toggles on tap via `is-open` class
+- `HomeHeroPanel.astro` (personal info card) is visible from 769px+ (`max-[768px]:hidden`), not just 1281px+
 
 ### Home Spacing Rhythm
 
@@ -188,6 +197,7 @@ public/
     ├── article-timeline.js
     ├── about-color-swatches.js
     ├── home-gallery-shuffle.js
+    ├── hero-photo-info.js
     ├── home-music-switcher.js
     ├── post-title-transition.js
     └── post-disqus.js

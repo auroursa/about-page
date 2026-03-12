@@ -1,118 +1,5 @@
 let menuObserverCleanup = null;
 
-function bindPageLifecycle(init) {
-  document.addEventListener('astro:page-load', init);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-    return;
-  }
-
-  init();
-}
-
-function syncMenuA11y(menu, atTop) {
-  const brandLinks = menu.querySelectorAll('.desktop-nav-brand-shell, .mobile-nav-brand-shell');
-
-  brandLinks.forEach((link) => {
-    if (!(link instanceof HTMLElement)) {
-      return;
-    }
-
-    if (atTop) {
-      link.removeAttribute('aria-hidden');
-      link.removeAttribute('tabindex');
-    } else {
-      link.setAttribute('aria-hidden', 'true');
-      link.setAttribute('tabindex', '-1');
-    }
-  });
-}
-
-function setStickyMenuState(menu, atTop, { animate = true } = {}) {
-  const isDesktop = window.matchMedia('(min-width: 769px)').matches;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const currentState = menu.classList.contains('at-top');
-
-  const desktopElements = [
-    menu.querySelector('.desktop-nav-core'),
-    menu.querySelector('.desktop-nav-inline-travel'),
-  ].filter((element) => element instanceof HTMLElement);
-
-  const mobileElements = [
-    menu.querySelector('#open-menu'),
-    menu.querySelector('.mobile-nav-current'),
-  ].filter((element) => element instanceof HTMLElement);
-
-  const animatedElements = isDesktop ? desktopElements : mobileElements;
-
-  if (currentState === atTop) {
-    syncMenuA11y(menu, atTop);
-    return;
-  }
-
-  animatedElements.forEach((element) => {
-    element.getAnimations().forEach((animation) => animation.cancel());
-  });
-
-  if (!animate || prefersReducedMotion || animatedElements.length === 0) {
-    menu.classList.toggle('at-top', atTop);
-    syncMenuA11y(menu, atTop);
-    window.cynosura?.navIndicator?.init(false);
-    return;
-  }
-
-  const indicator = menu.querySelector('.nav-indicator');
-  if (indicator instanceof HTMLElement) {
-    indicator.style.transition = 'none';
-  }
-
-  const beforeRects = new Map(animatedElements.map((element) => [element, element.getBoundingClientRect()]));
-
-  menu.classList.toggle('at-top', atTop);
-  syncMenuA11y(menu, atTop);
-  window.cynosura?.navIndicator?.init(false);
-
-  animatedElements.forEach((element) => {
-    const before = beforeRects.get(element);
-
-    if (!before) {
-      return;
-    }
-
-    const after = element.getBoundingClientRect();
-    const deltaX = before.left - after.left;
-    const deltaY = before.top - after.top;
-    const finalTransform = window.getComputedStyle(element).transform;
-    const finalTransformValue = finalTransform === 'none' ? '' : `${finalTransform} `;
-
-    if (Math.abs(deltaX) < 0.5 && Math.abs(deltaY) < 0.5) {
-      return;
-    }
-
-    const animation = element.animate(
-      [
-        { transform: `${finalTransformValue}translate(${deltaX}px, ${deltaY}px)` },
-        { transform: finalTransform === 'none' ? 'none' : finalTransform },
-      ],
-      {
-        duration: 480,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-      }
-    );
-
-    animation.addEventListener('finish', () => {
-      const navIndicator = menu.querySelector('.nav-indicator');
-
-      if (navIndicator instanceof HTMLElement) {
-        navIndicator.style.transition = '';
-      }
-
-      window.cynosura?.navIndicator?.init(false);
-    }, { once: true });
-  });
-}
-
 function initStickyMenu() {
   menuObserverCleanup?.();
 
@@ -124,6 +11,120 @@ function initStickyMenu() {
     return;
   }
 
+  /* ── Cache DOM references ── */
+  const indicator = menu.querySelector('.nav-indicator');
+  const brandLinks = Array.from(menu.querySelectorAll('.desktop-nav-brand-shell, .mobile-nav-brand-shell'));
+
+  const desktopElements = [
+    menu.querySelector('.desktop-nav-core'),
+    menu.querySelector('.desktop-nav-inline-travel'),
+  ].filter((el) => el instanceof HTMLElement);
+
+  const mobileElements = [
+    menu.querySelector('#open-menu'),
+    menu.querySelector('.mobile-nav-current'),
+  ].filter((el) => el instanceof HTMLElement);
+
+  /* ── Cache media queries ── */
+  const desktopMQ = window.matchMedia('(min-width: 769px)');
+  const reducedMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ── A11y sync ── */
+  function syncA11y(atTop) {
+    brandLinks.forEach((link) => {
+      if (atTop) {
+        link.removeAttribute('aria-hidden');
+        link.removeAttribute('tabindex');
+      } else {
+        link.setAttribute('aria-hidden', 'true');
+        link.setAttribute('tabindex', '-1');
+      }
+    });
+  }
+
+  /* ── State transition ── */
+  function setMenuState(atTop, { animate = true } = {}) {
+    const currentState = menu.classList.contains('at-top');
+
+    if (currentState === atTop) {
+      syncA11y(atTop);
+      return;
+    }
+
+    const animatedElements = desktopMQ.matches ? desktopElements : mobileElements;
+
+    animatedElements.forEach((el) => {
+      el.getAnimations().forEach((a) => a.cancel());
+    });
+
+    if (!animate || reducedMotionMQ.matches || animatedElements.length === 0) {
+      menu.classList.toggle('at-top', atTop);
+      syncA11y(atTop);
+      window.cynosura?.navIndicator?.init(false);
+      return;
+    }
+
+    if (indicator instanceof HTMLElement) {
+      indicator.style.transition = 'none';
+    }
+
+    const beforeRects = new Map(animatedElements.map((el) => [el, el.getBoundingClientRect()]));
+
+    menu.classList.toggle('at-top', atTop);
+    syncA11y(atTop);
+
+    animatedElements.forEach((el) => {
+      const before = beforeRects.get(el);
+
+      if (!before) {
+        return;
+      }
+
+      const after = el.getBoundingClientRect();
+      const deltaX = before.left - after.left;
+      const deltaY = before.top - after.top;
+
+      if (Math.abs(deltaX) < 0.5 && Math.abs(deltaY) < 0.5) {
+        return;
+      }
+
+      const finalTransform = window.getComputedStyle(el).transform;
+      const prefix = finalTransform === 'none' ? '' : `${finalTransform} `;
+
+      el.animate(
+        [
+          { transform: `${prefix}translate(${deltaX}px, ${deltaY}px)` },
+          { transform: finalTransform === 'none' ? 'none' : finalTransform },
+        ],
+        {
+          duration: 480,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        }
+      );
+    });
+
+    /* Wait for FLIP to settle, then re-sync indicator once */
+    const longest = animatedElements.reduce((max, el) => {
+      const anims = el.getAnimations();
+      return anims.length > 0 ? anims[0] : max;
+    }, null);
+
+    const onFinish = () => {
+      if (indicator instanceof HTMLElement) {
+        indicator.style.transition = '';
+      }
+
+      window.cynosura?.navIndicator?.init(false);
+    };
+
+    if (longest) {
+      longest.finished.then(onFinish);
+    } else {
+      onFinish();
+    }
+  }
+
+  /* ── Scroll tracking ── */
   let isFirstUpdate = true;
   let currentAtTop = false;
   let scrollRAF = null;
@@ -134,11 +135,11 @@ function initStickyMenu() {
 
     if (!currentAtTop && rect.bottom < 0) {
       currentAtTop = true;
-      setStickyMenuState(menu, true, { animate: !isFirstUpdate });
+      setMenuState(true, { animate: !isFirstUpdate });
       isFirstUpdate = false;
     } else if (currentAtTop && rect.bottom > HYSTERESIS) {
       currentAtTop = false;
-      setStickyMenuState(menu, false, { animate: !isFirstUpdate });
+      setMenuState(false, { animate: !isFirstUpdate });
       isFirstUpdate = false;
     }
   }
@@ -165,4 +166,10 @@ function initStickyMenu() {
   };
 }
 
-bindPageLifecycle(initStickyMenu);
+document.addEventListener('astro:page-load', initStickyMenu);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initStickyMenu, { once: true });
+} else {
+  initStickyMenu();
+}

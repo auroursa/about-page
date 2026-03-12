@@ -1,17 +1,6 @@
 let savedIndicatorLeft = null;
 let savedIndicatorWidth = null;
 
-function bindPageLifecycle(init) {
-  document.addEventListener('astro:page-load', () => init(true));
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => init(false), { once: true });
-    return;
-  }
-
-  init(false);
-}
-
 function positionNavIndicator(indicator, core, activeBtn) {
   const coreRect = core.getBoundingClientRect();
   const btnRect = activeBtn.getBoundingClientRect();
@@ -85,4 +74,10 @@ window.cynosura.navIndicator = {
 };
 
 document.addEventListener('astro:before-swap', saveNavIndicatorPosition);
-bindPageLifecycle(initNavIndicator);
+document.addEventListener('astro:page-load', () => initNavIndicator(true));
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => initNavIndicator(false), { once: true });
+} else {
+  initNavIndicator(false);
+}
