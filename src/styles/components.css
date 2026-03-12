@@ -168,12 +168,12 @@
 
   .info-grid-card {
     display: flex;
-    min-height: 5.4rem;
-    flex-direction: column;
-    justify-content: space-between;
+    min-height: 5.2rem;
+    align-items: flex-start;
+    gap: 0.8rem;
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     background: color-mix(in srgb, var(--card-color) 68%, transparent);
-    padding: 0.75rem 1rem;
+    padding: 0.82rem 1rem 0.7rem;
     transition:
       border-color 300ms,
       background-color 300ms,
@@ -189,26 +189,43 @@
 
   .info-grid-icon {
     display: flex;
-    width: 3rem;
-    height: 3rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     color: var(--text-color);
   }
 
-  .info-grid-label {
+  .info-grid-icon > svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .info-grid-meta {
     display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
   }
 
   .info-grid-name {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.2;
+  }
+
+  .info-grid-desc {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: color-mix(in srgb, var(--text-color) 78%, transparent);
   }
 }
 

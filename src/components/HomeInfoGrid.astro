@@ -21,7 +21,10 @@ const { kicker, title, items } = Astro.props;
     {items.map((item) => (
       <div class="group info-grid-card">
         <span class="info-grid-icon"><HomeInfoIcon icon={item.icon} /></span>
-        <div class="info-grid-label"><p class="info-grid-name">{item.label}</p></div>
+        <div class="info-grid-meta">
+          <p class="info-grid-name">{item.label}</p>
+          <p class="info-grid-desc">{item.description}</p>
+        </div>
       </div>
     ))}
   </div>
