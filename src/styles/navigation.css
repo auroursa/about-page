@@ -161,6 +161,8 @@
     border-color: transparent;
     box-shadow: 0 1px 8px rgba(17, 101, 154, 0.06);
     padding-top: env(safe-area-inset-top, 0px);
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
   }
 
   .menu.at-top {
