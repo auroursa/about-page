@@ -39,6 +39,67 @@
     margin: 0;
   }
 
+  .prose-measure > :where(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, hr) {
+    max-width: var(--prose-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .prose-measure > pre {
+    max-width: var(--prose-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+    background: color-mix(in srgb, var(--card-content-color) 86%, var(--card-color)) !important;
+    padding: 0.95rem 1.1rem;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, white 20%, transparent),
+      0 6px 14px rgb(17 101 154 / 6%);
+    overflow-x: auto;
+  }
+
+  .prose-measure > pre code {
+    background: transparent !important;
+    color: inherit !important;
+    font-family: var(--font-overpass-mono), monospace;
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .prose-measure > .expressive-code {
+    max-width: var(--prose-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .prose-measure > blockquote {
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--main-color) 18%, transparent);
+    background: color-mix(in srgb, var(--main-color) 5%, var(--card-color));
+    padding: 1.05rem 2.2rem 1.05rem 1.2rem;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, white 34%, transparent),
+      0 6px 12px rgb(17 101 154 / 6%);
+  }
+
+  .prose-measure > blockquote::after {
+    content: "\201D";
+    position: absolute;
+    top: 0.42rem;
+    right: 0.72rem;
+    color: color-mix(in srgb, var(--main-color) 28%, transparent);
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .prose-measure > blockquote > :where(p) {
+    margin: 0;
+    color: color-mix(in srgb, var(--text-color) 86%, transparent);
+    font-style: normal;
+  }
+
   .glass-icon-button {
     display: inline-flex;
     height: 2.5rem;

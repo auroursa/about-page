@@ -226,13 +226,6 @@
     margin-bottom: 0.2rem;
   }
 
-  .home-music-subtitle {
-    margin: 0;
-    color: color-mix(in srgb, var(--text-color) 64%, transparent);
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-
   .home-music-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
@@ -878,10 +871,6 @@
 
   .home-music-list-item {
     padding: 0.62rem 0.7rem;
-  }
-
-  .home-music-subtitle {
-    font-size: 0.83rem;
   }
 
   .home-music-feature-title {

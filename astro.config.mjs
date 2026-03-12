@@ -46,8 +46,9 @@ export default defineConfig({
   ],
   integrations: [
     expressiveCode({
+      themes: ['vesper'],
       styleOverrides: {
-        codeFontFamily: '"Overpass Mono", monospace',
+        codeFontFamily: 'var(--font-overpass-mono), monospace',
       },
     }),
     sitemap()
