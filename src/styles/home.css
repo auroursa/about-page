@@ -231,6 +231,11 @@
     grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
     gap: 1rem;
     align-items: stretch;
+    min-width: 0;
+  }
+
+  .home-music-layout > * {
+    min-width: 0;
   }
 
   .home-music-feature {
@@ -393,6 +398,7 @@
   .home-music-list {
     display: flex;
     height: 100%;
+    min-width: 0;
     min-height: 0;
     flex-direction: column;
     gap: 0.55rem;
