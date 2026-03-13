@@ -191,7 +191,7 @@
   .category-pill {
     display: inline-flex;
     align-items: center;
-    border-radius: 9999px;
+    border-radius: 0;
     border: 1px solid color-mix(in srgb, var(--main-color) 20%, transparent);
     background: color-mix(in srgb, var(--main-color) 8%, var(--card-color));
     padding: 0.25rem 0.75rem;

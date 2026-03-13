@@ -1,15 +1,4 @@
 (function () {
-  const updateEdgeClasses = (el) => {
-    const tolerance = 2;
-    const noOverflow = el.scrollWidth - el.clientWidth <= tolerance;
-    const atStart = el.scrollLeft <= tolerance;
-    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - tolerance;
-
-    el.classList.toggle('is-no-overflow', noOverflow);
-    el.classList.toggle('is-at-start', !noOverflow && atStart);
-    el.classList.toggle('is-at-end', !noOverflow && atEnd && !atStart);
-  };
-
   const initArticleTimeline = () => {
     const timeline = document.querySelector('.home-article-scroll');
     const timelineRoot = timeline?.closest('.home-article-timeline');
@@ -53,7 +42,6 @@
     };
 
     const handler = () => {
-      updateEdgeClasses(timeline);
       updateProgress();
       revealProgress();
     };
@@ -84,14 +72,12 @@
       }
 
       timeline.scrollLeft = nextScrollLeft;
-      updateEdgeClasses(timeline);
       event.preventDefault();
     };
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         timeline.scrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
-        updateEdgeClasses(timeline);
         updateProgress();
       });
     });

@@ -39,17 +39,8 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 <BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
   <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
-      <header class="space-y-4 border-b border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] pb-6">
-        <div class="space-y-4 text-center">
-          <h1 class="m-0 text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
-          {entry.data.description && <p class="mx-auto m-0 max-w-[42rem] text-[1.02rem] leading-8 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{entry.data.description}</p>}
-        </div>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          {entry.data.category && <a href={`/posts/category/${entry.data.category}`} class={categoryPillClass}>{entry.data.category}</a>}
-          <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
-            {formatDate(entry.data.pubDate || entry.data.date)}
-          </time>
-        </div>
+      <header class="py-6">
+        <h1 class="m-0 text-center text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
       </header>
       <div class={contentClass}>
         <Content />
