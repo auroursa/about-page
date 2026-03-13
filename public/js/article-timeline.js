@@ -21,8 +21,6 @@
 
     const handler = () => updateEdgeClasses(timeline);
     timeline.__scrollHandler = handler;
-    let wheelFactor = -1;
-    let wheelDirectionResolved = false;
 
     const onWheel = (event) => {
       if (event.deltaY === 0) {
@@ -42,21 +40,10 @@
           : event.deltaY;
 
       const step = stepBase * 2.4;
+      const nextScrollLeft = Math.min(maxScrollLeft, Math.max(0, timeline.scrollLeft + step));
 
-      let nextScrollLeft = Math.min(maxScrollLeft, Math.max(0, timeline.scrollLeft + step * wheelFactor));
-
-      if (nextScrollLeft === timeline.scrollLeft && !wheelDirectionResolved) {
-        const flippedScrollLeft = Math.min(maxScrollLeft, Math.max(0, timeline.scrollLeft - step * wheelFactor));
-
-        if (flippedScrollLeft !== timeline.scrollLeft) {
-          wheelFactor *= -1;
-          wheelDirectionResolved = true;
-          nextScrollLeft = flippedScrollLeft;
-        }
-      }
-
-      if (nextScrollLeft !== timeline.scrollLeft) {
-        wheelDirectionResolved = true;
+      if (nextScrollLeft === timeline.scrollLeft) {
+        return;
       }
 
       timeline.scrollLeft = nextScrollLeft;

@@ -1,10 +1,8 @@
 let savedIndicatorLeft = null;
 let savedIndicatorWidth = null;
 
-function positionNavIndicator(indicator, core, activeBtn) {
-  const coreRect = core.getBoundingClientRect();
-  const btnRect = activeBtn.getBoundingClientRect();
-
+function positionNavIndicator(indicator, coreRect, btnRect) {
+  
   indicator.style.top = `${btnRect.top - coreRect.top}px`;
   indicator.style.left = `${btnRect.left - coreRect.left}px`;
   indicator.style.width = `${btnRect.width}px`;
@@ -31,13 +29,15 @@ function initNavIndicator(animate) {
   const btnRect = activeBtn.getBoundingClientRect();
   const newLeft = btnRect.left - coreRect.left;
   const newWidth = btnRect.width;
+  const newTop = btnRect.top - coreRect.top;
+  const newHeight = btnRect.height;
 
   if (animate && savedIndicatorLeft !== null) {
     indicator.style.transition = 'none';
-    indicator.style.top = `${btnRect.top - coreRect.top}px`;
+    indicator.style.top = `${newTop}px`;
     indicator.style.left = `${savedIndicatorLeft}px`;
     indicator.style.width = `${savedIndicatorWidth}px`;
-    indicator.style.height = `${btnRect.height}px`;
+    indicator.style.height = `${newHeight}px`;
     indicator.style.opacity = '1';
 
     requestAnimationFrame(() => {
@@ -47,7 +47,7 @@ function initNavIndicator(animate) {
     });
   } else {
     indicator.style.transition = 'none';
-    positionNavIndicator(indicator, core, activeBtn);
+    positionNavIndicator(indicator, coreRect, btnRect);
 
     requestAnimationFrame(() => {
       indicator.style.transition = '';

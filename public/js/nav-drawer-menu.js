@@ -4,6 +4,10 @@ const SECTION_LABELS = { '/': '首页', '/posts': '文章', '/friends': '友人'
 const DRAG_DISMISS_THRESHOLD = 0.35;
 const PANEL_TRANSITION = 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)';
 
+const onNextFrame = (callback) => {
+  requestAnimationFrame(() => requestAnimationFrame(callback));
+};
+
 function bindPageLifecycle(init) {
   document.addEventListener('astro:page-load', init);
 
@@ -87,15 +91,15 @@ function initDrawerMenu() {
   };
 
   const animateStaggerIn = () => {
-    void drawerPanel.offsetHeight;
+    onNextFrame(() => {
+      staggerItems.forEach((item, index) => {
+        if (!(item instanceof HTMLElement)) return;
 
-    staggerItems.forEach((item, index) => {
-      if (!(item instanceof HTMLElement)) return;
-
-      item.style.transition = '';
-      item.style.transitionDelay = `${80 + index * 60}ms`;
-      item.style.opacity = '1';
-      item.style.transform = 'translateY(0)';
+        item.style.transition = '';
+        item.style.transitionDelay = `${80 + index * 60}ms`;
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+      });
     });
   };
 
@@ -234,12 +238,12 @@ function initDrawerMenu() {
 
       drawerPanel.style.transition = PANEL_TRANSITION;
       drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
-      void drawerPanel.offsetHeight;
-
-      drawerPanel.style.transform = 'translateX(100%)';
-      drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
-      drawer.style.backdropFilter = 'blur(0px)';
-      drawer.style.webkitBackdropFilter = 'blur(0px)';
+      onNextFrame(() => {
+        drawerPanel.style.transform = 'translateX(100%)';
+        drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+        drawer.style.backdropFilter = 'blur(0px)';
+        drawer.style.webkitBackdropFilter = 'blur(0px)';
+      });
 
       let cleaned = false;
 
@@ -255,12 +259,12 @@ function initDrawerMenu() {
     } else {
       drawerPanel.style.transition = PANEL_TRANSITION;
       drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
-      void drawerPanel.offsetHeight;
-
-      drawerPanel.style.transform = '';
-      drawer.style.backgroundColor = '';
-      drawer.style.backdropFilter = '';
-      drawer.style.webkitBackdropFilter = '';
+      onNextFrame(() => {
+        drawerPanel.style.transform = '';
+        drawer.style.backgroundColor = '';
+        drawer.style.backdropFilter = '';
+        drawer.style.webkitBackdropFilter = '';
+      });
 
       drawerPanel.addEventListener('transitionend', () => {
         drawerPanel.style.transition = '';

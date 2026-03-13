@@ -129,15 +129,20 @@ function initStickyMenu() {
   let currentAtTop = false;
   let scrollRAF = null;
   const HYSTERESIS = 30;
+  let sentinelBottom = 0;
+
+  function refreshSentinelBottom() {
+    sentinelBottom = sentinel.offsetTop + sentinel.offsetHeight;
+  }
 
   function update() {
-    const rect = sentinel.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset || 0;
 
-    if (!currentAtTop && rect.bottom < 0) {
+    if (!currentAtTop && scrollY > sentinelBottom) {
       currentAtTop = true;
       setMenuState(true, { animate: !isFirstUpdate });
       isFirstUpdate = false;
-    } else if (currentAtTop && rect.bottom > HYSTERESIS) {
+    } else if (currentAtTop && scrollY < sentinelBottom - HYSTERESIS) {
       currentAtTop = false;
       setMenuState(false, { animate: !isFirstUpdate });
       isFirstUpdate = false;
@@ -153,11 +158,19 @@ function initStickyMenu() {
     }
   };
 
+  const onResize = () => {
+    refreshSentinelBottom();
+    onScroll();
+  };
+
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
+  refreshSentinelBottom();
   update();
 
   menuObserverCleanup = () => {
     window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onResize);
 
     if (scrollRAF) {
       cancelAnimationFrame(scrollRAF);
