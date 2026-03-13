@@ -6,7 +6,7 @@
   .home-article-scroll {
     overflow-x: auto;
     padding: 0.25rem 0 1rem;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: none;
     scroll-padding-inline: 0.15rem;
     scrollbar-width: none;
     mask-image: linear-gradient(to right, transparent 0%, black 2.5rem, black calc(100% - 2.5rem), transparent 100%);
