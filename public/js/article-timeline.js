@@ -55,11 +55,9 @@
         }
       }
 
-      if (nextScrollLeft === timeline.scrollLeft) {
-        return;
+      if (nextScrollLeft !== timeline.scrollLeft) {
+        wheelDirectionResolved = true;
       }
-
-      wheelDirectionResolved = true;
 
       timeline.scrollLeft = nextScrollLeft;
       updateEdgeClasses(timeline);
