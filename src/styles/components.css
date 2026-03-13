@@ -221,10 +221,21 @@
   }
 
   .post-card:hover {
-    transform: translateY(-2px);
     border-color: var(--main-color);
     background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .post-card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .post-card:hover {
+      transform: none;
+    }
   }
 
   .info-grid-card {
