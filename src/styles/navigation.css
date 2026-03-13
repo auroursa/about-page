@@ -29,6 +29,7 @@
     max-width: 58rem;
     border-radius: 1rem;
     border-color: color-mix(in srgb, var(--text-color) 6%, transparent);
+    background-color: var(--menu-at-top-color);
     background-color: color-mix(in srgb, var(--card-color) 75%, transparent);
     box-shadow: 0 8px 32px rgba(17, 101, 154, 0.08);
     backdrop-filter: blur(24px);
@@ -175,6 +176,7 @@
     max-width: 100%;
     border-radius: 1rem;
     border-color: color-mix(in srgb, var(--text-color) 7%, transparent);
+    background-color: var(--menu-at-top-color);
     background-color: color-mix(in srgb, var(--card-color) 75%, transparent);
     box-shadow: 0 10px 28px rgba(17, 101, 154, 0.08);
     backdrop-filter: blur(24px);
