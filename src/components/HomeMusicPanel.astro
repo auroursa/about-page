@@ -412,55 +412,60 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
           </div>
         </article>
 
-        <ul class="home-music-list" aria-label="最近常听曲目">
-          {musicCards.map((item, index) => (
-            <li>
-              <button
-                type="button"
-                class:list={['home-music-list-item', index === 0 && 'is-active']}
-                aria-pressed={index === 0 ? 'true' : 'false'}
-                data-music-item
-                data-link={item.link}
-                data-title={item.title}
-                data-artist={item.artist}
-                data-artwork={item.artwork ?? ''}
-                data-artwork-srcset={item.artworkSrcSet ?? ''}
-                data-artwork-sizes={item.artworkSizes ?? ''}
-                data-year={item.year}
-                data-genre={item.genre}
-                data-release-type={item.releaseType}
-                data-preview-url={item.previewUrl ?? ''}
-                data-track-number={item.trackNumber !== null ? String(item.trackNumber) : ''}
-                data-track-count={item.trackCount !== null ? String(item.trackCount) : ''}
-                data-accent={item.accent}
-              >
-                {
-                  item.artworkThumb ? (
-                    <img
-                       class="home-music-list-thumb"
-                       src={item.artworkThumb}
-                       srcset={item.artworkThumbSrcSet ?? undefined}
-                       sizes={item.artworkThumbSizes ?? undefined}
-                       width="80"
-                       height="80"
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      referrerpolicy="no-referrer"
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <span class="home-music-list-thumb home-music-list-thumb-fallback" aria-hidden="true">AM</span>
-                  )
-                }
-                <span class="home-music-list-text">
-                  <span class="home-music-list-title">{item.title}</span>
-                  <span class="home-music-list-artist">{item.artist}</span>
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div class="home-music-list-shell">
+          <ul class="home-music-list" aria-label="最近常听曲目">
+            {musicCards.map((item, index) => (
+              <li>
+                <button
+                  type="button"
+                  class:list={['home-music-list-item', index === 0 && 'is-active']}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                  data-music-item
+                  data-link={item.link}
+                  data-title={item.title}
+                  data-artist={item.artist}
+                  data-artwork={item.artwork ?? ''}
+                  data-artwork-srcset={item.artworkSrcSet ?? ''}
+                  data-artwork-sizes={item.artworkSizes ?? ''}
+                  data-year={item.year}
+                  data-genre={item.genre}
+                  data-release-type={item.releaseType}
+                  data-preview-url={item.previewUrl ?? ''}
+                  data-track-number={item.trackNumber !== null ? String(item.trackNumber) : ''}
+                  data-track-count={item.trackCount !== null ? String(item.trackCount) : ''}
+                  data-accent={item.accent}
+                >
+                  {
+                    item.artworkThumb ? (
+                      <img
+                        class="home-music-list-thumb"
+                        src={item.artworkThumb}
+                        srcset={item.artworkThumbSrcSet ?? undefined}
+                        sizes={item.artworkThumbSizes ?? undefined}
+                        width="80"
+                        height="80"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        referrerpolicy="no-referrer"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <span class="home-music-list-thumb home-music-list-thumb-fallback" aria-hidden="true">AM</span>
+                    )
+                  }
+                  <span class="home-music-list-text">
+                    <span class="home-music-list-title">{item.title}</span>
+                    <span class="home-music-list-artist">{item.artist}</span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div class="home-music-list-progress" aria-hidden="true">
+            <span class="home-music-list-progress-bar"></span>
+          </div>
+        </div>
       </div>
     ) : (
       <p class="home-music-empty">先把 Apple Music 链接填到数据里，音乐卡片就会自动生成。</p>

@@ -93,6 +93,9 @@ const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
           ))}
         </div>
       </div>
+      <div class="home-article-progress" aria-hidden="true">
+        <span class="home-article-progress-bar"></span>
+      </div>
     </div>
   ) : (
     <p class="m-0 text-[0.96rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_70%,transparent)]">还没有可以铺开的文章轨迹。</p>

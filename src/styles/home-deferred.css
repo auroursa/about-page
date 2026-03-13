@@ -51,6 +51,52 @@
     scroll-snap-align: start;
   }
 
+  .home-article-progress {
+    --timeline-progress: 0;
+    --timeline-thumb-width: 2.25rem;
+    position: absolute;
+    left: 0.15rem;
+    right: 0.15rem;
+    bottom: 0.18rem;
+    height: 4px;
+    overflow: hidden;
+    border-radius: 0;
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--main-color) 18%, transparent) 0%,
+        color-mix(in srgb, var(--text-color) 12%, transparent) 45%,
+        color-mix(in srgb, var(--main-color) 18%, transparent) 100%
+      );
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .home-article-progress.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .home-article-progress.is-disabled {
+    display: none;
+  }
+
+  .home-article-progress-bar {
+    position: absolute;
+    left: calc(var(--timeline-progress, 0) * (100% - var(--timeline-thumb-width)));
+    top: 50%;
+    display: block;
+    width: var(--timeline-thumb-width);
+    height: 2px;
+    border-radius: 0;
+    background: linear-gradient(90deg, var(--main-color) 0%, color-mix(in srgb, var(--main-color) 76%, white) 100%);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--main-color) 40%, transparent);
+    transform: translateY(-50%);
+    transition: left 120ms linear;
+  }
+
   .home-article-rail {
     position: relative;
   }
@@ -555,11 +601,63 @@
     list-style: none;
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding-right: 0.22rem;
+    padding-right: 0.65rem;
     scrollbar-gutter: stable;
     scrollbar-width: none;
     mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 2.5rem), transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 2.5rem), transparent 100%);
+  }
+
+  .home-music-list-shell {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .home-music-list-progress {
+    --music-list-progress: 0;
+    --music-list-thumb-height: 2rem;
+    position: absolute;
+    top: 0.2rem;
+    right: -0.55rem;
+    bottom: 0.2rem;
+    width: 4px;
+    overflow: hidden;
+    border-radius: 0;
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, hsl(var(--music-accent)) 20%, transparent) 0%,
+        color-mix(in srgb, hsl(var(--music-accent)) 10%, transparent) 50%,
+        color-mix(in srgb, hsl(var(--music-accent)) 20%, transparent) 100%
+      );
+    opacity: 0;
+    transform: translateX(4px);
+    pointer-events: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .home-music-list-progress.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .home-music-list-progress.is-disabled {
+    display: none;
+  }
+
+  .home-music-list-progress-bar {
+    position: absolute;
+    top: calc(var(--music-list-progress, 0) * (100% - var(--music-list-thumb-height)));
+    left: 50%;
+    display: block;
+    width: 2px;
+    height: var(--music-list-thumb-height);
+    border-radius: 0;
+    background: linear-gradient(180deg, color-mix(in srgb, hsl(var(--music-accent)) 74%, white) 0%, hsl(var(--music-accent)) 100%);
+    box-shadow: 0 0 10px color-mix(in srgb, hsl(var(--music-accent)) 52%, transparent);
+    transform: translateX(-50%);
+    transition: top 120ms linear;
   }
 
   .home-music-list.is-scrolled-end {

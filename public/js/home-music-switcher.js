@@ -428,11 +428,45 @@
 
       /* ── Scroll fade mask: hide when scrolled to bottom ── */
       if (musicList instanceof HTMLElement) {
+        const listProgress = root.querySelector('.home-music-list-progress');
+        let progressHideTimer = null;
+
+        const updateListProgress = () => {
+          if (!(listProgress instanceof HTMLElement)) {
+            return;
+          }
+
+          const maxScrollTop = Math.max(musicList.scrollHeight - musicList.clientHeight, 0);
+          const ratio = maxScrollTop > 0 ? musicList.scrollTop / maxScrollTop : 0;
+          const clamped = clamp(ratio, 0, 1);
+
+          listProgress.style.setProperty('--music-list-progress', String(clamped));
+          listProgress.classList.toggle('is-disabled', maxScrollTop <= 1);
+        };
+
+        const revealListProgress = () => {
+          if (!(listProgress instanceof HTMLElement) || listProgress.classList.contains('is-disabled')) {
+            return;
+          }
+
+          listProgress.classList.add('is-visible');
+
+          if (progressHideTimer) {
+            clearTimeout(progressHideTimer);
+          }
+
+          progressHideTimer = window.setTimeout(() => {
+            listProgress.classList.remove('is-visible');
+          }, 700);
+        };
+
         const checkScrollEnd = () => {
           const atTop = musicList.scrollTop < 8;
           const atEnd = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight < 8;
           musicList.classList.toggle('is-scrolled-end', atEnd);
           musicList.style.overscrollBehavior = atTop || atEnd ? 'auto' : 'contain';
+          updateListProgress();
+          revealListProgress();
         };
 
         musicList.addEventListener('scroll', checkScrollEnd, { passive: true });
