@@ -174,15 +174,6 @@
     box-shadow: 0 14px 32px rgb(17 101 154 / 8%);
   }
 
-  .hero-blur {
-    position: absolute;
-    width: 6rem;
-    height: 6rem;
-    background: color-mix(in srgb, var(--accent-color) 20%, transparent);
-    filter: blur(24px);
-    pointer-events: none;
-  }
-
   .hover-lift {
     transition:
       border-color 300ms,
