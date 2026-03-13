@@ -601,7 +601,6 @@
     list-style: none;
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding-right: 0.65rem;
     scrollbar-gutter: stable;
     scrollbar-width: none;
     mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 2.5rem), transparent 100%);
@@ -619,7 +618,7 @@
     --music-list-thumb-height: 2rem;
     position: absolute;
     top: 0.2rem;
-    right: -0.55rem;
+    right: -0.75rem;
     bottom: 0.2rem;
     width: 4px;
     overflow: hidden;
