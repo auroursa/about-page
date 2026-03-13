@@ -316,7 +316,6 @@
     background:
       linear-gradient(170deg, color-mix(in srgb, hsl(var(--music-accent)) 7%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 3%, var(--card-color)) 100%);
     padding: 0.8rem;
-    box-shadow: 0 8px 16px rgb(17 101 154 / 7%);
     transition: background 320ms;
     justify-self: start;
     width: 100%;
