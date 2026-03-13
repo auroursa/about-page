@@ -8,7 +8,8 @@ import HomeInfoGrid from '../components/HomeInfoGrid.astro';
 import HomeMusicPanel from '../components/HomeMusicPanel.astro';
 import HomeProjectPanel from '../components/HomeProjectPanel.astro';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
-import homeStylesUrl from '../styles/home.css?url';
+import homeCriticalStylesUrl from '../styles/home-critical.css?url';
+import homeDeferredStylesUrl from '../styles/home-deferred.css?url';
 ---
 
 <BaseLayout title="首页" currentPath="/">
@@ -17,7 +18,9 @@ import homeStylesUrl from '../styles/home.css?url';
     <HomeHeroFeature />
   </div>
 
-  <link rel="stylesheet" href={homeStylesUrl} />
+  <link rel="stylesheet" href={homeCriticalStylesUrl} />
+  <link rel="preload" as="style" href={homeDeferredStylesUrl} onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href={homeDeferredStylesUrl} /></noscript>
 
   <div class="grid grid-cols-1 gap-2">
     <ArticleTimeline />

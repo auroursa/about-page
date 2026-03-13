@@ -82,12 +82,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ### CSS & Styling
 
 - Use Tailwind CSS v4 utility classes in `.astro` templates for layout and component styling
-- `src/styles/global.css` is now an entrypoint that imports modular stylesheets (`base.css`, `components.css`, `home.css`, `navigation.css`)
-- `src/styles/global.css` should keep shared/base styles only (`base.css`, `components.css`, `navigation.css`); avoid importing `home.css` globally
-- Load `home.css` only on the home page (`src/pages/index.astro`) via `?url` stylesheet link to reduce render-blocking CSS on non-home routes and shrink critical CSS
+- `src/styles/global.css` is an entrypoint for shared styles only (`base.css`, `components.css`, `navigation.css`)
+- Home-page styles are split into `home-critical.css` and `home-deferred.css`
+- In `src/pages/index.astro`, load `home-critical.css` as a normal stylesheet and `home-deferred.css` via preload + stylesheet swap (`?url`) to reduce render-blocking CSS and keep first paint stable
 - Keep tokens/reset/font/base element rules in `src/styles/base.css`
 - Keep reusable UI component patterns in `src/styles/components.css`
-- Keep home-page-specific visual rules in `src/styles/home.css`
+- Keep above-the-fold home rules in `src/styles/home-critical.css`
+- Keep non-critical/below-the-fold home rules in `src/styles/home-deferred.css`
 - Keep nav/drawer/indicator behavior styles in `src/styles/navigation.css`
 - Prefer promoting repeated layout/UI patterns into component-level classes instead of repeating long utility stacks
 - Use CSS custom properties (variables) for theming
@@ -185,7 +186,8 @@ src/
 │   ├── global.css         # Tailwind entrypoint + style imports
 │   ├── base.css           # Tokens, reset, base typography/elements
 │   ├── components.css     # Shared component-level classes
-│   ├── home.css           # Home-page-specific styles
+│   ├── home-critical.css  # Home above-the-fold critical styles
+│   ├── home-deferred.css  # Home deferred/non-critical styles
 │   └── navigation.css     # Navigation and drawer transition styles
 └── content.config.ts       # Content collections configuration
 
