@@ -215,21 +215,17 @@
     display: block;
     overflow: hidden;
     border-radius: 0;
-    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-    background: linear-gradient(165deg, color-mix(in srgb, var(--card-color) 90%, transparent) 0%, color-mix(in srgb, var(--main-color) 3%, var(--card-color)) 100%);
+    border: 0;
+    background: color-mix(in srgb, var(--card-color) 95%, var(--main-color));
     padding: 1rem 1.25rem;
     transition:
-      border-color 300ms,
       background-color 300ms,
-      box-shadow 300ms,
       transform 300ms;
   }
 
   .project-card:hover {
     transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--main-color) 36%, transparent);
-    background: linear-gradient(165deg, color-mix(in srgb, var(--main-color) 7%, var(--card-color)) 0%, color-mix(in srgb, var(--main-color) 12%, var(--card-color)) 100%);
-    box-shadow: 0 16px 32px rgb(17 101 154 / 12%);
+    background: color-mix(in srgb, var(--card-color) 91%, var(--main-color));
   }
 
   .project-card-stack {
@@ -284,7 +280,10 @@
   }
 
   .project-tag-row .glass-info-tag {
-    border-radius: 0.68rem;
+    border-radius: 0;
+    border: 0;
+    background: color-mix(in srgb, var(--card-color) 86%, var(--main-color));
+    color: color-mix(in srgb, var(--text-color) 92%, transparent);
   }
 
   .home-music-panel {
