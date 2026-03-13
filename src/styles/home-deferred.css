@@ -205,10 +205,16 @@
     white-space: nowrap;
   }
 
+  .project-card-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
   .project-card {
     display: block;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: 0;
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
     background: linear-gradient(165deg, color-mix(in srgb, var(--card-color) 90%, transparent) 0%, color-mix(in srgb, var(--main-color) 3%, var(--card-color)) 100%);
     padding: 1rem 1.25rem;
@@ -239,12 +245,18 @@
   }
 
   .project-logo {
-    width: auto;
+    display: block;
+    width: 1.05rem;
     height: 1.05rem;
+    flex-shrink: 0;
+    object-fit: contain;
   }
 
   .project-name {
     margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 1.05rem;
     color: color-mix(in srgb, var(--text-color) 62%, transparent);
     font-family: var(--font-overpass), sans-serif;
     font-size: 0.86rem;
@@ -1106,6 +1118,10 @@
 
   .project-card {
     padding: 1rem;
+  }
+
+  .project-card-list {
+    grid-template-columns: 1fr;
   }
 
   .home-music-layout {
