@@ -10,7 +10,7 @@ const paletteStripClass = 'overflow-hidden border border-[color:color-mix(in_srg
 const swatchClass = 'about-color-span group relative min-w-0 flex-1 cursor-pointer overflow-hidden transition-[filter,flex] duration-300 hover:brightness-[1.03] hover:flex-[1.8]';
 const swatchPreviewClass = 'absolute inset-0';
 const swatchOverlayClass = 'pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,rgba(255,255,255,0.32),rgba(255,255,255,0))]';
-const tooltipClass = 'about-color-tooltip invisible absolute left-1/2 top-1/2 w-[6.8rem] -translate-x-1/2 -translate-y-1/2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_92%,transparent)] px-2.5 py-1.5 font-["Overpass_Mono",monospace] text-center text-[0.86rem] text-[var(--text-color)] opacity-0 shadow-[0_8px_18px_rgba(17,101,154,0.12)] backdrop-blur-sm transition-[opacity,visibility] duration-200 select-text [&.show]:visible [&.show]:opacity-100';
+const tooltipClass = 'about-color-tooltip invisible absolute left-1/2 top-1/2 w-[6.8rem] -translate-x-1/2 -translate-y-1/2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_92%,transparent)] px-2.5 py-1.5 font-overpass-mono text-center text-[0.86rem] text-[var(--text-color)] opacity-0 shadow-[0_8px_18px_rgba(17,101,154,0.12)] backdrop-blur-sm transition-[opacity,visibility] duration-200 select-text [&.show]:visible [&.show]:opacity-100';
 const swatchLabelClass = 'absolute bottom-2 left-1/2 -translate-x-1/2 text-center text-[0.7rem] font-bold text-white opacity-0 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap';
 
 const milestones = [
@@ -20,6 +20,7 @@ const milestones = [
   { date: '2023/08/01', event: '个人介绍页使用 CSS Grid 大幅重构' },
   { date: '2026/02/07', event: '博客从 Pelican 迁移至 Astro，并完全整合博客与个人页' },
   { date: '2026/03/10', event: '全站使用 Tailwind CSS 进行重构，风格翻新' },
+  { date: '2026/03/13', event: '启用设计主题 Lucent，新增音乐及图集模块' },
 ];
 
 const palette = [
