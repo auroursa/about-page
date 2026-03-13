@@ -18,6 +18,8 @@ import { homeGallerySeasonItems } from '../data/home-gallery';
             <img
               class="home-gallery-season-image"
               src={item.src}
+              srcset={item.srcSet}
+              sizes={item.sizes}
               width={item.width}
               height={item.height}
               alt={item.alt}
@@ -30,7 +32,15 @@ import { homeGallerySeasonItems } from '../data/home-gallery';
 
     <article class="home-gallery-post-card" aria-label="2025 四季总结">
       <div class="home-gallery-post-header">
-        <img class="home-gallery-post-avatar" src="/img/profile-avatar.webp" width="1024" height="1024" alt="赤茶头像" />
+        <img
+          class="home-gallery-post-avatar"
+          src="/img/profile-avatar-96.webp"
+          srcset="/img/profile-avatar-96.webp 96w, /img/profile-avatar-192.webp 192w, /img/profile-avatar.webp 512w"
+          sizes="77px"
+          width="96"
+          height="96"
+          alt="赤茶头像"
+        />
 
         <div class="home-gallery-post-author">
           <strong class="home-gallery-post-name">赤茶</strong>

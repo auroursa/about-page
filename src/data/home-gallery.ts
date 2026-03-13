@@ -3,6 +3,8 @@ export interface HomeGalleryItem {
   width: number;
   height: number;
   alt: string;
+  srcSet?: string;
+  sizes?: string;
 }
 
 export const homeGalleryBackdropItems: HomeGalleryItem[] = [
@@ -117,6 +119,8 @@ export interface HomeGallerySeasonItem extends HomeGalleryItem {
 export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
   {
     src: '/img/gallery/2025-spring.webp',
+    srcSet: '/img/gallery/2025-spring-320.webp 320w, /img/gallery/2025-spring-640.webp 640w, /img/gallery/2025-spring.webp 750w',
+    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
     width: 750,
     height: 1000,
     alt: '2025 春季照片',
@@ -124,6 +128,8 @@ export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
   },
   {
     src: '/img/gallery/2025-summer.webp',
+    srcSet: '/img/gallery/2025-summer-320.webp 320w, /img/gallery/2025-summer-640.webp 640w, /img/gallery/2025-summer.webp 750w',
+    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
     width: 750,
     height: 1000,
     alt: '2025 夏季照片',
@@ -131,6 +137,8 @@ export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
   },
   {
     src: '/img/gallery/2025-autumn.webp',
+    srcSet: '/img/gallery/2025-autumn-320.webp 320w, /img/gallery/2025-autumn-640.webp 640w, /img/gallery/2025-autumn.webp 999w',
+    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
     width: 999,
     height: 749,
     alt: '2025 秋季照片',
@@ -138,6 +146,8 @@ export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
   },
   {
     src: '/img/gallery/2025-winter.webp',
+    srcSet: '/img/gallery/2025-winter-320.webp 320w, /img/gallery/2025-winter-640.webp 640w, /img/gallery/2025-winter.webp 714w',
+    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
     width: 714,
     height: 1000,
     alt: '2025 冬季照片',

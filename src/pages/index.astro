@@ -8,6 +8,7 @@ import HomeInfoGrid from '../components/HomeInfoGrid.astro';
 import HomeMusicPanel from '../components/HomeMusicPanel.astro';
 import HomeProjectPanel from '../components/HomeProjectPanel.astro';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
+import homeStylesUrl from '../styles/home.css?url';
 ---
 
 <BaseLayout title="首页" currentPath="/">
@@ -15,6 +16,8 @@ import { homeDeviceItems, homeSkillItems } from '../data/home-info';
     <HomeHeroPanel />
     <HomeHeroFeature />
   </div>
+
+  <link rel="stylesheet" href={homeStylesUrl} />
 
   <div class="grid grid-cols-1 gap-2">
     <ArticleTimeline />

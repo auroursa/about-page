@@ -167,7 +167,15 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <div class="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[color:color-mix(in_srgb,var(--accent-color)_26%,transparent)] blur-2xl"></div>
                 <div class="relative flex items-start justify-between gap-4">
                   <div class="flex min-w-0 items-center gap-4">
-                    <img class="h-16 w-16 rounded-[1.35rem] object-cover" src="/img/profile-avatar.webp" width="600" height="600" alt="site-avatar" />
+                    <img
+                      class="h-16 w-16 rounded-[1.35rem] object-cover"
+                      src="/img/profile-avatar-96.webp"
+                      srcset="/img/profile-avatar-96.webp 96w, /img/profile-avatar-192.webp 192w, /img/profile-avatar.webp 512w"
+                      sizes="64px"
+                      width="96"
+                      height="96"
+                      alt="site-avatar"
+                    />
                     <div class="min-w-0">
                       <h2 class="m-0 truncate text-[1.6rem] font-bold leading-none">赤茶</h2>
                       <p class="m-0 mt-1.5 text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_56%,transparent)] font-overpass">cynosura.one</p>

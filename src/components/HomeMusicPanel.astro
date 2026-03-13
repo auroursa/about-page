@@ -10,7 +10,11 @@ interface AppleMusicCard {
   title: string;
   artist: string;
   artwork: string | null;
+  artworkSrcSet: string | null;
+  artworkSizes: string | null;
   artworkThumb: string | null;
+  artworkThumbSrcSet: string | null;
+  artworkThumbSizes: string | null;
   year: string;
   genre: string;
   trackNumber: number | null;
@@ -149,7 +153,11 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
         artist: '链接格式暂不支持',
         previewUrl: null,
         artwork: null,
+        artworkSrcSet: null,
+        artworkSizes: null,
         artworkThumb: null,
+        artworkThumbSrcSet: null,
+        artworkThumbSizes: null,
         year: '年份未知',
         genre: '流派未标注',
         trackNumber: null,
@@ -198,6 +206,10 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
     }
 
     const artworkSource = matched.artworkUrl100 ?? matched.artworkUrl60;
+    const artworkCover = artworkSource ? toSizedArtwork(artworkSource, 420) : null;
+    const artworkCoverHi = artworkSource ? toSizedArtwork(artworkSource, 600) : null;
+    const artworkThumb = artworkSource ? toSizedArtwork(artworkSource, 64) : null;
+    const artworkThumbHi = artworkSource ? toSizedArtwork(artworkSource, 120) : null;
     const trackCount =
       typeof collection?.trackCount === 'number'
         ? collection.trackCount
@@ -219,8 +231,12 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       title,
       artist,
       previewUrl,
-      artwork: artworkSource ? toSizedArtwork(artworkSource, 600) : null,
-      artworkThumb: artworkSource ? toSizedArtwork(artworkSource, 120) : null,
+      artwork: artworkCover,
+      artworkSrcSet: artworkCover && artworkCoverHi ? `${artworkCover} 420w, ${artworkCoverHi} 600w` : null,
+      artworkSizes: '(max-width: 768px) 82vw, 421px',
+      artworkThumb,
+      artworkThumbSrcSet: artworkThumb && artworkThumbHi ? `${artworkThumb} 64w, ${artworkThumbHi} 120w` : null,
+      artworkThumbSizes: '65px',
       year,
       genre,
       trackNumber,
@@ -235,7 +251,11 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       artist: '封面抓取失败，点击跳转查看',
       previewUrl: null,
       artwork: null,
+      artworkSrcSet: null,
+      artworkSizes: null,
       artworkThumb: null,
+      artworkThumbSrcSet: null,
+      artworkThumbSizes: null,
       year: '年份未知',
       genre: '流派未标注',
       trackNumber: null,
@@ -339,6 +359,8 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
                 <img
                   class="home-music-feature-cover"
                   src={featuredMusic.artwork ?? ''}
+                  srcset={featuredMusic.artworkSrcSet ?? undefined}
+                  sizes={featuredMusic.artworkSizes ?? undefined}
                   width="600"
                   height="600"
                   alt={`${featuredMusic.title} 专辑封面`}
@@ -402,6 +424,8 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
                 data-title={item.title}
                 data-artist={item.artist}
                 data-artwork={item.artwork ?? ''}
+                data-artwork-srcset={item.artworkSrcSet ?? ''}
+                data-artwork-sizes={item.artworkSizes ?? ''}
                 data-year={item.year}
                 data-genre={item.genre}
                 data-release-type={item.releaseType}
@@ -413,10 +437,12 @@ const featuredHasPreview = Boolean(featuredMusic?.previewUrl);
                 {
                   item.artworkThumb ? (
                     <img
-                      class="home-music-list-thumb"
-                      src={item.artworkThumb}
-                      width="80"
-                      height="80"
+                       class="home-music-list-thumb"
+                       src={item.artworkThumb}
+                       srcset={item.artworkThumbSrcSet ?? undefined}
+                       sizes={item.artworkThumbSizes ?? undefined}
+                       width="80"
+                       height="80"
                       alt=""
                       loading="lazy"
                       decoding="async"

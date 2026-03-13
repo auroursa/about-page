@@ -275,16 +275,20 @@
       }
     }
 
-    if (coverImage instanceof HTMLImageElement) {
-      if (item.artwork) {
-        const nextSrc = item.artwork;
+      if (coverImage instanceof HTMLImageElement) {
+        if (item.artwork) {
+          const nextSrc = item.artwork;
+          const nextSrcSet = item.artworkSrcSet || '';
+          const nextSizes = item.artworkSizes || '';
 
-        if (coverImage.src === nextSrc || coverImage.src.endsWith(new URL(nextSrc, location.href).pathname)) {
-          coverImage.hidden = false;
+          if (coverImage.src === nextSrc || coverImage.src.endsWith(new URL(nextSrc, location.href).pathname)) {
+            coverImage.srcset = nextSrcSet;
+            coverImage.sizes = nextSizes;
+            coverImage.hidden = false;
 
-          if (fallback instanceof HTMLElement) {
-            fallback.hidden = true;
-          }
+            if (fallback instanceof HTMLElement) {
+              fallback.hidden = true;
+            }
 
           applyCoverAccent(root, coverImage, fallbackAccent);
           return;
@@ -299,6 +303,8 @@
 
         const reveal = () => {
           coverImage.src = nextSrc;
+          coverImage.srcset = nextSrcSet;
+          coverImage.sizes = nextSizes;
           coverImage.alt = `${item.title} 专辑封面`;
           coverImage.hidden = false;
 
@@ -318,6 +324,8 @@
         preloader.src = nextSrc;
       } else {
         coverImage.hidden = true;
+        coverImage.srcset = '';
+        coverImage.sizes = '';
         applyCoverAccent(root, coverImage, fallbackAccent);
 
         if (fallback instanceof HTMLElement) {
@@ -531,6 +539,8 @@
           title: selected.dataset.title ?? 'Music',
           artist: selected.dataset.artist ?? '未知艺术家',
           artwork: selected.dataset.artwork || '',
+          artworkSrcSet: selected.dataset.artworkSrcset || '',
+          artworkSizes: selected.dataset.artworkSizes || '',
           year: selected.dataset.year || '年份未知',
           genre: selected.dataset.genre || '流派未标注',
           releaseType: selected.dataset.releaseType || 'single',
