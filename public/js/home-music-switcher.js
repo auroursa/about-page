@@ -275,20 +275,25 @@
       }
     }
 
-      if (coverImage instanceof HTMLImageElement) {
-        if (item.artwork) {
-          const nextSrc = item.artwork;
-          const nextSrcSet = item.artworkSrcSet || '';
-          const nextSizes = item.artworkSizes || '';
+    if (coverImage instanceof HTMLImageElement) {
+      if (item.artwork) {
+        const nextSrc = item.artwork;
+        const nextSrcSet = item.artworkSrcSet || '';
+        const nextSizes = item.artworkSizes || '';
+        const nextRequestId = (root.__musicCoverRequestId || 0) + 1;
 
-          if (coverImage.src === nextSrc || coverImage.src.endsWith(new URL(nextSrc, location.href).pathname)) {
-            coverImage.srcset = nextSrcSet;
-            coverImage.sizes = nextSizes;
-            coverImage.hidden = false;
+        root.__musicCoverRequestId = nextRequestId;
 
-            if (fallback instanceof HTMLElement) {
-              fallback.hidden = true;
-            }
+        if (coverImage.src === nextSrc || coverImage.src.endsWith(new URL(nextSrc, location.href).pathname)) {
+          coverImage.srcset = nextSrcSet;
+          coverImage.sizes = nextSizes;
+          coverImage.alt = `${item.title} 专辑封面`;
+          coverImage.hidden = false;
+          coverImage.style.opacity = '1';
+
+          if (fallback instanceof HTMLElement) {
+            fallback.hidden = true;
+          }
 
           applyCoverAccent(root, coverImage, fallbackAccent);
           return;
@@ -297,35 +302,111 @@
         const preloader = new Image();
         preloader.crossOrigin = 'anonymous';
         preloader.referrerPolicy = 'no-referrer';
-
-        coverImage.style.transition = 'opacity 180ms ease';
-        coverImage.style.opacity = '0';
+        preloader.srcset = nextSrcSet;
+        preloader.sizes = nextSizes;
 
         const reveal = () => {
-          coverImage.src = nextSrc;
-          coverImage.srcset = nextSrcSet;
-          coverImage.sizes = nextSizes;
-          coverImage.alt = `${item.title} 专辑封面`;
-          coverImage.hidden = false;
-
-          if (fallback instanceof HTMLElement) {
-            fallback.hidden = true;
+          if (root.__musicCoverRequestId !== nextRequestId) {
+            return;
           }
 
-          requestAnimationFrame(() => {
-            coverImage.style.opacity = '1';
-          });
+          root.__musicCoverFadeCleanup?.();
 
-          applyCoverAccent(root, coverImage, fallbackAccent);
+          const commitSwap = () => {
+            if (root.__musicCoverRequestId !== nextRequestId) {
+              return;
+            }
+
+            coverImage.srcset = nextSrcSet;
+            coverImage.sizes = nextSizes;
+            coverImage.src = nextSrc;
+            coverImage.alt = `${item.title} 专辑封面`;
+            coverImage.hidden = false;
+
+            if (fallback instanceof HTMLElement) {
+              fallback.hidden = true;
+            }
+
+            requestAnimationFrame(() => {
+              if (root.__musicCoverRequestId !== nextRequestId) {
+                return;
+              }
+
+              coverImage.style.opacity = '1';
+            });
+
+            applyCoverAccent(root, coverImage, fallbackAccent);
+          };
+
+          if (coverImage.hidden || (!coverImage.currentSrc && !coverImage.src)) {
+            coverImage.style.opacity = '0';
+            commitSwap();
+            return;
+          }
+
+          let isDone = false;
+          let fadeTimer = null;
+
+          let cancelFade = null;
+
+          const cleanup = ({ restoreOpacity = false } = {}) => {
+            if (fadeTimer !== null) {
+              clearTimeout(fadeTimer);
+              fadeTimer = null;
+            }
+
+            coverImage.removeEventListener('transitionend', handleFadeOut);
+
+            if (restoreOpacity) {
+              coverImage.style.opacity = '1';
+            }
+
+            if (root.__musicCoverFadeCleanup === cancelFade) {
+              root.__musicCoverFadeCleanup = null;
+            }
+          };
+
+          const finishFadeOut = () => {
+            if (isDone) {
+              return;
+            }
+
+            isDone = true;
+            cleanup();
+            commitSwap();
+          };
+
+          const handleFadeOut = (event) => {
+            if (event.propertyName === 'opacity') {
+              finishFadeOut();
+            }
+          };
+
+          cancelFade = () => cleanup({ restoreOpacity: true });
+          root.__musicCoverFadeCleanup = cancelFade;
+          coverImage.addEventListener('transitionend', handleFadeOut);
+          fadeTimer = window.setTimeout(finishFadeOut, 220);
+
+          requestAnimationFrame(() => {
+            if (root.__musicCoverRequestId !== nextRequestId) {
+              cleanup();
+              return;
+            }
+
+            coverImage.style.opacity = '0';
+          });
         };
 
         preloader.onload = reveal;
         preloader.onerror = reveal;
         preloader.src = nextSrc;
       } else {
+        root.__musicCoverRequestId = (root.__musicCoverRequestId || 0) + 1;
+        root.__musicCoverFadeCleanup?.();
         coverImage.hidden = true;
         coverImage.srcset = '';
         coverImage.sizes = '';
+        coverImage.style.opacity = '1';
         applyCoverAccent(root, coverImage, fallbackAccent);
 
         if (fallback instanceof HTMLElement) {
@@ -461,10 +542,12 @@
         };
 
         const checkScrollEnd = () => {
+          const remaining = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight;
           const atTop = musicList.scrollTop < 8;
-          const atEnd = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight < 8;
-          musicList.classList.toggle('is-scrolled-end', atEnd);
-          musicList.style.overscrollBehavior = atTop || atEnd ? 'auto' : 'contain';
+          const atVisualEnd = remaining < 12;
+          const atScrollBoundary = remaining <= 1;
+          musicList.classList.toggle('is-scrolled-end', atVisualEnd);
+          musicList.style.overscrollBehavior = atTop || atScrollBoundary ? 'auto' : 'contain';
           updateListProgress();
           revealListProgress();
         };
