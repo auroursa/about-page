@@ -9,7 +9,7 @@ const sectionHeadingClass = 'm-0 text-[1.08rem] font-bold leading-[1.5]';
 const paletteStripClass = 'overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] shadow-[0_8px_24px_rgba(17,101,154,0.06)]';
 const swatchClass = 'about-color-span group relative min-w-0 flex-1 cursor-pointer overflow-hidden transition-[filter,flex] duration-300 hover:brightness-[1.03] hover:flex-[1.8]';
 const swatchPreviewClass = 'absolute inset-0';
-const swatchOverlayClass = 'pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(180deg,rgba(255,255,255,0.32),rgba(255,255,255,0))]';
+
 const tooltipClass = 'about-color-tooltip invisible absolute left-1/2 top-1/2 w-[6.8rem] -translate-x-1/2 -translate-y-1/2 border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_92%,transparent)] px-2.5 py-1.5 font-overpass-mono text-center text-[0.86rem] text-[var(--text-color)] opacity-0 shadow-[0_8px_18px_rgba(17,101,154,0.12)] backdrop-blur-sm transition-[opacity,visibility] duration-200 select-text [&.show]:visible [&.show]:opacity-100';
 const swatchLabelClass = 'absolute bottom-2 left-1/2 -translate-x-1/2 text-center text-[0.7rem] font-bold text-white opacity-0 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap';
 
@@ -21,6 +21,52 @@ const milestones = [
   { date: '2026/02/07', event: '博客从 Pelican 迁移至 Astro，并完全整合博客与个人页' },
   { date: '2026/03/10', event: '全站使用 Tailwind CSS 进行重构，风格翻新' },
   { date: '2026/03/13', event: '启用设计主题 Lucent，新增音乐及图集模块' },
+];
+
+const colophonLeft = [
+  {
+    category: '主体框架',
+    items: [
+      { name: 'Astro 6', desc: '静态站点生成框架，支持内容集合与按需渲染' },
+      { name: 'Tailwind CSS 4', desc: '原子化 CSS 框架，通过 Vite 插件集成' },
+      { name: 'Vite 7', desc: 'Astro 内置的前端构建工具' },
+      { name: 'pnpm 10', desc: '快速、节省空间的 Node.js 包管理器' },
+    ],
+  },
+  {
+    category: '插件模块',
+    items: [
+      { name: 'Expressive Code', desc: '代码块语法高亮，使用 Vesper 主题' },
+      { name: 'Content Collections', desc: '基于 Zod 校验的类型安全内容管理' },
+      { name: 'markdown-it', desc: 'RSS 订阅源的 Markdown 渲染' },
+      { name: 'sanitize-html', desc: 'RSS 输出的 HTML 清洗' },
+    ],
+  },
+];
+
+const colophonRight = [
+  {
+    category: '部署环境',
+    items: [
+      { name: 'Cloudflare Pages', desc: '全球 CDN 自动构建部署' },
+      { name: 'GitHub', desc: '源代码托管与版本管理' },
+      { name: 'Sitemap', desc: '自动生成站点地图供搜索引擎索引' },
+      { name: 'RSS', desc: '提供 Atom 格式的订阅源' },
+    ],
+  },
+  {
+    category: '字体',
+    items: [
+      { name: 'Overpass', desc: '标题及部分标签用字，代码块使用 Mono 变体' },
+      { name: '系统字体栈', desc: '正文采用系统默认字体，避免加载中文字形' },
+    ],
+  },
+  {
+    category: '第三方服务',
+    items: [
+      { name: 'Disqus', desc: '文章评论系统' },
+    ],
+  },
 ];
 
 const palette = [
@@ -51,7 +97,7 @@ const palette = [
         <h3 class={sectionHeadingClass}>Cynosura / 小熊座</h3>
       </div>
       <div class={bodyClass}>
-        <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称"熊"</p>
+        <p>即 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">小熊座</a> 的希腊古名拼写，呼应在用 ID: froseiun (from 星雲)，及常用昵称"熊"。</p>
         <p>而小熊座 α 星恰好为当前的北极星，在极北的夜空闪烁，指引正确的方向。Per aspera, ad astra. / 终抵繁星。</p>
       </div>
     </article>
@@ -65,7 +111,8 @@ const palette = [
         <h3 class={sectionHeadingClass}>GitHub + Cloudflare Pages</h3>
       </div>
       <div class={bodyClass}>
-        <p>全站现已迁移到 Astro 框架，是由静态页面升级而来。目前基于 GitHub 仓库与 Cloudflare Pages 自动部署。</p>
+        <p>全站现已迁移到 Astro 框架 + Tailwind CSS，当前使用自设计主题 <a href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E7%86%8A%E5%BA%A7">Lucent</a>。</p>
+        <p>站点的源代码托管于 <a href="https://github.com/auroursa/about-page">GitHub</a>，并使用 Cloudflare Pages 自动部署。</p>
       </div>
     </article>
 
@@ -100,9 +147,38 @@ const palette = [
         {palette.map((color) => (
           <div class={swatchClass} role="button" tabindex="0" data-color={color.hex} aria-label={`复制色值 ${color.hex}`}>
             <span class={swatchPreviewClass} style={`background-color: ${color.hex}`}></span>
-            <span class={swatchOverlayClass}></span>
+
             <span class={swatchLabelClass}>{color.name}</span>
             <input class={tooltipClass} type="text" readonly value={color.hex} aria-label={`颜色代码 ${color.hex}`} />
+          </div>
+        ))}
+      </div>
+    </article>
+
+    <article class:list={[panelClass, cardClass, 'hover-lift']} id="colophon">
+      <div class={iconShellClass}>
+        <svg class="h-7 w-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"></path></svg>
+      </div>
+      <div class="space-y-1">
+        <p class="section-kicker">Colophon</p>
+        <h3 class={sectionHeadingClass}>刊印志 / 造物清单</h3>
+      </div>
+      <div class="grid grid-cols-2 gap-x-6 max-[576px]:grid-cols-1">
+        {[colophonLeft, colophonRight].map((column) => (
+          <div class="space-y-5">
+            {column.map((group) => (
+              <div class="space-y-2">
+                <p class="m-0 text-[0.8rem] font-bold tracking-[0.06em] text-[color:color-mix(in_srgb,var(--text-color)_46%,transparent)] uppercase">{group.category}</p>
+                <div class="space-y-1.5">
+                  {group.items.map((item) => (
+                    <div class="text-[0.9rem] leading-6">
+                      <span class="font-bold">{item.name}</span>
+                      <span class="text-[0.86rem] text-[color:color-mix(in_srgb,var(--text-color)_78%,transparent)]"> {item.desc}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         ))}
       </div>
