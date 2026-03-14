@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 
@@ -97,7 +97,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <p class="m-0">Trying to light up the dark.</p>
     </header>
 
-    <main class={mainClass}>
+    <main class={mainClass} transition:animate={fade({ duration: '0.5s' })}>
       <div class="menu-sentinel h-px"></div>
 
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
@@ -249,7 +249,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <slot />
     </main>
 
-    <footer class="mx-8 my-8 text-center font-overpass">
+    <footer transition:animate="none" class="mx-8 my-8 text-center font-overpass">
       <p>Designed by <a href="https://cynosura.one">Cynosura</a> &copy;&nbsp;{new Date().getFullYear()}</p>
     </footer>
   </body>
