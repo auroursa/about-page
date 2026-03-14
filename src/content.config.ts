@@ -2,16 +2,17 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// 预处理函数：将 Date 对象转换为字符串，或保留字符串
+// 预处理函数：将 Date 对象转换为东八区日期时间字符串，或保留字符串
 const dateToString = (val: unknown) => {
   if (val instanceof Date) {
-    // 将 UTC Date 转换为东八区日期时间字符串
-    const year = val.getUTCFullYear();
-    const month = String(val.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(val.getUTCDate()).padStart(2, '0');
-    const hours = String(val.getUTCHours()).padStart(2, '0');
-    const minutes = String(val.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(val.getUTCSeconds()).padStart(2, '0');
+    const utcMs = val.getTime();
+    const cst = new Date(utcMs + 8 * 60 * 60 * 1000);
+    const year = cst.getUTCFullYear();
+    const month = String(cst.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(cst.getUTCDate()).padStart(2, '0');
+    const hours = String(cst.getUTCHours()).padStart(2, '0');
+    const minutes = String(cst.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(cst.getUTCSeconds()).padStart(2, '0');
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   }
   return val;

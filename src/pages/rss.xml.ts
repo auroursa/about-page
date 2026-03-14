@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
+import { sortPostsByDate } from '../utils/date';
 
 const parser = new MarkdownIt();
 
@@ -34,13 +35,7 @@ export async function GET(context: APIContext) {
     ? new URL(context.url.origin)
     : context.site ?? new URL(context.url.origin);
 
-  const sortedPosts = posts
-    .filter((post) => post.data.pubDate || post.data.date)
-    .sort((a, b) => {
-      const dateA = a.data.pubDate || a.data.date;
-      const dateB = b.data.pubDate || b.data.date;
-      return new Date(dateB).valueOf() - new Date(dateA).valueOf();
-    });
+  const sortedPosts = sortPostsByDate(posts);
 
   return rss({
     title: 'Cynosura',
@@ -54,7 +49,7 @@ export async function GET(context: APIContext) {
         description: post.data.description || '',
         link: `/posts/${post.id}/`,
         pubDate: postDate,
-        content: renderRssContent(post.body, site),
+        content: post.body ? renderRssContent(post.body, site) : '',
       };
     }),
     customData: `<language>zh-cn</language>`,

@@ -61,8 +61,12 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 │   ├── content/
 │   │   └── blog/           # Markdown blog posts
 │   ├── data/
+│   │   ├── friends.ts     # Friends page link data
 │   │   ├── home-gallery.ts # Home gallery/four-season data
-│   │   └── home-info.ts    # Home skill/device card data
+│   │   ├── home-info.ts    # Home skill/device card data
+│   │   └── home-music.ts   # Home music Apple Music link data
+│   ├── utils/
+│   │   └── date.ts        # Shared date formatting and sorting utilities
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Base layout component
 │   ├── styles/
@@ -142,7 +146,7 @@ Categories currently used: 日常 (Daily), 杂谈 (Misc), 技术 (Tech)
 
 - Main page and component layout is now implemented directly in Astro templates with Tailwind utility classes
 - Shared theme variables, fonts, and base global styles live in `src/styles/global.css`
-- Repeated home page layout patterns are consolidated into reusable component classes in `src/styles/global.css`
+- Repeated layout patterns are consolidated into reusable component classes in `src/styles/components.css`
 - When adjusting UI, prefer updating template markup and utility classes first so related layouts stay visually aligned
 
 ### Updating the Home Gallery
@@ -154,7 +158,7 @@ Categories currently used: 日常 (Daily), 杂谈 (Misc), 技术 (Tech)
 
 ### Adding Friends
 
-To add a new friend to the friends page, edit `src/pages/friends.astro` and add an entry to the `friends` array:
+To add a new friend to the friends page, edit `src/data/friends.ts` and add an entry to the `friends` array:
 
 ```javascript
 {

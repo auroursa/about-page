@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import DecoratedTitle from '../../components/DecoratedTitle.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate, toISODatetime } from '../../utils/date';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -13,16 +14,6 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-
-const formatDate = (dateStr: string | undefined) => {
-  if (!dateStr) return '';
-  const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
-  if (!match) return '';
-  const [, year, month, day] = match;
-  const date = new Date(`${year}-${month}-${day}T12:00:00+08:00`);
-  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-  return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
-};
 
 const panelClass = 'glass-panel';
 const articlePanelClass = 'space-y-6';
@@ -57,7 +48,7 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
           </div>
           <div class={detailRowClass}>
             <span class={detailLabelClass}>发布时间</span>
-            <time class:list={[detailValueClass, 'published']} datetime={entry.data.pubDate ? `${entry.data.pubDate.replace(' ', 'T')}+08:00` : entry.data.date ? `${entry.data.date.replace(' ', 'T')}+08:00` : ''}>
+            <time class:list={[detailValueClass, 'published']} datetime={toISODatetime(entry.data.pubDate || entry.data.date)}>
               {formatDate(entry.data.pubDate || entry.data.date)}
             </time>
           </div>

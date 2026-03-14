@@ -1,7 +1,7 @@
 ---
 import { homeMusicAppleLinks } from '../data/home-music';
 import HomeMusicSwitcherScript from './HomeMusicSwitcherScript.astro';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 interface AppleMusicCard {
@@ -142,29 +142,31 @@ const toSizedArtwork = (url: string, size: number): string => {
   return url.replace(/\d+x\d+bb/g, `${size}x${size}bb`);
 };
 
+const createFallbackCard = (link: string, accent: string, artist = '链接格式暂不支持'): AppleMusicCard => ({
+  link,
+  title: 'Music',
+  artist,
+  previewUrl: null,
+  artwork: null,
+  artworkSrcSet: null,
+  artworkSizes: null,
+  artworkThumb: null,
+  artworkThumbSrcSet: null,
+  artworkThumbSizes: null,
+  year: '年份未知',
+  genre: '流派未标注',
+  trackNumber: null,
+  trackCount: null,
+  releaseType: 'single',
+  accent,
+});
+
 const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
   const { trackId, collectionId } = parseAppleIds(link);
   const fallbackAccent = hashToAccent(link);
 
   if (!trackId) {
-      return {
-        link,
-        title: 'Music',
-        artist: '链接格式暂不支持',
-        previewUrl: null,
-        artwork: null,
-        artworkSrcSet: null,
-        artworkSizes: null,
-        artworkThumb: null,
-        artworkThumbSrcSet: null,
-        artworkThumbSizes: null,
-        year: '年份未知',
-        genre: '流派未标注',
-        trackNumber: null,
-        trackCount: null,
-        releaseType: 'single',
-        accent: fallbackAccent,
-      };
+    return createFallbackCard(link, fallbackAccent);
   }
 
   const controller = new AbortController();
@@ -245,24 +247,7 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       accent: hashToAccent(`${title}-${artist}`),
     };
   } catch {
-    return {
-      link,
-      title: 'Music',
-      artist: '封面抓取失败，点击跳转查看',
-      previewUrl: null,
-      artwork: null,
-      artworkSrcSet: null,
-      artworkSizes: null,
-      artworkThumb: null,
-      artworkThumbSrcSet: null,
-      artworkThumbSizes: null,
-      year: '年份未知',
-      genre: '流派未标注',
-      trackNumber: null,
-      trackCount: null,
-      releaseType: 'single',
-      accent: fallbackAccent,
-    };
+    return createFallbackCard(link, fallbackAccent, '封面抓取失败，点击跳转查看');
   } finally {
     clearTimeout(timeout);
   }
@@ -279,26 +264,26 @@ interface MusicCache {
   cards: Record<string, AppleMusicCard>;
 }
 
-const loadCache = (): MusicCache => {
+const loadCache = async (): Promise<MusicCache> => {
   try {
-    const raw = readFileSync(cacheFile, 'utf-8');
+    const raw = await readFile(cacheFile, 'utf-8');
     return JSON.parse(raw) as MusicCache;
   } catch {
     return { ts: 0, cards: {} };
   }
 };
 
-const saveCache = (cache: MusicCache): void => {
+const saveCache = async (cache: MusicCache): Promise<void> => {
   try {
-    mkdirSync(cacheDir, { recursive: true });
-    writeFileSync(cacheFile, JSON.stringify(cache, null, 2), 'utf-8');
+    await mkdir(cacheDir, { recursive: true });
+    await writeFile(cacheFile, JSON.stringify(cache, null, 2), 'utf-8');
   } catch {
     // non-fatal — cache write failure is fine
   }
 };
 
 const cachedResolve = async (links: string[]): Promise<AppleMusicCard[]> => {
-  const cache = loadCache();
+  const cache = await loadCache();
   const isStale = Date.now() - cache.ts > CACHE_TTL_MS;
   const results: AppleMusicCard[] = [];
   const toFetch: { index: number; link: string }[] = [];
@@ -322,7 +307,7 @@ const cachedResolve = async (links: string[]): Promise<AppleMusicCard[]> => {
     }
 
     cache.ts = Date.now();
-    saveCache(cache);
+    await saveCache(cache);
   }
 
   return results;

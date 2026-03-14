@@ -711,10 +711,16 @@
     });
   };
 
-  initMusicSwitcher();
+  let musicSwitcherCleanup = null;
 
-  if (!window.__homeMusicSwitcherBound) {
-    document.addEventListener('astro:page-load', initMusicSwitcher);
-    window.__homeMusicSwitcherBound = true;
+  function bindMusicSwitcherLifecycle(init) {
+    document.addEventListener('astro:page-load', init);
+    musicSwitcherCleanup = () => {
+      document.removeEventListener('astro:page-load', init);
+    };
   }
+
+  musicSwitcherCleanup?.();
+  initMusicSwitcher();
+  bindMusicSwitcherLifecycle(initMusicSwitcher);
 })();

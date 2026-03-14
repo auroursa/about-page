@@ -290,6 +290,59 @@
     white-space: nowrap;
     color: color-mix(in srgb, var(--text-color) 78%, transparent);
   }
+
+  .drawer-interactive {
+    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+    background: var(--card-content-color);
+    color: var(--text-color);
+    transition: all 300ms;
+  }
+
+  .drawer-interactive:hover {
+    transform: translateY(-2px);
+    border-color: var(--main-color);
+    background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
+    color: var(--main-color);
+  }
+
+  .drawer-section {
+    border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+    background: var(--card-color);
+    padding: 1rem;
+    box-shadow: 0 14px 32px rgb(17 101 154 / 8%);
+  }
+
+  .drawer-section-title {
+    margin-bottom: 0.75rem;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--main-color);
+  }
+
+  .drawer-section-header {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .drawer-action-icon {
+    display: inline-flex;
+    height: 2.25rem;
+    width: 2.25rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+    transition: color 300ms;
+  }
+
+  .drawer-action-icon:hover {
+    color: var(--accent-color);
+  }
 }
 
 @media (max-width: 1280px) {

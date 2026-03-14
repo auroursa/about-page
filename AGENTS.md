@@ -4,7 +4,7 @@ This guide helps agentic coding tools work effectively in this Astro-based perso
 
 ## Project Overview
 
-- **Framework**: Astro 5.17.1 (TypeScript)
+- **Framework**: Astro 6.x (TypeScript)
 - **Styling**: Tailwind CSS v4 + modular stylesheet entry at `src/styles/global.css`
 - **Package Manager**: pnpm
 - **Site Language**: Chinese (zh-cn)
@@ -70,6 +70,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Optional fields: `description`, `date`, `pubDate`, `category`, `tags`, `slug`
 - Use `z.preprocess` for date handling to convert Date objects to strings
 - Categories are auto-generated from blog posts and used for filtering
+- Date preprocessing in `content.config.ts` converts UTC Date objects to CST (UTC+8) strings
 
 ### Naming Conventions
 
@@ -86,7 +87,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Home-page styles are split into `home-critical.css` and `home-deferred.css`
 - In `src/pages/index.astro`, load `home-critical.css` as a normal stylesheet and `home-deferred.css` via preload + stylesheet swap (`?url`) to reduce render-blocking CSS and keep first paint stable
 - Keep tokens/reset/font/base element rules in `src/styles/base.css`
-- Keep reusable UI component patterns in `src/styles/components.css`
+- Keep reusable UI component patterns in `src/styles/components.css` (includes `drawer-interactive`, `drawer-section`, `drawer-action-icon` for drawer elements)
 - Keep above-the-fold home rules in `src/styles/home-critical.css`
 - Keep non-critical/below-the-fold home rules in `src/styles/home-deferred.css`
 - Keep nav/drawer/indicator behavior styles in `src/styles/navigation.css`
@@ -103,7 +104,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - The home page is assembled from dedicated Astro components rather than one large template
 - Treat `src/pages/index.astro` as a composition entry file: keep it focused on importing and ordering sections, not embedding large section markup or data loops
 - Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeProjectPanel.astro`, `HomeInfoGrid.astro`, `HomeMusicPanel.astro`, `HomeMusicSwitcherScript.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
-- Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`)
+- Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`, `home-music.ts`, `friends.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
 - Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
@@ -142,9 +143,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Avoid monolithic `public/js/main.js`; split scripts by feature/domain and keep each file scoped to one responsibility
 - Use kebab-case file names, and prefer clear prefixes for grouped features (for example `nav-*` for navigation behavior)
 - Current navigation behavior is split across `public/js/nav-indicator.js`, `public/js/nav-sticky-menu.js`, and `public/js/nav-drawer-menu.js`
-- Keep page-specific interactions in dedicated files (for example `public/js/about-color-swatches.js`, `public/js/article-timeline.js`, `public/js/home-gallery-shuffle.js`)
+- Keep page-specific interactions in dedicated files (for example `public/js/about-color-swatches.js`, `public/js/article-timeline.js`, `public/js/home-gallery-shuffle.js`) and load them only on the pages that need them (not globally in BaseLayout)
 - Home music behavior is handled in `public/js/home-music-switcher.js` (accent sync, cover updates, preview playback)
 - For Astro transitions, initialize scripts on both `DOMContentLoaded` and `astro:page-load` to ensure behavior survives client-side navigation
+- Prefer proper cleanup patterns (store a cleanup function, call it on re-init) over `window.__*` global flags to prevent duplicate event listeners
 
 ### File Organization
 
@@ -167,9 +169,12 @@ src/
 ├── content/
 │   └── blog/              # Markdown blog posts
 ├── data/
+│   ├── friends.ts         # Friends page link data
 │   ├── home-gallery.ts    # Home gallery and four-season image data
 │   ├── home-info.ts       # Home skill/device card data
 │   └── home-music.ts      # Home music Apple Music link data
+├── utils/
+│   └── date.ts            # Shared date formatting, sorting, and ISO datetime helpers
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
@@ -242,7 +247,8 @@ public/
 - Feed items include full rendered article content, not title-only entries
 - Root-relative links in RSS content are converted to absolute URLs during feed generation
 - Filters posts that have `pubDate` or `date` field
-- Sorts posts by publication date (newest first)
+- Sorts posts by publication date (newest first) via shared `sortPostsByDate` from `src/utils/date.ts`
+- Guards against missing `post.body` to avoid runtime errors
 
 ### Category Pages
 
@@ -258,6 +264,8 @@ public/
 - Include `aria-label` or `aria-labelledby` for interactive elements
 - Ensure all images have descriptive alt text
 - Use proper heading hierarchy (h1, h2, h3)
+- Use `alt=""` for purely decorative images (avatars in nav/header); use descriptive alt text for content images
+- External links (social, messaging) should include `target="_blank" rel="noopener noreferrer"`
 
 ### No Testing Framework
 
