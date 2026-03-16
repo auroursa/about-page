@@ -5,19 +5,19 @@ export const formatDate = (dateStr: string | undefined): string => {
   const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (!match) return '';
   const [, year, month, day] = match;
-  const date = new Date(`${year}-${month}-${day}T12:00:00+08:00`);
-  return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
+  const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day), 12));
+  return `${year}-${month}-${day} (${weekdays[date.getUTCDay()]})`;
 };
 
 export const parseDateForSort = (dateStr: string): Date => {
   const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (!match) return new Date(0);
-  return new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00+08:00`);
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 12));
 };
 
 export const toISODatetime = (dateStr: string | undefined): string => {
   if (!dateStr) return '';
-  return `${dateStr.replace(' ', 'T')}+08:00`;
+  return dateStr.replace(' ', 'T');
 };
 
 export const sortPostsByDate = <T extends { data: { pubDate?: string; date?: string } }>(posts: T[]): T[] => {

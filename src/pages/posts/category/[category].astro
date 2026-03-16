@@ -3,21 +3,11 @@ import { getCollection } from 'astro:content';
 import DecoratedTitle from '../../../components/DecoratedTitle.astro';
 import PostSidebar from '../../../components/PostSidebar.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { formatDate, sortPostsByDate, toISODatetime } from '../../../utils/date';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const sortedPosts = posts
-    .filter((post) => post.data.pubDate || post.data.date)
-    .sort((a, b) => {
-      const dateStrA = (a.data.pubDate || a.data.date) as string;
-      const dateStrB = (b.data.pubDate || b.data.date) as string;
-      const parseDate = (str: string) => {
-        const match = str.match(/(\d{4})-(\d{2})-(\d{2})/);
-        if (!match) return new Date(0);
-        return new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00+08:00`);
-      };
-      return parseDate(dateStrB).valueOf() - parseDate(dateStrA).valueOf();
-    });
+  const sortedPosts = sortPostsByDate(posts);
 
   const categories = [...new Set(sortedPosts.map((post) => post.data.category).filter(Boolean))];
   return categories.map((category) => ({ params: { category } }));
@@ -26,18 +16,7 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 
 const allPosts = await getCollection('blog');
-const sortedPosts = allPosts
-  .filter((post) => post.data.pubDate || post.data.date)
-  .sort((a, b) => {
-    const dateStrA = (a.data.pubDate || a.data.date) as string;
-    const dateStrB = (b.data.pubDate || b.data.date) as string;
-    const parseDate = (str: string) => {
-      const match = str.match(/(\d{4})-(\d{2})-(\d{2})/);
-      if (!match) return new Date(0);
-      return new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00+08:00`);
-    };
-    return parseDate(dateStrB).valueOf() - parseDate(dateStrA).valueOf();
-  });
+const sortedPosts = sortPostsByDate(allPosts);
 
 const filteredPosts = sortedPosts.filter((post) => post.data.category === category);
 const categories = [...new Set(sortedPosts.map((post) => post.data.category).filter(Boolean))];
@@ -45,16 +24,6 @@ const categoryItems = categories.map((name) => ({
   name,
   count: sortedPosts.filter((post) => post.data.category === name).length,
 }));
-
-const formatDate = (dateStr: string | undefined) => {
-  if (!dateStr) return '';
-  const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
-  if (!match) return '';
-  const [, year, month, day] = match;
-  const date = new Date(`${year}-${month}-${day}T12:00:00+08:00`);
-  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-  return `${year}-${month}-${day} (${weekdays[date.getDay()]})`;
-};
 
 const postCardClass = 'glass-panel post-card';
 const postCategoryClass = 'category-pill';
@@ -79,7 +48,7 @@ const panelClass = 'glass-panel';
               </div>
               <div class="flex flex-wrap items-center gap-2">
                 {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
-                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={post.data.pubDate ? `${post.data.pubDate.replace(' ', 'T')}+08:00` : post.data.date ? `${post.data.date.replace(' ', 'T')}+08:00` : ''}>
+                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={toISODatetime(post.data.pubDate || post.data.date)}>
                   {formatDate(post.data.pubDate || post.data.date)}
                 </time>
               </div>

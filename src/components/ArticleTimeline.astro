@@ -21,7 +21,7 @@ const extractDateParts = (dateStr: string) => {
     year,
     month,
     day,
-    parsedDate: new Date(`${year}-${month}-${day}T12:00:00+08:00`),
+    parsedDate: new Date(Date.UTC(Number(year), Number(month) - 1, Number(day), 12)),
   };
 };
 
