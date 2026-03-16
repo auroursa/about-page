@@ -278,6 +278,11 @@
     margin-top: 0.15rem;
   }
 
+  .project-tag-row .glass-info-tag {
+    border: 0;
+    background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
+  }
+
   @media (hover: none), (pointer: coarse) {
     .project-card:hover {
       transform: none;
