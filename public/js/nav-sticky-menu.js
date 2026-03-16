@@ -88,27 +88,20 @@ function initStickyMenu() {
         return;
       }
 
-      const finalTransform = window.getComputedStyle(el).transform;
-      const prefix = finalTransform === 'none' ? '' : `${finalTransform} `;
-
       el.animate(
         [
-          { transform: `${prefix}translate(${deltaX}px, ${deltaY}px)` },
-          { transform: finalTransform === 'none' ? 'none' : finalTransform },
+          { transform: `translate(${deltaX}px, ${deltaY}px)` },
+          { transform: 'translate(0, 0)' },
         ],
         {
           duration: 480,
           easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          composite: 'add',
         }
       );
     });
 
     /* Wait for FLIP to settle, then re-sync indicator once */
-    const longest = animatedElements.reduce((max, el) => {
-      const anims = el.getAnimations();
-      return anims.length > 0 ? anims[0] : max;
-    }, null);
-
     const onFinish = () => {
       if (indicator instanceof HTMLElement) {
         indicator.style.transition = '';
@@ -117,8 +110,12 @@ function initStickyMenu() {
       window.cynosura?.navIndicator?.init(false);
     };
 
-    if (longest) {
-      longest.finished.then(onFinish);
+    const flipAnimation = animatedElements.reduce((found, el) => {
+      return found ?? el.getAnimations()[0] ?? null;
+    }, null);
+
+    if (flipAnimation) {
+      flipAnimation.finished.then(onFinish, onFinish);
     } else {
       onFinish();
     }

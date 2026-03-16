@@ -11,8 +11,10 @@
   border-radius: 0;
   background-color: var(--menu-color);
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
-  transition-property: max-width, width, border-radius, background-color, box-shadow, border-color, top, margin, padding;
-  transition-duration: 480ms;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  transition-property: max-width, width, border-radius, top, margin, padding, background-color, box-shadow, border-color, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 480ms, 480ms, 480ms, 480ms, 480ms, 480ms, 240ms, 240ms, 240ms, 480ms, 480ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -137,13 +139,8 @@
     transition-delay: 0ms;
   }
 
-  /* Leaving at-top: avatar hides first -> bar expands */
-  .menu:not(.at-top) .desktop-nav-brand-shell {
-    transition-delay: 0ms;
-  }
-
+  /* Leaving at-top: avatar hides fast, travel label reappears with delay */
   .menu:not(.at-top) .desktop-nav-brand-avatar {
-    transition-delay: 0ms;
     transition-timing-function: ease-in;
     transition-duration: 200ms;
   }

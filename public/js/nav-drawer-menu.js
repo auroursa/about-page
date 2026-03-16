@@ -136,6 +136,12 @@ function initDrawerMenu() {
 
   // ── Open / Close ──
   const openDrawer = () => {
+    // Cancel pending close if reopening quickly
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
     resetStagger();
 
     drawer.classList.add('open');
@@ -151,9 +157,21 @@ function initDrawerMenu() {
     onNextFrame(checkScrollOverflow);
   };
 
+  let closeTimer = null;
+
   const closeDrawer = () => {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
     animateStaggerOut();
-    finishClose();
+
+    // Let stagger-out play during the container's 300ms CSS fade
+    closeTimer = setTimeout(() => {
+      closeTimer = null;
+      finishClose();
+    }, 300);
   };
 
   // ── Backdrop click ──
@@ -317,6 +335,11 @@ function initDrawerMenu() {
 
   // ── Close drawer before View Transition swap ──
   const onBeforeSwap = () => {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
     if (drawer.classList.contains('open')) {
       resetStagger();
       clearDragStyles();
@@ -383,6 +406,10 @@ function initDrawerMenu() {
     document.removeEventListener('astro:before-swap', onBeforeSwap);
     navCurrentLink?.removeEventListener('click', onNavCurrentClick);
     scrollContent?.removeEventListener('scroll', checkScrollOverflow);
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
     focusTrapCleanup?.();
     document.body.style.overflow = '';
   };

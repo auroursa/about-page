@@ -42,9 +42,9 @@ const currentNav = navItems.find((item) => item.path === currentPath) ?? navItem
 const currentSectionLabel = currentNav.label;
 const currentSectionIconBody = currentNav.iconBody;
 
-const menuButtonBase = 'relative inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl bg-transparent px-3.5 text-[0.92rem] font-medium text-[var(--text-color)] transition-all duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]';
+const menuButtonBase = 'relative inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl bg-transparent px-3.5 text-[0.92rem] font-medium text-[var(--text-color)] transition-[background-color,color] duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]';
 const menuButtonActive = 'nav-active-btn text-[var(--main-color)] hover:bg-transparent';
-const menuIconClass = 'h-[1.1rem] w-[1.1rem] fill-current transition-colors duration-300';
+const menuIconClass = 'h-[1.1rem] w-[1.1rem] fill-current transition-colors duration-300 [transform:translateZ(0)]';
 const menuLabelClass = 'transition-colors duration-300';
 const menuLabelActiveClass = 'text-[var(--main-color)]';
 const menuIconActiveClass = 'text-[var(--main-color)]';
