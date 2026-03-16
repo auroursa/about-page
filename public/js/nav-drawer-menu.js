@@ -117,6 +117,8 @@ function initDrawerMenu() {
   };
 
   // ── Close state cleanup ──
+  let restoreFocusOnClose = false;
+
   const finishClose = () => {
     drawer.classList.remove('open');
     drawerPanel.classList.remove('open');
@@ -125,7 +127,11 @@ function initDrawerMenu() {
 
     focusTrapCleanup?.();
     focusTrapCleanup = null;
-    openMenuButton.focus();
+
+    if (restoreFocusOnClose) {
+      openMenuButton.focus();
+      restoreFocusOnClose = false;
+    }
   };
 
   // ── Open / Close ──
@@ -142,7 +148,7 @@ function initDrawerMenu() {
     focusTrapCleanup = trapFocus(drawerPanel);
     closeMenuButton.focus();
 
-    requestAnimationFrame(() => requestAnimationFrame(checkScrollOverflow));
+    onNextFrame(checkScrollOverflow);
   };
 
   const closeDrawer = () => {
@@ -160,6 +166,7 @@ function initDrawerMenu() {
   // ── Escape key ──
   const onKeydown = (event) => {
     if (event.key === 'Escape' && drawer.classList.contains('open')) {
+      restoreFocusOnClose = true;
       closeDrawer();
     }
   };
@@ -298,6 +305,7 @@ function initDrawerMenu() {
     const deltaX = e.changedTouches[0].clientX - edgeStartX;
     const deltaY = e.changedTouches[0].clientY - edgeStartY;
     edgeStartX = null;
+    edgeStartY = null;
 
     if (deltaX < -60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
       openDrawer();

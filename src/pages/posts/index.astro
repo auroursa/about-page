@@ -1,47 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
+import PostCard from '../../components/PostCard.astro';
 import PostSidebar from '../../components/PostSidebar.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatDate, sortPostsByDate, toISODatetime } from '../../utils/date';
+import { sortPostsByDate } from '../../utils/date';
+import { getCategoryItems } from '../../utils/categories';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = sortPostsByDate(allPosts);
-
-const categories = [...new Set(sortedPosts.map((post) => post.data.category).filter(Boolean))];
-const categoryItems = categories.map((category) => ({
-  name: category,
-  count: sortedPosts.filter((post) => post.data.category === category).length,
-}));
-
-const postCardClass = 'glass-panel post-card';
-const postCategoryClass = 'category-pill';
+const categoryItems = getCategoryItems(sortedPosts);
 ---
 
-<BaseLayout title="文章" description="博客文章列表" currentPath="/posts">
+<BaseLayout title="文章" description="博客文章列表" currentPath="/posts" drawerCategories={categoryItems}>
   <div class="grid grid-cols-[1fr_3fr] items-start gap-2 max-[1280px]:grid-cols-1">
     <PostSidebar categories={categoryItems} />
 
     <div class="grid grid-cols-1 gap-2">
       {sortedPosts.map((post) => (
-        <article>
-          <a href={`/posts/${post.id}`} class:list={[postCardClass, 'group block']}>
-            <div class="flex flex-col gap-4">
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0 space-y-2.5">
-                  <h2 class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{post.data.title}</h2>
-                  {post.data.description && <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{post.data.description}</p>}
-                </div>
-                <svg class="mt-1.5 h-5 w-5 shrink-0 fill-[color:color-mix(in_srgb,var(--text-color)_24%,transparent)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:fill-[var(--main-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"></path></svg>
-              </div>
-              <div class="flex flex-wrap items-center gap-2">
-                {post.data.category && <span class={postCategoryClass}>{post.data.category}</span>}
-                <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={toISODatetime(post.data.pubDate || post.data.date)}>
-                  {formatDate(post.data.pubDate || post.data.date)}
-                </time>
-              </div>
-            </div>
-          </a>
-        </article>
+        <PostCard
+          id={post.id}
+          title={post.data.title}
+          description={post.data.description}
+          category={post.data.category}
+          pubDate={post.data.pubDate}
+          date={post.data.date}
+        />
       ))}
     </div>
   </div>

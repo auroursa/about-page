@@ -11,7 +11,7 @@ function initAboutColorSwatches() {
 
       const showTooltip = () => {
         if (hideTimer) {
-          window.clearTimeout(hideTimer);
+          clearTimeout(hideTimer);
         }
 
         const tooltip = swatch.querySelector('.about-color-tooltip');
@@ -24,7 +24,7 @@ function initAboutColorSwatches() {
 
       const hideTooltip = () => {
         if (hideTimer) {
-          window.clearTimeout(hideTimer);
+          clearTimeout(hideTimer);
         }
 
         const tooltip = swatch.querySelector('.about-color-tooltip');
@@ -37,7 +37,7 @@ function initAboutColorSwatches() {
 
       const showTooltipTemporarily = () => {
         showTooltip();
-        hideTimer = window.setTimeout(hideTooltip, 900);
+        hideTimer = setTimeout(hideTooltip, 900);
       };
 
       swatch.addEventListener('mouseenter', showTooltip);
@@ -56,11 +56,11 @@ function initAboutColorSwatches() {
         return;
       }
 
-      swatch.addEventListener('click', () => navigator.clipboard.writeText(color));
+      swatch.addEventListener('click', () => { navigator.clipboard.writeText(color).catch(() => {}); });
       swatch.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          navigator.clipboard.writeText(color);
+          navigator.clipboard.writeText(color).catch(() => {});
         }
       });
 

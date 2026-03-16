@@ -385,7 +385,7 @@
           cancelFade = () => cleanup({ restoreOpacity: true });
           root.__musicCoverFadeCleanup = cancelFade;
           coverImage.addEventListener('transitionend', handleFadeOut);
-          fadeTimer = window.setTimeout(finishFadeOut, 220);
+          fadeTimer = setTimeout(finishFadeOut, 220);
 
           requestAnimationFrame(() => {
             if (root.__musicCoverRequestId !== nextRequestId) {
@@ -418,7 +418,7 @@
     }
   };
 
-  /* ── #4 Audio fade helpers (volume ramp) ── */
+  /* ── #3 Audio fade helpers (volume ramp) ── */
 
   const FADE_MS = 160;
   const FADE_STEPS = 10;
@@ -499,7 +499,9 @@
       const items = Array.from(root.querySelectorAll('[data-music-item]')).filter((item) => item instanceof HTMLButtonElement);
       const playToggle = root.querySelector('[data-music-play-toggle]');
       const musicList = root.querySelector('.home-music-list');
-      const { audio, fadeIn, fadeOut } = createAudioGraph();
+      const audioGraph = createAudioGraph();
+      const { audio, fadeIn, fadeOut } = audioGraph;
+      activeAudioGraph = audioGraph;
       let activeItem = null;
       let currentPreviewUrl = '';
 
@@ -536,7 +538,7 @@
             clearTimeout(progressHideTimer);
           }
 
-          progressHideTimer = window.setTimeout(() => {
+          progressHideTimer = setTimeout(() => {
             listProgress.classList.remove('is-visible');
           }, 700);
         };
@@ -711,16 +713,27 @@
     });
   };
 
-  let musicSwitcherCleanup = null;
+  let activeAudioGraph = null;
 
-  function bindMusicSwitcherLifecycle(init) {
-    document.addEventListener('astro:page-load', init);
-    musicSwitcherCleanup = () => {
-      document.removeEventListener('astro:page-load', init);
-    };
+  const initMusicSwitcherWrapped = () => {
+    activeAudioGraph = null;
+    initMusicSwitcher();
+  };
+
+  document.addEventListener('astro:before-swap', () => {
+    if (activeAudioGraph) {
+      activeAudioGraph.audio.pause();
+      activeAudioGraph.audio.removeAttribute('src');
+      activeAudioGraph.audio.load();
+      activeAudioGraph = null;
+    }
+  });
+
+  document.addEventListener('astro:page-load', initMusicSwitcherWrapped);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMusicSwitcherWrapped, { once: true });
+  } else {
+    initMusicSwitcherWrapped();
   }
-
-  musicSwitcherCleanup?.();
-  initMusicSwitcher();
-  bindMusicSwitcherLifecycle(initMusicSwitcher);
 })();

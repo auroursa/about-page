@@ -4,12 +4,8 @@
   --card-color: #ffffff;
   --card-content-color: #f6f7f8;
   --main-color: #11659a;
-  --main-intext-color: #ffffff;
   --accent-color: #51a8dd;
   --menu-color: #d8e3e7;
-  --menu-at-top-color: rgb(235 244 244 / 95%);
-  --menu-hv-color: #d0dfe6;
-  --menu-button-color: #322c28;
   --prose-max-width: 82ch;
 }
 
@@ -20,20 +16,12 @@
     --card-color: #1b1b1b;
     --card-content-color: #212121;
     --main-color: #51a8dd;
-    --main-intext-color: #fcfaf2;
     --accent-color: #11659a;
     --menu-color: #242424;
-    --menu-at-top-color: rgb(18 18 18 / 95%);
-    --menu-hv-color: #3c3c3c;
-    --menu-button-color: #fcfaf2;
   }
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
-  }
-
   html {
     scrollbar-gutter: stable;
   }
@@ -56,11 +44,6 @@
   a {
     color: var(--main-color);
     text-decoration: none;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
   }
 
   hr {

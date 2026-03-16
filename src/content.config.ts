@@ -19,15 +19,13 @@ const dateToString = (val: unknown) => {
 const blog = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
-    title: z.string(),
+    title: z.string().min(1, "Title is required and cannot be empty"),
     description: z.string().optional(),
     date: z.preprocess(dateToString, z.string().optional()),
     pubDate: z.preprocess(dateToString, z.string().optional()),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     slug: z.string().optional(),
-  }).refine((data) => data.title && data.title.length > 0, {
-    message: "Title is required and cannot be empty",
   }),
 });
 

@@ -1,0 +1,38 @@
+---
+import { formatDate, toISODatetime } from '../utils/date';
+
+interface Props {
+  id: string;
+  title: string;
+  description?: string;
+  category?: string;
+  pubDate?: string;
+  date?: string;
+}
+
+const { id, title, description, category, pubDate, date } = Astro.props;
+const displayDate = pubDate || date;
+
+const postCardClass = 'glass-panel post-card';
+const postCategoryClass = 'category-pill';
+---
+
+<article>
+  <a href={`/posts/${id}`} class:list={[postCardClass, 'group block']}>
+    <div class="flex flex-col gap-4">
+      <div class="flex items-start justify-between gap-4">
+        <div class="min-w-0 space-y-2.5">
+          <h2 class="m-0 text-[1.42rem] font-bold leading-tight transition-colors duration-300 group-hover:text-[var(--main-color)]">{title}</h2>
+          {description && <p class="m-0 text-[0.95rem] leading-7 text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{description}</p>}
+        </div>
+        <svg class="mt-1.5 h-5 w-5 shrink-0 fill-[color:color-mix(in_srgb,var(--text-color)_24%,transparent)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:fill-[var(--main-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"></path></svg>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        {category && <span class={postCategoryClass}>{category}</span>}
+        <time class="text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_50%,transparent)] font-overpass" datetime={toISODatetime(displayDate)}>
+          {formatDate(displayDate)}
+        </time>
+      </div>
+    </div>
+  </a>
+</article>

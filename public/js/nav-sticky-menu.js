@@ -136,7 +136,7 @@ function initStickyMenu() {
   }
 
   function update() {
-    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const scrollY = window.scrollY ?? 0;
 
     if (!currentAtTop && scrollY > sentinelBottom) {
       currentAtTop = true;

@@ -25,10 +25,11 @@
     });
   };
 
-  initGalleryShuffle();
+  document.addEventListener('astro:page-load', initGalleryShuffle);
 
-  if (!window.__homeGalleryShuffleBound) {
-    document.addEventListener('astro:page-load', initGalleryShuffle);
-    window.__homeGalleryShuffleBound = true;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGalleryShuffle, { once: true });
+  } else {
+    initGalleryShuffle();
   }
 })();

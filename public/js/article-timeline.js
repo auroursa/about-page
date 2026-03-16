@@ -36,7 +36,7 @@
         clearTimeout(progressHideTimer);
       }
 
-      progressHideTimer = window.setTimeout(() => {
+      progressHideTimer = setTimeout(() => {
         progress.classList.remove('is-visible');
       }, 700);
     };
@@ -44,36 +44,6 @@
     const handler = () => {
       updateProgress();
       revealProgress();
-    };
-    timeline.__scrollHandler = handler;
-
-    const onWheel = (event) => {
-      if (event.deltaY === 0) {
-        return;
-      }
-
-      const maxScrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
-
-      if (maxScrollLeft <= 0) {
-        return;
-      }
-
-      const stepBase = event.deltaMode === 1
-        ? event.deltaY * 16
-        : event.deltaMode === 2
-          ? event.deltaY * timeline.clientWidth
-          : event.deltaY;
-
-      const step = stepBase * 2.4;
-      const nextScrollLeft = Math.min(maxScrollLeft, Math.max(0, timeline.scrollLeft + step));
-
-      event.preventDefault();
-
-      if (nextScrollLeft === timeline.scrollLeft) {
-        return;
-      }
-
-      timeline.scrollLeft = nextScrollLeft;
     };
 
     requestAnimationFrame(() => {
@@ -84,11 +54,9 @@
     });
 
     timeline.addEventListener('scroll', handler, { passive: true });
-    timeline.addEventListener('wheel', onWheel, { passive: false });
 
     timeline.__timelineCleanup = () => {
       timeline.removeEventListener('scroll', handler);
-      timeline.removeEventListener('wheel', onWheel);
 
       if (progressHideTimer) {
         clearTimeout(progressHideTimer);
@@ -101,10 +69,11 @@
     };
   };
 
-  initArticleTimeline();
+  document.addEventListener('astro:page-load', initArticleTimeline);
 
-  if (!window.__articleTimelineBound) {
-    document.addEventListener('astro:page-load', initArticleTimeline);
-    window.__articleTimelineBound = true;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArticleTimeline, { once: true });
+  } else {
+    initArticleTimeline();
   }
 })();

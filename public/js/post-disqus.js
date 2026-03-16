@@ -33,12 +33,12 @@
     existingScript.remove();
   }
 
-  thread.innerHTML = '';
+  thread.replaceChildren();
 
   var disqusScript = document.createElement('script');
   disqusScript.src = 'https://cynosura-one.disqus.com/embed.js';
   disqusScript.async = true;
-  disqusScript.setAttribute('data-timestamp', String(+new Date()));
+  disqusScript.setAttribute('data-timestamp', String(Date.now()));
   disqusScript.setAttribute('data-disqus-script', 'true');
   disqusScript.setAttribute('data-cfasync', 'false');
   document.head.appendChild(disqusScript);

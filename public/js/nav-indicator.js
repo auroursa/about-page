@@ -2,7 +2,6 @@ let savedIndicatorLeft = null;
 let savedIndicatorWidth = null;
 
 function positionNavIndicator(indicator, coreRect, btnRect) {
-  
   indicator.style.top = `${btnRect.top - coreRect.top}px`;
   indicator.style.left = `${btnRect.left - coreRect.left}px`;
   indicator.style.width = `${btnRect.width}px`;

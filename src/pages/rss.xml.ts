@@ -48,7 +48,7 @@ export async function GET(context: APIContext) {
         title: post.data.title,
         description: post.data.description || '',
         link: `/posts/${post.id}/`,
-        pubDate: postDate,
+        pubDate: postDate ? new Date(postDate.replace(' ', 'T')) : undefined,
         content: post.body ? renderRssContent(post.body, site) : '',
       };
     }),
