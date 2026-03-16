@@ -57,6 +57,7 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 │   │   ├── HomeInfoGrid.astro
 │   │   ├── HomeInfoIcon.astro
 │   │   ├── HomeSeasonRecap.astro
+│   │   ├── PostCard.astro              # Shared post card component
 │   │   └── PostSidebar.astro           # Shared blog sidebar component
 │   ├── content/
 │   │   └── blog/           # Markdown blog posts
@@ -64,8 +65,10 @@ Welcome to my personal website! This site serves as a platform to share my thoug
 │   │   ├── friends.ts     # Friends page link data
 │   │   ├── home-gallery.ts # Home gallery/four-season data
 │   │   ├── home-info.ts    # Home skill/device card data
-│   │   └── home-music.ts   # Home music Apple Music link data
+│   │   ├── home-music.ts   # Home music Apple Music link data
+│   │   └── social-links.ts # Shared social icon link data
 │   ├── utils/
+│   │   ├── categories.ts  # Category extraction helper
 │   │   └── date.ts        # Shared date formatting and sorting utilities
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Base layout component

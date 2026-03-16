@@ -70,11 +70,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Optional fields: `description`, `date`, `pubDate`, `category`, `tags`, `slug`
 - Use `z.preprocess` for date handling to convert Date objects to strings
 - Categories are auto-generated from blog posts and used for filtering
-- Date preprocessing in `content.config.ts` converts UTC Date objects to CST (UTC+8) strings
+- Date preprocessing in `content.config.ts` converts Date objects to UTC strings to avoid timezone drift
 
 ### Naming Conventions
 
-- **Components**: PascalCase (e.g., `BaseLayout.astro`, `BlogLayout.astro`)
+- **Components**: PascalCase (e.g., `BaseLayout.astro`, `PostCard.astro`)
 - **Files**: kebab-case for pages, PascalCase for layouts and components
 - **Variables**: camelCase
 - **CSS Classes**: kebab-case (e.g., `menu-button`, `card-title`)
@@ -84,12 +84,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 - Use Tailwind CSS v4 utility classes in `.astro` templates for layout and component styling
 - `src/styles/global.css` is an entrypoint for shared styles only (`base.css`, `components.css`, `navigation.css`)
-- Home-page styles are split into `home-critical.css` and `home-deferred.css`
-- In `src/pages/index.astro`, load `home-critical.css` as a normal stylesheet and `home-deferred.css` via preload + stylesheet swap (`?url`) to reduce render-blocking CSS and keep first paint stable
+- Home-page styles live in `home-deferred.css`, loaded via `?url` import in `src/pages/index.astro`
 - Keep tokens/reset/font/base element rules in `src/styles/base.css`
 - Keep reusable UI component patterns in `src/styles/components.css` (includes `drawer-interactive`, `drawer-section`, `drawer-action-icon` for drawer elements)
-- Keep above-the-fold home rules in `src/styles/home-critical.css`
-- Keep non-critical/below-the-fold home rules in `src/styles/home-deferred.css`
+- Keep home-page specific rules in `src/styles/home-deferred.css`
 - Keep nav/drawer/indicator behavior styles in `src/styles/navigation.css`
 - Prefer promoting repeated layout/UI patterns into component-level classes instead of repeating long utility stacks
 - Use CSS custom properties (variables) for theming
@@ -104,11 +102,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - The home page is assembled from dedicated Astro components rather than one large template
 - Treat `src/pages/index.astro` as a composition entry file: keep it focused on importing and ordering sections, not embedding large section markup or data loops
 - Current home page pieces include `HomeHeroPanel.astro`, `HomeHeroFeature.astro`, `ArticleTimeline.astro`, `HomeProjectPanel.astro`, `HomeInfoGrid.astro`, `HomeMusicPanel.astro`, `HomeMusicSwitcherScript.astro`, `HomeGalleryPanel.astro`, `HomeSeasonRecap.astro`, and `HomeGalleryShuffleScript.astro`
-- Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`, `home-music.ts`, `friends.ts`)
+- Reusable home page data lives in `src/data/` (`home-gallery.ts`, `home-info.ts`, `home-music.ts`, `social-links.ts`, `friends.ts`)
 - The masonry gallery intentionally shuffles on each refresh via a small client-side script component
 - When changing the home page, preserve the desktop/tablet/mobile differences of the timeline and four-season gallery layout
 - Prefer external script files in `public/js/` for home page behavior that must survive stricter CSP deployments; avoid relying on inline scripts for critical UI state such as gallery visibility or timeline positioning
-- For styles that must remain stable across Astro client-side route transitions, prefer same-origin external CSS via `<link>` in layout (example: `public/css/project-card.css`)
+- For styles that must remain stable across Astro client-side route transitions, prefer same-origin external CSS via `<link>` in layout
 
 ### Home Music Module
 
@@ -147,6 +145,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Home music behavior is handled in `public/js/home-music-switcher.js` (accent sync, cover updates, preview playback)
 - For Astro transitions, initialize scripts on both `DOMContentLoaded` and `astro:page-load` to ensure behavior survives client-side navigation
 - Prefer proper cleanup patterns (store a cleanup function, call it on re-init) over `window.__*` global flags to prevent duplicate event listeners
+- For audio/media resources, listen to `astro:before-swap` to pause and release resources before page transitions
+- Social icon data (SVG body, viewBox, URLs) is centralized in `src/data/social-links.ts` and shared between `HomeHeroPanel` and `BaseLayout` drawer
 
 ### File Organization
 
@@ -165,6 +165,7 @@ src/
 │   ├── HomeMusicSwitcherScript.astro
 │   ├── HomeProjectPanel.astro
 │   ├── HomeSeasonRecap.astro
+│   ├── PostCard.astro        # Shared post card component
 │   └── PostSidebar.astro
 ├── content/
 │   └── blog/              # Markdown blog posts
@@ -172,8 +173,10 @@ src/
 │   ├── friends.ts         # Friends page link data
 │   ├── home-gallery.ts    # Home gallery and four-season image data
 │   ├── home-info.ts       # Home skill/device card data
-│   └── home-music.ts      # Home music Apple Music link data
+│   ├── home-music.ts      # Home music Apple Music link data
+│   └── social-links.ts    # Shared social icon link data
 ├── utils/
+│   ├── categories.ts      # Category extraction and counting helper
 │   └── date.ts            # Shared date formatting, sorting, and ISO datetime helpers
 ├── layouts/
 │   └── BaseLayout.astro
@@ -191,14 +194,11 @@ src/
 │   ├── global.css         # Tailwind entrypoint + style imports
 │   ├── base.css           # Tokens, reset, base typography/elements
 │   ├── components.css     # Shared component-level classes
-│   ├── home-critical.css  # Home above-the-fold critical styles
-│   ├── home-deferred.css  # Home deferred/non-critical styles
+│   ├── home-deferred.css  # Home page styles
 │   └── navigation.css     # Navigation and drawer transition styles
 └── content.config.ts       # Content collections configuration
 
 public/
-├── css/
-│   └── project-card.css
 └── js/
     ├── nav-indicator.js
     ├── nav-sticky-menu.js
@@ -208,7 +208,6 @@ public/
     ├── home-gallery-shuffle.js
     ├── hero-photo-info.js
     ├── home-music-switcher.js
-    ├── post-title-transition.js
     └── post-disqus.js
 ```
 
@@ -254,9 +253,10 @@ public/
 
 - Category pages are dynamically generated at `/posts/category/[category]`
 - Use Astro's `getStaticPaths()` to pre-build pages for each category
-- Categories are extracted from blog post frontmatter
-- Category pages use the same sidebar layout as the main blog listing
+- Categories are extracted from blog post frontmatter using `getCategoryItems()` from `src/utils/categories.ts`
+- Category pages use the same sidebar layout and `PostCard` component as the main blog listing
 - Filter posts by `category` field in the collection
+- Pages that already have category data pass it to `BaseLayout` via `drawerCategories` prop to avoid redundant `getCollection` calls
 
 ### Accessibility
 
