@@ -281,6 +281,7 @@
   .project-tag-row .glass-info-tag {
     border: 0;
     background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
+    color: color-mix(in srgb, var(--main-color) 30%, var(--text-color));
   }
 
   @media (hover: none), (pointer: coarse) {
