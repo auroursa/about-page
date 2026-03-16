@@ -67,12 +67,13 @@
       const step = stepBase * 2.4;
       const nextScrollLeft = Math.min(maxScrollLeft, Math.max(0, timeline.scrollLeft + step));
 
+      event.preventDefault();
+
       if (nextScrollLeft === timeline.scrollLeft) {
         return;
       }
 
       timeline.scrollLeft = nextScrollLeft;
-      event.preventDefault();
     };
 
     requestAnimationFrame(() => {
