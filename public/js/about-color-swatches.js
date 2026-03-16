@@ -17,7 +17,8 @@ function initAboutColorSwatches() {
         const tooltip = swatch.querySelector('.about-color-tooltip');
 
         if (tooltip instanceof HTMLElement) {
-          tooltip.classList.add('show');
+          tooltip.style.visibility = 'visible';
+          tooltip.style.opacity = '1';
         }
       };
 
@@ -29,7 +30,8 @@ function initAboutColorSwatches() {
         const tooltip = swatch.querySelector('.about-color-tooltip');
 
         if (tooltip instanceof HTMLElement) {
-          tooltip.classList.remove('show');
+          tooltip.style.visibility = 'hidden';
+          tooltip.style.opacity = '0';
         }
       };
 
