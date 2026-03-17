@@ -138,11 +138,9 @@ function initStickyMenu() {
     if (!currentAtTop && scrollY > sentinelBottom) {
       currentAtTop = true;
       setMenuState(true, { animate: !isFirstUpdate });
-      isFirstUpdate = false;
     } else if (currentAtTop && scrollY < sentinelBottom - HYSTERESIS) {
       currentAtTop = false;
       setMenuState(false, { animate: !isFirstUpdate });
-      isFirstUpdate = false;
     }
   }
 
@@ -164,6 +162,7 @@ function initStickyMenu() {
   window.addEventListener('resize', onResize, { passive: true });
   refreshSentinelBottom();
   update();
+  isFirstUpdate = false;
 
   menuObserverCleanup = () => {
     window.removeEventListener('scroll', onScroll);
