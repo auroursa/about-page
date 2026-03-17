@@ -513,14 +513,14 @@
       if (musicList instanceof HTMLElement) {
         const listProgress = root.querySelector('.home-music-list-progress');
         let progressHideTimer = null;
+        let scrollRAF = null;
 
-        const updateListProgress = () => {
+        const updateListProgress = ({ maxScrollTop, scrollTop }) => {
           if (!(listProgress instanceof HTMLElement)) {
             return;
           }
 
-          const maxScrollTop = Math.max(musicList.scrollHeight - musicList.clientHeight, 0);
-          const ratio = maxScrollTop > 0 ? musicList.scrollTop / maxScrollTop : 0;
+          const ratio = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
           const clamped = clamp(ratio, 0, 1);
 
           listProgress.style.setProperty('--music-list-progress', String(clamped));
@@ -543,19 +543,33 @@
           }, 700);
         };
 
-        const checkScrollEnd = () => {
-          const remaining = musicList.scrollHeight - musicList.scrollTop - musicList.clientHeight;
-          const atTop = musicList.scrollTop < 8;
+        const applyScrollState = () => {
+          const scrollTop = musicList.scrollTop;
+          const maxScrollTop = Math.max(musicList.scrollHeight - musicList.clientHeight, 0);
+          const remaining = maxScrollTop - scrollTop;
+          const atTop = scrollTop < 8;
           const atVisualEnd = remaining < 12;
           const atScrollBoundary = remaining <= 1;
+
           musicList.classList.toggle('is-scrolled-end', atVisualEnd);
           musicList.style.overscrollBehavior = atTop || atScrollBoundary ? 'auto' : 'contain';
-          updateListProgress();
+          updateListProgress({ maxScrollTop, scrollTop });
           revealListProgress();
         };
 
-        musicList.addEventListener('scroll', checkScrollEnd, { passive: true });
-        checkScrollEnd();
+        const onMusicListScroll = () => {
+          if (scrollRAF !== null) {
+            return;
+          }
+
+          scrollRAF = requestAnimationFrame(() => {
+            scrollRAF = null;
+            applyScrollState();
+          });
+        };
+
+        musicList.addEventListener('scroll', onMusicListScroll, { passive: true });
+        applyScrollState();
       }
 
       const stopPlayback = async () => {

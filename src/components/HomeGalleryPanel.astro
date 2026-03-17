@@ -13,8 +13,8 @@ import { homeGalleryBackdropItems } from '../data/home-gallery';
 
   <div class="home-gallery-masonry-viewport">
     <div class="home-gallery-masonry" aria-label="摄影瀑布流" data-shuffle-state="pending">
-      {homeGalleryBackdropItems.map((item) => (
-        <figure class="home-gallery-masonry-card group">
+      {homeGalleryBackdropItems.map((item, index) => (
+        <figure class="home-gallery-masonry-card group" data-gallery-id={`gallery-${index}`}>
           <div class="home-gallery-masonry-image-shell">
             <img
               class="home-gallery-masonry-image"

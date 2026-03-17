@@ -1,5 +1,41 @@
 let savedIndicatorLeft = null;
 let savedIndicatorWidth = null;
+let queuedAnimate = false;
+let queuedFrame = null;
+
+function scheduleAfterLayoutSettled(callback) {
+  const afterLayoutSettled = window.cynosura?.afterLayoutSettled;
+
+  if (typeof afterLayoutSettled === 'function') {
+    afterLayoutSettled(callback);
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(callback);
+  });
+}
+
+function queueNavIndicatorInit(animate) {
+  queuedAnimate = queuedAnimate || animate;
+
+  if (queuedFrame !== null) {
+    return;
+  }
+
+  queuedFrame = requestAnimationFrame(() => {
+    const shouldAnimate = queuedAnimate;
+    queuedAnimate = false;
+    queuedFrame = null;
+    initNavIndicator(shouldAnimate);
+  });
+}
+
+function scheduleIndicatorInit(animate) {
+  scheduleAfterLayoutSettled(() => {
+    queueNavIndicatorInit(animate);
+  });
+}
 
 function initNavIndicator(animate) {
   const core = document.querySelector('.desktop-nav-core');
@@ -69,10 +105,10 @@ window.cynosura.navIndicator = {
 };
 
 document.addEventListener('astro:before-swap', saveNavIndicatorPosition);
-document.addEventListener('astro:page-load', () => initNavIndicator(true));
+document.addEventListener('astro:page-load', () => scheduleIndicatorInit(true));
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => initNavIndicator(false), { once: true });
+  document.addEventListener('DOMContentLoaded', () => scheduleIndicatorInit(false), { once: true });
 } else {
-  initNavIndicator(false);
+  scheduleIndicatorInit(false);
 }

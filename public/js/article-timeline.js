@@ -1,4 +1,17 @@
 (function () {
+  const scheduleAfterLayoutSettled = (callback) => {
+    const afterLayoutSettled = window.cynosura?.afterLayoutSettled;
+
+    if (typeof afterLayoutSettled === 'function') {
+      afterLayoutSettled(callback);
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(callback);
+    });
+  };
+
   const initArticleTimeline = () => {
     const timeline = document.querySelector('.home-article-scroll');
     const timelineRoot = timeline?.closest('.home-article-timeline');
@@ -11,6 +24,7 @@
     timeline.__timelineCleanup?.();
 
     let progressHideTimer = null;
+    let scrollRAF = null;
 
     const updateProgress = () => {
       if (!(progress instanceof HTMLElement)) {
@@ -41,22 +55,45 @@
       }, 700);
     };
 
-    const handler = () => {
+    const flushScrollState = () => {
+      scrollRAF = null;
       updateProgress();
       revealProgress();
     };
 
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        timeline.scrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
-        updateProgress();
-      });
-    });
+    const handler = () => {
+      if (scrollRAF !== null) {
+        return;
+      }
+
+      scrollRAF = requestAnimationFrame(flushScrollState);
+    };
+
+    const syncTimelineToEnd = () => {
+      const targetScrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
+
+      if (Math.abs(timeline.scrollLeft - targetScrollLeft) > 1) {
+        timeline.scrollLeft = targetScrollLeft;
+      }
+
+      updateProgress();
+    };
+
+    const scheduleInitialSync = () => {
+      scheduleAfterLayoutSettled(syncTimelineToEnd);
+    };
+
+    scheduleInitialSync();
 
     timeline.addEventListener('scroll', handler, { passive: true });
 
     timeline.__timelineCleanup = () => {
       timeline.removeEventListener('scroll', handler);
+
+      if (scrollRAF !== null) {
+        cancelAnimationFrame(scrollRAF);
+        scrollRAF = null;
+      }
 
       if (progressHideTimer) {
         clearTimeout(progressHideTimer);
