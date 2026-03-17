@@ -5,6 +5,7 @@
 
   .home-article-scroll {
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     padding: 0.25rem 0 1rem;
     scroll-snap-type: none;
     scroll-padding-inline: 0.15rem;

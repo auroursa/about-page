@@ -25,18 +25,38 @@
 
     let progressHideTimer = null;
     let scrollRAF = null;
+    let isPointerInside = timeline.matches(':hover');
+    const maxScrollLeft = () => Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
+
+    const looksLikeMouseWheel = (event) => {
+      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE || event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+        return true;
+      }
+
+      const legacyWheelDeltaY = typeof event.wheelDeltaY === 'number' ? Math.abs(event.wheelDeltaY) : 0;
+
+      return legacyWheelDeltaY >= 120;
+    };
+
+    const scheduleScrollFeedback = () => {
+      if (scrollRAF !== null) {
+        return;
+      }
+
+      scrollRAF = requestAnimationFrame(flushScrollState);
+    };
 
     const updateProgress = () => {
       if (!(progress instanceof HTMLElement)) {
         return;
       }
 
-      const maxScrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
-      const ratio = maxScrollLeft > 0 ? timeline.scrollLeft / maxScrollLeft : 0;
+      const scrollLimit = maxScrollLeft();
+      const ratio = scrollLimit > 0 ? timeline.scrollLeft / scrollLimit : 0;
       const clamped = Math.min(1, Math.max(0, ratio));
 
       progress.style.setProperty('--timeline-progress', String(clamped));
-      progress.classList.toggle('is-disabled', maxScrollLeft <= 1);
+      progress.classList.toggle('is-disabled', scrollLimit <= 1);
     };
 
     const revealProgress = () => {
@@ -62,15 +82,53 @@
     };
 
     const handler = () => {
-      if (scrollRAF !== null) {
+      scheduleScrollFeedback();
+    };
+
+    const wheelHandler = (event) => {
+      const scrollLimit = maxScrollLeft();
+
+      if (
+        scrollLimit <= 1 ||
+        !isPointerInside ||
+        Math.abs(event.deltaY) <= Math.abs(event.deltaX) ||
+        event.ctrlKey ||
+        !looksLikeMouseWheel(event)
+      ) {
         return;
       }
 
-      scrollRAF = requestAnimationFrame(flushScrollState);
+      const unit =
+        event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? timeline.clientWidth * 0.9
+          : event.deltaMode === WheelEvent.DOM_DELTA_LINE
+            ? 18
+            : 1;
+      const nextScrollLeft = Math.min(
+        scrollLimit,
+        Math.max(0, timeline.scrollLeft + event.deltaY * unit),
+      );
+
+      if (Math.abs(nextScrollLeft - timeline.scrollLeft) < 1) {
+        return;
+      }
+
+      event.preventDefault();
+      timeline.scrollLeft = nextScrollLeft;
+
+      scheduleScrollFeedback();
+    };
+
+    const handlePointerEnter = () => {
+      isPointerInside = true;
+    };
+
+    const handlePointerLeave = () => {
+      isPointerInside = false;
     };
 
     const syncTimelineToEnd = () => {
-      const targetScrollLeft = Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
+      const targetScrollLeft = maxScrollLeft();
 
       if (Math.abs(timeline.scrollLeft - targetScrollLeft) > 1) {
         timeline.scrollLeft = targetScrollLeft;
@@ -86,9 +144,15 @@
     scheduleInitialSync();
 
     timeline.addEventListener('scroll', handler, { passive: true });
+    timeline.addEventListener('wheel', wheelHandler, { passive: false });
+    timeline.addEventListener('pointerenter', handlePointerEnter);
+    timeline.addEventListener('pointerleave', handlePointerLeave);
 
     timeline.__timelineCleanup = () => {
       timeline.removeEventListener('scroll', handler);
+      timeline.removeEventListener('wheel', wheelHandler);
+      timeline.removeEventListener('pointerenter', handlePointerEnter);
+      timeline.removeEventListener('pointerleave', handlePointerLeave);
 
       if (scrollRAF !== null) {
         cancelAnimationFrame(scrollRAF);
