@@ -225,12 +225,13 @@ public/
 - Always provide `width`, `height`, and `alt` attributes for accessibility
 - Use `loading="lazy"` for below-the-fold images
 - Home gallery images live in `public/img/gallery/`; keep `src/data/home-gallery.ts` in sync when adding or replacing files
+- Keep year-specific gallery sets in subfolders (for example `public/img/gallery/2025/`) so seasonal recaps stay separate from the masonry pool
 - Prefer responsive images for large hero/season/avatar assets using `srcset` + `sizes` to avoid oversized downloads
 - For manually maintained responsive variants, use suffix naming like `*-320.webp`, `*-640.webp`, `*-768.webp`, `*-1280.webp`
 - Keep seasonal recap images wired through `src/data/home-gallery.ts` (`srcSet`/`sizes`) and render these fields in `HomeSeasonRecap.astro`
 - Keep hero background responsive in `HomeHeroFeature.astro` (currently `background-768.webp`, `background-1280.webp`, original as largest fallback)
 - Use small avatar variants (`profile-avatar-96.webp`, `profile-avatar-192.webp`) in UI positions that render around 64-96px
-- Masonry gallery images are frequently replaced; do not require responsive variant generation there unless explicitly requested
+- Masonry gallery images should also use manually maintained responsive variants (`320w` plus `640w` when the source is wide enough), with `srcSet`/`sizes` defined in `src/data/home-gallery.ts` and rendered in `HomeGalleryPanel.astro`
 
 ### Internationalization
 
