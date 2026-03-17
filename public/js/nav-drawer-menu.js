@@ -136,7 +136,7 @@ function initDrawerMenu() {
   };
 
   // ── Open / Close ──
-  const openDrawer = () => {
+  const openDrawer = ({ focusCloseButton = true } = {}) => {
     // Cancel pending close if reopening quickly
     if (closeTimer) {
       clearTimeout(closeTimer);
@@ -158,7 +158,9 @@ function initDrawerMenu() {
     animateStaggerIn();
 
     focusTrapCleanup = trapFocus(drawerPanel);
-    closeMenuButton.focus();
+    if (focusCloseButton) {
+      closeMenuButton.focus();
+    }
 
     onNextFrame(checkScrollOverflow);
   };
@@ -339,7 +341,7 @@ function initDrawerMenu() {
     edgeStartY = null;
 
     if (deltaX < -60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
-      openDrawer();
+      openDrawer({ focusCloseButton: false });
     }
   };
 
