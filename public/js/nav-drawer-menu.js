@@ -122,6 +122,7 @@ function initDrawerMenu() {
   const finishClose = () => {
     drawer.classList.remove('open');
     drawerPanel.classList.remove('open');
+    clearDragStyles();
     openMenuButton.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
 
@@ -141,6 +142,11 @@ function initDrawerMenu() {
       clearTimeout(closeTimer);
       closeTimer = null;
     }
+
+    drawer.style.transition = '';
+    drawer.style.backgroundColor = '';
+    drawer.style.backdropFilter = '';
+    drawer.style.webkitBackdropFilter = '';
 
     resetStagger();
 
@@ -165,6 +171,13 @@ function initDrawerMenu() {
       closeTimer = null;
     }
 
+    drawerPanel.classList.remove('open');
+    drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+    onNextFrame(() => {
+      drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+      drawer.style.backdropFilter = 'blur(0px)';
+      drawer.style.webkitBackdropFilter = 'blur(0px)';
+    });
     animateStaggerOut();
 
     // Let stagger-out play during the container's 300ms CSS fade
