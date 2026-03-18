@@ -13,6 +13,7 @@ export const friends: FriendEntry[] = [
   { name: "Bayesian Conspiracy", desc: "Jack Works", url: "https://blog.jackworks.dev", img: "/img/friends/blog.jackworks.dev.webp" },
   { name: "Bingxin Home", desc: "好久不见", url: "https://byteloid.one", img: "/img/friends/byteloid.one.webp" },
   { name: "Blog of Wr", desc: "Web dev, Linux, and other tech or casual stuff.", url: "https://wrye.dev", img: "/img/friends/wrye.dev.webp" },
+  { name: "草方块", desc: "此处会不定时产生包含大量废话的日志文件", url: "https://lab.gb0.dev", img: "/img/friends/lab.gb0.dev.webp" },
   { name: "ChrAlpha", desc: "@ChrAlpha's porfolio", url: "https://ichr.me", img: "/img/friends/ichr.me.webp" },
   { name: "Clem's Blog", desc: "悟已往之不諫，知來者之可追", url: "https://blog.hly0928.com", img: "/img/friends/blog.hly0928.com.webp" },
   { name: "cloramiStation", desc: "雨になって何分か後に行く", url: "https://www.clorami.cc", img: "/img/friends/clorami.cc.webp" },
@@ -22,7 +23,6 @@ export const friends: FriendEntry[] = [
   { name: "Digital Evergarden", desc: "Konnyaku's Blog", url: "https://hee.ink", img: "/img/friends/hee.ink.webp" },
   { name: "Dort 的博客", desc: "说不定其实是 AI", url: "https://blog.dort.me", img: "/img/friends/blog.dort.me.webp" },
   { name: "DreamCity", desc: "愿你有一天，能与你最重要的人重逢", url: "https://www.littleqiu.net", img: "/img/friends/www.littleqiu.net.webp" },
-  { name: "炖鱼的碎碎念", desc: "A salt fish.", url: "https://blog.salt-fish.moe", img: "/img/friends/blog.salt-fish.moe.webp" },
   { name: "废柴乙乙的Blog！", desc: "这里是乙酸乙酯酱的个人Blog！", url: "https://echiru.top", img: "/img/friends/echiru.top.webp" },
   { name: "Fika", desc: "Debug the World", url: "https://fika.ink", img: "/img/friends/fika.ink.webp" },
   { name: "FrenchPicnic's Nothing Life", desc: "why not sit down and have a cup of coffee", url: "https://blog.tiezdne.icu", img: "/img/friends/blog.tiezdne.icu.webp" },
@@ -88,6 +88,7 @@ export const friends: FriendEntry[] = [
 
 export const voidFriends: FriendEntry[] = [
   { name: "八神鬼嗣の文庫", desc: "ダンタリアンの書架", url: "https://onioni.net" },
+  { name: "炖鱼的碎碎念", desc: "A salt fish.", url: "https://blog.salt-fish.moe" },
   { name: "Henrietta", desc: "魂兮归来，哀江南。", url: "https://xlog.henri.moe" },
   { name: "Jayden's site", desc: "为天地立心,为生民立命, 为往圣继绝学,为万世开太平。", url: "https://xxu.do" },
   { name: "legends-killer", desc: "What is broken can be reforged.", url: "https://www.legends-killer.cq.cn" },
