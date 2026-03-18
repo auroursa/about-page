@@ -125,6 +125,7 @@ function initDrawerMenu() {
     clearDragStyles();
     openMenuButton.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
 
     focusTrapCleanup?.();
     focusTrapCleanup = null;
@@ -153,7 +154,11 @@ function initDrawerMenu() {
     drawer.classList.add('open');
     drawerPanel.classList.add('open');
     openMenuButton.setAttribute('aria-expanded', 'true');
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     animateStaggerIn();
 

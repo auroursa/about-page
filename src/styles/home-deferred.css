@@ -854,6 +854,7 @@
   .home-gallery-seasons-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
   }
 
@@ -864,12 +865,14 @@
   .home-gallery-season-image-shell {
     position: relative;
     overflow: hidden;
+    height: 100%;
     background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
   }
 
   .home-gallery-season-image {
     display: block;
     width: 100%;
+    height: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     transition: transform 420ms ease;
@@ -1028,6 +1031,7 @@
 
   .home-gallery-seasons-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto;
     margin-bottom: 0.5rem;
   }
 
@@ -1038,6 +1042,10 @@
   .home-gallery-masonry {
     column-count: 3;
     column-gap: 0.5rem;
+  }
+
+  .home-gallery-post-body {
+    margin-bottom: 1rem;
   }
 }
 

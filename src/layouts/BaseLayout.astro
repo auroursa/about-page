@@ -101,13 +101,13 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <div class="menu-sentinel h-px"></div>
 
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
-        <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[768px]:hidden min-[769px]:flex">
+        <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[1280px]:hidden min-[1281px]:flex">
           <a href="/" class="desktop-nav-brand-shell rounded-xl px-3 py-2 transition-colors duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]" aria-label="返回首页">
             <img class="desktop-nav-brand-avatar h-7 w-7 shrink-0 rounded-lg object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
           </a>
         </div>
 
-        <div class="desktop-nav-links flex items-center gap-0.5 max-[768px]:hidden">
+        <div class="desktop-nav-links flex items-center gap-0.5 max-[1280px]:hidden">
           <div class="desktop-nav-core relative flex items-center gap-0.5">
             <div class="nav-indicator absolute rounded-xl border border-[color:color-mix(in_srgb,var(--main-color)_18%,transparent)] bg-[color:color-mix(in_srgb,var(--main-color)_14%,var(--card-color))] shadow-[0_4px_12px_rgba(17,101,154,0.1)] pointer-events-none" style="top: 0; left: 0; height: 0; width: 0; opacity: 0;"></div>
             {navItems.map((nav) => (
@@ -123,7 +123,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
           </a>
         </div>
 
-        <div class="hidden w-full items-center justify-between max-[768px]:flex">
+        <div class="hidden w-full items-center justify-between max-[1280px]:flex">
           <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
             <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
           </a>
@@ -139,7 +139,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
       </nav>
 
-      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[opacity,visibility,background-color,backdrop-filter] duration-300 ease-out max-[768px]:block max-[768px]:invisible max-[768px]:opacity-0 max-[768px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
+      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[opacity,visibility,background-color,backdrop-filter] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:opacity-0 max-[1280px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
         <div class="flex h-full justify-end">
           <div id="drawer-panel" class="relative flex h-full w-[88%] max-w-[26rem] translate-x-full flex-col overflow-hidden bg-[var(--bg-color)] shadow-[-8px_0_32px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] [&.open]:translate-x-0">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgb(81_168_221_/_0.2),_transparent_42%)]"></div>

@@ -26,7 +26,7 @@ function initStickyMenu() {
   ].filter((el) => el instanceof HTMLElement);
 
   /* ── Cache media queries ── */
-  const desktopMQ = window.matchMedia('(min-width: 769px)');
+  const desktopMQ = window.matchMedia('(min-width: 1281px)');
   const reducedMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ── A11y sync ── */
