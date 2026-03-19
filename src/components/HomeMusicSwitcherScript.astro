@@ -1,4 +1,14 @@
 ---
 ---
 
-<script src="/js/home-music-switcher.js" data-astro-rerun defer></script>
+<script is:inline data-astro-rerun>
+  (async () => {
+    window.cynosura = window.cynosura ?? {};
+
+    if (typeof window.cynosura.initHomeMusicSwitcher !== 'function') {
+      await import('/js/home-music-switcher.js');
+    }
+
+    window.cynosura.initHomeMusicSwitcher?.();
+  })();
+</script>

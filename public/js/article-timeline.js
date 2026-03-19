@@ -1,4 +1,6 @@
 (function () {
+  window.cynosura = window.cynosura ?? {};
+
   const scheduleAfterLayoutSettled = (callback) => {
     const afterLayoutSettled = window.cynosura?.afterLayoutSettled;
 
@@ -170,5 +172,5 @@
     };
   };
 
-  initArticleTimeline();
+  window.cynosura.initArticleTimeline = initArticleTimeline;
 })();

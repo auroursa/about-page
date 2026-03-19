@@ -1,4 +1,6 @@
 (function () {
+  window.cynosura = window.cynosura ?? {};
+
   const getCardKey = (card, index) => {
     if (!(card instanceof HTMLElement)) {
       return `card-${index}`;
@@ -68,5 +70,5 @@
     });
   };
 
-  initGalleryShuffle();
+  window.cynosura.initHomeGalleryShuffle = initGalleryShuffle;
 })();

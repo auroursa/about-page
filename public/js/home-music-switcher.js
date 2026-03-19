@@ -737,6 +737,8 @@
     initMusicSwitcher();
   };
 
+  cynosura.initHomeMusicSwitcher = initMusicSwitcherWrapped;
+
   lifecycleState.cleanupAudioGraphs = () => {
     if (!(lifecycleState.audioGraphs instanceof Set) || lifecycleState.audioGraphs.size === 0) {
       return;
@@ -759,6 +761,4 @@
     lifecycleState.onBeforeSwap = onBeforeSwap;
     document.addEventListener('astro:before-swap', onBeforeSwap);
   }
-
-  initMusicSwitcherWrapped();
 })();
