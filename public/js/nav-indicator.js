@@ -3,6 +3,16 @@ let savedIndicatorWidth = null;
 let queuedAnimate = false;
 let queuedFrame = null;
 
+function applyIndicatorTransition(indicator) {
+  indicator.style.transition = [
+    'top var(--motion-nav-indicator-duration, 240ms) var(--motion-nav-indicator-easing, cubic-bezier(0.22, 1, 0.36, 1))',
+    'left var(--motion-nav-indicator-duration, 240ms) var(--motion-nav-indicator-easing, cubic-bezier(0.22, 1, 0.36, 1))',
+    'width var(--motion-nav-indicator-duration, 240ms) var(--motion-nav-indicator-easing, cubic-bezier(0.22, 1, 0.36, 1))',
+    'height var(--motion-nav-indicator-duration, 240ms) var(--motion-nav-indicator-easing, cubic-bezier(0.22, 1, 0.36, 1))',
+    'opacity 200ms ease',
+  ].join(', ');
+}
+
 function scheduleAfterLayoutSettled(callback) {
   const afterLayoutSettled = window.cynosura?.afterLayoutSettled;
 
@@ -31,10 +41,15 @@ function queueNavIndicatorInit(animate) {
   });
 }
 
-function scheduleIndicatorInit(animate) {
-  scheduleAfterLayoutSettled(() => {
-    queueNavIndicatorInit(animate);
-  });
+function scheduleIndicatorInit(animate, { waitForLayout = true } = {}) {
+  if (waitForLayout) {
+    scheduleAfterLayoutSettled(() => {
+      queueNavIndicatorInit(animate);
+    });
+    return;
+  }
+
+  queueNavIndicatorInit(animate);
 }
 
 function initNavIndicator(animate) {
@@ -68,7 +83,7 @@ function initNavIndicator(animate) {
     indicator.style.opacity = '1';
 
     requestAnimationFrame(() => {
-      indicator.style.transition = '';
+      applyIndicatorTransition(indicator);
       indicator.style.left = `${newLeft}px`;
       indicator.style.width = `${newWidth}px`;
     });
@@ -81,7 +96,7 @@ function initNavIndicator(animate) {
     indicator.style.opacity = '1';
 
     requestAnimationFrame(() => {
-      indicator.style.transition = '';
+      applyIndicatorTransition(indicator);
     });
   }
 
@@ -105,7 +120,7 @@ window.cynosura.navIndicator = {
 };
 
 document.addEventListener('astro:before-swap', saveNavIndicatorPosition);
-document.addEventListener('astro:page-load', () => scheduleIndicatorInit(true));
+document.addEventListener('astro:after-swap', () => scheduleIndicatorInit(true, { waitForLayout: false }));
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => scheduleIndicatorInit(false), { once: true });

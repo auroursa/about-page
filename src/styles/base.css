@@ -8,11 +8,57 @@
   --menu-color: #d8e3e7;
   --prose-max-width: 82ch;
   --page-main-transition-duration: 0.5s;
+  --motion-page-exit-duration: 170ms;
+  --motion-page-exit-easing: cubic-bezier(0.4, 0, 1, 1);
+  --motion-page-enter-duration: 300ms;
+  --motion-page-enter-delay: 100ms;
+  --motion-page-enter-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-nav-indicator-duration: 240ms;
+  --motion-nav-indicator-easing: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (max-width: 1280px) {
   :root {
     --page-main-transition-duration: 0.32s;
+  }
+}
+
+@keyframes page-content-exit-desktop {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-0.55rem) scale(0.99);
+  }
+}
+
+@keyframes page-content-enter-desktop {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.995);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 1281px) and (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(page-content-shell) {
+    animation: page-content-exit-desktop var(--motion-page-exit-duration) var(--motion-page-exit-easing) both;
+  }
+
+  ::view-transition-new(page-content-shell) {
+    animation: page-content-enter-desktop var(--motion-page-enter-duration) var(--motion-page-enter-easing) var(--motion-page-enter-delay) both;
   }
 }
 

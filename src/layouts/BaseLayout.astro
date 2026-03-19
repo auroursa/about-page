@@ -99,7 +99,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <p class="m-0">Trying to light up the dark.</p>
     </header>
 
-    <main class={mainClass} transition:animate={fade({ duration: mainTransitionDuration })}>
+    <main class={mainClass}>
       <div class="menu-sentinel h-px"></div>
 
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
@@ -247,7 +247,9 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
       </div>
 
-      <slot />
+      <div class="page-transition-shell" transition:name="page-content-shell" transition:animate={fade({ duration: mainTransitionDuration })}>
+        <slot />
+      </div>
     </main>
 
     <footer transition:animate="none" class="mx-8 my-8 text-center font-overpass">
