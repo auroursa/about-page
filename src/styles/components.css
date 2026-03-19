@@ -364,14 +364,8 @@
     --defer-block-size: 18rem;
   }
 
-  .glass-panel {
-    --defer-block-size: 20rem;
-  }
-
   @supports (content-visibility: auto) {
     .defer-offscreen,
-    .glass-panel,
-    .hero-panel,
     .post-card {
       content-visibility: auto;
       contain-intrinsic-size: auto var(--defer-block-size, 18rem);

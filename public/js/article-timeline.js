@@ -27,6 +27,7 @@
 
     let progressHideTimer = null;
     let scrollRAF = null;
+    let resizeObserver = null;
     let isPointerInside = timeline.matches(':hover');
     const maxScrollLeft = () => Math.max(timeline.scrollWidth - timeline.clientWidth, 0);
 
@@ -145,6 +146,17 @@
 
     scheduleInitialSync();
 
+    if (typeof ResizeObserver === 'function') {
+      resizeObserver = new ResizeObserver(() => {
+        scheduleAfterLayoutSettled(syncTimelineToEnd);
+      });
+      resizeObserver.observe(timeline);
+
+      if (timelineRoot instanceof HTMLElement) {
+        resizeObserver.observe(timelineRoot);
+      }
+    }
+
     timeline.addEventListener('scroll', handler, { passive: true });
     timeline.addEventListener('wheel', wheelHandler, { passive: false });
     timeline.addEventListener('pointerenter', handlePointerEnter);
@@ -164,6 +176,11 @@
       if (progressHideTimer) {
         clearTimeout(progressHideTimer);
         progressHideTimer = null;
+      }
+
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+        resizeObserver = null;
       }
 
       if (progress instanceof HTMLElement) {
