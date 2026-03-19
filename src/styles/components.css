@@ -166,6 +166,7 @@
   }
 
   .hero-panel {
+    --defer-block-size: 16rem;
     position: relative;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
@@ -201,6 +202,7 @@
   }
 
   .post-card {
+    --defer-block-size: 11rem;
     padding: 1.5rem;
     color: var(--text-color);
     transition:
@@ -355,6 +357,24 @@
   @media (hover: hover) {
     .drawer-action-icon:hover {
       color: var(--accent-color);
+    }
+  }
+
+  .defer-offscreen {
+    --defer-block-size: 18rem;
+  }
+
+  .glass-panel {
+    --defer-block-size: 20rem;
+  }
+
+  @supports (content-visibility: auto) {
+    .defer-offscreen,
+    .glass-panel,
+    .hero-panel,
+    .post-card {
+      content-visibility: auto;
+      contain-intrinsic-size: auto var(--defer-block-size, 18rem);
     }
   }
 }
