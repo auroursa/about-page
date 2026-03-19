@@ -101,14 +101,4 @@ const latestPost = totalPosts > 0 ? timelinePosts[totalPosts - 1] : undefined;
   )}
 </section>
 
-<script is:inline data-astro-rerun>
-  (async () => {
-    window.cynosura = window.cynosura ?? {};
-
-    if (typeof window.cynosura.initArticleTimeline !== 'function') {
-      await import('/js/article-timeline.js');
-    }
-
-    window.cynosura.initArticleTimeline?.();
-  })();
-</script>
+<script src="/js/article-timeline.js" data-astro-rerun defer data-cfasync="false"></script>

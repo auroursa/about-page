@@ -761,4 +761,6 @@
     lifecycleState.onBeforeSwap = onBeforeSwap;
     document.addEventListener('astro:before-swap', onBeforeSwap);
   }
+
+  initMusicSwitcherWrapped();
 })();

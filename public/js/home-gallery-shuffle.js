@@ -71,4 +71,5 @@
   };
 
   window.cynosura.initHomeGalleryShuffle = initGalleryShuffle;
+  initGalleryShuffle();
 })();

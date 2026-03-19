@@ -190,4 +190,5 @@
   };
 
   window.cynosura.initArticleTimeline = initArticleTimeline;
+  initArticleTimeline();
 })();
