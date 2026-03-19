@@ -124,11 +124,11 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
 
         <div class="hidden w-full items-center justify-between max-[1280px]:flex">
-          <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
+          <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页" data-astro-reload>
             <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
           </a>
 
-          <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]">
+          <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]" data-astro-reload>
             <svg class="h-[1.05rem] w-[1.05rem] shrink-0 fill-[var(--text-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={currentSectionIconBody}></svg>
             <h2 class="mobile-nav-title m-0 whitespace-nowrap text-[1rem] font-semibold leading-none">{currentSectionLabel}</h2>
           </a>
@@ -139,7 +139,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
       </nav>
 
-      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[opacity,visibility,background-color,backdrop-filter] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:opacity-0 max-[1280px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
+      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[opacity,visibility,background-color] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:opacity-0 max-[1280px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
         <div class="flex h-full justify-end">
           <div id="drawer-panel" class="relative flex h-full w-[88%] max-w-[26rem] translate-x-full flex-col overflow-hidden bg-[var(--bg-color)] shadow-[-8px_0_32px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] [&.open]:translate-x-0">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgb(81_168_221_/_0.2),_transparent_42%)]"></div>
@@ -184,7 +184,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
-                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]}>
+                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} data-astro-reload>
                         <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)] font-overpass">{nav.labelEn}</span>
                         <div class="mt-4 flex items-end justify-between gap-3">
                           <span class="text-[1.15rem] font-bold leading-none">{nav.label}</span>
@@ -198,13 +198,13 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <section class="drawer-stagger drawer-section">
                   <div class="drawer-section-header">
                     <h3 class="drawer-section-title mb-0">文章分类</h3>
-                    <a href="/rss.xml" class="drawer-action-icon items-start pt-0.5" aria-label="RSS 订阅" title="RSS 订阅">
+                    <a href="/rss.xml" class="drawer-action-icon items-start pt-0.5" aria-label="RSS 订阅" title="RSS 订阅" data-astro-reload>
                       <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="12.36" cy="35.64" r="4.36"></circle><path d="M8 8.89v5.66c14.06 0 25.46 11.4 25.46 25.46h5.66C39.11 22.82 25.18 8.89 8 8.89zM8 20.2v5.66c7.81 0 14.14 6.34 14.14 14.14h5.66c0-10.93-8.87-19.8-19.8-19.8z"></path></svg>
                     </a>
                   </div>
                   <div class="grid grid-cols-1 gap-2">
                     {drawerCategoryCounts.map((category) => (
-                      <a href={`/posts/category/${encodeURIComponent(category.name)}`} class={drawerCategoryLinkClass}>
+                      <a href={`/posts/category/${encodeURIComponent(category.name)}`} class={drawerCategoryLinkClass} data-astro-reload>
                         <span>{category.name}</span>
                         <span class="text-sm text-[color:color-mix(in_srgb,currentColor_72%,transparent)]">{category.count}</span>
                       </a>

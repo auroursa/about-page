@@ -146,8 +146,6 @@ function initDrawerMenu() {
 
     drawer.style.transition = '';
     drawer.style.backgroundColor = '';
-    drawer.style.backdropFilter = '';
-    drawer.style.webkitBackdropFilter = '';
 
     resetStagger();
 
@@ -179,11 +177,9 @@ function initDrawerMenu() {
     }
 
     drawerPanel.classList.remove('open');
-    drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+    drawer.style.transition = 'background-color 300ms ease';
     onNextFrame(() => {
       drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
-      drawer.style.backdropFilter = 'blur(0px)';
-      drawer.style.webkitBackdropFilter = 'blur(0px)';
     });
     animateStaggerOut();
 
@@ -217,8 +213,6 @@ function initDrawerMenu() {
     drawerPanel.style.transform = '';
     drawer.style.transition = '';
     drawer.style.backgroundColor = '';
-    drawer.style.backdropFilter = '';
-    drawer.style.webkitBackdropFilter = '';
   };
 
   const onPanelTouchStart = (e) => {
@@ -263,8 +257,6 @@ function initDrawerMenu() {
 
     drawerPanel.style.transform = `translateX(${translateX}px)`;
     drawer.style.backgroundColor = `rgb(0 0 0 / ${0.25 * (1 - progress)})`;
-    drawer.style.backdropFilter = `blur(${6 * (1 - progress)}px)`;
-    drawer.style.webkitBackdropFilter = `blur(${6 * (1 - progress)}px)`;
   };
 
   const onPanelTouchEnd = (e) => {
@@ -282,12 +274,10 @@ function initDrawerMenu() {
       animateStaggerOut();
 
       drawerPanel.style.transition = PANEL_TRANSITION;
-      drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+      drawer.style.transition = 'background-color 300ms ease';
       onNextFrame(() => {
         drawerPanel.style.transform = 'translateX(100%)';
         drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
-        drawer.style.backdropFilter = 'blur(0px)';
-        drawer.style.webkitBackdropFilter = 'blur(0px)';
       });
 
       let cleaned = false;
@@ -303,12 +293,10 @@ function initDrawerMenu() {
       setTimeout(cleanup, 400);
     } else {
       drawerPanel.style.transition = PANEL_TRANSITION;
-      drawer.style.transition = 'background-color 300ms ease, backdrop-filter 300ms ease, -webkit-backdrop-filter 300ms ease';
+      drawer.style.transition = 'background-color 300ms ease';
       onNextFrame(() => {
         drawerPanel.style.transform = '';
         drawer.style.backgroundColor = '';
-        drawer.style.backdropFilter = '';
-        drawer.style.webkitBackdropFilter = '';
       });
 
       drawerPanel.addEventListener('transitionend', () => {
