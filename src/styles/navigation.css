@@ -246,7 +246,7 @@
 }
 
 /* Drawer backdrop */
-.menu-b-drawer-container.open {
+.menu-b-drawer-backdrop {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }

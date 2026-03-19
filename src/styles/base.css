@@ -7,6 +7,13 @@
   --accent-color: #51a8dd;
   --menu-color: #d8e3e7;
   --prose-max-width: 82ch;
+  --page-main-transition-duration: 0.5s;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --page-main-transition-duration: 0.32s;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

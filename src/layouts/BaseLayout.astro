@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { ClientRouter, fade } from 'astro:transitions';
 import { Font } from 'astro:assets';
+import AstroNavigateBridge from '../components/AstroNavigateBridge.astro';
 import { getCategoryItems } from '../utils/categories';
 import type { CategoryItem } from '../utils/categories';
 import { socialIconLinks } from '../data/social-links';
@@ -17,6 +18,7 @@ interface Props {
 
 const { title, description = '赤茶的个人页面', ogImage = '/img/banner.webp', currentPath = '/', drawerCategories: externalCategories } = Astro.props;
 const drawerCategoryCounts = externalCategories ?? getCategoryItems(await getCollection('blog'));
+const mainTransitionDuration = 'var(--page-main-transition-duration, 0.5s)';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteURL = Astro.site?.origin ?? 'https://cynosura.one';
@@ -79,6 +81,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
     <meta name="twitter:image" content={siteURL + ogImage} />
 
     <link rel="me" href="https://diff.network/@ursa" />
+    <AstroNavigateBridge />
     <script src="/js/layout-settled.js" defer></script>
     <script src="/js/nav-indicator.js" defer></script>
     <script src="/js/nav-sticky-menu.js" defer></script>
@@ -97,7 +100,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <p class="m-0">Trying to light up the dark.</p>
     </header>
 
-    <main class={mainClass} transition:animate={fade({ duration: '0.5s' })}>
+    <main class={mainClass} transition:animate={fade({ duration: mainTransitionDuration })}>
       <div class="menu-sentinel h-px"></div>
 
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
@@ -124,7 +127,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
 
         <div class="hidden w-full items-center justify-between max-[1280px]:flex">
-          <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页" data-astro-reload>
+          <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
             <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
           </a>
 
@@ -139,7 +142,8 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
         </div>
       </nav>
 
-      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[opacity,visibility,background-color] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:opacity-0 max-[1280px]:pointer-events-none [&.open]:visible [&.open]:opacity-100 [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
+      <div id="drawer" role="dialog" aria-modal="true" aria-label="菜单" class="menu-b-drawer-container fixed inset-0 z-30 hidden bg-[rgb(0_0_0_/_0)] transition-[visibility,background-color] duration-300 ease-out max-[1280px]:block max-[1280px]:invisible max-[1280px]:pointer-events-none [&.open]:visible [&.open]:pointer-events-auto [&.open]:bg-[rgb(0_0_0_/_0.25)]">
+        <div id="drawer-backdrop" class="menu-b-drawer-backdrop pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out"></div>
         <div class="flex h-full justify-end">
           <div id="drawer-panel" class="relative flex h-full w-[88%] max-w-[26rem] translate-x-full flex-col overflow-hidden bg-[var(--bg-color)] shadow-[-8px_0_32px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] [&.open]:translate-x-0">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgb(81_168_221_/_0.2),_transparent_42%)]"></div>
@@ -184,7 +188,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
-                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} data-astro-reload>
+                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} {...(nav.path === '/' ? {} : { 'data-astro-reload': true })}>
                         <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)] font-overpass">{nav.labelEn}</span>
                         <div class="mt-4 flex items-end justify-between gap-3">
                           <span class="text-[1.15rem] font-bold leading-none">{nav.label}</span>

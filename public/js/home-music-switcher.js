@@ -1,4 +1,8 @@
 (function () {
+  const cynosura = window.cynosura = window.cynosura ?? {};
+  const lifecycleState = cynosura.homeMusicSwitcherLifecycle ?? {};
+  cynosura.homeMusicSwitcherLifecycle = lifecycleState;
+
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   const rgbToHsl = (r, g, b) => {
@@ -499,15 +503,17 @@
       const items = Array.from(root.querySelectorAll('[data-music-item]')).filter((item) => item instanceof HTMLButtonElement);
       const playToggle = root.querySelector('[data-music-play-toggle]');
       const musicList = root.querySelector('.home-music-list');
-      const audioGraph = createAudioGraph();
-      const { audio, fadeIn, fadeOut } = audioGraph;
-      activeAudioGraph = audioGraph;
       let activeItem = null;
       let currentPreviewUrl = '';
 
       if (items.length === 0) {
         return;
       }
+
+      const audioGraph = createAudioGraph();
+      const { audio, fadeIn, fadeOut } = audioGraph;
+      lifecycleState.audioGraphs = lifecycleState.audioGraphs ?? new Set();
+      lifecycleState.audioGraphs.add(audioGraph);
 
       /* ── Scroll fade mask: hide when scrolled to bottom ── */
       if (musicList instanceof HTMLElement) {
@@ -727,27 +733,32 @@
     });
   };
 
-  let activeAudioGraph = null;
-
   const initMusicSwitcherWrapped = () => {
-    activeAudioGraph = null;
     initMusicSwitcher();
   };
 
-  document.addEventListener('astro:before-swap', () => {
-    if (activeAudioGraph) {
-      activeAudioGraph.audio.pause();
-      activeAudioGraph.audio.removeAttribute('src');
-      activeAudioGraph.audio.load();
-      activeAudioGraph = null;
+  lifecycleState.cleanupAudioGraphs = () => {
+    if (!(lifecycleState.audioGraphs instanceof Set) || lifecycleState.audioGraphs.size === 0) {
+      return;
     }
-  });
 
-  document.addEventListener('astro:page-load', initMusicSwitcherWrapped);
+    lifecycleState.audioGraphs.forEach((graph) => {
+      graph.audio.pause();
+      graph.audio.removeAttribute('src');
+      graph.audio.load();
+    });
+    lifecycleState.audioGraphs.clear();
+  };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMusicSwitcherWrapped, { once: true });
-  } else {
-    initMusicSwitcherWrapped();
+  if (!lifecycleState.bound) {
+    const onBeforeSwap = () => {
+      lifecycleState.cleanupAudioGraphs?.();
+    };
+
+    lifecycleState.bound = true;
+    lifecycleState.onBeforeSwap = onBeforeSwap;
+    document.addEventListener('astro:before-swap', onBeforeSwap);
   }
+
+  initMusicSwitcherWrapped();
 })();

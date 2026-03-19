@@ -68,11 +68,5 @@
     });
   };
 
-  document.addEventListener('astro:page-load', initGalleryShuffle);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGalleryShuffle, { once: true });
-  } else {
-    initGalleryShuffle();
-  }
+  initGalleryShuffle();
 })();

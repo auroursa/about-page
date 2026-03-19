@@ -3,6 +3,7 @@ let drawerCleanup = null;
 const SECTION_LABELS = { '/': '首页', '/posts': '文章', '/friends': '友人', '/about': '关于' };
 const DRAG_DISMISS_THRESHOLD = 0.35;
 const PANEL_TRANSITION = 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)';
+const NAVIGATION_FALLBACK_MS = 420;
 
 const onNextFrame = (callback) => {
   requestAnimationFrame(() => requestAnimationFrame(callback));
@@ -53,6 +54,7 @@ function initDrawerMenu() {
   const openMenuButton = document.getElementById('open-menu');
   const closeMenuButton = document.getElementById('close-menu');
   const drawer = document.getElementById('drawer');
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
   const drawerPanel = document.getElementById('drawer-panel');
 
   if (!(openMenuButton instanceof HTMLElement)
@@ -146,7 +148,10 @@ function initDrawerMenu() {
 
     drawer.style.transition = '';
     drawer.style.backgroundColor = '';
-
+    if (drawerBackdrop instanceof HTMLElement) {
+      drawerBackdrop.style.transition = '';
+      drawerBackdrop.style.opacity = '0';
+    }
     resetStagger();
 
     drawer.classList.add('open');
@@ -159,6 +164,13 @@ function initDrawerMenu() {
     }
 
     animateStaggerIn();
+
+    if (drawerBackdrop instanceof HTMLElement) {
+      onNextFrame(() => {
+        drawerBackdrop.style.transition = 'opacity 300ms ease';
+        drawerBackdrop.style.opacity = '1';
+      });
+    }
 
     focusTrapCleanup = trapFocus(drawerPanel);
     if (focusCloseButton) {
@@ -180,6 +192,10 @@ function initDrawerMenu() {
     drawer.style.transition = 'background-color 300ms ease';
     onNextFrame(() => {
       drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+      if (drawerBackdrop instanceof HTMLElement) {
+        drawerBackdrop.style.transition = 'opacity 300ms ease';
+        drawerBackdrop.style.opacity = '0';
+      }
     });
     animateStaggerOut();
 
@@ -213,6 +229,10 @@ function initDrawerMenu() {
     drawerPanel.style.transform = '';
     drawer.style.transition = '';
     drawer.style.backgroundColor = '';
+    if (drawerBackdrop instanceof HTMLElement) {
+      drawerBackdrop.style.transition = '';
+      drawerBackdrop.style.opacity = drawer.classList.contains('open') ? '1' : '0';
+    }
   };
 
   const onPanelTouchStart = (e) => {
@@ -257,6 +277,9 @@ function initDrawerMenu() {
 
     drawerPanel.style.transform = `translateX(${translateX}px)`;
     drawer.style.backgroundColor = `rgb(0 0 0 / ${0.25 * (1 - progress)})`;
+    if (drawerBackdrop instanceof HTMLElement) {
+      drawerBackdrop.style.opacity = String(1 - progress);
+    }
   };
 
   const onPanelTouchEnd = (e) => {
@@ -278,6 +301,10 @@ function initDrawerMenu() {
       onNextFrame(() => {
         drawerPanel.style.transform = 'translateX(100%)';
         drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+        if (drawerBackdrop instanceof HTMLElement) {
+          drawerBackdrop.style.transition = 'opacity 300ms ease';
+          drawerBackdrop.style.opacity = '0';
+        }
       });
 
       let cleaned = false;
@@ -297,6 +324,10 @@ function initDrawerMenu() {
       onNextFrame(() => {
         drawerPanel.style.transform = '';
         drawer.style.backgroundColor = '';
+        if (drawerBackdrop instanceof HTMLElement) {
+          drawerBackdrop.style.transition = 'opacity 300ms ease';
+          drawerBackdrop.style.opacity = '1';
+        }
       });
 
       drawerPanel.addEventListener('transitionend', () => {
@@ -393,19 +424,141 @@ function initDrawerMenu() {
 
   // ── Event listeners ──
   const links = drawer.querySelectorAll('a');
+  let navigationTimer = null;
+  let navigationTransitionCleanup = null;
+
+  const clearPendingNavigation = () => {
+    if (navigationTimer) {
+      clearTimeout(navigationTimer);
+      navigationTimer = null;
+    }
+
+    navigationTransitionCleanup?.();
+    navigationTransitionCleanup = null;
+  };
+
+  const performDrawerNavigation = (link, destination) => {
+    if (link.hasAttribute('data-astro-reload')) {
+      window.location.assign(destination);
+      return;
+    }
+
+    const astroNavigate = window.cynosura?.navigate;
+
+    if (typeof astroNavigate === 'function') {
+      const history = link.getAttribute('data-astro-history') || 'auto';
+      astroNavigate(destination, { history });
+      return;
+    }
+
+    window.location.assign(destination);
+  };
+
+  const scheduleNavigationAfterClose = (navigate) => {
+    clearPendingNavigation();
+
+    let handled = false;
+
+    const finalizeNavigation = () => {
+      if (handled) {
+        return;
+      }
+
+      handled = true;
+      clearPendingNavigation();
+      onNextFrame(navigate);
+    };
+
+    const onPanelTransitionEnd = (event) => {
+      if (event.target !== drawerPanel || event.propertyName !== 'transform') {
+        return;
+      }
+
+      finalizeNavigation();
+    };
+
+    drawerPanel.addEventListener('transitionend', onPanelTransitionEnd);
+    navigationTransitionCleanup = () => {
+      drawerPanel.removeEventListener('transitionend', onPanelTransitionEnd);
+    };
+
+    navigationTimer = setTimeout(finalizeNavigation, NAVIGATION_FALLBACK_MS);
+  };
+
+  const shouldDelayNavigation = (link, event) => {
+    if (!(link instanceof HTMLAnchorElement)) {
+      return null;
+    }
+
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return null;
+    }
+
+    const href = link.getAttribute('href');
+
+    if (!href || href.startsWith('#')) {
+      return null;
+    }
+
+    if (link.hasAttribute('download')) {
+      return null;
+    }
+
+    const target = link.getAttribute('target');
+
+    if (target && target.toLowerCase() !== '_self') {
+      return null;
+    }
+
+    try {
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) {
+        return null;
+      }
+
+      return url.href;
+    } catch {
+      return null;
+    }
+  };
+
+  const onDrawerLinkClick = (event) => {
+    const target = event.currentTarget;
+
+    if (!(target instanceof HTMLAnchorElement)) {
+      return;
+    }
+
+    if (!drawer.classList.contains('open')) {
+      return;
+    }
+
+    const destination = shouldDelayNavigation(target, event);
+
+    if (!destination) {
+      closeDrawer();
+      return;
+    }
+
+    event.preventDefault();
+    closeDrawer();
+    scheduleNavigationAfterClose(() => {
+      performDrawerNavigation(target, destination);
+    });
+  };
 
   openMenuButton.addEventListener('click', openDrawer);
   closeMenuButton.addEventListener('click', closeDrawer);
   drawer.addEventListener('click', onBackdropClick);
   document.addEventListener('keydown', onKeydown);
-  links.forEach((link) => link.addEventListener('click', closeDrawer));
+  links.forEach((link) => link.addEventListener('click', onDrawerLinkClick));
 
   drawerCleanup = () => {
     openMenuButton.removeEventListener('click', openDrawer);
     closeMenuButton.removeEventListener('click', closeDrawer);
     drawer.removeEventListener('click', onBackdropClick);
     document.removeEventListener('keydown', onKeydown);
-    links.forEach((link) => link.removeEventListener('click', closeDrawer));
+    links.forEach((link) => link.removeEventListener('click', onDrawerLinkClick));
     drawerPanel.removeEventListener('touchstart', onPanelTouchStart);
     drawerPanel.removeEventListener('touchmove', onPanelTouchMove);
     drawerPanel.removeEventListener('touchend', onPanelTouchEnd);
@@ -418,6 +571,7 @@ function initDrawerMenu() {
       clearTimeout(closeTimer);
       closeTimer = null;
     }
+    clearPendingNavigation();
     focusTrapCleanup?.();
     document.body.style.overflow = '';
   };

@@ -170,11 +170,5 @@
     };
   };
 
-  document.addEventListener('astro:page-load', initArticleTimeline);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initArticleTimeline, { once: true });
-  } else {
-    initArticleTimeline();
-  }
+  initArticleTimeline();
 })();
