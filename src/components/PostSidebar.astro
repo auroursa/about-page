@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import profileAvatar from '../assets/img/profile-avatar.webp';
+
 interface Props {
   categories: Array<{
     name: string;
@@ -20,13 +23,11 @@ const categoryPillActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(
 <aside class="hero-panel sticky top-[4.75rem] space-y-5 text-center max-[1280px]:hidden">
   <div class="relative space-y-5">
     <div class="flex flex-col items-center gap-4">
-      <img
+      <Image
         class="h-[5.5rem] w-[5.5rem] rounded-full"
-        src="/img/profile-avatar-96.webp"
-        srcset="/img/profile-avatar-96.webp 96w, /img/profile-avatar-192.webp 192w, /img/profile-avatar.webp 512w"
+        src={profileAvatar}
+        widths={[96, 192, 288]}
         sizes="88px"
-        width="96"
-        height="96"
         alt="赤茶的头像"
       />
       <div class="space-y-2 text-center">

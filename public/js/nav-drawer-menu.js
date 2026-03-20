@@ -206,11 +206,15 @@ function initDrawerMenu() {
     }, 300);
   };
 
+  let pendingNavCallback = null;
+
   const closeDrawerFast = (onDone) => {
     if (closeTimer) {
       clearTimeout(closeTimer);
       closeTimer = null;
     }
+
+    pendingNavCallback = onDone ?? null;
 
     const dur = `${FAST_CLOSE_DURATION_MS}ms`;
     const easing = 'cubic-bezier(0.4, 0, 1, 1)';
@@ -236,7 +240,9 @@ function initDrawerMenu() {
     closeTimer = setTimeout(() => {
       closeTimer = null;
       finishClose();
-      onDone?.();
+      const cb = pendingNavCallback;
+      pendingNavCallback = null;
+      cb?.();
     }, FAST_CLOSE_DURATION_MS);
   };
 
@@ -413,9 +419,13 @@ function initDrawerMenu() {
       closeTimer = null;
     }
 
+    const cb = pendingNavCallback;
+    pendingNavCallback = null;
+
     resetStagger();
     clearDragStyles();
     finishClose();
+    cb?.();
   };
 
   document.addEventListener('astro:before-swap', onBeforeSwap);

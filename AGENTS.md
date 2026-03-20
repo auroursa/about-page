@@ -92,7 +92,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 - Prefer promoting repeated layout/UI patterns into component-level classes instead of repeating long utility stacks
 - Use CSS custom properties (variables) for theming
 - Implement dark mode using `@media (prefers-color-scheme: dark)`
-- Store custom fonts in `public/font/` directory
+- Store custom fonts in `src/assets/fonts/` directory (managed via `astro:fonts`)
 - Prefer editing Astro markup over re-introducing large global component stylesheets
 - Keep spacing, alignment, and responsive behavior consistent across matching cards and sidebars
 - Home page card/grid rhythm uses `gap-2` (`0.5rem`) as the baseline spacing token for adjacent cards, dual-column panel gaps, and photo-grid/masonry gutters unless a component explicitly needs a different rhythm
@@ -125,7 +125,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 ### Home Hero Module
 
-- `HomeHeroFeature.astro` uses an `<img>` tag (not CSS `background-image`) for the background photo, with `loading="eager"`, `decoding="async"`, and `fetchpriority="high"` for LCP optimization
+- `HomeHeroFeature.astro` uses an `<Image>` component (from `astro:assets`, not CSS `background-image`) for the background photo, with `loading="eager"`, `decoding="async"`, and `fetchpriority="high"` for LCP optimization
 - Photo info tooltip uses `public/js/hero-photo-info.js` — desktop shows on hover, mobile toggles on tap via `is-open` class
 - `HomeHeroPanel.astro` (personal info card) is visible from 769px+ (`max-[768px]:hidden`), not just 1281px+
 
@@ -152,6 +152,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 ```
 src/
+├── assets/
+│   ├── fonts/            # Local font files (Overpass, Overpass Mono)
+│   └── img/              # Source images (processed by astro:assets at build time)
+│       ├── gallery/      # Masonry gallery photos
+│       │   └── 2025/     # Year-specific season photos
+│       ├── friends/      # Friend avatar images
+│       ├── avatar.webp
+│       ├── profile-avatar.webp
+│       └── background.webp
 ├── components/
 │   ├── ArticleTimeline.astro
 │   ├── DecoratedTitle.astro
@@ -199,6 +208,7 @@ src/
 └── content.config.ts       # Content collections configuration
 
 public/
+├── img/                # Static assets only (favicon, banner, post images)
 └── js/
     ├── nav-indicator.js
     ├── nav-sticky-menu.js
@@ -220,18 +230,17 @@ public/
 
 ### Images & Assets
 
-- Use WebP format for images (`*.webp`)
-- Store images in `public/img/` directory
-- Always provide `width`, `height`, and `alt` attributes for accessibility
-- Use `loading="lazy"` for below-the-fold images
-- Home gallery images live in `public/img/gallery/`; keep `src/data/home-gallery.ts` in sync when adding or replacing files
-- Keep year-specific gallery sets in subfolders (for example `public/img/gallery/2025/`) so seasonal recaps stay separate from the masonry pool
-- Prefer responsive images for large hero/season/avatar assets using `srcset` + `sizes` to avoid oversized downloads
-- For manually maintained responsive variants, use suffix naming like `*-320.webp`, `*-640.webp`, `*-768.webp`, `*-1280.webp`
-- Keep seasonal recap images wired through `src/data/home-gallery.ts` (`srcSet`/`sizes`) and render these fields in `HomeSeasonRecap.astro`
-- Keep hero background responsive in `HomeHeroFeature.astro` (currently `background-768.webp`, `background-1280.webp`, original as largest fallback)
-- Use small avatar variants (`profile-avatar-96.webp`, `profile-avatar-192.webp`) in UI positions that render around 64-96px
-- Masonry gallery images should also use manually maintained responsive variants (`320w` plus `640w` when the source is wide enough), with `srcSet`/`sizes` defined in `src/data/home-gallery.ts` and rendered in `HomeGalleryPanel.astro`
+- **Image optimization** uses Astro's `astro:assets` `<Image>` component with Sharp for build-time processing
+- Source images live in `src/assets/img/` (not `public/img/`); Astro auto-generates responsive variants and optimized formats at build time
+- Only static assets that need fixed URLs (favicon, og:image banner, post images) remain in `public/img/`
+- Use `<Image>` component with `widths` and `sizes` props for responsive images — do NOT manually create `-320`, `-640` size variants
+- Home gallery images are imported in `src/data/home-gallery.ts` with `ImageMetadata` types; components use `<Image src={item.src} widths={item.widths} sizes={item.sizes} />`
+- Friend avatars use `import.meta.glob` in `src/data/friends.ts` to batch-import all `src/assets/img/friends/*.webp` files
+- Avatar `widths` should match actual display needs: use `[96, 192, 288]` for ~88px display (up to 3x), not oversized values like 512
+- Always provide `alt` attributes for accessibility; use `alt=""` for purely decorative images
+- Use `loading="lazy"` for below-the-fold images; use `loading="eager"` with `fetchpriority="high"` for LCP images (hero background)
+- Keep `src/data/home-gallery.ts` in sync when adding or replacing gallery files in `src/assets/img/gallery/`
+- Keep year-specific gallery sets in subfolders (e.g., `src/assets/img/gallery/2025/`) so seasonal recaps stay separate from the masonry pool
 
 ### Internationalization
 

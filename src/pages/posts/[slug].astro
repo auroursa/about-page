@@ -26,9 +26,22 @@ const contentClass = 'prose-measure text-[1rem] leading-8 [&>*:first-child]:mt-0
 const licenseIconsClass = 'flex items-center gap-2.5 text-[color:color-mix(in_srgb,var(--text-color)_60%,transparent)]';
 const commentShellClass = 'bg-[var(--card-color)] p-4 text-[var(--text-color)]';
 const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const postDate = entry.data.pubDate || entry.data.date;
+const blogPostingLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: entry.data.description,
+  url: canonicalPostUrl,
+  ...(postDate ? { datePublished: new Date(postDate).toISOString() } : {}),
+  ...(entry.data.category ? { articleSection: entry.data.category } : {}),
+  author: { '@type': 'Person', name: '赤茶', url: 'https://cynosura.one/about' },
+  publisher: { '@type': 'Person', name: '赤茶', url: 'https://cynosura.one/about' },
+};
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts">
+<BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts" jsonLd={blogPostingLd} breadcrumbTitle={entry.data.title}>
   <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
       <header class="py-6">
         <h1 class="m-0 text-center text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
@@ -48,8 +61,8 @@ const canonicalPostUrl = new URL(Astro.url.pathname, Astro.site).toString();
           </div>
           <div class={detailRowClass}>
             <span class={detailLabelClass}>发布时间</span>
-            <time class:list={[detailValueClass, 'published']} datetime={toISODatetime(entry.data.pubDate || entry.data.date)}>
-              {formatDate(entry.data.pubDate || entry.data.date)}
+            <time class:list={[detailValueClass, 'published']} datetime={toISODatetime(postDate)}>
+              {formatDate(postDate)}
             </time>
           </div>
           {entry.data.category && (

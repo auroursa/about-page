@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import profileAvatar from '../assets/img/profile-avatar.webp';
 import { homeGallerySeasonItems } from '../data/home-gallery';
 ---
 
@@ -15,13 +17,11 @@ import { homeGallerySeasonItems } from '../data/home-gallery';
       {homeGallerySeasonItems.map((item) => (
         <article class="home-gallery-season-card group">
           <div class="home-gallery-season-image-shell">
-            <img
+            <Image
               class="home-gallery-season-image"
               src={item.src}
-              srcset={item.srcSet}
+              widths={item.widths}
               sizes={item.sizes}
-              width={item.width}
-              height={item.height}
               alt={item.alt}
               loading="lazy"
             />
@@ -32,13 +32,11 @@ import { homeGallerySeasonItems } from '../data/home-gallery';
 
     <article class="home-gallery-post-card" aria-label="2025 四季总结">
       <div class="home-gallery-post-header">
-        <img
+        <Image
           class="home-gallery-post-avatar"
-          src="/img/profile-avatar-96.webp"
-          srcset="/img/profile-avatar-96.webp 96w, /img/profile-avatar-192.webp 192w, /img/profile-avatar.webp 512w"
+          src={profileAvatar}
+          widths={[96, 192, 288]}
           sizes="77px"
-          width="96"
-          height="96"
           alt="赤茶头像"
         />
 

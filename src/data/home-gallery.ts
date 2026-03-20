@@ -1,183 +1,76 @@
+import type { ImageMetadata } from 'astro';
+
+import photo1 from '../assets/img/gallery/photo1.webp';
+import photo2 from '../assets/img/gallery/photo2.webp';
+import photo3 from '../assets/img/gallery/photo3.webp';
+import photo4 from '../assets/img/gallery/photo4.webp';
+import photo5 from '../assets/img/gallery/photo5.webp';
+import photo6 from '../assets/img/gallery/photo6.webp';
+import photo7 from '../assets/img/gallery/photo7.webp';
+import photo8 from '../assets/img/gallery/photo8.webp';
+import photo9 from '../assets/img/gallery/photo9.webp';
+import photo10 from '../assets/img/gallery/photo10.webp';
+import photo11 from '../assets/img/gallery/photo11.webp';
+import photo12 from '../assets/img/gallery/photo12.webp';
+import photo13 from '../assets/img/gallery/photo13.webp';
+import photo14 from '../assets/img/gallery/photo14.webp';
+import photo15 from '../assets/img/gallery/photo15.webp';
+import photo16 from '../assets/img/gallery/photo16.webp';
+import photo17 from '../assets/img/gallery/photo17.webp';
+
+import spring from '../assets/img/gallery/2025/spring.webp';
+import summer from '../assets/img/gallery/2025/summer.webp';
+import autumn from '../assets/img/gallery/2025/autumn.webp';
+import winter from '../assets/img/gallery/2025/winter.webp';
+
 export interface HomeGalleryItem {
-  src: string;
-  width: number;
-  height: number;
+  src: ImageMetadata;
   alt: string;
-  srcSet?: string;
-  sizes?: string;
+  widths: number[];
+  sizes: string;
 }
 
 const masonryImageSizes = '(max-width: 576px) calc((100vw - 0.5rem) / 2), (max-width: 768px) calc((85vw - 0.5rem) / 2), (max-width: 1280px) calc((85vw - 1rem) / 3), calc((80vw - 1.5rem) / 4)';
 
-const createMasonryImage = ({
+const createMasonryImage = (
+  src: ImageMetadata,
+  alt: string,
+): HomeGalleryItem => ({
   src,
-  width,
-  height,
   alt,
-}: Omit<HomeGalleryItem, 'srcSet' | 'sizes'>): HomeGalleryItem => {
-  const srcBase = src.replace(/\.webp$/, '');
-  const srcSetParts = [`${srcBase}-320.webp 320w`];
-
-  if (width > 640) {
-    srcSetParts.push(`${srcBase}-640.webp 640w`);
-  }
-
-  srcSetParts.push(`${src} ${width}w`);
-
-  return {
-    src,
-    width,
-    height,
-    alt,
-    srcSet: srcSetParts.join(', '),
-    sizes: masonryImageSizes,
-  };
-};
+  widths: [320, 640, src.width],
+  sizes: masonryImageSizes,
+});
 
 export const homeGalleryBackdropItems: HomeGalleryItem[] = [
-  createMasonryImage({
-    src: '/img/gallery/photo1.webp',
-    width: 1229,
-    height: 1536,
-    alt: '杭州金沙湖',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo2.webp',
-    width: 1024,
-    height: 768,
-    alt: '南京紫金山',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo3.webp',
-    width: 1024,
-    height: 768,
-    alt: '杭州西湖',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo4.webp',
-    width: 960,
-    height: 1200,
-    alt: '西兴大桥',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo5.webp',
-    width: 1024,
-    height: 768,
-    alt: '檵木',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo6.webp',
-    width: 631,
-    height: 884,
-    alt: '上海街景',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo7.webp',
-    width: 972,
-    height: 730,
-    alt: '鹰厦铁路',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo8.webp',
-    width: 972,
-    height: 730,
-    alt: '香港旺角',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo9.webp',
-    width: 972,
-    height: 730,
-    alt: '汉口站',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo10.webp',
-    width: 864,
-    height: 1209,
-    alt: '盛夏',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo11.webp',
-    width: 548,
-    height: 730,
-    alt: '雨中紫阳花',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo12.webp',
-    width: 972,
-    height: 730,
-    alt: '宁波三江口',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo13.webp',
-    width: 1022,
-    height: 730,
-    alt: '可爱猫猫',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo14.webp',
-    width: 1024,
-    height: 768,
-    alt: '绍兴柯桥',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo15.webp',
-    width: 1152,
-    height: 864,
-    alt: '烟花',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo16.webp',
-    width: 1022,
-    height: 730,
-    alt: '杭州西湖',
-  }),
-  createMasonryImage({
-    src: '/img/gallery/photo17.webp',
-    width: 768,
-    height: 576,
-    alt: '日落',
-  }),
+  createMasonryImage(photo1, '杭州金沙湖'),
+  createMasonryImage(photo2, '南京紫金山'),
+  createMasonryImage(photo3, '杭州西湖'),
+  createMasonryImage(photo4, '西兴大桥'),
+  createMasonryImage(photo5, '檵木'),
+  createMasonryImage(photo6, '上海街景'),
+  createMasonryImage(photo7, '鹰厦铁路'),
+  createMasonryImage(photo8, '香港旺角'),
+  createMasonryImage(photo9, '汉口站'),
+  createMasonryImage(photo10, '盛夏'),
+  createMasonryImage(photo11, '雨中紫阳花'),
+  createMasonryImage(photo12, '宁波三江口'),
+  createMasonryImage(photo13, '可爱猫猫'),
+  createMasonryImage(photo14, '绍兴柯桥'),
+  createMasonryImage(photo15, '烟花'),
+  createMasonryImage(photo16, '杭州西湖'),
+  createMasonryImage(photo17, '日落'),
 ];
 
 export interface HomeGallerySeasonItem extends HomeGalleryItem {
   season: string;
 }
 
+const seasonSizes = '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px';
+
 export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
-  {
-    src: '/img/gallery/2025/spring.webp',
-    srcSet: '/img/gallery/2025/spring-320.webp 320w, /img/gallery/2025/spring-640.webp 640w, /img/gallery/2025/spring.webp 750w',
-    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
-    width: 750,
-    height: 1000,
-    alt: '2025 春季照片',
-    season: '春',
-  },
-  {
-    src: '/img/gallery/2025/summer.webp',
-    srcSet: '/img/gallery/2025/summer-320.webp 320w, /img/gallery/2025/summer-640.webp 640w, /img/gallery/2025/summer.webp 750w',
-    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
-    width: 750,
-    height: 1000,
-    alt: '2025 夏季照片',
-    season: '夏',
-  },
-  {
-    src: '/img/gallery/2025/autumn.webp',
-    srcSet: '/img/gallery/2025/autumn-320.webp 320w, /img/gallery/2025/autumn-640.webp 640w, /img/gallery/2025/autumn.webp 999w',
-    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
-    width: 999,
-    height: 749,
-    alt: '2025 秋季照片',
-    season: '秋',
-  },
-  {
-    src: '/img/gallery/2025/winter.webp',
-    srcSet: '/img/gallery/2025/winter-320.webp 320w, /img/gallery/2025/winter-640.webp 640w, /img/gallery/2025/winter.webp 714w',
-    sizes: '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px',
-    width: 714,
-    height: 1000,
-    alt: '2025 冬季照片',
-    season: '冬',
-  },
+  { src: spring, widths: [320, 640, 750], sizes: seasonSizes, alt: '2025 春季照片', season: '春' },
+  { src: summer, widths: [320, 640, 750], sizes: seasonSizes, alt: '2025 夏季照片', season: '夏' },
+  { src: autumn, widths: [320, 640, 999], sizes: seasonSizes, alt: '2025 秋季照片', season: '秋' },
+  { src: winter, widths: [320, 640, 714], sizes: seasonSizes, alt: '2025 冬季照片', season: '冬' },
 ];

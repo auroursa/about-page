@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import { ClientRouter, fade } from 'astro:transitions';
-import { Font } from 'astro:assets';
+import { Image, Font } from 'astro:assets';
+import avatar from '../assets/img/avatar.webp';
+import profileAvatar from '../assets/img/profile-avatar.webp';
 import AstroNavigateBridge from '../components/AstroNavigateBridge.astro';
 import { getCategoryItems } from '../utils/categories';
 import type { CategoryItem } from '../utils/categories';
@@ -14,14 +16,40 @@ interface Props {
   ogImage?: string;
   currentPath?: string;
   drawerCategories?: CategoryItem[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  breadcrumbTitle?: string;
 }
 
-const { title, description = '赤茶的个人页面', ogImage = '/img/banner.webp', currentPath = '/', drawerCategories: externalCategories } = Astro.props;
+const { title, description = '赤茶的个人页面', ogImage = '/img/banner.webp', currentPath = '/', drawerCategories: externalCategories, jsonLd, breadcrumbTitle } = Astro.props;
 const drawerCategoryCounts = externalCategories ?? getCategoryItems(await getCollection('blog'));
 const mainTransitionDuration = 'var(--page-main-transition-duration, 0.5s)';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteURL = Astro.site?.origin ?? 'https://cynosura.one';
+
+const navLabels: Record<string, string> = { '/': '首页', '/posts': '文章', '/friends': '友人', '/about': '关于' };
+const breadcrumbItems: { name: string; url: string }[] = [{ name: '首页', url: siteURL }];
+if (currentPath && currentPath !== '/') {
+  const sectionLabel = navLabels[currentPath];
+  if (sectionLabel) {
+    breadcrumbItems.push({ name: sectionLabel, url: `${siteURL}${currentPath}` });
+  }
+}
+if (breadcrumbTitle) {
+  breadcrumbItems.push({ name: breadcrumbTitle, url: canonicalURL.toString() });
+}
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.url,
+  })),
+};
+
+const allJsonLd = [breadcrumbLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
 
 const isActive = (path: string) => currentPath === path;
 
@@ -80,6 +108,10 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={siteURL + ogImage} />
 
+    {allJsonLd.map((ld) => (
+      <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    ))}
+
     <link rel="me" href="https://diff.network/@ursa" />
     <script src="/js/layout-settled.js" defer data-cfasync="false"></script>
     <script src="/js/nav-indicator.js" defer data-cfasync="false"></script>
@@ -94,7 +126,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
   </head>
   <body>
     <header class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
-      <img class="mx-auto h-24 w-24 rounded-full" src="/img/avatar.webp" width="600" height="600" alt="" />
+      <Image class="mx-auto h-24 w-24 rounded-full" src={avatar} widths={[96, 192]} sizes="96px" alt="" />
       <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold font-overpass">Cynosura</h1>
       <p class="m-0">Trying to light up the dark.</p>
     </header>
@@ -105,7 +137,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
         <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[1280px]:hidden min-[1281px]:flex">
           <a href="/" class="desktop-nav-brand-shell rounded-xl px-3 py-2 transition-colors duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]" aria-label="返回首页">
-            <img class="desktop-nav-brand-avatar h-7 w-7 shrink-0 rounded-lg object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
+            <Image class="desktop-nav-brand-avatar h-7 w-7 shrink-0 rounded-lg object-cover" src={avatar} widths={[28, 56]} sizes="28px" alt="" />
           </a>
         </div>
 
@@ -127,7 +159,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
 
         <div class="hidden w-full items-center justify-between max-[1280px]:flex">
           <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
-            <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
+            <Image class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src={avatar} widths={[32, 64]} sizes="32px" alt="" />
           </a>
 
           <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]">
@@ -152,13 +184,11 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <div class="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[color:color-mix(in_srgb,var(--accent-color)_26%,transparent)] blur-2xl"></div>
                 <div class="relative flex items-start justify-between gap-4">
                   <div class="flex min-w-0 items-center gap-4">
-                    <img
+                    <Image
                       class="h-16 w-16 rounded-full object-cover"
-                      src="/img/profile-avatar-96.webp"
-                      srcset="/img/profile-avatar-96.webp 96w, /img/profile-avatar-192.webp 192w, /img/profile-avatar.webp 512w"
+                      src={profileAvatar}
+                      widths={[96, 192]}
                       sizes="64px"
-                      width="96"
-                      height="96"
                       alt=""
                     />
                     <div class="min-w-0">

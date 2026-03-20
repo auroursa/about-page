@@ -1,14 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import backgroundImage from '../assets/img/background.webp';
 ---
 
 <section class="hero-feature-panel relative overflow-hidden shadow-[0_18px_40px_rgba(17,101,154,0.12)]">
-  <img
+  <Image
     class="absolute inset-0 h-full w-full object-cover"
-    src="/img/background-1280.webp"
-    srcset="/img/background-768.webp 768w, /img/background-1280.webp 1280w, /img/background.webp 1920w"
+    src={backgroundImage}
+    widths={[768, 1280, 1920]}
     sizes="(max-width: 576px) 100vw, (max-width: 1280px) 85vw, 721px"
-    width="1920"
-    height="1080"
     alt="染井吉野樱，摄于春日午后"
     loading="eager"
     decoding="async"

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import blueskyLogo from '../assets/img/bluesky-logo.svg';
+import cleartextLogo from '../assets/img/cleartext-logo.jpg';
 ---
 
 <section class="glass-panel section-panel">
@@ -11,7 +14,7 @@
     <a href="https://github.com/bluesky-social/social-app" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="打开 Bluesky social-app 项目首页（新窗口）">
       <div class="project-card-stack">
         <div class="project-brand">
-          <img src="/img/bluesky-logo.svg" width="20" height="18" alt="Bluesky" class="project-logo" loading="lazy" decoding="async" />
+          <Image src={blueskyLogo} width={20} height={18} alt="Bluesky" class="project-logo" loading="lazy" decoding="async" />
           <p class="project-name">Bluesky App</p>
         </div>
         <p class="project-summary">贡献 CJK 本地化相关代码改进<br />担任简体中文、繁体中文及粤文的本地化 Proofreader</p>
@@ -26,12 +29,10 @@
     <a href="https://cleartext.sh" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="打开 Cleartext 项目首页（新窗口）">
       <div class="project-card-stack">
         <div class="project-brand">
-          <img
-            src="/img/cleartext-logo-32.jpg"
-            srcset="/img/cleartext-logo-32.jpg 32w, /img/cleartext-logo-64.jpg 64w, /img/cleartext-logo.jpg 128w"
+          <Image
+            src={cleartextLogo}
+            widths={[32, 64, 128]}
             sizes="18px"
-            width="20"
-            height="20"
             alt="Cleartext"
             class="project-logo"
             loading="lazy"

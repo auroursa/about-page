@@ -9,9 +9,22 @@ import HomeMusicPanel from '../components/HomeMusicPanel.astro';
 import HomeProjectPanel from '../components/HomeProjectPanel.astro';
 import { homeDeviceItems, homeSkillItems } from '../data/home-info';
 import homeStylesUrl from '../styles/home-deferred.css?url';
+const siteURL = Astro.site?.origin ?? 'https://cynosura.one';
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Cynosura',
+  url: siteURL,
+  description: '赤茶的个人页面',
+  author: {
+    '@type': 'Person',
+    name: '赤茶',
+    url: `${siteURL}/about`,
+  },
+};
 ---
 
-<BaseLayout title="首页" currentPath="/">
+<BaseLayout title="首页" currentPath="/" jsonLd={websiteLd}>
   <div class="mb-2 grid grid-cols-[1fr_3fr] items-stretch gap-2 max-[1280px]:grid-cols-1 max-[1280px]:gap-0">
     <HomeHeroPanel />
     <HomeHeroFeature />
