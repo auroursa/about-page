@@ -125,7 +125,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
     <Font cssVariable="--font-overpass-mono" preload />
   </head>
   <body>
-    <header transition:animate="none" class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
+    <header transition:persist transition:animate="none" class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
       <Image class="mx-auto h-24 w-24 rounded-full" src={avatar} widths={[96, 192]} sizes="96px" alt="" />
       <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold font-overpass">Cynosura</h1>
       <p class="m-0">Trying to light up the dark.</p>
