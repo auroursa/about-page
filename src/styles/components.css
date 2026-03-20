@@ -227,9 +227,7 @@
   @media (hover: none), (pointer: coarse) {
     .post-card:hover {
       transform: none;
-      border-color: inherit;
-      background: inherit;
-      box-shadow: inherit;
+      border-color: color-mix(in srgb, var(--text-color) 10%, transparent);
     }
   }
 
