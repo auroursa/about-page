@@ -1,5 +1,6 @@
 let savedIndicatorLeft = null;
 let savedIndicatorWidth = null;
+let mobileTitleChanged = false;
 let queuedAnimate = false;
 let queuedFrame = null;
 
@@ -220,17 +221,11 @@ document.addEventListener('astro:before-preparation', (ev) => {
     }
   }
 
-  // Mobile: update section title and icon immediately
+  // Mobile: save old title so we can animate after swap
   const titleEl = document.querySelector('.mobile-nav-title');
   const label = NAV_SECTION_LABELS[sectionPath];
-  if (titleEl && label) {
-    titleEl.textContent = label;
-  }
-
-  const targetIcon = core?.querySelector(`a[href="${sectionPath}"] svg`);
-  const mobileIcon = document.querySelector('.mobile-nav-current svg');
-  if (targetIcon && mobileIcon) {
-    mobileIcon.innerHTML = targetIcon.innerHTML;
+  if (titleEl && label && titleEl.textContent !== label) {
+    mobileTitleChanged = true;
   }
 });
 
@@ -239,6 +234,21 @@ document.addEventListener('astro:after-swap', () => {
   scheduleIndicatorInit(true, { waitForLayout: false });
   travelCleanup?.();
   travelCleanup = initTravelLinkInterceptor();
+
+  // Mobile: slide up new title if it changed
+  if (mobileTitleChanged) {
+    const navCurrent = document.querySelector('.mobile-nav-current');
+    if (navCurrent) {
+      navCurrent.animate(
+        [
+          { transform: 'translateY(1.2rem)', opacity: 0 },
+          { transform: 'translateY(0)', opacity: 1 },
+        ],
+        { duration: 500, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' },
+      );
+    }
+    mobileTitleChanged = false;
+  }
 });
 
 if (document.readyState === 'loading') {
