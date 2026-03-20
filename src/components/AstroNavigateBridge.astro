@@ -7,29 +7,5 @@
 
   window.cynosura = window.cynosura ?? {};
   window.cynosura.navigate = navigate;
-
-  // Staggered prefetch for mobile (no hover = no prefetch otherwise)
-  const navPaths = ['/', '/posts', '/friends', '/about'];
-
-  function staggeredPrefetch() {
-    const current = window.location.pathname.replace(/\/+$/, '') || '/';
-    const targets = navPaths.filter((p) => p !== current);
-    let i = 0;
-
-    function next() {
-      if (i < targets.length) {
-        prefetch(targets[i]);
-        i += 1;
-        setTimeout(next, 1000);
-      }
-    }
-
-    next();
-  }
-
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => staggeredPrefetch(), { timeout: 3000 });
-  } else {
-    setTimeout(staggeredPrefetch, 2000);
-  }
+  window.cynosura.prefetch = prefetch;
 </script>

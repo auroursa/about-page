@@ -178,6 +178,17 @@ function initDrawerMenu() {
     }
 
     onNextFrame(checkScrollOverflow);
+
+    // Prefetch nav links while the user reads the menu
+    const prefetchFn = window.cynosura?.prefetch;
+    if (typeof prefetchFn === 'function') {
+      drawer.querySelectorAll('a[data-astro-prefetch]').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && !link.hasAttribute('data-astro-reload')) {
+          prefetchFn(href);
+        }
+      });
+    }
   };
 
   let closeTimer = null;
