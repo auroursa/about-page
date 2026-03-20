@@ -7,8 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://cynosura.one',
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
+    defaultStrategy: 'hover',
   },
   vite: {
     plugins: [tailwindcss()],
