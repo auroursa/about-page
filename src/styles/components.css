@@ -227,6 +227,9 @@
   @media (hover: none), (pointer: coarse) {
     .post-card:hover {
       transform: none;
+      border-color: inherit;
+      background: inherit;
+      box-shadow: inherit;
     }
   }
 
