@@ -874,11 +874,6 @@
     height: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
-    transition: transform 420ms ease;
-  }
-
-  .home-gallery-season-card:hover .home-gallery-season-image {
-    transform: scale(1.03);
   }
 
   .home-gallery-post-card {
@@ -991,23 +986,12 @@
     border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
     background: color-mix(in srgb, var(--card-color) 86%, transparent);
     box-shadow: 0 10px 20px rgb(17 101 154 / 7%);
-    transition: transform 300ms ease, box-shadow 300ms ease;
   }
 
   .home-gallery-masonry-image {
     display: block;
     width: 100%;
     height: auto;
-    transition: transform 420ms ease;
-  }
-
-  .home-gallery-masonry-card:hover .home-gallery-masonry-image-shell {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 28px rgb(17 101 154 / 11%);
-  }
-
-  .home-gallery-masonry-card:hover .home-gallery-masonry-image {
-    transform: scale(1.04);
   }
 }
 
