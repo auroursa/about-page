@@ -130,7 +130,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
             <img class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src="/img/avatar.webp" width="600" height="600" alt="" />
           </a>
 
-          <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]" data-astro-reload>
+          <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]">
             <svg class="h-[1.05rem] w-[1.05rem] shrink-0 fill-[var(--text-color)]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={currentSectionIconBody}></svg>
             <h2 class="mobile-nav-title m-0 whitespace-nowrap text-[1rem] font-semibold leading-none">{currentSectionLabel}</h2>
           </a>
@@ -187,7 +187,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
-                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} {...(nav.path === '/' ? {} : { 'data-astro-reload': true })}>
+                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]}>
                         <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)] font-overpass">{nav.labelEn}</span>
                         <div class="mt-4 flex items-end justify-between gap-3">
                           <span class="text-[1.15rem] font-bold leading-none">{nav.label}</span>
@@ -207,7 +207,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                   <div class="grid grid-cols-1 gap-2">
                     {drawerCategoryCounts.map((category) => (
-                      <a href={`/posts/category/${encodeURIComponent(category.name)}`} class={drawerCategoryLinkClass} data-astro-reload>
+                      <a href={`/posts/category/${encodeURIComponent(category.name)}`} class={drawerCategoryLinkClass}>
                         <span>{category.name}</span>
                         <span class="text-sm text-[color:color-mix(in_srgb,currentColor_72%,transparent)]">{category.count}</span>
                       </a>
@@ -229,7 +229,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                           class="drawer-interactive inline-flex min-h-11 w-full items-center justify-center"
                           href={link.url}
                           title={link.title}
-                          {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : { 'data-astro-reload': true })}
+                          {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                         >
                           <svg class="h-[1.15rem] w-[1.15rem] fill-current" viewBox={link.viewBox} xmlns="http://www.w3.org/2000/svg" set:html={link.iconBody}></svg>
                         </a>

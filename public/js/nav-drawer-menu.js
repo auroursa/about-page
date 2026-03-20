@@ -3,7 +3,7 @@ let drawerCleanup = null;
 const SECTION_LABELS = { '/': '首页', '/posts': '文章', '/friends': '友人', '/about': '关于' };
 const DRAG_DISMISS_THRESHOLD = 0.35;
 const PANEL_TRANSITION = 'transform 300ms cubic-bezier(0.22, 1, 0.36, 1)';
-const NAVIGATION_FALLBACK_MS = 420;
+const FAST_CLOSE_DURATION_MS = 180;
 
 const onNextFrame = (callback) => {
   requestAnimationFrame(() => requestAnimationFrame(callback));
@@ -206,6 +206,40 @@ function initDrawerMenu() {
     }, 300);
   };
 
+  const closeDrawerFast = (onDone) => {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
+    const dur = `${FAST_CLOSE_DURATION_MS}ms`;
+    const easing = 'cubic-bezier(0.4, 0, 1, 1)';
+
+    drawerPanel.classList.remove('open');
+    drawerPanel.style.transition = `transform ${dur} ${easing}`;
+    drawer.style.transition = `background-color ${dur} ease`;
+
+    onNextFrame(() => {
+      drawer.style.backgroundColor = 'rgb(0 0 0 / 0)';
+      if (drawerBackdrop instanceof HTMLElement) {
+        drawerBackdrop.style.transition = `opacity ${dur} ease`;
+        drawerBackdrop.style.opacity = '0';
+      }
+    });
+
+    staggerItems.forEach((item) => {
+      if (!(item instanceof HTMLElement)) return;
+      item.style.transition = `opacity ${dur} ease`;
+      item.style.opacity = '0';
+    });
+
+    closeTimer = setTimeout(() => {
+      closeTimer = null;
+      finishClose();
+      onDone?.();
+    }, FAST_CLOSE_DURATION_MS);
+  };
+
   // ── Backdrop click ──
   const onBackdropClick = (event) => {
     if (!drawerPanel.contains(event.target)) {
@@ -379,11 +413,9 @@ function initDrawerMenu() {
       closeTimer = null;
     }
 
-    if (drawer.classList.contains('open')) {
-      resetStagger();
-      clearDragStyles();
-      finishClose();
-    }
+    resetStagger();
+    clearDragStyles();
+    finishClose();
   };
 
   document.addEventListener('astro:before-swap', onBeforeSwap);
@@ -424,18 +456,6 @@ function initDrawerMenu() {
 
   // ── Event listeners ──
   const links = drawer.querySelectorAll('a');
-  let navigationTimer = null;
-  let navigationTransitionCleanup = null;
-
-  const clearPendingNavigation = () => {
-    if (navigationTimer) {
-      clearTimeout(navigationTimer);
-      navigationTimer = null;
-    }
-
-    navigationTransitionCleanup?.();
-    navigationTransitionCleanup = null;
-  };
 
   const performDrawerNavigation = (link, destination) => {
     if (link.hasAttribute('data-astro-reload')) {
@@ -452,37 +472,6 @@ function initDrawerMenu() {
     }
 
     window.location.assign(destination);
-  };
-
-  const scheduleNavigationAfterClose = (navigate) => {
-    clearPendingNavigation();
-
-    let handled = false;
-
-    const finalizeNavigation = () => {
-      if (handled) {
-        return;
-      }
-
-      handled = true;
-      clearPendingNavigation();
-      onNextFrame(navigate);
-    };
-
-    const onPanelTransitionEnd = (event) => {
-      if (event.target !== drawerPanel || event.propertyName !== 'transform') {
-        return;
-      }
-
-      finalizeNavigation();
-    };
-
-    drawerPanel.addEventListener('transitionend', onPanelTransitionEnd);
-    navigationTransitionCleanup = () => {
-      drawerPanel.removeEventListener('transitionend', onPanelTransitionEnd);
-    };
-
-    navigationTimer = setTimeout(finalizeNavigation, NAVIGATION_FALLBACK_MS);
   };
 
   const shouldDelayNavigation = (link, event) => {
@@ -541,8 +530,7 @@ function initDrawerMenu() {
     }
 
     event.preventDefault();
-    closeDrawer();
-    scheduleNavigationAfterClose(() => {
+    closeDrawerFast(() => {
       performDrawerNavigation(target, destination);
     });
   };
@@ -571,7 +559,6 @@ function initDrawerMenu() {
       clearTimeout(closeTimer);
       closeTimer = null;
     }
-    clearPendingNavigation();
     focusTrapCleanup?.();
     document.body.style.overflow = '';
   };
