@@ -104,19 +104,4 @@
     border-top: 1px dashed #566c73;
   }
 
-  ::-webkit-scrollbar {
-    width: 0.8rem;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: var(--card-color);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--accent-color);
-  }
 }
