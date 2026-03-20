@@ -467,8 +467,17 @@ function initDrawerMenu() {
   // ── Event listeners ──
   const links = drawer.querySelectorAll('a');
 
+  const fadeOutPageContent = () => {
+    const shell = document.querySelector('.page-transition-shell');
+    if (shell instanceof HTMLElement) {
+      shell.style.transition = 'opacity 180ms ease';
+      shell.style.opacity = '0';
+    }
+  };
+
   const performDrawerNavigation = (link, destination) => {
     if (link.hasAttribute('data-astro-reload')) {
+      fadeOutPageContent();
       window.location.assign(destination);
       return;
     }

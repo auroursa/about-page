@@ -1275,4 +1275,20 @@
   .home-music-list-item:hover {
     transform: none;
   }
+
+  /* Defer rendering of below-the-fold home sections */
+  .home-article-timeline {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 20rem;
+  }
+
+  .home-music-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 32rem;
+  }
+
+  .home-gallery-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 60rem;
+  }
 }

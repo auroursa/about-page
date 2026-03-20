@@ -27,7 +27,7 @@ import { socialIconLinks } from '../data/social-links';
             class="glass-icon-button h-11 w-11"
             href={link.url}
             title={link.title}
-            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : { 'data-astro-reload': true })}
+            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
             <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox={link.viewBox} xmlns="http://www.w3.org/2000/svg" set:html={link.iconBody}></svg>
           </a>
