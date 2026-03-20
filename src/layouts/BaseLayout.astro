@@ -145,7 +145,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
           <div class="desktop-nav-core relative flex items-center gap-0.5">
             <div class="nav-indicator absolute rounded-xl border border-[color:color-mix(in_srgb,var(--main-color)_18%,transparent)] bg-[color:color-mix(in_srgb,var(--main-color)_14%,var(--card-color))] shadow-[0_4px_12px_rgba(17,101,154,0.1)] pointer-events-none" style="top: 0; left: 0; height: 0; width: 0; opacity: 0;"></div>
             {navItems.map((nav) => (
-              <a href={nav.path} class:list={[menuButtonBase, isActive(nav.path) && menuButtonActive]} aria-labelledby={`menu-a-${nav.id}`} data-astro-prefetch="load">
+              <a href={nav.path} class:list={[menuButtonBase, isActive(nav.path) && menuButtonActive]} aria-labelledby={`menu-a-${nav.id}`} data-astro-prefetch="hover">
                 <svg class:list={[menuIconClass, isActive(nav.path) && menuIconActiveClass]} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={nav.iconBody}></svg>
                 <span class:list={[menuLabelClass, isActive(nav.path) && menuLabelActiveClass]} id={`menu-a-${nav.id}`}>{nav.label}</span>
               </a>
@@ -217,7 +217,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
-                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} data-astro-prefetch="load">
+                      <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} data-astro-prefetch="hover">
                         <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)] font-overpass">{nav.labelEn}</span>
                         <div class="mt-4 flex items-end justify-between gap-3">
                           <span class="text-[1.15rem] font-bold leading-none">{nav.label}</span>
