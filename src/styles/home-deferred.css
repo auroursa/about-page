@@ -122,15 +122,11 @@
     color: var(--text-color);
     box-shadow: 0 4px 12px rgb(17 101 154 / 5%);
     transition:
-      border-color 300ms,
       background 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   .home-article-card:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--main-color) 28%, transparent);
     background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     box-shadow: 0 8px 20px rgb(17 101 154 / 8%);
   }
@@ -207,16 +203,12 @@
     color: var(--text-color);
     box-shadow: 0 4px 12px rgb(17 101 154 / 5%);
     transition:
-      border-color 300ms,
       background 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   .project-card:hover,
   .project-card:focus-visible {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--main-color) 28%, transparent);
     background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     box-shadow: 0 8px 20px rgb(17 101 154 / 8%);
   }
@@ -281,14 +273,6 @@
     color: color-mix(in srgb, var(--main-color) 30%, var(--text-color));
   }
 
-  @media (hover: none), (pointer: coarse) {
-    .project-card:hover {
-      transform: none;
-      border-color: color-mix(in srgb, var(--text-color) 10%, transparent);
-      background: color-mix(in srgb, var(--main-color) 2%, var(--card-color));
-      box-shadow: 0 4px 12px rgb(17 101 154 / 5%);
-    }
-  }
 
   .home-music-panel {
     position: relative;
@@ -337,18 +321,13 @@
     box-shadow:
       0 1px 0 color-mix(in srgb, white 64%, transparent) inset,
       0 10px 22px color-mix(in srgb, hsl(var(--music-accent)) 22%, transparent);
-    transition: transform 300ms ease, box-shadow 300ms ease;
+    transition: box-shadow 300ms ease;
   }
 
   .home-music-feature-cover-link:hover .home-music-feature-cover-shell {
-    transform: translateY(-2px);
     box-shadow:
       0 1px 0 color-mix(in srgb, white 64%, transparent) inset,
       0 14px 28px color-mix(in srgb, hsl(var(--music-accent)) 30%, transparent);
-  }
-
-  .home-music-feature-cover-link:active .home-music-feature-cover-shell {
-    transform: translateY(-1px) scale(0.98);
   }
 
   .home-music-feature-cover-shell::before,
@@ -705,8 +684,7 @@
     cursor: pointer;
     transition:
       background 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   .home-music-list-thumb {
@@ -743,14 +721,12 @@
   }
 
   .home-music-list-item:hover {
-    transform: translateY(-1px);
     background:
       linear-gradient(180deg, color-mix(in srgb, white 18%, transparent) 0%, transparent 34%),
       linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 7%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 11%, var(--card-color)) 100%);
     box-shadow:
       inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 18%, transparent),
-      inset 0 1px 0 color-mix(in srgb, white 22%, transparent),
-      0 7px 18px color-mix(in srgb, hsl(var(--music-accent)) 12%, transparent);
+      inset 0 1px 0 color-mix(in srgb, white 22%, transparent);
   }
 
   .home-music-list-item:focus-visible {
@@ -774,8 +750,7 @@
       linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 17%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 22%, var(--card-color)) 100%);
     box-shadow:
       inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 40%, transparent),
-      inset 0 1px 0 color-mix(in srgb, white 26%, transparent),
-      0 10px 24px color-mix(in srgb, hsl(var(--music-accent)) 14%, transparent);
+      inset 0 1px 0 color-mix(in srgb, white 26%, transparent);
   }
 
   .home-music-list-item.is-active .home-music-list-title {
@@ -1219,23 +1194,17 @@
 
   .home-music-list-item:hover {
     background: linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 7%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 11%, var(--card-color)) 100%);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 18%, transparent),
-      0 7px 18px color-mix(in srgb, hsl(var(--music-accent)) 12%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 18%, transparent);
   }
 
   .home-music-list-item.is-active {
     background: linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 14%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 19%, var(--card-color)) 100%);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 34%, transparent),
-      0 8px 20px color-mix(in srgb, hsl(var(--music-accent)) 10%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 34%, transparent);
   }
 
   .home-music-list-item.is-active:hover {
     background: linear-gradient(165deg, color-mix(in srgb, hsl(var(--music-accent)) 17%, var(--card-color)) 0%, color-mix(in srgb, hsl(var(--music-accent)) 22%, var(--card-color)) 100%);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 40%, transparent),
-      0 10px 24px color-mix(in srgb, hsl(var(--music-accent)) 14%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, hsl(var(--music-accent)) 40%, transparent);
   }
 }
 
@@ -1250,14 +1219,6 @@
     transition: none;
   }
 
-  .home-music-feature-cover-link:hover .home-music-feature-cover-shell,
-  .home-music-feature-cover-link:active .home-music-feature-cover-shell {
-    transform: none;
-  }
-
-  .home-music-list-item:hover {
-    transform: none;
-  }
 
   /* Defer rendering of below-the-fold home sections */
   .home-article-timeline {

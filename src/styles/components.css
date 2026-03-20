@@ -115,20 +115,13 @@
       inset 0 1px 0 rgb(255 255 255 / 32%),
       0 8px 18px rgb(17 101 154 / 8%);
     transition:
-      border-color 300ms,
       background-color 300ms,
-      color 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      color 300ms;
   }
 
   .glass-icon-button:hover {
-    border-color: color-mix(in srgb, var(--main-color) 34%, transparent);
-    background: color-mix(in srgb, var(--main-color) 12%, var(--card-color));
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     color: var(--main-color);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 40%),
-      0 12px 24px rgb(17 101 154 / 12%);
   }
 
   .glass-pill-button {
@@ -141,17 +134,13 @@
     padding: 0.5rem 1rem;
     color: var(--text-color);
     transition:
-      border-color 300ms,
       background-color 300ms,
-      color 300ms,
-      box-shadow 300ms;
+      color 300ms;
   }
 
   .glass-pill-button:hover {
-    border-color: var(--main-color);
-    background: color-mix(in srgb, var(--main-color) 8%, var(--card-color));
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     color: var(--main-color);
-    box-shadow: 0 10px 24px rgb(17 101 154 / 8%);
   }
 
   .glass-info-tag {
@@ -177,15 +166,12 @@
 
   .hover-lift {
     transition:
-      border-color 300ms,
       background-color 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   .hover-lift:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--main-color) 24%, transparent);
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
   }
 
@@ -206,29 +192,13 @@
     padding: 1.5rem;
     color: var(--text-color);
     transition:
-      border-color 300ms,
       background-color 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   .post-card:hover {
-    border-color: var(--main-color);
     background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
     box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .post-card:hover {
-      transform: translateY(-2px);
-    }
-  }
-
-  @media (hover: none), (pointer: coarse) {
-    .post-card:hover {
-      transform: none;
-      border-color: color-mix(in srgb, var(--text-color) 10%, transparent);
-    }
   }
 
   .info-grid-card {

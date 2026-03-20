@@ -4,11 +4,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { friends, voidFriends } from '../data/friends';
 
 const panelClass = 'glass-panel relative overflow-hidden';
-const linkCardClass = 'group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_18px_38px_rgba(17,101,154,0.14)]';
+const linkCardClass = 'group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[background-color,box-shadow] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
 const extractDomain = (url: string) => {
   try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
 };
-const voidLinkCardClass = 'group block h-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-4 text-[var(--text-color)] shadow-[0_8px_24px_rgba(17,101,154,0.06)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:shadow-[0_14px_28px_rgba(17,101,154,0.1)]';
+const voidLinkCardClass = 'group block h-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-4 text-[var(--text-color)] shadow-[0_8px_24px_rgba(17,101,154,0.06)] backdrop-blur-md transition-[background-color,box-shadow] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
 const friendShellClass = 'defer-offscreen [--defer-block-size:8.5rem] overflow-hidden text-left';
 const voidFriendShellClass = 'defer-offscreen [--defer-block-size:6.5rem] overflow-hidden text-left';
 const sectionHeaderClass = 'section-stack';
@@ -29,7 +29,7 @@ const sectionHeaderClass = 'section-stack';
       <article class={friendShellClass}>
         <a href={friend.url} target="_blank" rel="noopener noreferrer" class={linkCardClass}>
           <div class="relative flex h-full items-start gap-4">
-            {friend.img && <Image src={friend.img} widths={[80, 160]} sizes="80px" alt={friend.name} class="h-20 w-20 shrink-0 rounded-[1.35rem] object-cover transition-transform duration-300 group-hover:scale-[1.04]" loading="lazy" decoding="async" />}
+            {friend.img && <Image src={friend.img} widths={[80, 160]} sizes="80px" alt={friend.name} class="h-20 w-20 shrink-0 rounded-[1.35rem] object-cover " loading="lazy" decoding="async" />}
             <div class="min-w-0 flex-1 self-start pt-0.5">
               <h3 class="m-0 min-w-0 truncate text-[1.08rem] font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
               <p class="m-0 mt-1 truncate text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
