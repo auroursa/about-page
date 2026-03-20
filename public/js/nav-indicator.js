@@ -109,8 +109,10 @@ function saveNavIndicatorPosition() {
   const indicator = core?.querySelector('.nav-indicator');
 
   if (indicator && indicator.style.opacity === '1') {
-    savedIndicatorLeft = parseFloat(indicator.style.left);
-    savedIndicatorWidth = parseFloat(indicator.style.width);
+    const coreRect = core.getBoundingClientRect();
+    const rect = indicator.getBoundingClientRect();
+    savedIndicatorLeft = rect.left - coreRect.left;
+    savedIndicatorWidth = rect.width;
   }
 }
 
