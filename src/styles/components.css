@@ -298,25 +298,22 @@
     background: var(--card-content-color);
     color: var(--text-color);
     transition:
-      border-color 300ms,
       background-color 300ms,
       color 300ms,
-      box-shadow 300ms,
-      transform 300ms;
+      box-shadow 300ms;
   }
 
   @media (hover: hover) {
     .drawer-interactive:hover {
-      transform: translateY(-2px);
-      border-color: var(--main-color);
-      background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
+      background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
+      box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
       color: var(--main-color);
     }
   }
 
   .drawer-interactive:active {
-    border-color: var(--main-color);
-    background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
+    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
+    box-shadow: 0 18px 36px rgb(17 101 154 / 12%);
     color: var(--main-color);
   }
 

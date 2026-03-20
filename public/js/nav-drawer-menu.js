@@ -560,9 +560,17 @@ function initDrawerMenu() {
     }
 
     event.preventDefault();
-    closeDrawerFast(() => {
-      performDrawerNavigation(target, destination);
-    });
+
+    // Brief press feedback before closing drawer
+    target.style.background = 'color-mix(in srgb, var(--main-color) 6%, var(--card-color))';
+    target.style.boxShadow = '0 18px 36px rgb(17 101 154 / 12%)';
+    target.style.color = 'var(--main-color)';
+
+    setTimeout(() => {
+      closeDrawerFast(() => {
+        performDrawerNavigation(target, destination);
+      });
+    }, 180);
   };
 
   openMenuButton.addEventListener('click', openDrawer);
