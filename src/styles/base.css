@@ -74,6 +74,108 @@
   }
 }
 
+/* ── Skeleton loading shimmer ─────────────────────────────────── */
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.skeleton-loading > :not(.skeleton-overlay) {
+  display: none;
+}
+
+.skeleton-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.skeleton-overlay--visible {
+  opacity: 1;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--card-color);
+  padding: 1.5rem;
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+.skeleton-card--hero {
+  min-height: 6rem;
+}
+
+.skeleton-card--short {
+  min-height: 3rem;
+}
+
+.skeleton-line {
+  height: 0.85rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--card-content-color) 0%,
+    color-mix(in srgb, var(--text-color) 6%, var(--card-content-color)) 40%,
+    var(--card-content-color) 80%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.8s linear infinite;
+}
+
+.skeleton-line--title {
+  width: 45%;
+  height: 1.1rem;
+}
+
+.skeleton-line--subtitle {
+  width: 70%;
+}
+
+.skeleton-line--full {
+  width: 100%;
+}
+
+.skeleton-line--3q {
+  width: 75%;
+}
+
+.skeleton-line--half {
+  width: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line {
+    animation: none;
+  }
+
+  .skeleton-card {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+
 @layer base {
   html {
     scrollbar-gutter: stable;

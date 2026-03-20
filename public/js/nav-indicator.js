@@ -181,6 +181,57 @@ window.cynosura.navIndicator = {
   init: initNavIndicator,
 };
 
+const NAV_SECTION_PATHS = ['/', '/posts', '/friends', '/about'];
+const NAV_SECTION_LABELS = { '/': '首页', '/posts': '文章', '/friends': '友人', '/about': '关于' };
+
+function resolveSection(pathname) {
+  const normalized = pathname.replace(/\/+$/, '') || '/';
+  return NAV_SECTION_PATHS.find((p) => p !== '/' && normalized.startsWith(p))
+    || (normalized === '/' ? '/' : null);
+}
+
+document.addEventListener('astro:before-preparation', (ev) => {
+  const sectionPath = resolveSection(new URL(ev.to).pathname);
+  if (!sectionPath) return;
+
+  // Desktop: animate indicator to target button immediately
+  const core = document.querySelector('.desktop-nav-core');
+  const indicator = core?.querySelector('.nav-indicator');
+
+  if (core && indicator) {
+    const activeBtn = core.querySelector('.nav-active-btn');
+    const targetBtn = core.querySelector(`a[href="${sectionPath}"]`);
+
+    if (activeBtn && activeBtn !== targetBtn) {
+      activeBtn.classList.remove('nav-active-btn', 'text-[var(--main-color)]', 'hover:bg-transparent');
+      activeBtn.querySelectorAll('svg, span').forEach((el) => {
+        el.classList.remove('text-[var(--main-color)]');
+      });
+    }
+
+    if (targetBtn) {
+      targetBtn.classList.add('nav-active-btn', 'text-[var(--main-color)]', 'hover:bg-transparent');
+      targetBtn.querySelectorAll('svg, span').forEach((el) => {
+        el.classList.add('text-[var(--main-color)]');
+      });
+      animateIndicatorTo(indicator, core, targetBtn);
+    }
+  }
+
+  // Mobile: update section title and icon immediately
+  const titleEl = document.querySelector('.mobile-nav-title');
+  const label = NAV_SECTION_LABELS[sectionPath];
+  if (titleEl && label) {
+    titleEl.textContent = label;
+  }
+
+  const targetIcon = core?.querySelector(`a[href="${sectionPath}"] svg`);
+  const mobileIcon = document.querySelector('.mobile-nav-current svg');
+  if (targetIcon && mobileIcon) {
+    mobileIcon.innerHTML = targetIcon.innerHTML;
+  }
+});
+
 document.addEventListener('astro:before-swap', saveNavIndicatorPosition);
 document.addEventListener('astro:after-swap', () => {
   scheduleIndicatorInit(true, { waitForLayout: false });
