@@ -342,72 +342,53 @@
             return;
           }
 
-          // Crossfade: clone old cover behind <img>, swap src, fade in new
+          // Crossfade: ghost holds old cover visible, new cover fades in on top
           const ghost = coverImage.cloneNode(false);
           ghost.removeAttribute('data-music-cover-img');
-          ghost.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;opacity:1;transition:none;pointer-events:none;';
+          ghost.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:1;';
 
           if (coverFrame instanceof HTMLElement) {
             coverFrame.insertBefore(ghost, coverImage);
           }
 
-          coverImage.style.transition = 'none';
-          coverImage.style.opacity = '0';
+          // Swap src immediately (preloader cached it), start hidden
+          coverImage.style.cssText += ';position:relative;z-index:2;';
           coverImage.srcset = nextSrcSet;
           coverImage.sizes = nextSizes;
           coverImage.src = nextSrc;
           coverImage.alt = `${item.title} 专辑封面`;
+          coverImage.hidden = false;
 
           if (fallback instanceof HTMLElement) {
             fallback.hidden = true;
           }
 
-          let fadeTimer = null;
+          // Fade in new cover over ghost
+          const fadeIn = coverImage.animate(
+            [{ opacity: 0 }, { opacity: 1 }],
+            { duration: 200, easing: 'ease', fill: 'forwards' },
+          );
+
           let cancelFade = null;
 
           const cleanup = () => {
-            if (fadeTimer !== null) {
-              clearTimeout(fadeTimer);
-              fadeTimer = null;
-            }
-
             ghost.remove();
-
+            coverImage.style.cssText = '';
             if (root.__musicCoverFadeCleanup === cancelFade) {
               root.__musicCoverFadeCleanup = null;
             }
           };
 
           cancelFade = () => {
+            fadeIn.cancel();
             cleanup();
-            coverImage.style.transition = '';
-            coverImage.style.opacity = '1';
           };
 
           root.__musicCoverFadeCleanup = cancelFade;
 
-          const onTransitionEnd = (event) => {
-            if (event.propertyName === 'opacity') {
-              coverImage.removeEventListener('transitionend', onTransitionEnd);
-              cleanup();
-            }
-          };
-
-          coverImage.addEventListener('transitionend', onTransitionEnd);
-          fadeTimer = setTimeout(() => {
-            coverImage.removeEventListener('transitionend', onTransitionEnd);
+          fadeIn.onfinish = () => {
             cleanup();
-          }, 260);
-
-          requestAnimationFrame(() => {
-            if (root.__musicCoverRequestId !== nextRequestId) {
-              cancelFade();
-              return;
-            }
-
-            coverImage.style.transition = '';
-            coverImage.style.opacity = '1';
-          });
+          };
 
           applyCoverAccent(root, coverImage, fallbackAccent);
         };
