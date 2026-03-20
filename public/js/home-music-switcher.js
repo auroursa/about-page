@@ -43,7 +43,7 @@
 
   /* ── #1 Median-cut dominant color extraction ── */
 
-  const medianCut = (pixels, depth) => {
+  const medianCutWeighted = (pixels, depth) => {
     if (depth === 0 || pixels.length === 0) {
       let rSum = 0;
       let gSum = 0;
@@ -56,7 +56,7 @@
       }
 
       const count = pixels.length || 1;
-      return [[rSum / count, gSum / count, bSum / count]];
+      return [{ color: [rSum / count, gSum / count, bSum / count], count }];
     }
 
     let rMin = 255;
@@ -91,8 +91,8 @@
     pixels.sort((a, b) => a[channel] - b[channel]);
     const mid = Math.floor(pixels.length / 2);
     return [
-      ...medianCut(pixels.slice(0, mid), depth - 1),
-      ...medianCut(pixels.slice(mid), depth - 1),
+      ...medianCutWeighted(pixels.slice(0, mid), depth - 1),
+      ...medianCutWeighted(pixels.slice(mid), depth - 1),
     ];
   };
 
@@ -138,19 +138,21 @@
         return fallbackAccent;
       }
 
-      const palette = medianCut(filtered, 3);
+      const buckets = medianCutWeighted(filtered, 3);
 
-      let bestColor = palette[0];
+      let bestColor = buckets[0].color;
       let bestScore = -1;
+      const totalPixels = filtered.length;
 
-      for (let i = 0; i < palette.length; i += 1) {
-        const [r, g, b] = palette[i];
+      for (let i = 0; i < buckets.length; i += 1) {
+        const [r, g, b] = buckets[i].color;
+        const weight = buckets[i].count / totalPixels;
         const hsl = rgbToHsl(r, g, b);
-        const score = hsl.s * 1.6 + Math.abs(hsl.l - 50) * -0.5;
+        const score = (hsl.s * 1.2 + Math.abs(hsl.l - 50) * -0.5) * (0.4 + weight * 0.6);
 
         if (score > bestScore) {
           bestScore = score;
-          bestColor = palette[i];
+          bestColor = buckets[i].color;
         }
       }
 
@@ -316,89 +318,98 @@
 
           root.__musicCoverFadeCleanup?.();
 
-          const commitSwap = () => {
-            if (root.__musicCoverRequestId !== nextRequestId) {
-              return;
-            }
+          const coverFrame = coverImage.closest('.home-music-feature-cover-frame');
 
+          // First display: no crossfade needed
+          if (coverImage.hidden || (!coverImage.currentSrc && !coverImage.src)) {
             coverImage.srcset = nextSrcSet;
             coverImage.sizes = nextSizes;
             coverImage.src = nextSrc;
             coverImage.alt = `${item.title} 专辑封面`;
             coverImage.hidden = false;
+            coverImage.style.opacity = '0';
 
             if (fallback instanceof HTMLElement) {
               fallback.hidden = true;
             }
 
             requestAnimationFrame(() => {
-              if (root.__musicCoverRequestId !== nextRequestId) {
-                return;
-              }
-
+              if (root.__musicCoverRequestId !== nextRequestId) return;
               coverImage.style.opacity = '1';
             });
 
             applyCoverAccent(root, coverImage, fallbackAccent);
-          };
-
-          if (coverImage.hidden || (!coverImage.currentSrc && !coverImage.src)) {
-            coverImage.style.opacity = '0';
-            commitSwap();
             return;
           }
 
-          let isDone = false;
-          let fadeTimer = null;
+          // Crossfade: clone old cover behind <img>, swap src, fade in new
+          const ghost = coverImage.cloneNode(false);
+          ghost.removeAttribute('data-music-cover-img');
+          ghost.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;opacity:1;transition:none;pointer-events:none;';
 
+          if (coverFrame instanceof HTMLElement) {
+            coverFrame.insertBefore(ghost, coverImage);
+          }
+
+          coverImage.style.transition = 'none';
+          coverImage.style.opacity = '0';
+          coverImage.srcset = nextSrcSet;
+          coverImage.sizes = nextSizes;
+          coverImage.src = nextSrc;
+          coverImage.alt = `${item.title} 专辑封面`;
+
+          if (fallback instanceof HTMLElement) {
+            fallback.hidden = true;
+          }
+
+          let fadeTimer = null;
           let cancelFade = null;
 
-          const cleanup = ({ restoreOpacity = false } = {}) => {
+          const cleanup = () => {
             if (fadeTimer !== null) {
               clearTimeout(fadeTimer);
               fadeTimer = null;
             }
 
-            coverImage.removeEventListener('transitionend', handleFadeOut);
-
-            if (restoreOpacity) {
-              coverImage.style.opacity = '1';
-            }
+            ghost.remove();
 
             if (root.__musicCoverFadeCleanup === cancelFade) {
               root.__musicCoverFadeCleanup = null;
             }
           };
 
-          const finishFadeOut = () => {
-            if (isDone) {
-              return;
-            }
-
-            isDone = true;
+          cancelFade = () => {
             cleanup();
-            commitSwap();
+            coverImage.style.transition = '';
+            coverImage.style.opacity = '1';
           };
 
-          const handleFadeOut = (event) => {
+          root.__musicCoverFadeCleanup = cancelFade;
+
+          const onTransitionEnd = (event) => {
             if (event.propertyName === 'opacity') {
-              finishFadeOut();
+              coverImage.removeEventListener('transitionend', onTransitionEnd);
+              cleanup();
             }
           };
 
-          cancelFade = () => cleanup({ restoreOpacity: true });
-          root.__musicCoverFadeCleanup = cancelFade;
-          coverImage.addEventListener('transitionend', handleFadeOut);
-          fadeTimer = setTimeout(finishFadeOut, 220);
+          coverImage.addEventListener('transitionend', onTransitionEnd);
+          fadeTimer = setTimeout(() => {
+            coverImage.removeEventListener('transitionend', onTransitionEnd);
+            cleanup();
+          }, 260);
 
           requestAnimationFrame(() => {
             if (root.__musicCoverRequestId !== nextRequestId) {
-              cleanup();
+              cancelFade();
               return;
             }
 
-            coverImage.style.opacity = '0';
+            coverImage.style.transition = '';
+            coverImage.style.opacity = '1';
           });
+
+          applyCoverAccent(root, coverImage, fallbackAccent);
         };
 
         preloader.onload = reveal;
