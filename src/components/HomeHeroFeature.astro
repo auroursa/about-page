@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import backgroundImage from '../assets/img/background.webp';
 ---
 
-<section class="hero-feature-panel relative overflow-hidden shadow-[0_18px_40px_rgba(17,101,154,0.12)]">
+<section class="hero-feature-panel relative overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] shadow-[0_18px_40px_rgba(17,101,154,0.12)]">
   <Image
     class="absolute inset-0 h-full w-full object-cover"
     src={backgroundImage}
@@ -15,7 +15,7 @@ import backgroundImage from '../assets/img/background.webp';
     fetchpriority="high"
   />
   <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.2)_50%,transparent_100%)]"></div>
-  <div class="relative flex min-h-[23rem] flex-col justify-end p-8 pb-7 max-[576px]:min-h-[18rem] max-[576px]:p-6 max-[576px]:pb-5">
+  <div class="relative flex min-h-[23rem] flex-col justify-end p-8 pb-7 max-[576px]:min-h-[14rem] max-[576px]:p-6 max-[576px]:pb-5">
     <div class="space-y-3">
       <h2 class="m-0 max-w-[14ch] text-[2.2rem] font-bold leading-[1.12] text-white max-[576px]:text-[1.82rem]">嗨！这里是赤茶</h2>
       <div class="flex items-center justify-between gap-4">
