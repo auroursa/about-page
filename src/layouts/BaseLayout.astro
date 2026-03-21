@@ -78,7 +78,7 @@ const menuIconClass = 'h-[1.1rem] w-[1.1rem] fill-current transition-colors dura
 const menuLabelClass = 'transition-colors duration-300';
 const menuLabelActiveClass = 'text-[var(--main-color)]';
 const menuIconActiveClass = 'text-[var(--main-color)]';
-const drawerNavLinkBase = 'drawer-interactive group flex min-h-[5.4rem] flex-col justify-between px-4 py-3';
+const drawerNavLinkBase = 'drawer-interactive group flex items-center gap-2.5 px-3 py-3';
 const drawerNavLinkActive = 'bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] text-[var(--main-color)]';
 const drawerCategoryLinkClass = 'drawer-interactive flex min-h-10 items-center justify-between px-4 py-2 text-[0.95rem]';
 const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min-[1800px]:max-w-[65%] max-[1280px]:max-w-[85%] max-[576px]:max-w-full';
@@ -240,11 +240,9 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
                       <a href={nav.path} class:list={[drawerNavLinkBase, isActive(nav.path) && drawerNavLinkActive]} data-astro-prefetch="hover">
-                        <span class="text-[0.72rem] font-bold tracking-[0.16em] text-[color:color-mix(in_srgb,currentColor_60%,transparent)] font-overpass">{nav.labelEn}</span>
-                        <div class="mt-4 flex items-end justify-between gap-3">
-                          <span class="text-[1.15rem] font-bold leading-none">{nav.label}</span>
-                          <svg class="h-[1.15rem] w-[1.15rem] fill-current transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={nav.iconBody}></svg>
-                        </div>
+                        <svg class="h-[1.1rem] w-[1.1rem] shrink-0 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={nav.iconBody}></svg>
+                        <span class="flex-1 text-[0.95rem] font-semibold">{nav.label}</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 fill-[color:color-mix(in_srgb,currentColor_30%,transparent)] transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"></path></svg>
                       </a>
                     ))}
                   </div>
