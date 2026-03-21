@@ -970,6 +970,43 @@
   }
 }
 
+/* ── Info grid pile (mobile) ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .info-grid-pile.is-piled {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    position: relative;
+    height: 7rem;
+    cursor: pointer;
+  }
+
+  .info-grid-pile.is-piled .info-grid-card {
+    position: absolute;
+    width: 100%;
+    transform-origin: center;
+    background: var(--card-color);
+    box-shadow: 0 2px 8px rgba(17, 101, 154, 0.06);
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 400ms ease;
+  }
+
+  .info-grid-pile.is-piled .info-grid-card:first-child {
+    box-shadow: 0 4px 14px rgba(17, 101, 154, 0.08);
+  }
+
+  .info-grid-pile.is-piled .info-grid-card:nth-child(n+4) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .info-grid-pile.is-spreading .info-grid-card {
+    transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 350ms ease;
+  }
+}
+
 @media (max-width: 1280px) {
   .home-article-track {
     grid-auto-columns: minmax(15rem, 16.5rem);
