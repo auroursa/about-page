@@ -185,27 +185,46 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <div class="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[color:color-mix(in_srgb,var(--accent-color)_26%,transparent)] blur-2xl"></div>
                 <div class="relative flex items-start justify-between gap-4">
                   <div class="flex min-w-0 items-center gap-4">
-                    <Image
-                      class="h-16 w-16 rounded-full object-cover"
-                      src={profileAvatar}
-                      widths={[96, 192]}
-                      sizes="64px"
-                      alt=""
-                    />
+                    <div class="relative shrink-0">
+                      <Image
+                        class="h-16 w-16 rounded-full object-cover"
+                        src={profileAvatar}
+                        widths={[96, 192]}
+                        sizes="64px"
+                        alt=""
+                      />
+                      <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/F6006874CC50A6C854B9763C3728385536F22DEA" class="absolute -bottom-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-[var(--card-color)] bg-[var(--main-color)] text-white transition-opacity duration-300 opacity-80 hover:opacity-100" title="OpenPGP" target="_blank" rel="noopener noreferrer">
+                        <svg class="h-2.5 w-2.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M10.758 11.828l7.849-7.849 1.414 1.414-1.414 1.415 2.474 2.474-1.414 1.415-2.475-2.475-1.414 1.414 2.121 2.121-1.414 1.415-2.121-2.122-2.192 2.192a5.002 5.002 0 0 1-7.708 6.294 5 5 0 0 1 6.294-7.708zm-.637 6.293A3 3 0 1 0 5.88 13.88a3 3 0 0 0 4.242 4.242z"></path></g></svg>
+                      </a>
+                    </div>
                     <div class="min-w-0">
                       <h2 class="m-0 truncate text-[1.6rem] font-bold leading-none">赤茶</h2>
                       <p class="m-0 mt-1.5 text-[0.82rem] text-[color:color-mix(in_srgb,var(--text-color)_56%,transparent)] font-overpass">cynosura.one</p>
                     </div>
                   </div>
                   <button class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[color:color-mix(in_srgb,var(--text-color)_46%,transparent)] transition-all duration-300 hover:text-[var(--main-color)] hover:scale-105 active:scale-90" id="close-menu" aria-label="关闭菜单">
-                    <svg class="h-[1.5rem] w-[1.5rem] fill-current" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"></path></svg>
+                    <svg class="h-[1.15rem] w-[1.15rem] fill-current" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"></path></svg>
                   </button>
                 </div>
 
-                <div class="relative mt-4 flex items-center justify-between gap-3">
-                  <p class="m-0 text-sm text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]">Per aspera, ad astra.</p>
-                  <a href="https://www.travellings.cn/go.html" class="drawer-action-icon" aria-label="开往" title="开往">
-                    <svg class="h-[1.25rem] w-[1.25rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8.5" cy="14.5" r="1.5"></circle><circle cx="15.5" cy="14.5" r="1.5"></circle><path d="M18.87 3.34A3.55 3.55 0 0 0 16.38 2H7.62a3.47 3.47 0 0 0-2.5 1.35A4.32 4.32 0 0 0 4 6v12a1 1 0 0 0 1 1h2l-2 3h2.32L8 21h8l.68 1H19l-2-3h2a1 1 0 0 0 1-1V6a4.15 4.15 0 0 0-1.13-2.66zM7.62 4h8.72a1.77 1.77 0 0 1 1 .66 3.25 3.25 0 0 1 .25.34H6.39a2.3 2.3 0 0 1 .25-.35A1.65 1.65 0 0 1 7.62 4zM6 8V7h12v3H6zm12 9H6v-5h12z"></path></svg>
+                <p class="relative mt-4 m-0 text-sm text-[color:color-mix(in_srgb,var(--text-color)_72%,transparent)]">Per aspera, ad astra.</p>
+
+                <div class="mt-3 -ml-1.5 flex items-center gap-1">
+                  {socialIconLinks.map((link) => (
+                    <a
+                      class="inline-flex p-1.5 text-[var(--main-color)]"
+                      href={link.url}
+                      title={link.title}
+                      {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      <svg class="h-[1.1rem] w-[1.1rem]" viewBox={link.viewBox} xmlns="http://www.w3.org/2000/svg" set:html={link.iconBody}></svg>
+                    </a>
+                  ))}
+                  <a class="inline-flex p-1.5 text-[var(--main-color)]" href="https://t.me/looprucha" title="Telegram" target="_blank" rel="noopener noreferrer">
+                    <svg class="h-[1.1rem] w-[1.1rem]" viewBox="2 8 58 47" xmlns="http://www.w3.org/2000/svg" stroke-width="5.5" stroke="currentColor" fill="none"><path d="M26.67,38.57l-.82,11.54A2.88,2.88,0,0,0,28.14,49l5.5-5.26,11.42,8.35c2.08,1.17,3.55.56,4.12-1.92l7.49-35.12h0c.66-3.09-1.08-4.33-3.16-3.55l-44,16.85C6.47,29.55,6.54,31.23,9,32l11.26,3.5L45.59,20.71c1.23-.83,2.36-.37,1.44.44Z" stroke-linecap="round"></path></svg>
+                  </a>
+                  <a class="inline-flex p-1.5 text-[var(--main-color)]" href="https://matrix.to/#/@froseiun:matrix.org" title="Element (Matrix)" target="_blank" rel="noopener noreferrer">
+                    <svg class="h-[0.95rem] w-[0.95rem] fill-current" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.4414 3.24C19.4414 1.4506 20.892 0 22.6814 0C34.6108 0 44.2814 9.67065 44.2814 21.6C44.2814 23.3894 42.8308 24.84 41.0414 24.84C39.252 24.84 37.8014 23.3894 37.8014 21.6C37.8014 13.2494 31.032 6.48 22.6814 6.48C20.892 6.48 19.4414 5.0294 19.4414 3.24Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M34.5586 50.76C34.5586 52.5494 33.108 54 31.3186 54C19.3893 54 9.71861 44.3294 9.71861 32.4C9.71861 30.6106 11.1692 29.16 12.9586 29.16C14.748 29.16 16.1986 30.6106 16.1986 32.4C16.1986 40.7505 22.9681 47.52 31.3186 47.52C33.108 47.52 34.5586 48.9706 34.5586 50.76Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M3.24 34.5601C1.4506 34.5601 0 33.1095 0 31.3201C0 19.3907 9.67065 9.72007 21.6 9.72007C23.3894 9.72007 24.84 11.1707 24.84 12.9601C24.84 14.7495 23.3894 16.2001 21.6 16.2001C13.2495 16.2001 6.48 22.9695 6.48 31.3201C6.48 33.1095 5.0294 34.5601 3.24 34.5601Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M50.76 19.4399C52.5494 19.4399 54 20.8905 54 22.6799C54 34.6093 44.3294 44.2799 32.4 44.2799C30.6106 44.2799 29.16 42.8293 29.16 41.0399C29.16 39.2505 30.6106 37.7999 32.4 37.7999C40.7505 37.7999 47.52 31.0305 47.52 22.6799C47.52 20.8905 48.9706 19.4399 50.76 19.4399Z"></path></svg>
                   </a>
                 </div>
               </section>
@@ -214,7 +233,9 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <section class="drawer-stagger drawer-section">
                   <div class="drawer-section-header">
                     <h3 class="drawer-section-title mb-0">导航</h3>
-                    <span class="inline-flex h-9 w-9 shrink-0" aria-hidden="true"></span>
+                    <a href="https://www.travellings.cn/go.html" class="drawer-action-icon items-start pt-0.5" aria-label="开往" title="开往" data-astro-reload>
+                      <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8.5" cy="14.5" r="1.5"></circle><circle cx="15.5" cy="14.5" r="1.5"></circle><path d="M18.87 3.34A3.55 3.55 0 0 0 16.38 2H7.62a3.47 3.47 0 0 0-2.5 1.35A4.32 4.32 0 0 0 4 6v12a1 1 0 0 0 1 1h2l-2 3h2.32L8 21h8l.68 1H19l-2-3h2a1 1 0 0 0 1-1V6a4.15 4.15 0 0 0-1.13-2.66zM7.62 4h8.72a1.77 1.77 0 0 1 1 .66 3.25 3.25 0 0 1 .25.34H6.39a2.3 2.3 0 0 1 .25-.35A1.65 1.65 0 0 1 7.62 4zM6 8V7h12v3H6zm12 9H6v-5h12z"></path></svg>
+                    </a>
                   </div>
                   <div class="grid grid-cols-2 gap-2">
                     {navItems.map((nav) => (
@@ -246,32 +267,6 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                   </div>
                 </section>
 
-                <section class="drawer-stagger drawer-section">
-                  <div class="drawer-section-header">
-                    <h3 class="drawer-section-title mb-0">联系方式</h3>
-                    <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/F6006874CC50A6C854B9763C3728385536F22DEA" class="drawer-action-icon items-start pt-0.5" aria-label="OpenPGP" title="OpenPGP">
-                      <svg class="h-[1.1rem] w-[1.1rem] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill="none"></path><path d="M10.758 11.828l7.849-7.849 1.414 1.414-1.414 1.415 2.474 2.474-1.414 1.415-2.475-2.475-1.414 1.414 2.121 2.121-1.414 1.415-2.121-2.122-2.192 2.192a5.002 5.002 0 0 1-7.708 6.294 5 5 0 0 1 6.294-7.708zm-.637 6.293A3 3 0 1 0 5.88 13.88a3 3 0 0 0 4.242 4.242z"></path></g></svg>
-                    </a>
-                  </div>
-                  <div class="space-y-2">
-                    <div class="grid grid-cols-4 gap-2">
-                      {socialIconLinks.map((link) => (
-                        <a
-                          class="drawer-interactive inline-flex min-h-11 w-full items-center justify-center"
-                          href={link.url}
-                          title={link.title}
-                          {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        >
-                          <svg class="h-[1.15rem] w-[1.15rem] fill-current" viewBox={link.viewBox} xmlns="http://www.w3.org/2000/svg" set:html={link.iconBody}></svg>
-                        </a>
-                      ))}
-                    </div>
-                    <div class="grid grid-cols-2 gap-2">
-                      <a class="drawer-interactive inline-flex min-h-11 items-center justify-center px-4 py-2" href="https://t.me/looprucha" target="_blank" rel="noopener noreferrer">Telegram</a>
-                      <a class="drawer-interactive inline-flex min-h-11 items-center justify-center px-4 py-2" href="https://matrix.to/#/@froseiun:matrix.org" target="_blank" rel="noopener noreferrer">Matrix</a>
-                    </div>
-                  </div>
-                </section>
               </div>
             </div>
           </div>
