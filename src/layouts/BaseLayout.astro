@@ -127,7 +127,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
   </head>
   <body>
     <header transition:persist transition:animate="none" class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
-      <Image class="mx-auto h-24 w-24 rounded-full" src={avatar} widths={[96, 192]} sizes="96px" alt="" />
+      <Image class="mx-auto h-24 w-24 rounded-full" style="max-width:96px;max-height:96px" src={avatar} widths={[96, 192]} sizes="96px" alt="" loading="eager" />
       <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold font-overpass">Cynosura</h1>
       <p class="m-0">Trying to light up the dark.</p>
     </header>
