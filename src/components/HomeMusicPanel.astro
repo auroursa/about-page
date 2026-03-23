@@ -235,7 +235,7 @@ const resolveAppleMusicCard = async (link: string): Promise<AppleMusicCard> => {
       previewUrl,
       artwork: artworkCover,
       artworkSrcSet: artworkCover && artworkCoverHi ? `${artworkCover} 420w, ${artworkCoverHi} 600w` : null,
-      artworkSizes: '(max-width: 768px) 82vw, 421px',
+      artworkSizes: '(max-width: 767px) 82vw, 421px',
       artworkThumb,
       artworkThumbSrcSet: artworkThumb && artworkThumbHi ? `${artworkThumb} 64w, ${artworkThumbHi} 120w` : null,
       artworkThumbSizes: '65px',

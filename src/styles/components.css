@@ -200,12 +200,18 @@
 
   .info-grid-card {
     display: flex;
-    min-height: 5.2rem;
+    min-height: 4.7rem;
     align-items: flex-start;
     gap: 0.8rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-    background: color-mix(in srgb, var(--card-color) 68%, transparent);
-    padding: 0.82rem 1rem 0.7rem;
+    border: 1px solid transparent;
+    border-image:
+      repeating-linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--text-color) 12%, transparent) 0 5px,
+        transparent 5px 9px
+      ) 1;
+    background: transparent;
+    padding: 0.72rem 1rem 0.6rem;
     transition:
       border-color 300ms,
       background-color 300ms,
@@ -215,8 +221,16 @@
   }
 
   .info-grid-card:hover {
-    border-color: color-mix(in srgb, var(--main-color) 34%, transparent);
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--main-color) 20%, transparent);
+    border-image:
+      repeating-linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--main-color) 34%, transparent) 0 5px,
+        transparent 5px 9px
+      ) 1;
+  }
+
+  .info-grid-pile {
+    gap: 0.5rem;
   }
 
   .info-grid-icon {

@@ -17,7 +17,7 @@ const { kicker, title, items } = Astro.props;
     <h3 class="section-title">{title}</h3>
   </div>
 
-  <div class="info-grid-pile grid grid-cols-2 gap-2 max-[768px]:grid-cols-1">
+  <div class="info-grid-pile grid grid-cols-2 max-[767px]:grid-cols-1">
     {items.map((item) => (
       <div class="group info-grid-card">
         <span class="info-grid-icon"><HomeInfoIcon icon={item.icon} /></span>

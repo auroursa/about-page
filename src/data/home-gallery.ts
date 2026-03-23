@@ -30,7 +30,7 @@ export interface HomeGalleryItem {
   sizes: string;
 }
 
-const masonryImageSizes = '(max-width: 576px) calc((100vw - 0.5rem) / 2), (max-width: 768px) calc((85vw - 0.5rem) / 2), (max-width: 1280px) calc((85vw - 1rem) / 3), calc((80vw - 1.5rem) / 4)';
+const masonryImageSizes = '(max-width: 576px) calc((100vw - 0.5rem) / 2), (max-width: 767px) calc((85vw - 0.5rem) / 2), (max-width: 1280px) calc((85vw - 1rem) / 3), calc((80vw - 1.5rem) / 4)';
 
 const createMasonryImage = (
   src: ImageMetadata,
@@ -66,7 +66,7 @@ export interface HomeGallerySeasonItem extends HomeGalleryItem {
   season: string;
 }
 
-const seasonSizes = '(max-width: 768px) 40vw, (max-width: 1280px) 23vw, 317px';
+const seasonSizes = '(max-width: 767px) 40vw, (max-width: 1280px) 23vw, 317px';
 
 export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
   { src: spring, widths: [320, 640, 750], sizes: seasonSizes, alt: '2025 春季照片', season: '春' },
