@@ -87,10 +87,10 @@
     content: "";
     position: absolute;
     left: 0;
-    right: -1rem;
+    right: -0.85rem;
     top: 50%;
     height: 1px;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--main-color) 24%, transparent) 0%, color-mix(in srgb, var(--text-color) 10%, transparent) 100%);
+    background: color-mix(in srgb, var(--text-color) 14%, transparent);
     transform: translateY(-50%);
   }
 
