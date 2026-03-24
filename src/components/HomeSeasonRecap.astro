@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import profileAvatar from '../assets/img/profile-avatar.webp';
 import { homeGallerySeasonItems } from '../data/home-gallery';
+import '../styles/home-airmail-stamp.css';
 ---
 
 <div class="home-gallery-seasons-panel">
@@ -30,7 +31,47 @@ import { homeGallerySeasonItems } from '../data/home-gallery';
       ))}
     </div>
 
-    <article class="home-gallery-post-card" aria-label="2025 四季总结">
+    <article class="home-gallery-post-card home-gallery-postcard-mail" aria-label="2025 四季总结">
+      <div class="home-gallery-airmail-stamp" aria-hidden="true">
+        <span class="home-gallery-airmail-seal">
+          <svg class="home-gallery-airmail-arc" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="home-airmail-ring-top" d="M18 54 A31.8 31.8 0 0 1 82 54"></path>
+              <path id="home-airmail-ring-bottom" d="M15.5 54 A33 33 0 0 0 84.5 54"></path>
+            </defs>
+            <g class="home-gallery-airmail-ring-group">
+              <path class="home-gallery-airmail-ring-star" d="M16 48.3L17.2 51H20.1L17.7 52.8L18.6 55.7L16 53.9L13.4 55.7L14.3 52.8L11.9 51H14.8L16 48.3Z"></path>
+              <path class="home-gallery-airmail-ring-star" d="M84 48.3L85.2 51H88.1L85.7 52.8L86.6 55.7L84 53.9L81.4 55.7L82.3 52.8L79.9 51H82.8L84 48.3Z"></path>
+              <text class="home-gallery-airmail-ring-text home-gallery-airmail-ring-text-top">
+                <textPath href="#home-airmail-ring-top" startOffset="50%">AIR MAIL</textPath>
+              </text>
+              <text class="home-gallery-airmail-ring-text home-gallery-airmail-ring-text-bottom">
+                <textPath href="#home-airmail-ring-bottom" startOffset="50%">HGH · 2025</textPath>
+              </text>
+            </g>
+          </svg>
+
+          <svg class="home-gallery-airmail-plane" viewBox="-2.5 0 19 19" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.382 5.304 10.096 7.59l.006.02L11.838 14a.908.908 0 0 1-.211.794l-.573.573a.339.339 0 0 1-.566-.08l-2.348-4.25-.745-.746-1.97 1.97a3.311 3.311 0 0 1-.75.504l.44 1.447a.875.875 0 0 1-.199.79l-.175.176a.477.477 0 0 1-.672 0l-1.04-1.039-.018-.02-.788-.786-.02-.02-1.038-1.039a.477.477 0 0 1 0-.672l.176-.176a.875.875 0 0 1 .79-.197l1.447.438a3.322 3.322 0 0 1 .504-.75l1.97-1.97-.746-.744-4.25-2.348a.339.339 0 0 1-.08-.566l.573-.573a.909.909 0 0 1 .794-.211l6.39 1.736.02.006 2.286-2.286c.37-.372 1.621-1.02 1.993-.65.37.372-.279 1.622-.65 1.993z"></path>
+          </svg>
+        </span>
+
+        <span class="home-gallery-airmail-waves">
+          <svg class="home-gallery-airmail-wave-line" viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 4C4 1.5 8 1.5 11 4C14 6.5 18 6.5 21 4C24 1.5 28 1.5 31 4C34 6.5 38 6.5 41 4"></path>
+          </svg>
+          <svg class="home-gallery-airmail-wave-line" viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 4C4 1.5 8 1.5 11 4C14 6.5 18 6.5 21 4C24 1.5 28 1.5 31 4C34 6.5 38 6.5 41 4"></path>
+          </svg>
+          <svg class="home-gallery-airmail-wave-line" viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 4C4 1.5 8 1.5 11 4C14 6.5 18 6.5 21 4C24 1.5 28 1.5 31 4C34 6.5 38 6.5 41 4"></path>
+          </svg>
+          <svg class="home-gallery-airmail-wave-line" viewBox="0 0 42 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 4C4 1.5 8 1.5 11 4C14 6.5 18 6.5 21 4C24 1.5 28 1.5 31 4C34 6.5 38 6.5 41 4"></path>
+          </svg>
+        </span>
+      </div>
+
       <div class="home-gallery-post-header">
         <Image
           class="home-gallery-post-avatar"

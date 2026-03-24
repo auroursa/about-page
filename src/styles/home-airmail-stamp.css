@@ -1,0 +1,185 @@
+@layer components {
+  .home-gallery-postcard-mail {
+    position: relative;
+    --airmail-stamp-top: 2.38rem;
+    --airmail-stamp-right: 3.1rem;
+    --airmail-stamp-rotate: -16deg;
+    --airmail-seal-size: 3.65rem;
+    --airmail-wave-width: 6.9rem;
+    --airmail-post-header-padding-right: 8.8rem;
+  }
+
+  .home-gallery-postcard-mail {
+    isolation: isolate;
+    --postcard-stripe-border: 2px;
+  }
+
+  .home-gallery-postcard-mail::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: var(--postcard-stripe-border) solid transparent;
+    border-image: repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, #d35a63 88%, white) 0 0.46rem,
+        color-mix(in srgb, #f6f1e7 96%, white) 0.46rem 0.64rem,
+        color-mix(in srgb, #6e9dc2 90%, white) 0.64rem 1.1rem,
+        color-mix(in srgb, #f6f1e7 96%, white) 1.1rem 1.28rem
+      ) 1;
+    opacity: 0.72;
+  }
+
+  .home-gallery-postcard-mail > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-gallery-airmail-stamp {
+    position: absolute;
+    top: var(--airmail-stamp-top);
+    right: var(--airmail-stamp-right);
+    display: block;
+    color: color-mix(in srgb, var(--main-color) 80%, var(--text-color));
+    transform: rotate(var(--airmail-stamp-rotate));
+    opacity: 0.86;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .home-gallery-airmail-seal {
+    position: relative;
+    --airmail-ring-shift-y: -1px;
+    --airmail-ring-top-size: 11px;
+    --airmail-ring-bottom-size: 11px;
+    --airmail-ring-top-spacing: 0.22em;
+    --airmail-ring-bottom-spacing: 0.02em;
+    width: var(--airmail-seal-size);
+    height: var(--airmail-seal-size);
+    border: 1.2px solid color-mix(in srgb, var(--main-color) 48%, transparent);
+    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--main-color) 5%, var(--card-color));
+  }
+
+  .home-gallery-airmail-seal::before {
+    content: "";
+    position: absolute;
+    inset: 0.22rem;
+    border: 1px solid color-mix(in srgb, var(--main-color) 34%, transparent);
+    border-radius: inherit;
+    opacity: 0.88;
+  }
+
+  .home-gallery-airmail-seal::after {
+    content: "";
+    position: absolute;
+    inset: -0.02rem;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 0.17rem 0.08rem at 18% 22%, color-mix(in srgb, var(--card-color) 96%, transparent) 0 99%, transparent 100%),
+      radial-gradient(ellipse 0.15rem 0.08rem at 74% 16%, color-mix(in srgb, var(--card-color) 95%, transparent) 0 99%, transparent 100%),
+      radial-gradient(ellipse 0.16rem 0.09rem at 87% 62%, color-mix(in srgb, var(--card-color) 95%, transparent) 0 99%, transparent 100%),
+      radial-gradient(ellipse 0.14rem 0.07rem at 34% 86%, color-mix(in srgb, var(--card-color) 96%, transparent) 0 99%, transparent 100%);
+    opacity: 0.58;
+  }
+
+  .home-gallery-airmail-arc {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-gallery-airmail-arc text {
+    fill: currentColor;
+    text-transform: uppercase;
+  }
+
+  .home-gallery-airmail-ring-group {
+    transform: translateY(var(--airmail-ring-shift-y));
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+  }
+
+  .home-gallery-airmail-ring-star {
+    fill: color-mix(in srgb, var(--main-color) 72%, var(--text-color));
+    opacity: 0.9;
+  }
+
+  .home-gallery-airmail-ring-text {
+    text-anchor: middle;
+  }
+
+  .home-gallery-airmail-ring-text textPath {
+    text-anchor: middle;
+  }
+
+  .home-gallery-airmail-ring-text-top {
+    font-family: var(--font-overpass), sans-serif;
+    font-size: var(--airmail-ring-top-size);
+    font-weight: 700;
+    letter-spacing: var(--airmail-ring-top-spacing);
+  }
+
+  .home-gallery-airmail-ring-text-bottom {
+    font-family: var(--font-overpass-mono), monospace;
+    font-size: var(--airmail-ring-bottom-size);
+    letter-spacing: var(--airmail-ring-bottom-spacing);
+  }
+
+  .home-gallery-airmail-plane {
+    width: 1.12rem;
+    height: 1.12rem;
+    margin-top: 0.08rem;
+  }
+
+  .home-gallery-airmail-plane path {
+    fill: color-mix(in srgb, var(--main-color) 72%, var(--text-color));
+  }
+
+  .home-gallery-airmail-waves {
+    position: absolute;
+    left: calc(100% - 2.42rem);
+    top: 50%;
+    display: grid;
+    gap: 0.12rem;
+    transform: translateY(-50%);
+  }
+
+  .home-gallery-airmail-wave-line {
+    display: block;
+    width: var(--airmail-wave-width);
+    height: 0.44rem;
+    opacity: 0.84;
+  }
+
+  .home-gallery-airmail-wave-line path {
+    stroke: color-mix(in srgb, var(--main-color) 56%, transparent);
+    stroke-width: 1.1;
+    stroke-linecap: round;
+    stroke-dasharray: 4.4 1.6;
+  }
+
+  .home-gallery-postcard-mail .home-gallery-post-header {
+    min-height: 2.75rem;
+    padding-right: var(--airmail-post-header-padding-right);
+  }
+}
+
+@media (max-width: 767px) {
+  .home-gallery-postcard-mail {
+    --airmail-stamp-top: 2.34rem;
+    --airmail-stamp-right: 2.5rem;
+    --airmail-stamp-rotate: -13deg;
+    --airmail-seal-size: 3.2rem;
+    --airmail-wave-width: 6.2rem;
+    --airmail-post-header-padding-right: 7.6rem;
+  }
+}
