@@ -64,42 +64,6 @@ const sectionHeaderClass = 'section-stack';
       </div>
     </section>
 
-    <script>
-      let voidPortalCleanup = null;
-
-      function initVoidPortal() {
-        voidPortalCleanup?.();
-        voidPortalCleanup = null;
-
-        const toggle = document.querySelector('.void-portal-toggle');
-        const content = document.querySelector('.void-portal-content');
-        if (!toggle || !content) return;
-
-        let expanded = false;
-        const COLLAPSED_MASK = 'linear-gradient(to bottom, black 0%, black 40%, transparent 100%)';
-
-        const onClick = () => {
-          expanded = !expanded;
-          toggle.setAttribute('aria-expanded', String(expanded));
-          toggle.style.transform = expanded ? 'rotate(180deg)' : '';
-
-          if (expanded) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            content.style.maskImage = 'none';
-            content.style.webkitMaskImage = 'none';
-          } else {
-            content.style.maxHeight = '9.5rem';
-            content.style.maskImage = COLLAPSED_MASK;
-            content.style.webkitMaskImage = COLLAPSED_MASK;
-          }
-        };
-
-        toggle.addEventListener('click', onClick);
-        voidPortalCleanup = () => toggle.removeEventListener('click', onClick);
-      }
-
-      initVoidPortal();
-      document.addEventListener('astro:page-load', initVoidPortal);
-    </script>
   </div>
+  <script src="/js/friends-void-portal.js" defer data-astro-rerun data-cfasync="false"></script>
 </BaseLayout>
