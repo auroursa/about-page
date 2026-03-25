@@ -162,6 +162,10 @@
     padding-top: env(safe-area-inset-top, 0px);
     padding-left: 0.625rem;
     padding-right: 0.625rem;
+    /* Override: only transition paint properties on mobile to avoid per-frame layout thrashing.
+       Layout shifts (top, margin, width, padding) snap instantly; FLIP handles smooth child motion. */
+    transition-property: border-radius, background-color, box-shadow, border-color;
+    transition-duration: 320ms;
   }
 
   .menu.at-top {
@@ -191,13 +195,10 @@
     opacity: 0;
     pointer-events: none;
     transform: translateX(-0.35rem) scale(0.92);
-    will-change: transform, opacity, max-width;
+    will-change: transform, opacity;
     transition:
-      max-width 320ms ease,
-      margin-right 320ms ease,
       opacity 220ms ease,
-      transform 320ms ease,
-      box-shadow 320ms ease;
+      transform 320ms ease;
   }
 
   .menu .mobile-nav-brand-avatar {
