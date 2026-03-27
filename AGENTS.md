@@ -208,7 +208,7 @@ src/
 └── content.config.ts       # Content collections configuration
 
 public/
-├── img/                # Static assets only (favicon, banner, post images)
+├── img/                # Static assets only (favicon, banner, avatars that require fixed URLs)
 └── js/
     ├── nav-indicator.js
     ├── nav-sticky-menu.js
@@ -231,8 +231,11 @@ public/
 ### Images & Assets
 
 - **Image optimization** uses Astro's `astro:assets` `<Image>` component with Sharp for build-time processing
+- Global image behavior is configured in `astro.config.mjs` with `image.layout: 'constrained'` and `image.responsiveStyles: false` (Tailwind v4 keeps style control)
+- Prefer `src/components/AppImage.astro` over direct `<Image>` in Astro components to share defaults (`loading`, `decoding`) and semantic presets (`avatar`, `cover`)
 - Source images live in `src/assets/img/` (not `public/img/`); Astro auto-generates responsive variants and optimized formats at build time
-- Only static assets that need fixed URLs (favicon, og:image banner, post images) remain in `public/img/`
+- Blog post inline images should live next to content under `src/content/blog/<slug>/` and be referenced with relative paths in Markdown (for example `![alt](./2022-mid-year-summary/photo.jpg)`)
+- Only static assets that need fixed URLs (favicon, og:image banner, etc.) remain in `public/img/`
 - Use `<Image>` component with `widths` and `sizes` props for responsive images — do NOT manually create `-320`, `-640` size variants
 - Home gallery images are imported in `src/data/home-gallery.ts` with `ImageMetadata` types; components use `<Image src={item.src} widths={item.widths} sizes={item.sizes} />`
 - Friend avatars use `import.meta.glob` in `src/data/friends.ts` to batch-import all `src/assets/img/friends/*.webp` files
@@ -241,6 +244,8 @@ public/
 - Use `loading="lazy"` for below-the-fold images; use `loading="eager"` with `fetchpriority="high"` for LCP images (hero background)
 - Keep `src/data/home-gallery.ts` in sync when adding or replacing gallery files in `src/assets/img/gallery/`
 - Keep year-specific gallery sets in subfolders (e.g., `src/assets/img/gallery/2025/`) so seasonal recaps stay separate from the masonry pool
+- For remote, client-switched media (for example Home Music cover art), keep using native `<img>` where Astro asset processing is not suitable
+- After large image-asset migrations, clear `.astro/` and rebuild once to avoid stale dev/build cache issues
 
 ### Internationalization
 
