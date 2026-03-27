@@ -598,6 +598,23 @@
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 2.5rem), transparent 100%);
   }
 
+  .home-music-list.is-scrolled-start {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 2rem,
+      black calc(100% - 2.5rem),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 2rem,
+      black calc(100% - 2.5rem),
+      transparent 100%
+    );
+  }
+
   .home-music-list-shell {
     position: relative;
     min-width: 0;
@@ -651,6 +668,11 @@
   .home-music-list.is-scrolled-end {
     mask-image: none;
     -webkit-mask-image: none;
+  }
+
+  .home-music-list.is-scrolled-start.is-scrolled-end {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black 100%);
   }
 
   .home-music-list::-webkit-scrollbar {

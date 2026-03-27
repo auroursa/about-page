@@ -507,7 +507,7 @@
       lifecycleState.audioGraphs = lifecycleState.audioGraphs ?? new Set();
       lifecycleState.audioGraphs.add(audioGraph);
 
-      /* ── Scroll fade mask: hide when scrolled to bottom ── */
+      /* ── Scroll fade mask: reveal top/bottom overflow hints ── */
       if (musicList instanceof HTMLElement) {
         const listProgress = root.querySelector('.home-music-list-progress');
         let progressHideTimer = null;
@@ -546,9 +546,11 @@
           const maxScrollTop = Math.max(musicList.scrollHeight - musicList.clientHeight, 0);
           const remaining = maxScrollTop - scrollTop;
           const atTop = scrollTop < 8;
+          const hasScrolled = !atTop;
           const atVisualEnd = remaining < 12;
           const atScrollBoundary = remaining <= 1;
 
+          musicList.classList.toggle('is-scrolled-start', hasScrolled);
           musicList.classList.toggle('is-scrolled-end', atVisualEnd);
           musicList.style.overscrollBehavior = atTop || atScrollBoundary ? 'auto' : 'contain';
           updateListProgress({ maxScrollTop, scrollTop });
