@@ -68,9 +68,21 @@ export interface HomeGallerySeasonItem extends HomeGalleryItem {
 
 const seasonSizes = '(max-width: 767px) 40vw, (max-width: 1280px) 23vw, 317px';
 
+const createSeasonImage = (
+  src: ImageMetadata,
+  alt: string,
+  season: string,
+): HomeGallerySeasonItem => ({
+  src,
+  alt,
+  season,
+  widths: [320, 640, src.width],
+  sizes: seasonSizes,
+});
+
 export const homeGallerySeasonItems: HomeGallerySeasonItem[] = [
-  { src: spring, widths: [320, 640, 750], sizes: seasonSizes, alt: '2025 春季照片', season: '春' },
-  { src: summer, widths: [320, 640, 750], sizes: seasonSizes, alt: '2025 夏季照片', season: '夏' },
-  { src: autumn, widths: [320, 640, 999], sizes: seasonSizes, alt: '2025 秋季照片', season: '秋' },
-  { src: winter, widths: [320, 640, 714], sizes: seasonSizes, alt: '2025 冬季照片', season: '冬' },
+  createSeasonImage(spring, '2025 春季照片', '春'),
+  createSeasonImage(summer, '2025 夏季照片', '夏'),
+  createSeasonImage(autumn, '2025 秋季照片', '秋'),
+  createSeasonImage(winter, '2025 冬季照片', '冬'),
 ];

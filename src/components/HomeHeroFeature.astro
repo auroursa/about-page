@@ -1,10 +1,11 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import backgroundImage from '../assets/img/background.webp';
 ---
 
 <section class="hero-feature-panel relative overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_8%,transparent)] shadow-[0_18px_40px_rgba(17,101,154,0.12)]">
-  <Image
+  <AppImage
+    preset="cover"
     class="absolute inset-0 h-full w-full object-cover"
     src={backgroundImage}
     widths={[768, 1280, 1920]}

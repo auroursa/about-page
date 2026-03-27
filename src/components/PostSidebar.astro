@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import profileAvatar from '../assets/img/profile-avatar.webp';
 
 interface Props {
@@ -23,7 +23,8 @@ const categoryPillActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(
 <aside class="hero-panel sticky top-[4.75rem] space-y-5 text-center max-[1280px]:hidden">
   <div class="relative space-y-5">
     <div class="flex flex-col items-center gap-4">
-      <Image
+      <AppImage
+        preset="avatar"
         class="h-[5.5rem] w-[5.5rem] rounded-full"
         src={profileAvatar}
         widths={[96, 192, 288]}

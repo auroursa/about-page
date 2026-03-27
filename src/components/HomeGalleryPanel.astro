@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import HomeGalleryShuffleScript from './HomeGalleryShuffleScript.astro';
 import HomeSeasonRecap from './HomeSeasonRecap.astro';
 import { homeGalleryBackdropItems } from '../data/home-gallery';
@@ -17,7 +17,8 @@ import { homeGalleryBackdropItems } from '../data/home-gallery';
       {homeGalleryBackdropItems.map((item, index) => (
         <figure class="home-gallery-masonry-card group" data-gallery-id={`gallery-${index}`}>
           <div class="home-gallery-masonry-image-shell">
-            <Image
+            <AppImage
+              preset="cover"
               class="home-gallery-masonry-image"
               src={item.src}
               widths={item.widths}

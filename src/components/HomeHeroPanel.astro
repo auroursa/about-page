@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import profileAvatar from '../assets/img/profile-avatar.webp';
 import { getOrderedSocialLinks, getSocialLinkById, heroSocialIconOrder } from '../data/social-links';
 
@@ -16,7 +16,8 @@ if (!telegramLink || !matrixLink) {
   <div class="relative space-y-5">
     <div class="flex flex-col items-center gap-4">
       <div class="relative shrink-0">
-        <Image
+        <AppImage
+          preset="avatar"
           class="h-[5.5rem] w-[5.5rem] rounded-full"
           src={profileAvatar}
           widths={[96, 192, 288]}

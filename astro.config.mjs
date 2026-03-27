@@ -9,6 +9,10 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'hover',
   },
+  image: {
+    layout: 'constrained',
+    responsiveStyles: false,
+  },
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import { ClientRouter, fade } from 'astro:transitions';
-import { Image, Font } from 'astro:assets';
+import { Font } from 'astro:assets';
 import avatar from '../assets/img/avatar.webp';
 import profileAvatar from '../assets/img/profile-avatar.webp';
 import AstroNavigateBridge from '../components/AstroNavigateBridge.astro';
+import AppImage from '../components/AppImage.astro';
 import { getCategoryItems } from '../utils/categories';
 import type { CategoryItem } from '../utils/categories';
 import { drawerSocialIconOrder, getOrderedSocialLinks } from '../data/social-links';
@@ -128,7 +129,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
   </head>
   <body>
     <header transition:persist transition:animate="none" class="sticky top-8 z-[-1] mx-8 my-8 text-center font-overpass">
-      <Image class="mx-auto h-24 w-24 rounded-full" style="max-width:96px;max-height:96px" src={avatar} widths={[96, 192]} sizes="96px" alt="" loading="eager" />
+      <AppImage preset="avatar" class="mx-auto h-24 w-24 rounded-full" style="max-width:96px;max-height:96px" src={avatar} widths={[96, 192]} sizes="96px" alt="" loading="eager" />
       <h1 class="mx-auto my-[0.8rem] text-[2em] font-bold font-overpass">Cynosura</h1>
       <p class="m-0">Trying to light up the dark.</p>
     </header>
@@ -139,7 +140,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
       <nav transition:animate="none" class="menu sticky z-20 flex items-center justify-center">
         <div class="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center max-[1280px]:hidden min-[1281px]:flex">
           <a href="/" class="desktop-nav-brand-shell rounded-xl px-3 py-2 transition-colors duration-300 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)]" aria-label="返回首页">
-            <Image class="desktop-nav-brand-avatar h-7 w-7 shrink-0 rounded-lg object-cover" src={avatar} widths={[28, 56]} sizes="28px" alt="" />
+            <AppImage preset="avatar" class="desktop-nav-brand-avatar h-7 w-7 shrink-0 rounded-lg object-cover" src={avatar} widths={[28, 56]} sizes="28px" alt="" />
           </a>
         </div>
 
@@ -161,7 +162,7 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
 
         <div class="hidden w-full items-center justify-between max-[1280px]:flex">
           <a href="/" class="mobile-nav-brand-shell inline-flex items-center justify-center overflow-hidden" aria-label="返回首页">
-            <Image class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src={avatar} widths={[32, 64]} sizes="32px" alt="" />
+            <AppImage preset="avatar" class="mobile-nav-brand-avatar h-8 w-8 shrink-0 rounded-[0.8rem] object-cover" src={avatar} widths={[32, 64]} sizes="32px" alt="" />
           </a>
 
           <a href={currentPath} class="mobile-nav-current relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 transition-colors duration-200 hover:bg-[color:color-mix(in_srgb,var(--text-color)_6%,transparent)] active:bg-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)]">
@@ -187,7 +188,8 @@ const mainClass = 'mx-auto grid grid-cols-1 bg-[var(--bg-color)] max-w-[80%] min
                 <div class="relative flex items-start justify-between gap-4">
                   <div class="flex min-w-0 items-center gap-4">
                     <div class="relative shrink-0">
-                      <Image
+                      <AppImage
+                        preset="avatar"
                         class="h-16 w-16 rounded-full object-cover"
                         src={profileAvatar}
                         widths={[96, 192]}

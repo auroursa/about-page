@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import profileAvatar from '../assets/img/profile-avatar.webp';
 import { homeGallerySeasonItems } from '../data/home-gallery';
 import '../styles/home-airmail-stamp.css';
@@ -18,7 +18,8 @@ import '../styles/home-airmail-stamp.css';
       {homeGallerySeasonItems.map((item) => (
         <article class="home-gallery-season-card group">
           <div class="home-gallery-season-image-shell">
-            <Image
+            <AppImage
+              preset="cover"
               class="home-gallery-season-image"
               src={item.src}
               widths={item.widths}
@@ -73,7 +74,8 @@ import '../styles/home-airmail-stamp.css';
       </div>
 
       <div class="home-gallery-post-header">
-        <Image
+        <AppImage
+          preset="avatar"
           class="home-gallery-post-avatar"
           src={profileAvatar}
           widths={[96, 192, 288]}

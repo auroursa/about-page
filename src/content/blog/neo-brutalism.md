@@ -14,21 +14,21 @@ slug: neo-brutalism
 
 上文所述的 Neobrutalism components 首页就能部分反映出这种设计风格。当然就新粗野主义的定义而言，其设计还是有主流设计的风格存在，例如导航栏与常规技术网站无异，只是替换了按钮样式...
 
-![Neobrutalism components](/img/posts/neo-brutalism/www.neobrutalism.dev.webp)
+![Neobrutalism components](./neo-brutalism/www.neobrutalism.dev.webp)
 
 包括前段时间关闭的个人主页建立工具 Bento.me 也有经新粗野主义改造后的实现，同样可以察觉出强烈甚至冲突的色彩，以及极重的按钮阴影。但与粗野主义共通的核心理念也有，都很强调功能优先设计，按钮设计让人一眼便知这是可交互的控件。
 
-![Neobrutalism Bento](/img/posts/neo-brutalism/neobrutalism-bento.webp)
+![Neobrutalism Bento](./neo-brutalism/neobrutalism-bento.webp)
 
 这里就不得不提 [FigChallenge](https://medium.com/@sepidy/figchallenge-story-a-community-for-designers-who-want-to-challenge-themselves-3881ab01e60b) 了，其设计师在 2023 年在 Medium 公布了这款应用的 UI 草图，被普遍认为是新粗野主义的设计典例。我觉得最大的意义是证明了新粗野主义不等同于硬朗、粗制滥造，经过精心设计一样可以利用这种风格来表达出柔和感。
 
 不过到 3 年后的今天 FigChallenge 仍然在 Waitlist，可能这就是反主流的代价吧。
 
-![FigChallenge](/img/posts/neo-brutalism/figchallenge.webp)
+![FigChallenge](./neo-brutalism/figchallenge.webp)
 
 回过头看 Material Design 3 的设计风格，这不就是很标准的新粗野主义实践么...只不过实际应用在 UI 界面的设计，出于无障碍等现实考量没有做到很极致，但在设计网站上，Google 的设计师就完全放飞自我了，展现出这套设计美学的本质。
 
-![Material Design 3](/img/posts/neo-brutalism/m3.material.io.webp)
+![Material Design 3](./neo-brutalism/m3.material.io.webp)
 
 我其实有点失望，如果 Google 仍是一家 Startup，或许真实呈现给用户的 Material Design 3 设计将与现在大为不同，至少不会存在那么多的设计妥协，变成一个既不主流，也不粗野，更不现代的缝合怪设计。
 

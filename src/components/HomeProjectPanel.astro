@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import AppImage from './AppImage.astro';
 import blueskyLogo from '../assets/img/bluesky-logo.svg';
 import cleartextLogo from '../assets/img/cleartext-logo.jpg';
 ---
@@ -14,7 +14,7 @@ import cleartextLogo from '../assets/img/cleartext-logo.jpg';
     <a href="https://github.com/bluesky-social/social-app" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="打开 Bluesky social-app 项目首页（新窗口）">
       <div class="project-card-stack">
         <div class="project-brand">
-          <Image src={blueskyLogo} width={20} height={18} alt="Bluesky" class="project-logo" loading="lazy" decoding="async" />
+          <AppImage src={blueskyLogo} width={20} height={18} alt="Bluesky" class="project-logo" loading="lazy" decoding="async" />
           <p class="project-name">Bluesky App</p>
         </div>
         <p class="project-summary">贡献 CJK 本地化相关代码改进<br />担任简体中文、繁体中文及粤文的本地化 Proofreader</p>
@@ -29,7 +29,7 @@ import cleartextLogo from '../assets/img/cleartext-logo.jpg';
     <a href="https://cleartext.sh" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="打开 Cleartext 项目首页（新窗口）">
       <div class="project-card-stack">
         <div class="project-brand">
-          <Image
+          <AppImage
             src={cleartextLogo}
             widths={[32, 64, 128]}
             sizes="18px"

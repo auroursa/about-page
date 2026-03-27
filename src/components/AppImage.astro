@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  preset?: 'avatar' | 'cover';
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  widths?: number[];
+  sizes?: string;
+  width?: number;
+  height?: number;
+  layout?: 'constrained' | 'fixed' | 'full-width' | 'none';
+  fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside' | 'none' | 'scale-down';
+  position?: string;
+  quality?: number | `low` | `mid` | `high` | `max`;
+  format?: 'avif' | 'webp' | 'png' | 'jpg' | 'jpeg';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const presetDefaults = {
+  avatar: {
+    fit: 'cover' as const,
+    position: 'center',
+  },
+  cover: {
+    fit: 'cover' as const,
+    position: 'center',
+  },
+};
+
+const { preset, loading = 'lazy', decoding = 'async', ...rawProps } = Astro.props as Props;
+const props = {
+  ...(preset ? presetDefaults[preset] : {}),
+  ...rawProps,
+};
+---
+
+<Image {...props} loading={loading} decoding={decoding} />
