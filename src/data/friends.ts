@@ -18,7 +18,6 @@ export interface FriendEntry {
 }
 
 export const friends: FriendEntry[] = [
-  { name: "250king", desc: "耀の小站", url: "https://250king.top", img: resolveFriendImage("250king.top.webp") },
   { name: "Aaki's Notes", desc: "蜜柑，一种柑橘属植物", url: "https://mikan.anontokyo.com", img: resolveFriendImage("mikan.anontokyo.com.webp") },
   { name: "艾登的个人网站", desc: "Tell me anywhere I go you will follow", url: "https://aidenpers.xyz", img: resolveFriendImage("aidenpers.xyz.webp") },
   { name: "Ayakaの部屋", desc: "是可可爱爱 Ayaka！", url: "https://ayk.moe", img: resolveFriendImage("ayk.moe.webp") },
@@ -71,6 +70,7 @@ export const friends: FriendEntry[] = [
   { name: "且听书吟", desc: "诗与梦想的远方", url: "https://yufan.me", img: resolveFriendImage("yufan.me.webp") },
   { name: "QPomelo", desc: "aka 柚子 / 咕咕咕中的独立开发者", url: "https://qpomelo.dev", img: resolveFriendImage("qpomelo.dev.webp") },
   { name: "Restent Ou", desc: "Secret with Silent", url: "https://www.gxres.net", img: resolveFriendImage("www.gxres.net.webp") },
+  { name: "Rebel Zhang 的个人网站", desc: "自由软件支持者", url: "https://rebel1725.codeberg.page", img: resolveFriendImage("rebel1725.codeberg.page.webp") },
   { name: "Rikumi", desc: "好耶，是 rkm！", url: "https://rkm.mx", img: resolveFriendImage("rkm.mx.webp") },
   { name: "Rin's Blog", desc: "我太菜了，對不起", url: "https://blog.rin.moe", img: resolveFriendImage("blog.rin.moe.webp") },
   { name: "日向花和", desc: "乐者以文明志，悲者以诗励行。", url: "https://www.hanawahinata.me", img: resolveFriendImage("www.hanawahinata.me.webp") },
