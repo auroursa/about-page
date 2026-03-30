@@ -357,3 +357,12 @@
     padding: 1.25rem;
   }
 }
+
+@media (max-width: 768px) {
+  @supports (content-visibility: auto) {
+    .friends-card-shell {
+      content-visibility: visible;
+      contain-intrinsic-size: none;
+    }
+  }
+}
