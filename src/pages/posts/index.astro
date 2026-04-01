@@ -11,7 +11,7 @@ const sortedPosts = sortPostsByDate(allPosts);
 const categoryItems = getCategoryItems(sortedPosts);
 ---
 
-<BaseLayout title="文章" description="博客文章列表" currentPath="/posts" drawerCategories={categoryItems}>
+<BaseLayout title="文章" description="博客文章列表" ogImage="/og/page/posts.png" currentPath="/posts" drawerCategories={categoryItems}>
   <div class="grid grid-cols-[1fr_3fr] items-start gap-2 max-[1280px]:grid-cols-1">
     <PostSidebar categories={categoryItems} />
 

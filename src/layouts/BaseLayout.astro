@@ -21,7 +21,7 @@ interface Props {
   breadcrumbTitle?: string;
 }
 
-const { title, description = '赤茶的个人页面', ogImage = '/img/banner.webp', currentPath = '/', drawerCategories: externalCategories, jsonLd, breadcrumbTitle } = Astro.props;
+const { title, description = '赤茶的个人页面', ogImage = '/og/page/index.png', currentPath = '/', drawerCategories: externalCategories, jsonLd, breadcrumbTitle } = Astro.props;
 const drawerCategoryCounts = externalCategories ?? getCategoryItems(await getCollection('blog'));
 const mainTransitionDuration = 'var(--page-main-transition-duration, 0.5s)';
 const drawerSocialIconLinks = getOrderedSocialLinks(drawerSocialIconOrder);

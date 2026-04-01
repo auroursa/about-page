@@ -41,7 +41,7 @@ const blogPostingLd = {
 };
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} currentPath="/posts" jsonLd={blogPostingLd} breadcrumbTitle={entry.data.title}>
+<BaseLayout title={entry.data.title} description={entry.data.description} ogImage={`/og/${entry.id}.png`} currentPath="/posts" jsonLd={blogPostingLd} breadcrumbTitle={entry.data.title}>
   <article class:list={[panelClass, articlePanelClass, 'mb-2']}>
       <header class="py-6">
         <h1 class="m-0 text-center text-[2.15rem] font-bold leading-[1.18] max-[576px]:text-[1.8rem]">{entry.data.title}</h1>
