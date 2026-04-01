@@ -76,7 +76,7 @@ export async function generateOgImage(title: string, subtitle?: string, descript
                       type: 'div',
                       props: {
                         style: {
-                          fontSize: '22px',
+                          fontSize: '28px',
                           color: '#11659a',
                           letterSpacing: '0.12em',
                           fontWeight: 700,
@@ -89,7 +89,7 @@ export async function generateOgImage(title: string, subtitle?: string, descript
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: title.length > 20 ? '48px' : '56px',
+                      fontSize: title.length > 20 ? '56px' : '64px',
                       fontWeight: 700,
                       color: '#322c28',
                       lineHeight: 1.3,
@@ -103,7 +103,7 @@ export async function generateOgImage(title: string, subtitle?: string, descript
                       type: 'div',
                       props: {
                         style: {
-                          fontSize: '22px',
+                          fontSize: '26px',
                           fontWeight: 400,
                           color: 'rgba(50, 44, 40, 0.6)',
                           lineHeight: 1.6,
@@ -132,8 +132,8 @@ export async function generateOgImage(title: string, subtitle?: string, descript
                   type: 'img',
                   props: {
                     src: avatar,
-                    width: 40,
-                    height: 40,
+                    width: 48,
+                    height: 48,
                     style: {
                       borderRadius: '50%',
                     },
@@ -143,7 +143,7 @@ export async function generateOgImage(title: string, subtitle?: string, descript
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: '24px',
+                      fontSize: '28px',
                       color: '#11659a',
                       fontFamily: 'Overpass',
                       fontWeight: 700,
