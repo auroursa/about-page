@@ -186,19 +186,24 @@ src/
 │   └── social-links.ts    # Shared social icon link data
 ├── utils/
 │   ├── categories.ts      # Category extraction and counting helper
-│   └── date.ts            # Shared date formatting, sorting, and ISO datetime helpers
+│   ├── date.ts            # Shared date formatting, sorting, and ISO datetime helpers
+│   └── og.ts              # OG image generation (satori + sharp)
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
 │   ├── index.astro        # Home page
 │   ├── about.astro        # About page
 │   ├── friends.astro      # Friends page
+│   ├── rss.xml.ts         # RSS feed endpoint
+│   ├── og/                # OG image generation endpoints (build-time, satori + sharp)
+│   │   ├── [slug].png.ts          # Per-post OG images
+│   │   ├── page/[page].png.ts     # Static page OG images
+│   │   └── category/[category].png.ts  # Category page OG images
 │   ├── posts/
 │   │   ├── index.astro    # Blog listing page with category sidebar
 │   │   ├── [slug].astro   # Individual blog post page
-│   │   ├── category/
-│   │   │   └── [category].astro  # Category filtering page
-│   │   └── rss.xml.ts    # RSS feed endpoint
+│   │   └── category/
+│   │       └── [category].astro  # Category filtering page
 ├── styles/
 │   ├── global.css         # Tailwind entrypoint + style imports
 │   ├── base.css           # Tokens, reset, base typography/elements
@@ -208,7 +213,7 @@ src/
 └── content.config.ts       # Content collections configuration
 
 public/
-├── img/                # Static assets only (favicon, banner, avatars that require fixed URLs)
+├── img/                # Static assets only (favicon, avatars that require fixed URLs)
 └── js/
     ├── nav-indicator.js
     ├── nav-sticky-menu.js
@@ -235,7 +240,7 @@ public/
 - Prefer `src/components/AppImage.astro` over direct `<Image>` in Astro components to share defaults (`loading`, `decoding`) and semantic presets (`avatar`, `cover`)
 - Source images live in `src/assets/img/` (not `public/img/`); Astro auto-generates responsive variants and optimized formats at build time
 - Blog post inline images should live next to content under `src/content/blog/<slug>/` and be referenced with relative paths in Markdown (for example `![alt](./2022-mid-year-summary/photo.jpg)`)
-- Only static assets that need fixed URLs (favicon, og:image banner, etc.) remain in `public/img/`
+- Only static assets that need fixed URLs (favicon, etc.) remain in `public/img/`
 - Use `<Image>` component with `widths` and `sizes` props for responsive images — do NOT manually create `-320`, `-640` size variants
 - Home gallery images are imported in `src/data/home-gallery.ts` with `ImageMetadata` types; components use `<Image src={item.src} widths={item.widths} sizes={item.sizes} />`
 - Friend avatars use `import.meta.glob` in `src/data/friends.ts` to batch-import all `src/assets/img/friends/*.webp` files
@@ -246,6 +251,17 @@ public/
 - Keep year-specific gallery sets in subfolders (e.g., `src/assets/img/gallery/2025/`) so seasonal recaps stay separate from the masonry pool
 - For remote, client-switched media (for example Home Music cover art), keep using native `<img>` where Astro asset processing is not suitable
 - After large image-asset migrations, clear `.astro/` and rebuild once to avoid stale dev/build cache issues
+
+### OpenGraph Images
+
+- OG images are generated at build time for every page using satori (SVG) + sharp (PNG)
+- Shared generation logic lives in `src/utils/og.ts` (`generateOgImage(title, subtitle?, description?)`)
+- Three endpoint files under `src/pages/og/` cover blog posts, static pages, and category pages
+- Chinese text uses Noto Sans SC (fetched from jsDelivr CDN at build time, cached in-process)
+- Latin text ("Cynosura" branding) uses Overpass Bold from local TTF at `src/assets/fonts/Overpass-Bold.ttf`
+- Avatar is read from `public/img/avatar.webp` and converted to PNG data URI for embedding
+- Each page passes its `ogImage` prop to `BaseLayout`; the default fallback is `/og/page/index.png`
+- When adding new static pages, register them in `src/pages/og/page/[page].png.ts`
 
 ### Internationalization
 
