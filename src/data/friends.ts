@@ -32,7 +32,7 @@ export const friends: FriendEntry[] = [
   { name: "Cicada000", desc: "18歲，是學生", url: "https://cicada000.work", img: resolveFriendImage("cicada000.work.webp") },
   { name: "Desvl's Blog", desc: "A blog mainly on graduate mathematics.", url: "https://desvl.xyz", img: resolveFriendImage("desvl.xyz.webp") },
   { name: "Digital Evergarden", desc: "Konnyaku's Blog", url: "https://hee.ink", img: resolveFriendImage("hee.ink.webp") },
-  { name: "Dort 的博客", desc: "说不定其实是 AI", url: "https://blog.dort.me", img: resolveFriendImage("blog.dort.me.webp") },
+  { name: "Dort 的博客", desc: "你会捡起漂流瓶吗？", url: "https://blog.dort.me", img: resolveFriendImage("blog.dort.me.webp") },
   { name: "DreamCity", desc: "愿你有一天，能与你最重要的人重逢", url: "https://www.littleqiu.net", img: resolveFriendImage("www.littleqiu.net.webp") },
   { name: "废柴乙乙的Blog！", desc: "这里是乙酸乙酯酱的个人Blog！", url: "https://echiru.top", img: resolveFriendImage("echiru.top.webp") },
   { name: "Fika", desc: "Debug the World", url: "https://fika.ink", img: resolveFriendImage("fika.ink.webp") },
