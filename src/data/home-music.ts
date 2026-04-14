@@ -1,5 +1,6 @@
 export const homeMusicAppleLinks: string[] = [
-    'https://music.apple.com/cn/album/protostar/1878155644?i=1878155653',
+    'https://music.apple.com/cn/album/lost-stars/1440819079?i=1440819096',
+    'https://music.apple.com/cn/album/%E4%B8%87%E6%AD%B3%E5%8D%83%E5%94%B1/1523042831?i=1523042848',
     'https://music.apple.com/cn/album/nexus-podv-feat-laco/1551613716?i=1551614059',
     'https://music.apple.com/cn/album/%E3%81%BF%E3%81%A1%E3%81%97%E3%82%8B%E3%81%B9-movie-version/1826491265?i=1826491476',
     'https://music.apple.com/cn/album/%E3%82%B7%E3%83%AB%E3%82%A8%E3%83%83%E3%83%88/1536455324?i=1536455325',
