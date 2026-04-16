@@ -258,6 +258,10 @@
     color: color-mix(in srgb, var(--text-color) 78%, transparent);
     font-size: 0.92rem;
     line-height: 1.62rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .project-tag-row {
