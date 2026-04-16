@@ -13,8 +13,8 @@ interface Props {
 const { categories, currentCategory } = Astro.props;
 
 const categoryListClass = 'space-y-2';
-const categoryLinkClass = 'flex min-h-10 items-center justify-between border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_68%,transparent)] px-4 py-2 text-[0.95rem] text-[var(--text-color)] transition-[border-color,background-color,color,box-shadow] duration-300 hover:border-[var(--main-color)] hover:bg-[color:color-mix(in_srgb,var(--main-color)_8%,var(--card-color))] hover:text-[var(--main-color)] hover:shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
-const categoryLinkActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] text-[var(--main-color)] shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
+const categoryLinkClass = 'flex min-h-10 items-center justify-between border border-[color:color-mix(in_srgb,var(--main-color)_16%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_76%,transparent)] px-4 py-2 text-[0.95rem] text-[color:color-mix(in_srgb,var(--text-color)_88%,transparent)] transition-[background-color,color] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:text-[var(--main-color)]';
+const categoryLinkActiveClass = 'bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] text-[var(--main-color)]';
 const categoryPillWrapClass = 'hidden flex-wrap items-center gap-2 max-[1280px]:flex';
 const categoryPillClass = 'glass-pill-button min-h-9 px-3 py-1.5 text-[0.9rem]';
 const categoryPillActiveClass = 'border-[var(--main-color)] bg-[color:color-mix(in_srgb,var(--main-color)_10%,var(--card-color))] text-[var(--main-color)] shadow-[0_10px_24px_rgba(17,101,154,0.08)]';
