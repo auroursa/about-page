@@ -4,10 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { friends, voidFriends } from '../data/friends';
 
 const panelClass = 'glass-panel relative overflow-hidden';
-const linkCardClass = 'group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[background-color,box-shadow] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
-const extractDomain = (url: string) => {
-  try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
-};
+const linkCardClass = 'friend-card group relative block h-full overflow-hidden border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-5 text-[var(--text-color)] shadow-[0_10px_30px_rgba(17,101,154,0.08)] backdrop-blur-md transition-[background-color,box-shadow] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
 const voidLinkCardClass = 'group block h-full border border-[color:color-mix(in_srgb,var(--text-color)_10%,transparent)] bg-[color:color-mix(in_srgb,var(--card-color)_72%,transparent)] p-4 text-[var(--text-color)] shadow-[0_8px_24px_rgba(17,101,154,0.06)] backdrop-blur-md transition-[background-color,box-shadow] duration-300 hover:bg-[color:color-mix(in_srgb,var(--main-color)_6%,var(--card-color))] hover:shadow-[0_18px_36px_rgba(17,101,154,0.12)]';
 const friendShellClass = 'defer-offscreen friends-card-shell [--defer-block-size:8.5rem] overflow-hidden text-left';
 const voidFriendShellClass = 'defer-offscreen [--defer-block-size:6.5rem] overflow-hidden text-left';
@@ -28,12 +25,18 @@ const sectionHeaderClass = 'section-stack';
     {friends.map((friend, index) => (
       <article class={friendShellClass}>
         <a href={friend.url} target="_blank" rel="noopener noreferrer" class={linkCardClass}>
-          <div class="relative flex h-full items-start gap-4">
-            {friend.img && <AppImage preset="avatar" src={friend.img} widths={[80, 160]} sizes="80px" alt={friend.name} class="h-20 w-20 shrink-0 rounded-[1.35rem] object-cover " loading={index < 8 ? 'eager' : 'lazy'} fetchpriority={index < 2 ? 'high' : 'auto'} decoding="async" />}
-            <div class="min-w-0 flex-1 self-start pt-0.5">
+          <div class="relative flex h-full items-center gap-4">
+            {friend.img && (
+              <div class="relative shrink-0">
+                <AppImage preset="avatar" src={friend.img} widths={[80, 160]} sizes="80px" alt={friend.name} class="h-20 w-20 rounded-[1.35rem] object-cover" loading={index < 8 ? 'eager' : 'lazy'} fetchpriority={index < 2 ? 'high' : 'auto'} decoding="async" />
+                <span class="friend-avatar-badge" aria-hidden="true">
+                  <svg class="h-3 w-3" viewBox="0 0 10 10" fill="none"><path d="M3 7L7 3M7 3H4M7 3V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            )}
+            <div class="min-w-0 flex-1">
               <h3 class="m-0 min-w-0 truncate text-[1.08rem] font-bold leading-tight text-[var(--text-color)] transition-colors duration-300 group-hover:text-[var(--main-color)]">{friend.name}</h3>
-              <p class="m-0 mt-1 truncate text-sm leading-6 text-[color:color-mix(in_srgb,var(--text-color)_76%,transparent)]">{friend.desc}</p>
-              <span class="mt-1.5 inline-flex h-5 max-w-full items-center truncate bg-[color:color-mix(in_srgb,var(--main-color)_14%,var(--card-color))] px-2 text-[0.75rem] text-[color:color-mix(in_srgb,var(--main-color)_30%,var(--text-color))] font-overpass">{extractDomain(friend.url)}</span>
+              <p class="m-0 mt-1.5 truncate text-[0.85rem] leading-snug text-[color:color-mix(in_srgb,var(--text-color)_68%,transparent)]">{friend.desc}</p>
             </div>
           </div>
         </a>
