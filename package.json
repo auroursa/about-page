@@ -2,7 +2,7 @@
   "name": "cynosura-astro",
   "type": "module",
   "version": "1.0.0",
-  "packageManager": "pnpm@11.5.0",
+  "packageManager": "pnpm@11.5.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
