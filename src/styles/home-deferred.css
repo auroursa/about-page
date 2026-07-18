@@ -188,96 +188,6 @@
     white-space: nowrap;
   }
 
-  .project-card-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-
-  .project-card {
-    display: block;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-    background: color-mix(in srgb, var(--main-color) 2%, var(--card-color));
-    padding: 0.9rem 1rem 0.85rem;
-    color: var(--text-color);
-    box-shadow: 0 4px 12px rgb(17 101 154 / 5%);
-    transition:
-      background 300ms,
-      box-shadow 300ms;
-  }
-
-  .project-card:hover,
-  .project-card:focus-visible {
-    background: color-mix(in srgb, var(--main-color) 6%, var(--card-color));
-    box-shadow: 0 8px 20px rgb(17 101 154 / 8%);
-  }
-
-  .project-card:focus-visible {
-    outline: none;
-  }
-
-  .project-card-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0.68rem;
-  }
-
-  .project-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .project-logo {
-    display: block;
-    width: 1.1rem;
-    height: 1.1rem;
-    flex-shrink: 0;
-    object-fit: contain;
-  }
-
-  .project-name {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    min-height: 1.1rem;
-    color: color-mix(in srgb, var(--text-color) 88%, transparent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    transition: color 300ms;
-  }
-
-  .project-card:hover .project-name {
-    color: var(--main-color);
-  }
-
-  .project-summary {
-    margin: 0;
-    color: color-mix(in srgb, var(--text-color) 78%, transparent);
-    font-size: 0.92rem;
-    line-height: 1.62rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-  }
-
-  .project-tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.15rem;
-  }
-
-  .project-tag-row .glass-info-tag {
-    border: 0;
-    background: color-mix(in srgb, var(--main-color) 14%, var(--card-color));
-    color: color-mix(in srgb, var(--main-color) 30%, var(--text-color));
-  }
-
-
   .home-music-panel {
     position: relative;
     overflow: hidden;
@@ -1125,14 +1035,6 @@
 
   .home-gallery-masonry-card {
     margin-bottom: 0.5rem;
-  }
-
-  .project-card {
-    padding: 1rem;
-  }
-
-  .project-card-list {
-    grid-template-columns: 1fr;
   }
 
   .home-music-layout {
