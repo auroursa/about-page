@@ -28,10 +28,10 @@ export const homeSkillItems: HomeInfoItem[] = [
 ];
 
 export const homeDeviceItems: HomeInfoItem[] = [
-  { label: 'MacBook Pro 14', description: 'Apple M5 / 32GB', icon: 'laptop' },
-  { label: 'iPhone 17', description: '我 3 年内不会换了！', icon: 'phone' },
+  { label: 'MacBook Pro 14', description: 'Apple M5 Pro / 48GB', icon: 'laptop' },
+  { label: 'iPhone 18', description: '我 3 年内不会换了！', icon: 'phone' },
   { label: 'iPad Pro 11-inch', description: 'LCD 永不为奴()', icon: 'tablet' },
   { label: 'AirPods Pro 3', description: '旅途需要有音乐作伴', icon: 'earbuds' },
-  { label: 'Apple Watch S7', description: '看时间和记录数据', icon: 'watch' },
+  { label: 'Apple Watch S11', description: '看时间和记录数据', icon: 'watch' },
   { label: 'Lumix DC-GX9', description: '绝赞吃灰中...', icon: 'camera-device' },
 ];
